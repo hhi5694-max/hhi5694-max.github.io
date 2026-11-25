@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .DS_Store
 .venv/
+# 저장소 밖 비공개 평문·개인 자료 — 실수로도 올리지 않는다
+private-plain/
+data_plain*/

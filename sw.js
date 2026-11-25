@@ -5,7 +5,7 @@
    activate 에서 옛 버전 캐시를 전부 지운 뒤 화면을 넘겨받는다(clients.claim).
    그래서 사용자가 캐시를 직접 지우거나 새로고침하지 않아도 접속할 때마다 최신 화면·최신 데이터가 뜬다.
    index.html · data/*.json 은 쿼리스트링까지 포함해 언제나 네트워크를 먼저 탄다(cache:'no-store'). */
-const CACHE = 'newsradar-v110';
+const CACHE = 'newsradar-v111';
 const SHELL = ['./', './index.html', './manifest.json', './icons/icon-192.png', './data/calendar.json', './data/radar.json'];
 const NEWS_KEY = './data/news.json';   // 쿼리스트링이 붙어도 캐시에는 이 한 자리에만 남긴다
 
@@ -31,7 +31,6 @@ const isHotJson = url => /\/data\/hotbar\.json$/.test(url.pathname);
 const isHotMonJson = url => /\/data\/hotbar_monthly\.json$/.test(url.pathname);
 const isPopupJson = url => /\/data\/popup\.json$/.test(url.pathname);
 const isDayJson = url => /\/data\/day125\.json$/.test(url.pathname);
-const isWeekJson = url => /\/data\/week\.json$/.test(url.pathname);
 const isSchedJson = url => /\/data\/schedule\.json$/.test(url.pathname);
 /* 화면 문서는 index.html 하나다 — 주소가 '/'든 '/index.html'이든, 새로 열든 늘 서버에서 새로 */
 const isDoc = (req, url) => req.mode === 'navigate' || /\/index\.html$/.test(url.pathname) || url.pathname.endsWith('/');
@@ -41,8 +40,21 @@ const HOT_KEY = './data/hotbar.json';
 const HOTMON_KEY = './data/hotbar_monthly.json';
 const POPUP_KEY = './data/popup.json';
 const DAY_KEY = './data/day125.json';
-const WEEK_KEY = './data/week.json';
 const SCHED_KEY = './data/schedule.json';
+
+/* 캐시에 저장할 자리 — 데이터 파일은 한 자리에만 남긴다(매번 다른 ?_= 주소로 쌓이지 않게) */
+function cacheKeyFor(req, url){
+  if (isDoc(req, url)) return './index.html';
+  if (isNewsJson(url)) return NEWS_KEY;
+  if (isCalJson(url)) return CAL_KEY;
+  if (isRadarJson(url)) return RADAR_KEY;
+  if (isHotJson(url)) return HOT_KEY;
+  if (isHotMonJson(url)) return HOTMON_KEY;
+  if (isPopupJson(url)) return POPUP_KEY;
+  if (isDayJson(url)) return DAY_KEY;
+  if (isSchedJson(url)) return SCHED_KEY;
+  return req;
+}
 
 /* 캐시에서 꺼낸 응답에는 표시(x-news-cache)를 붙인다.
    화면은 이 표시를 보면 "새로고침 실패(저장본 표시)"로 알린다 — 오래된 데이터를 최신이라고 말하지 않기 위해. */
@@ -68,18 +80,16 @@ self.addEventListener('fetch', e => {
   const hotmon = isHotMonJson(url);
   const popup = isPopupJson(url);
   const day = isDayJson(url);
-  const week = isWeekJson(url);
   const sch = isSchedJson(url);
   const doc = isDoc(req, url);
 
   e.respondWith((async () => {
     try {
       // 문서·데이터는 쿼리스트링과 무관하게 항상 네트워크가 먼저(그리고 캐시 협상 없이)
-      const fresh = await fetch(req, {cache: (doc || news || cal || rdr || hot || hotmon || popup || day || week || sch) ? 'no-store' : 'no-cache'});
+      const fresh = await fetch(req, {cache: (doc || news || cal || rdr || hot || hotmon || popup || day || sch) ? 'no-store' : 'no-cache'});
       if (fresh && fresh.ok && (fresh.type === 'basic' || fresh.type === 'default')) {
         const copy = fresh.clone();
-        const key = doc ? './index.html' : (news ? NEWS_KEY : (cal ? CAL_KEY : (rdr ? RADAR_KEY : (hot ? HOT_KEY : (hotmon ? HOTMON_KEY : (popup ? POPUP_KEY : (day ? DAY_KEY : (week ? WEEK_KEY : (sch ? SCHED_KEY : req)))))))));   // 데이터 파일은 한 자리에만 저장(매번 다른 ?_= 주소로 쌓이지 않게)
-        caches.open(CACHE).then(c => c.put(key, copy)).catch(() => {});
+        caches.open(CACHE).then(c => c.put(cacheKeyFor(req, url), copy)).catch(() => {});
       }
       return fresh;
     } catch (err) {

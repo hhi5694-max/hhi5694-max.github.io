@@ -16,14 +16,17 @@
       siseJson(2014~)으로 155개월쯤 받아 최근 30개월분 값을 쓴다(120개월 미만이면 None → 선 없음)
   값은 봉과 한 칸씩 맞춘 정수 배열이다. 봉이 모자란 앞 구간은 null 이라 선을 안 긋는다.
 
-대상 종목 = 공개 화면에 이름이 뜨는 종목 전부
+대상 종목 = 화면에서 눌러 차트를 여는 종목 전부
   · data/calendar.json (테마달력 12개월)의 상한가 종목
   · data/news.json upper_limits (오늘 상한가)
-  · data/radar.json (레이더)
-  · 형광↑(분홍↑) 알림 팝업에 뜬 종목 — 달력 평문의 pink_stocks·pinkArrow + 핫바·10단계가 적어 둔
-    brain/cache/pink_today_*.json (2026-11-23 — 460940 피앤에스로보틱스가 팝업에서 '일봉 시세 없음'으로 막혔다)
+  · data/radar.json (레이더) · data/popup.json (오늘 종합 알림) · data/hotbar.json · data/hotbar_monthly.json
+    — 이 넷은 잠금본({enc:1})이라 저장소 밖 평문 사본(아래 PLAIN_DIRS)이 있을 때만 종목을 읽는다.
+    종목코드만 싣고 이름·단계·판단은 싣지 않는다(비공개 자료는 잠긴 채로 둔다).
+  · 형광↑(분홍↑) 알림에 뜬 종목 — 달력 평문의 pink_stocks·pinkArrow + 핫바·10단계가 적어 둔
+    pink_today_*.json (2026-11-23 — 460940 피앤에스로보틱스가 팝업에서 '일봉 시세 없음'으로 막혔다)
   · news.json 기사 leaders(관련 종목 이름) → 네이버 종목 자동완성(ac.stock.naver.com)으로 코드를 찾아 포함
     (기사 관련 종목 칩을 눌러도 차트가 열리게)
+  · 이미 day125.json 에 들어 있는 종목은 계속 갱신한다(비공개 평문 없이 다시 만들어도 차트가 비지 않게)
 
 날짜는 한 벌(dates)만 담고 종목마다 그 안의 자리(o0 / x)만 적어 파일을 가볍게 유지한다.
 받지 못한 종목은 이미 있는 day125.json 의 봉을 그대로 둔다(차트가 비지 않게).
@@ -49,18 +52,18 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SITE = os.path.dirname(HERE)                       # projects/stock-news-radar
+SITE = os.path.dirname(HERE)
 DATA = os.path.join(SITE, "data")
 OUT = os.path.join(DATA, "day125.json")
-# 잠근 테마달력의 평문 원본(저장소 밖) — 달력 종목 코드를 여기서 읽는다
-CACHE = os.path.join(os.path.dirname(os.path.dirname(SITE)), "brain", "cache")
-MASTER = os.path.join(CACHE, "calendar_plain.json")
-RADAR_MASTER = os.path.join(CACHE, "radar_plain.json")
+# 저장소 밖 비공개 평문 폴더 — 잠근 자료(hotbar·hotbar_monthly·popup·radar)의 평문 사본을 두는 곳.
+#   이 폴더와 그 자료는 저장소에 절대 올리지 않는다. 비밀코드도 여기에 적지 않는다.
+PLAIN_DIRS = tuple(d for d in (
+    os.environ.get("NEWSRADAR_PLAIN_DIR", ""),
+    os.path.join(os.path.dirname(SITE), "private-plain"),
+) if d)
 # 오늘 형광↑(분홍↑) 종목의 평문 명단(저장소 밖) — 핫바·10단계를 만드는 쪽이 적어 둔다.
 #   형광↑ 판단 자체는 비밀 자료라 공개 저장소에 올리지 않고, 여기서는 '봉을 받을 코드'로만 쓴다.
-PINK_LISTS = (os.path.join(CACHE, "pink_today_hotbar.json"),
-              os.path.join(CACHE, "pink_today_pick.json"),
-              os.path.join(CACHE, "pink_today_popup.json"))
+PINK_LISTS = ("pink_today_hotbar.json", "pink_today_pick.json", "pink_today_popup.json")
 KST = timezone(timedelta(hours=9))
 UA = {"User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15"}
 
@@ -78,44 +81,73 @@ def jload(name):
         return {}
 
 
-def jload_radar():
-    """레이더 자료 — 2026-11-24 비공개 전환으로 data/radar.json 은 잠금본({enc:1})이다.
+def plain_path(name):
+    """저장소 밖 평문 사본의 경로 — 없으면 ''."""
+    for d in PLAIN_DIRS:
+        p = os.path.join(d, name)
+        if os.path.exists(p):
+            return p
+    return ""
 
-    저장소 밖 평문 원본(brain/cache/radar_plain.json)이 있으면 그걸 읽고,
-    없으면(깃허브 액션처럼 저장소만 있는 곳) 레이더 종목은 건너뛴다. 잠근 파일은 읽지 않는다.
+
+def jload_private(name):
+    """비공개 탭 자료 — data/<name> 이 평문이면 그대로, 잠금본({enc:1})이면 저장소 밖 평문 사본을 쓴다.
+
+    둘 다 없으면(깃허브 액션처럼 저장소만 있는 곳) 빈 자료를 준다 — 그 탭 종목은 이번 빌드에서 건너뛴다.
+    잠근 파일은 열지 않는다(비밀코드는 이 스크립트에 없다).
     """
-    d = jload("radar.json")
-    if isinstance(d, dict) and not d.get("enc") and d.get("tiers"):
+    d = jload(name)
+    if isinstance(d, dict) and not d.get("enc"):
         return d
-    try:
-        with open(RADAR_MASTER, encoding="utf-8") as f:
-            m = json.load(f)
-        if isinstance(m, dict) and m.get("tiers"):
-            return m
-    except Exception:
-        pass
+    p = plain_path(name)
+    if p:
+        try:
+            with open(p, encoding="utf-8") as f:
+                m = json.load(f)
+            if isinstance(m, dict):
+                return m
+        except Exception:
+            pass
     return {}
 
 
 def jload_calendar():
-    """테마달력 자료(달의 상한가 종목) — 2026-11-24부터 공개 평문이다.
+    """테마달력 자료(달의 상한가 종목) — 공개 평문이다."""
+    d = jload_private("calendar.json")
+    return d if isinstance(d, dict) and d.get("months") else {"months": []}
 
-    (2026-11-22~11-23 사이에는 잠근 파일이었고, 저장소 밖 평문 원본을 대신 읽었다.)
 
-    저장소 밖 평문 원본(brain/cache/calendar_plain.json)이 있으면 그걸 읽고,
-    없으면(깃허브 액션처럼 저장소만 있는 곳) 이번에는 달력 종목을 건너뛰고 나머지로 만든다.
-    """
-    d = jload("calendar.json")
-    if isinstance(d, dict) and not d.get("enc") and d.get("months"):
-        return d
-    try:
-        with open(MASTER, encoding="utf-8") as f:
-            m = json.load(f)
-        if isinstance(m, dict) and m.get("months"):
-            return m
-    except Exception:
-        pass
-    return {"months": []}
+def doc_codes(doc):
+    """비공개 자료에서 '차트가 열려야 하는 종목코드'만 뽑는다 — 이름·단계·판단은 쓰지 않는다."""
+    out: list = []
+    if not isinstance(doc, dict):
+        return out
+    for sec in doc.get("sections") or []:                  # hotbar: sections[].stages[].stocks[]
+        if not isinstance(sec, dict):
+            continue
+        for stg in sec.get("stages") or []:
+            for s in stg.get("stocks") or []:
+                if isinstance(s, dict):
+                    out.append(s.get("code"))
+    secs = doc.get("sections")                             # popup: sections{buy,radar,pink}[]
+    if isinstance(secs, dict):
+        for v in secs.values():
+            for s in v or []:
+                if isinstance(s, dict):
+                    out.append(s.get("code"))
+    for s in doc.get("items") or []:                       # popup 예전 형식
+        if isinstance(s, dict):
+            out.append(s.get("code"))
+    for th in doc.get("themes") or []:                     # hotbar_monthly: themes[].stocks[]
+        for s in th.get("stocks") or []:
+            if isinstance(s, dict):
+                out.append(s.get("code"))
+    out.extend((doc.get("charts") or {}).keys())           # hotbar_monthly: charts{code:…}
+    for t in doc.get("tiers") or []:                       # radar: tiers[].stocks[]
+        for s in t.get("stocks") or []:
+            if isinstance(s, dict):
+                out.append(s.get("code"))
+    return out
 
 
 def pink_codes(cal: dict) -> list[tuple[str, str]]:
@@ -151,7 +183,10 @@ def pink_codes(cal: dict) -> list[tuple[str, str]]:
                 if s.get("pinkArrow"):
                     add(s.get("code"), s.get("name"))
 
-    for path in PINK_LISTS:
+    for nm in PINK_LISTS:
+        path = plain_path(nm)
+        if not path:
+            continue
         try:
             with open(path, encoding="utf-8") as f:
                 doc = json.load(f)
@@ -163,8 +198,8 @@ def pink_codes(cal: dict) -> list[tuple[str, str]]:
     return out
 
 
-def wanted_codes() -> tuple[list[str], dict[str, str], list[str]]:
-    """공개 화면에 이름이 뜨는 종목 (코드, 이름표)."""
+def wanted_codes(keep: dict | None = None) -> tuple[list[str], dict[str, str], list[str]]:
+    """화면에서 차트를 여는 종목 (코드, 공개 이름표)."""
     codes: list[str] = []
     names: dict[str, str] = {}
 
@@ -177,6 +212,10 @@ def wanted_codes() -> tuple[list[str], dict[str, str], list[str]]:
             codes.append(c)
         if name:
             names.setdefault(c, str(name).strip())
+
+    # 이미 자료에 있는 종목은 계속 갱신한다 — 비공개 평문이 없는 곳에서 다시 만들어도 차트가 비지 않게
+    for c in (keep or {}):
+        add(c)
 
     cal = jload_calendar()
     # 형광↑ 알림 팝업에 뜬 종목도 차트가 열리게 — 달력 밖(핫바에만 있는) 형광↑ 종목까지 넣는다
@@ -191,10 +230,16 @@ def wanted_codes() -> tuple[list[str], dict[str, str], list[str]]:
     for it in ((news.get("upper_limits") or {}).get("items") or []):
         add(it.get("code"), it.get("name"))
 
-    radar = jload_radar()
-    for t in radar.get("tiers") or []:
-        for s in t.get("stocks") or []:
-            add(s.get("code"), s.get("name"))
+    # 뉴스 탭 '오늘 뉴스가 부른 테마' 종목 칩 — 이름과 코드가 함께 온다
+    for ln in (jload("news_themes.json").get("news_links") or []):
+        for s in ln.get("stocks") or []:
+            if isinstance(s, dict):
+                add(s.get("code"), s.get("name"))
+
+    # 비공개 탭(레이더·실전·오늘 종합 알림)의 종목도 차트가 열리게 — 시세만 싣고 이름·판단은 싣지 않는다
+    for nm in ("radar.json", "popup.json", "hotbar.json", "hotbar_monthly.json"):
+        for code in doc_codes(jload_private(nm)):
+            add(code)
 
     # 기사 관련 종목(leaders)은 이름만 온다 — 아는 이름표에 있으면 바로, 없으면 나중에 코드를 찾는다
     by_name = {v: k for k, v in names.items() if v}
@@ -368,7 +413,7 @@ def encode(stock_rows: dict[str, list[list]], names: dict[str, str], days: int,
         bars = [[int(round(r[1])), int(round(r[2])), int(round(r[3])),
                  int(round(r[4])), int(round(r[5]))] for r in rows]
         idx = [at[r[0]] for r in rows]
-        rec = {"n": names.get(c, c), "b": bars}
+        rec = {"n": names.get(c, ""), "b": bars}
         if idx == list(range(idx[0], idx[0] + len(idx))):
             rec["o0"] = idx[0]                      # 날짜가 끊기지 않는다 — 시작 자리만
         else:
@@ -414,7 +459,11 @@ def main():
         except Exception:
             pass
 
-    codes, names, loose = wanted_codes()
+    codes, names, loose = wanted_codes(old.get("stocks") or {})
+    # 예전 자료에 이미 공개돼 있던 이름은 그대로 이어 쓴다(공개된 정보 — 새로 드러나는 것은 없다)
+    for nm, c in (old.get("names") or {}).items():
+        if c and nm:
+            names.setdefault(str(c), str(nm))
     if loose and not args.max_codes:
         got = resolve_names(loose)
         for nm, c in got.items():
