@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-11-26T02:38:12.934494+09:00",
- "generated_at_kst": "2026.11.26 02:38",
+ "generated_at": "2026-11-26T03:38:08.007759+09:00",
+ "generated_at_kst": "2026.11.26 03:38",
  "flash_count": 2,
  "flash_fresh_min": 60,
- "flash_fresh_count": 0,
- "flash_updated": "2026-11-25T21:32:07+09:00",
+ "flash_fresh_count": 1,
+ "flash_updated": "2026-11-26T03:01:53+09:00",
  "count": 30,
- "article_count": 68,
+ "article_count": 73,
  "main_source": {
   "presses": 82,
   "collected": 409,
@@ -14,8 +14,8 @@
   "cards": 17,
   "sections": 180,
   "civic": 72,
-  "ytn": 81,
-  "civic_cards": 2
+  "ytn": 77,
+  "civic_cards": 3
  },
  "themes": [
   {
@@ -73,22 +73,22 @@
    "count": 2
   },
   {
+   "id": "disaster",
+   "label": "재난·안전",
+   "color": "#ffb27a",
+   "count": 2
+  },
+  {
    "id": "robot",
    "label": "로봇·자율주행",
    "color": "#38d6a8",
    "count": 1
   },
   {
-   "id": "disaster",
-   "label": "재난·안전",
-   "color": "#ffb27a",
-   "count": 1
-  },
-  {
    "id": "etc",
    "label": "기타",
    "color": "#9aa4b2",
-   "count": 2
+   "count": 1
   }
  ],
  "themes_rank": [
@@ -97,8 +97,8 @@
    "label": "거시·환율·금리",
    "color": "#7fd3e8",
    "count": 3,
-   "recent_6h": 3,
-   "recent_6h_ratio": 75,
+   "recent_6h": 2,
+   "recent_6h_ratio": 50,
    "day_count": 4,
    "hot": 3,
    "presses": 4,
@@ -127,7 +127,7 @@
    "hint": {
     "type": "short",
     "label": "단기 불씨",
-    "reason": "최근 3시간 0건 · 최근 6시간 3건(75%) · 보도 폭 7.0시간 · 매체 4곳 · 속보성 표현 2건"
+    "reason": "최근 3시간 0건 · 최근 6시간 2건(50%) · 보도 폭 7.0시간 · 매체 4곳 · 속보성 표현 2건"
    },
    "rank": 1
   },
@@ -136,30 +136,30 @@
    "label": "정책·건설",
    "color": "#c9a2ff",
    "count": 3,
-   "recent_6h": 1,
-   "recent_6h_ratio": 20,
-   "day_count": 5,
+   "recent_6h": 2,
+   "recent_6h_ratio": 33,
+   "day_count": 6,
    "hot": 3,
    "presses": 5,
-   "span_hours": 10.3,
+   "span_hours": 9.7,
    "keywords": [
     "공공",
-    "국회",
+    "정부",
     "대통령",
     "부동산"
    ],
    "headlines": [
     {
-     "title": "안덕수 국세청장 후보자, 오늘 국회 인사청문회",
-     "url": "https://www.ytn.co.kr/_ln/0101_20261126000843",
+     "title": "의정부에서 시내버스가 신호등 충돌...2명 부상",
+     "url": "https://www.ytn.co.kr/_ln/0103_20261126032604",
      "press": "YTN",
-     "time": "2026-11-26T00:08:43+09:00"
+     "time": "2026-11-26T03:26:04+09:00"
     },
     {
-     "title": "오늘은 부동산 현장... 이 대통령 \"공공 임대, 대대적으로 바꿔야\"",
-     "url": "https://n.news.naver.com/article/047/0002537255",
-     "press": "오마이뉴스",
-     "time": "2026-11-25T17:41:16+09:00"
+     "title": "‘공무원 자질 비하’ 인재개발원장, 결국 명퇴",
+     "url": "https://n.news.naver.com/article/082/0001409012",
+     "press": "부산일보",
+     "time": "2026-11-25T18:31:13+09:00"
     }
    ],
    "leaders": [
@@ -167,9 +167,9 @@
     "대우건설"
    ],
    "hint": {
-    "type": "short",
-    "label": "단기 불씨",
-    "reason": "최근 3시간 1건 · 최근 6시간 1건(20%) · 보도 폭 11.0시간 · 매체 5곳"
+    "type": "medium",
+    "label": "중기 흐름",
+    "reason": "보도 폭 14.0시간 · 5개 시간대 · 매체 5곳 · 24시간 6건 · 최근 6시간 2건(33%)"
    },
    "rank": 2
   },
@@ -185,10 +185,10 @@
    "presses": 2,
    "span_hours": 4.8,
    "keywords": [
-    "트럼프",
     "관세",
     "일본",
-    "제재"
+    "제재",
+    "중국"
    ],
    "headlines": [
     {
@@ -210,54 +210,11 @@
     "코데즈컴바인"
    ],
    "hint": {
-    "type": "short",
-    "label": "단기 불씨",
-    "reason": "최근 3시간 1건 · 최근 6시간 3건(60%) · 보도 폭 16.0시간 · 매체 2곳 · 속보성 표현 2건"
+    "type": "medium",
+    "label": "중기 흐름",
+    "reason": "보도 폭 16.0시간 · 4개 시간대 · 매체 2곳 · 24시간 5건 · 최근 6시간 3건(60%) · 업황·정책 표현 2건"
    },
    "rank": 3
-  },
-  {
-   "id": "semiconductor",
-   "label": "반도체·AI",
-   "color": "#5b8cff",
-   "count": 3,
-   "recent_6h": 2,
-   "recent_6h_ratio": 33,
-   "day_count": 6,
-   "hot": 2,
-   "presses": 4,
-   "span_hours": 4.3,
-   "keywords": [
-    "반도체",
-    "삼성전자",
-    "D램",
-    "낸드"
-   ],
-   "headlines": [
-    {
-     "title": "삼성·SK, 내년 낸드값 하락 전망…D램 상승 폭도 줄어",
-     "url": "https://n.news.naver.com/article/031/0001078493",
-     "press": "아이뉴스24",
-     "time": "2026-11-25T22:56:13+09:00"
-    },
-    {
-     "title": "“하이닉스 2028년 이익 급감”…반도체 저승사자의 섬뜩한 예측[머니닥터 시장진단]",
-     "url": "https://n.news.naver.com/article/009/0005769081",
-     "press": "매일경제",
-     "time": "2026-11-25T20:07:06+09:00"
-    }
-   ],
-   "leaders": [
-    "한미반도체",
-    "이수페타시스",
-    "가온칩스"
-   ],
-   "hint": {
-    "type": "short",
-    "label": "단기 불씨",
-    "reason": "최근 3시간 0건 · 최근 6시간 2건(33%) · 보도 폭 4.0시간 · 매체 4곳 · 속보성 표현 2건"
-   },
-   "rank": 4
   },
   {
    "id": "earnings",
@@ -294,7 +251,50 @@
    "hint": {
     "type": "short",
     "label": "단기 불씨",
-    "reason": "최근 3시간 2건 · 최근 6시간 2건(40%) · 보도 폭 10.0시간 · 매체 5곳"
+    "reason": "최근 3시간 1건 · 최근 6시간 2건(40%) · 보도 폭 10.0시간 · 매체 5곳"
+   },
+   "rank": 4
+  },
+  {
+   "id": "semiconductor",
+   "label": "반도체·AI",
+   "color": "#5b8cff",
+   "count": 3,
+   "recent_6h": 1,
+   "recent_6h_ratio": 17,
+   "day_count": 6,
+   "hot": 2,
+   "presses": 4,
+   "span_hours": 2.0,
+   "keywords": [
+    "반도체",
+    "삼성전자",
+    "SK하이닉스",
+    "AI"
+   ],
+   "headlines": [
+    {
+     "title": "“하이닉스 2028년 이익 급감”…반도체 저승사자의 섬뜩한 예측[머니닥터 시장진단]",
+     "url": "https://n.news.naver.com/article/009/0005769081",
+     "press": "매일경제",
+     "time": "2026-11-25T20:07:06+09:00"
+    },
+    {
+     "title": "“삼성전자 망할 것 같아요?”…존리, 주가 반토막에도 ‘오히려 찬스’라는 이유가",
+     "url": "https://n.news.naver.com/article/011/0004686186",
+     "press": "서울경제",
+     "time": "2026-11-25T18:32:11+09:00"
+    }
+   ],
+   "leaders": [
+    "한미반도체",
+    "이수페타시스",
+    "가온칩스"
+   ],
+   "hint": {
+    "type": "short",
+    "label": "단기 불씨",
+    "reason": "최근 3시간 0건 · 최근 6시간 1건(17%) · 보도 폭 4.0시간 · 매체 4곳 · 속보성 표현 2건"
    },
    "rank": 5
   },
@@ -375,9 +375,9 @@
     "스페코"
    ],
    "hint": {
-    "type": "short",
-    "label": "단기 불씨",
-    "reason": "최근 3시간 1건 · 최근 6시간 2건(67%) · 보도 폭 8.0시간 · 매체 2곳"
+    "type": "medium",
+    "label": "중기 흐름",
+    "reason": "보도 폭 8.0시간 · 3개 시간대 · 매체 2곳 · 24시간 3건 · 최근 6시간 2건(67%)"
    },
    "rank": 7
   },
@@ -391,18 +391,18 @@
    "day_count": 7,
    "hot": 0,
    "presses": 7,
-   "span_hours": 2.5,
+   "span_hours": 4.8,
    "keywords": [
-    "수능",
+    "부정행위",
     "시험",
-    "부정행위"
+    "수능"
    ],
    "headlines": [
     {
-     "title": "최대 1억이 이틀 만에 최소 1억…주먹구구 수능 포상금",
-     "url": "https://n.news.naver.com/article/417/0001165641",
-     "press": "동행미디어 시대",
-     "time": "2026-11-25T17:14:48+09:00"
+     "title": "명문대도 뚫렸다…43개 대학서 부정행위 143건 적발",
+     "url": "https://n.news.naver.com/article/449/0000368700",
+     "press": "채널A",
+     "time": "2026-11-25T19:32:27+09:00"
     },
     {
      "title": "AI 부정행위 우려… 하반기 언론사 채용시험 비상",
@@ -422,6 +422,47 @@
     "reason": "보도 폭 9.0시간 · 6개 시간대 · 매체 7곳 · 24시간 7건 · 최근 6시간 0건(0%) · 업황·정책 표현 1건"
    },
    "rank": 8
+  },
+  {
+   "id": "disaster",
+   "label": "재난·안전",
+   "color": "#ffb27a",
+   "count": 2,
+   "recent_6h": 2,
+   "recent_6h_ratio": 100,
+   "day_count": 2,
+   "hot": 0,
+   "presses": 2,
+   "span_hours": 0.4,
+   "keywords": [
+    "대피",
+    "구조"
+   ],
+   "headlines": [
+    {
+     "title": "노란봉투법, 불복 소송이 타결의 3배… 로펌만 배 불렸다",
+     "url": "https://n.news.naver.com/mnews/article/023/0004011808",
+     "press": "조선일보",
+     "time": "2026-11-26T00:53:14+09:00"
+    },
+    {
+     "title": "고속도로 크레인 사고...버스 화재로 12명 긴급 대피",
+     "url": "https://n.news.naver.com/mnews/article/052/0002438129",
+     "press": "YTN",
+     "time": "2026-11-26T00:29:27+09:00"
+    }
+   ],
+   "leaders": [
+    "삼영엠텍",
+    "파라텍",
+    "포메탈"
+   ],
+   "hint": {
+    "type": "short",
+    "label": "단기 불씨",
+    "reason": "최근 3시간 0건 · 최근 6시간 2건(100%) · 보도 폭 0.0시간 · 매체 2곳 · 속보성 표현 1건"
+   },
+   "rank": 9
   },
   {
    "id": "battery",
@@ -457,19 +498,19 @@
     "하이드로리튬"
    ],
    "hint": {
-    "type": "short",
-    "label": "단기 불씨",
-    "reason": "최근 3시간 1건 · 최근 6시간 1건(50%) · 보도 폭 14.0시간 · 매체 2곳"
+    "type": "medium",
+    "label": "중기 흐름",
+    "reason": "보도 폭 14.0시간 · 2개 시간대 · 매체 2곳 · 24시간 2건 · 최근 6시간 1건(50%) · 업황·정책 표현 2건"
    },
-   "rank": 9
+   "rank": 10
   },
   {
    "id": "robot",
    "label": "로봇·자율주행",
    "color": "#38d6a8",
    "count": 1,
-   "recent_6h": 1,
-   "recent_6h_ratio": 50,
+   "recent_6h": 0,
+   "recent_6h_ratio": 0,
    "day_count": 2,
    "hot": 1,
    "presses": 2,
@@ -493,41 +534,7 @@
    "hint": {
     "type": "short",
     "label": "단기 불씨",
-    "reason": "최근 3시간 0건 · 최근 6시간 1건(50%) · 보도 폭 1.0시간 · 매체 2곳"
-   },
-   "rank": 10
-  },
-  {
-   "id": "disaster",
-   "label": "재난·안전",
-   "color": "#ffb27a",
-   "count": 1,
-   "recent_6h": 2,
-   "recent_6h_ratio": 100,
-   "day_count": 2,
-   "hot": 0,
-   "presses": 2,
-   "span_hours": 0.0,
-   "keywords": [
-    "구조"
-   ],
-   "headlines": [
-    {
-     "title": "노란봉투법, 불복 소송이 타결의 3배… 로펌만 배 불렸다",
-     "url": "https://n.news.naver.com/mnews/article/023/0004011808",
-     "press": "조선일보",
-     "time": "2026-11-26T00:53:14+09:00"
-    }
-   ],
-   "leaders": [
-    "삼영엠텍",
-    "파라텍",
-    "포메탈"
-   ],
-   "hint": {
-    "type": "short",
-    "label": "단기 불씨",
-    "reason": "최근 3시간 2건 · 최근 6시간 2건(100%) · 보도 폭 0.0시간 · 매체 2곳 · 속보성 표현 1건"
+    "reason": "최근 3시간 0건 · 최근 6시간 0건(0%) · 보도 폭 1.0시간 · 매체 2곳"
    },
    "rank": 11
   }
@@ -688,7 +695,7 @@
   ]
  },
  "market_mood": {
-  "generated_at": "2026-11-26T02:38:12.934494+09:00",
+  "generated_at": "2026-11-26T03:38:08.007759+09:00",
   "kr": {
    "key": "bad",
    "label": "악재",
@@ -712,32 +719,32 @@
    }
   },
   "us": {
-   "key": "bad",
-   "label": "악재",
-   "why": "나스닥 -2.23% · S&P500 -1.26% · 다우 -0.15% (평균 -1.21%)",
-   "avg": -1.21,
+   "key": "mid",
+   "label": "혼조",
+   "why": "나스닥 -1.23% · S&P500 -0.52% · 다우 +0.38% (평균 -0.46%)",
+   "avg": -0.46,
    "live": true,
-   "as_of_kst": "11-26 02:39",
+   "as_of_kst": "11-26 03:39",
    "nasdaq": {
     "name": "나스닥",
-    "value": 23203.43,
-    "chg": -2.23,
+    "value": 23440.55,
+    "chg": -1.23,
     "status": "OPEN",
-    "as_of": "2026-11-25T12:39:23-05:00"
+    "as_of": "2026-11-25T13:39:16-05:00"
    },
    "sp500": {
     "name": "S&P500",
-    "value": 7110.67,
-    "chg": -1.26,
+    "value": 7163.5,
+    "chg": -0.52,
     "status": "OPEN",
-    "as_of": "2026-11-25T12:39:24-05:00"
+    "as_of": "2026-11-25T13:39:17-05:00"
    },
    "dow": {
     "name": "다우",
-    "value": 49942.42,
-    "chg": -0.15,
+    "value": 50208.36,
+    "chg": 0.38,
     "status": "OPEN",
-    "as_of": "2026-11-25T12:39:25-05:00"
+    "as_of": "2026-11-25T13:39:18-05:00"
    }
   }
  },
@@ -854,6 +861,14 @@
    [
     "ytn/0101_20261126000843",
     "2026-11-26T00",
+    "YTN",
+    0,
+    0,
+    0
+   ],
+   [
+    "ytn/0103_20261126032604",
+    "2026-11-26T03",
     "YTN",
     0,
     0,
@@ -1119,21 +1134,18 @@
  },
  "flash": [
   {
-   "id": "009/0005769098",
-   "title": "“삼성전자 반값됐는데 망했나요?”…존 리가 개미들에게 던진 질문은",
-   "press": "매일경제",
-   "time": "2026-11-25T21:32:07+09:00",
-   "url": "https://n.news.naver.com/article/009/0005769098",
-   "summary": "“삼성전자가 망할 것 같습니까? 그런데 주가가 반값이 됐다면 오히려 찬스 아닌가요.” 존 리 존리의투자학교 대표가 주식 투자자들에게 주가의 단기 등락에 흔들리지 말고 기업의 본질적 가치에 집중하라고 강조했다.",
-   "theme": "semiconductor",
-   "theme_label": "반도체·AI",
-   "theme_color": "#5b8cff",
-   "leaders": [
-    "삼성전자",
-    "한미반도체"
-   ],
-   "hot": 13.5,
-   "fresh": false,
+   "id": "215/0001273994",
+   "title": "미 USTR, 과잉생산 관세 발표…韓 15% 상한 유지",
+   "press": "한국경제TV",
+   "time": "2026-11-26T03:01:53+09:00",
+   "url": "https://n.news.naver.com/article/215/0001273994",
+   "summary": "미국이 무역법 301조에 따른 조사 결과를 발표하고 이에 따른 과잉생산 관세를 예고했다. 대상은 한국을 비롯한 14개 경제권이다. 미 무역대표부(USTR)는 현지시간 25일 제조업 부문의 구조적 과잉생산 조사 결과를 발표했다.",
+   "theme": "geopolitics",
+   "theme_label": "남북·지정학",
+   "theme_color": "#ff8b8b",
+   "leaders": [],
+   "hot": 4.5,
+   "fresh": true,
    "breaking": false
   },
   {
@@ -1172,8 +1184,8 @@
    "press_list": [
     "YTN",
     "KBS",
-    "국민일보",
     "MBN",
+    "국민일보",
     "블로터",
     "경향신문"
    ],
@@ -1182,25 +1194,25 @@
      "title": "[속보] 미국, 한국 등 14곳에 ‘과잉생산 관세’ 예고…“합의국은 15% 상한”",
      "press": "KBS",
      "url": "https://n.news.naver.com/article/056/0012301331",
-     "time": "2026-11-25T23:38:12.934494+09:00"
-    },
-    {
-     "title": "美, 한국·EU·일본 등에 ‘15% 상한’ 관세 예고",
-     "press": "국민일보",
-     "url": "https://n.news.naver.com/article/005/0001887479",
-     "time": "2026-11-25T22:38:12.934494+09:00"
+     "time": "2026-11-25T23:38:08.007759+09:00"
     },
     {
      "title": "[속보] 미 USTR \"한국, 일본, EU 등 관세 15% 상한 유지\"",
      "press": "MBN",
      "url": "https://n.news.naver.com/article/057/0001979881",
-     "time": "2026-11-25T23:38:12.934494+09:00"
+     "time": "2026-11-25T23:38:08.007759+09:00"
+    },
+    {
+     "title": "美, 한국·EU·일본 등에 ‘15% 상한’ 관세 예고",
+     "press": "국민일보",
+     "url": "https://n.news.naver.com/article/005/0001887479",
+     "time": "2026-11-25T22:38:08.007759+09:00"
     }
    ],
-   "article_count": 14,
-   "breaking": true,
+   "article_count": 15,
+   "breaking": false,
    "relevance": 37,
-   "civic": false,
+   "civic": true,
    "summary": "도널드 트럼프 행정부가 한국을 포함한 14개 교역국에 제조업 과잉생산 문제를 이유로 신규 관세 부과를 예고했다. 다만 신규 관세율은 기존에 체결된 무역합의에 따른 관세 상한을 초과하지 않을 예정이다.",
    "leaders": [],
    "issue_rank": 1,
@@ -1236,19 +1248,19 @@
      "title": "하루 만에 5000피 반납…반도체 쇼크에 코스피 6% 급락",
      "press": "매경이코노미",
      "url": "https://n.news.naver.com/article/024/0000109886",
-     "time": "2026-11-25T16:38:12.934494+09:00"
+     "time": "2026-11-25T16:38:08.007759+09:00"
     },
     {
      "title": "'젠슨 황 랠리' 하루 만에 끝났다…코스피 6.16% 급락",
      "press": "비즈워치",
      "url": "https://n.news.naver.com/article/648/0000052978",
-     "time": "2026-11-25T16:38:12.934494+09:00"
+     "time": "2026-11-25T16:38:08.007759+09:00"
     },
     {
      "title": "“외국인 투매에 속수무책”…코스피 6.2% 급락, 4690선 마감",
      "press": "디지털데일리",
      "url": "https://n.news.naver.com/article/138/0002249920",
-     "time": "2026-11-25T16:38:12.934494+09:00"
+     "time": "2026-11-25T16:38:08.007759+09:00"
     }
    ],
    "article_count": 14,
@@ -1305,6 +1317,110 @@
    "db_themes": []
   },
   {
+   "id": "082/0001409012",
+   "title": "‘공무원 자질 비하’ 인재개발원장, 결국 명퇴",
+   "url": "https://n.news.naver.com/article/082/0001409012",
+   "press": "부산일보",
+   "time": "2026-11-25T18:31:13+09:00",
+   "section": "네이버 메인",
+   "source": "main",
+   "main_rank": 4,
+   "theme": "policy",
+   "theme_label": "정책·건설",
+   "tags": [
+    "재개발"
+   ],
+   "presses": 4,
+   "press_list": [
+    "부산일보",
+    "시사저널",
+    "뉴스1",
+    "경기일보"
+   ],
+   "related": [
+    {
+     "title": "\"9급 공무원 시험, 고졸 수준\"…'막말 논란' 부산 인재개발원장, 결국 인사 조치",
+     "press": "시사저널",
+     "url": "https://n.news.naver.com/article/586/0000143006",
+     "time": "2026-11-25T14:38:08.007759+09:00"
+    },
+    {
+     "title": "\"9급 시험 고졸 수준\" 정영란 부산시 인재개발원장 명퇴 신청(종합)",
+     "press": "뉴스1",
+     "url": "https://n.news.naver.com/article/421/0009310285",
+     "time": "2026-11-25T18:38:08.007759+09:00"
+    },
+    {
+     "title": "‘9급은 고졸 수준’ 발언 정영란 부산시 인재개발원장, 전보 당일 명퇴 신청",
+     "press": "경기일보",
+     "url": "https://n.news.naver.com/article/666/0000133823",
+     "time": "2026-11-25T20:38:08.007759+09:00"
+    }
+   ],
+   "article_count": 4,
+   "breaking": false,
+   "relevance": 19,
+   "civic": false,
+   "summary": "부산시의회 부산시 행감 후폭풍 감사중단 초래 국장도 명퇴 수순 협치 중단을 선언한 부산시의회가 진행한 고강도 행정사무감사가 거센 후폭풍을 몰고 왔다.",
+   "leaders": [
+    "현대건설",
+    "대우건설",
+    "DL이앤씨"
+   ],
+   "issue_rank": 4,
+   "db_themes": []
+  },
+  {
+   "id": "011/0004686186",
+   "title": "“삼성전자 망할 것 같아요?”…존리, 주가 반토막에도 ‘오히려 찬스’라는 이유가",
+   "url": "https://n.news.naver.com/article/011/0004686186",
+   "press": "서울경제",
+   "time": "2026-11-25T18:32:11+09:00",
+   "section": "네이버 메인",
+   "source": "main",
+   "main_rank": 1,
+   "theme": "semiconductor",
+   "theme_label": "반도체·AI",
+   "tags": [
+    "삼성전자"
+   ],
+   "presses": 3,
+   "press_list": [
+    "서울경제",
+    "매일신문",
+    "주간조선"
+   ],
+   "related": [
+    {
+     "title": "\"삼전 망할 것 같다고?\"…존리, 주가 반토막에도 '뜻밖 희소식'",
+     "press": "매일신문",
+     "url": "https://n.news.naver.com/article/088/0001042363",
+     "time": "2026-11-25T23:38:08.007759+09:00"
+    },
+    {
+     "title": "삼전 반토막 났다고? 존리의 반문…\"망할 것 같나? 반값이면 찬스 아닌가\"",
+     "press": "주간조선",
+     "url": "https://n.news.naver.com/mnews/article/053/0000063353",
+     "time": ""
+    }
+   ],
+   "article_count": 3,
+   "breaking": false,
+   "relevance": 13,
+   "civic": false,
+   "summary": "삼성전자 주가가 고점 대비 반 토막 나는 등 국내 증시가 급등락을 반복하는 가운데 존리 존리의투자학교 대표가 주가 하락을 오히려 투자 기회로 바라볼 필요가 있다는 견해를 내놨다.",
+   "leaders": [
+    "삼성전자",
+    "한미반도체",
+    "이수페타시스",
+    "가온칩스"
+   ],
+   "issue_rank": 5,
+   "db_themes": [
+    "항공·유가 하락 (미-이란 긴장 완화·항공사 통합)"
+   ]
+  },
+  {
    "id": "654/0000213376",
    "title": "강원 작년 수능 시험지 10만8181부 전량 폐기…보관기간 위반",
    "url": "https://n.news.naver.com/article/654/0000213376",
@@ -1328,8 +1444,8 @@
     {
      "title": "\"수능 시험지 1년→5년 보관\"…시험장 18% 이미 폐기",
      "press": "YTN",
-     "url": "https://www.ytn.co.kr/_ln/0103_20261125221012",
-     "time": "2026-11-25T22:10:12+09:00"
+     "url": "https://www.ytn.co.kr/_ln/0103_20261126003138",
+     "time": "2026-11-26T00:31:38+09:00"
     }
    ],
    "article_count": 2,
@@ -1343,59 +1459,70 @@
     "샌즈랩",
     "한싹"
    ],
-   "issue_rank": 4,
+   "issue_rank": 6,
    "db_themes": [
     "AI 시험 부정행위 대응·전파탐지/물리보안"
    ]
   },
   {
-   "id": "011/0004686186",
-   "title": "“삼성전자 망할 것 같아요?”…존리, 주가 반토막에도 ‘오히려 찬스’라는 이유가",
-   "url": "https://n.news.naver.com/article/011/0004686186",
-   "press": "서울경제",
-   "time": "2026-11-25T18:38:12.934494+09:00",
-   "section": "네이버 메인",
-   "source": "main",
-   "main_rank": 1,
-   "theme": "semiconductor",
-   "theme_label": "반도체·AI",
+   "id": "144/0001151732",
+   "title": "인덴트코퍼레이션, AI로 K-의료관광 확대 지원",
+   "url": "https://n.news.naver.com/mnews/article/144/0001151732",
+   "press": "스포츠경향",
+   "time": "2026-11-26T02:22:19+09:00",
+   "section": "경제 일반",
+   "source": "section",
+   "main_rank": null,
+   "theme": "bio",
+   "theme_label": "바이오·헬스케어",
    "tags": [
-    "삼성전자"
+    "의료"
    ],
-   "presses": 3,
+   "presses": 1,
    "press_list": [
-    "서울경제",
-    "매일신문",
-    "주간조선"
+    "스포츠경향"
    ],
-   "related": [
-    {
-     "title": "\"삼전 망할 것 같다고?\"…존리, 주가 반토막에도 '뜻밖 희소식'",
-     "press": "매일신문",
-     "url": "https://n.news.naver.com/article/088/0001042363",
-     "time": "2026-11-25T23:38:12.934494+09:00"
-    },
-    {
-     "title": "삼전 반토막 났다고? 존리의 반문…\"망할 것 같나? 반값이면 찬스 아닌가\"",
-     "press": "주간조선",
-     "url": "https://n.news.naver.com/mnews/article/053/0000063353",
-     "time": ""
-    }
-   ],
-   "article_count": 3,
+   "related": [],
+   "article_count": 1,
    "breaking": false,
-   "relevance": 13,
+   "relevance": 7,
    "civic": false,
-   "summary": "삼성전자 주가가 고점 대비 반 토막 나는 등 국내 증시가 급등락을 반복하는 가운데 존리 존리의투자학교 대표가 주가 하락을 오히려 투자 기회로 바라볼 필요가 있다는 견해를 내놨다.",
-   "leaders": [
-    "삼성전자",
-    "한미반도체",
-    "이수페타시스",
-    "가온칩스"
-   ],
-   "issue_rank": 5,
+   "summary": "“한국인 ‘꿀피부’에 반해 한국 왔어요” AI가 외국인들의 K-의료관광 유치에 날개를 달고 있다. 커머스 AX 전문 기업 인덴트코퍼레이션이 최근 공개한 AI 마케팅 에이전트 ‘인덴트M’이 국내 병원 및 의료기관의 외",
+   "leaders": [],
+   "issue_rank": 7,
    "db_themes": [
-    "항공·유가 하락 (미-이란 긴장 완화·항공사 통합)"
+    "AI 소프트웨어·AI 에이전트 (국산 LLM·산업 AI)",
+    "의료 AI·AI 진단 (루닛-서밋 협력·신의료기술평가)"
+   ]
+  },
+  {
+   "id": "023/0004011808",
+   "title": "노란봉투법, 불복 소송이 타결의 3배… 로펌만 배 불렸다",
+   "url": "https://n.news.naver.com/mnews/article/023/0004011808",
+   "press": "조선일보",
+   "time": "2026-11-26T00:53:14+09:00",
+   "section": "사회",
+   "source": "civic",
+   "main_rank": null,
+   "theme": "disaster",
+   "theme_label": "재난·안전",
+   "tags": [
+    "구조"
+   ],
+   "presses": 1,
+   "press_list": [
+    "조선일보"
+   ],
+   "related": [],
+   "article_count": 1,
+   "breaking": false,
+   "relevance": 5,
+   "civic": true,
+   "summary": "유명무실한 ‘노사 대화법’ 정부가 올 3월부터 노사 간 대화 촉진과 원·하청 이중 구조 완화 등을 내걸고 노란봉투법을 시행했지만, 정작 현장에서는 대화와 합의보다는 법정 다툼이 더 많은 것으로 확인됐다.",
+   "leaders": [],
+   "issue_rank": 8,
+   "db_themes": [
+    "한중 FTA 서비스·투자 후속협상 타결·한한령(한류 제한령) 완화 — 콘텐츠·여행·게임"
    ]
   },
   {
@@ -1424,65 +1551,11 @@
    "civic": false,
    "summary": "앤트로픽의 역대 최대 규모 기업공개(IPO)가 스페이스X에는 호재가 될 수 있다는 분석이 나왔다. 스페이스X 최대 고객인 앤트로픽의 자금력이 크게 개선됐기 때문이다.",
    "leaders": [],
-   "issue_rank": 6,
+   "issue_rank": 9,
    "db_themes": [
     "스페이스X IPO·우주항공 공급망 (위성·발사체·특수소재)",
     "스페이스X·우주항공 (위성·발사체 공급망)"
    ]
-  },
-  {
-   "id": "586/0000143006",
-   "title": "\"9급 공무원 시험, 고졸 수준\"…'막말 논란' 부산 인재개발원장, 결국 인사 조치",
-   "url": "https://n.news.naver.com/article/586/0000143006",
-   "press": "시사저널",
-   "time": "2026-11-25T13:51:09+09:00",
-   "section": "네이버 메인",
-   "source": "main",
-   "main_rank": 4,
-   "theme": "policy",
-   "theme_label": "정책·건설",
-   "tags": [
-    "재개발"
-   ],
-   "presses": 4,
-   "press_list": [
-    "시사저널",
-    "부산일보",
-    "뉴스1",
-    "경기일보"
-   ],
-   "related": [
-    {
-     "title": "‘공무원 자질 비하’ 인재개발원장, 결국 명퇴",
-     "press": "부산일보",
-     "url": "https://n.news.naver.com/article/082/0001409012",
-     "time": "2026-11-25T18:38:12.934494+09:00"
-    },
-    {
-     "title": "\"9급 시험 고졸 수준\" 정영란 부산시 인재개발원장 명퇴 신청(종합)",
-     "press": "뉴스1",
-     "url": "https://n.news.naver.com/article/421/0009310285",
-     "time": "2026-11-25T18:38:12.934494+09:00"
-    },
-    {
-     "title": "‘9급은 고졸 수준’ 발언 정영란 부산시 인재개발원장, 전보 당일 명퇴 신청",
-     "press": "경기일보",
-     "url": "https://n.news.naver.com/article/666/0000133823",
-     "time": "2026-11-25T20:38:12.934494+09:00"
-    }
-   ],
-   "article_count": 4,
-   "breaking": false,
-   "relevance": 19,
-   "civic": false,
-   "summary": "[박선우 기자 capote1992@naver.com] 7월 부산시의회서 발언 논란…최근 입장 변화 묻는 질문에도 \"똑같이 생각\" 부산공무원노조 \"공개 사과 및 인사 조치 등 이뤄질 때까지 총력 투쟁\" 저연차 공무원 비하 발언 논란에 휩싸인 정영란 부산시 인재개발원장(오른쪽) ⓒ국민의힘…",
-   "leaders": [
-    "현대건설",
-    "대우건설",
-    "DL이앤씨"
-   ],
-   "issue_rank": 7,
-   "db_themes": []
   },
   {
    "id": "087/0001233485",
@@ -1514,71 +1587,10 @@
     "HLB",
     "삼성바이오로직스"
    ],
-   "issue_rank": 8,
+   "issue_rank": 10,
    "db_themes": [
     "K-온디바이스 AI 반도체 (정부 8,002억 프로젝트)",
     "해상풍력 (해상풍력특별법 시행·안마도 프로젝트)"
-   ]
-  },
-  {
-   "id": "144/0001151732",
-   "title": "인덴트코퍼레이션, AI로 K-의료관광 확대 지원",
-   "url": "https://n.news.naver.com/mnews/article/144/0001151732",
-   "press": "스포츠경향",
-   "time": "2026-11-26T02:22:19+09:00",
-   "section": "경제 일반",
-   "source": "section",
-   "main_rank": null,
-   "theme": "bio",
-   "theme_label": "바이오·헬스케어",
-   "tags": [
-    "의료"
-   ],
-   "presses": 1,
-   "press_list": [
-    "스포츠경향"
-   ],
-   "related": [],
-   "article_count": 1,
-   "breaking": false,
-   "relevance": 7,
-   "civic": false,
-   "summary": "“한국인 ‘꿀피부’에 반해 한국 왔어요” AI가 외국인들의 K-의료관광 유치에 날개를 달고 있다. 커머스 AX 전문 기업 인덴트코퍼레이션이 최근 공개한 AI 마케팅 에이전트 ‘인덴트M’이 국내 병원 및 의료기관의 외",
-   "leaders": [],
-   "issue_rank": 9,
-   "db_themes": [
-    "AI 소프트웨어·AI 에이전트 (국산 LLM·산업 AI)",
-    "의료 AI·AI 진단 (루닛-서밋 협력·신의료기술평가)"
-   ]
-  },
-  {
-   "id": "023/0004011808",
-   "title": "노란봉투법, 불복 소송이 타결의 3배… 로펌만 배 불렸다",
-   "url": "https://n.news.naver.com/mnews/article/023/0004011808",
-   "press": "조선일보",
-   "time": "2026-11-26T00:53:14+09:00",
-   "section": "사회",
-   "source": "civic",
-   "main_rank": null,
-   "theme": "disaster",
-   "theme_label": "재난·안전",
-   "tags": [
-    "구조"
-   ],
-   "presses": 1,
-   "press_list": [
-    "조선일보"
-   ],
-   "related": [],
-   "article_count": 1,
-   "breaking": false,
-   "relevance": 5,
-   "civic": true,
-   "summary": "유명무실한 ‘노사 대화법’ 정부가 올 3월부터 노사 간 대화 촉진과 원·하청 이중 구조 완화 등을 내걸고 노란봉투법을 시행했지만, 정작 현장에서는 대화와 합의보다는 법정 다툼이 더 많은 것으로 확인됐다.",
-   "leaders": [],
-   "issue_rank": 10,
-   "db_themes": [
-    "한중 FTA 서비스·투자 후속협상 타결·한한령(한류 제한령) 완화 — 콘텐츠·여행·게임"
    ]
   },
   {
@@ -1612,40 +1624,63 @@
    ]
   },
   {
-   "id": "031/0001078493",
-   "title": "삼성·SK, 내년 낸드값 하락 전망…D램 상승 폭도 줄어",
-   "url": "https://n.news.naver.com/article/031/0001078493",
-   "press": "아이뉴스24",
-   "time": "2026-11-25T22:56:13+09:00",
-   "section": "네이버 메인",
-   "source": "main",
-   "main_rank": 2,
-   "theme": "semiconductor",
-   "theme_label": "반도체·AI",
+   "id": "ytn/0103_20261126032604",
+   "title": "의정부에서 시내버스가 신호등 충돌...2명 부상",
+   "url": "https://www.ytn.co.kr/_ln/0103_20261126032604",
+   "press": "YTN",
+   "time": "2026-11-26T03:26:04+09:00",
+   "section": "YTN 사회",
+   "source": "press",
+   "main_rank": null,
+   "theme": "policy",
+   "theme_label": "정책·건설",
    "tags": [
-    "낸드",
-    "D램"
+    "정부"
    ],
    "presses": 1,
    "press_list": [
-    "아이뉴스24"
+    "YTN"
    ],
    "related": [],
    "article_count": 1,
    "breaking": false,
-   "relevance": 19,
-   "civic": false,
-   "summary": "트렌드포스, 내년 D램·낸드 매출 전망치 하향 中 주문 감소에 낸드 공급과잉 우려 북미 수요에 D램 공급난 지속…가격 상승 폭은 둔화 삼성전자와 SK하이닉스가 주도하는 메모리 반도체 시장에 가격 하락 우려가 커지고 있다.",
-   "leaders": [
-    "한미반도체",
-    "이수페타시스",
-    "가온칩스",
-    "티엘비"
-   ],
+   "relevance": 4,
+   "civic": true,
+   "summary": "어젯밤(25일) 9시 반쯤 경기도 의정부시 낙양동에 있는 도로에서 주행 중이...",
+   "leaders": [],
    "issue_rank": 12,
-   "db_themes": [
-    "반도체·HBM 메모리 대표주 (삼전·하이닉스·HBM 장비)"
-   ]
+   "db_themes": []
+  },
+  {
+   "id": "023/0004011811",
+   "title": "“국내 전기차 산업 세금 지원 필요… 52시간 특례, 내일부터라도 해야”",
+   "url": "https://n.news.naver.com/mnews/article/023/0004011811",
+   "press": "조선일보",
+   "time": "2026-11-26T00:56:15+09:00",
+   "section": "산업/재계",
+   "source": "section",
+   "main_rank": null,
+   "theme": "battery",
+   "theme_label": "2차전지·에너지",
+   "tags": [
+    "전기차"
+   ],
+   "presses": 1,
+   "press_list": [
+    "조선일보"
+   ],
+   "related": [],
+   "article_count": 1,
+   "breaking": false,
+   "relevance": 10,
+   "civic": false,
+   "summary": "산업장관 “52시간 논쟁 본 중국 그런 고민할 여유 있느냐 묻더라” 중국산 전기차 공습에 맞서 현대차 등 업계가 도입을 요청한 전기차 생산세액공제(국내 생산·판매 시 법인세 감면)와 관련해 김정관 산업통상부 장관이",
+   "leaders": [
+    "현대차",
+    "기아"
+   ],
+   "issue_rank": 13,
+   "db_themes": []
   },
   {
    "id": "047/0002537255",
@@ -1682,157 +1717,7 @@
    "civic": true,
    "summary": "[앵커] 이재명 대통령이 공공주도의 주택 공급 현장을 직접 찾아, 부동산...",
    "leaders": [],
-   "issue_rank": 13,
-   "db_themes": []
-  },
-  {
-   "id": "023/0004011811",
-   "title": "“국내 전기차 산업 세금 지원 필요… 52시간 특례, 내일부터라도 해야”",
-   "url": "https://n.news.naver.com/mnews/article/023/0004011811",
-   "press": "조선일보",
-   "time": "2026-11-26T00:56:15+09:00",
-   "section": "산업/재계",
-   "source": "section",
-   "main_rank": null,
-   "theme": "battery",
-   "theme_label": "2차전지·에너지",
-   "tags": [
-    "전기차"
-   ],
-   "presses": 1,
-   "press_list": [
-    "조선일보"
-   ],
-   "related": [],
-   "article_count": 1,
-   "breaking": false,
-   "relevance": 10,
-   "civic": false,
-   "summary": "산업장관 “52시간 논쟁 본 중국 그런 고민할 여유 있느냐 묻더라” 중국산 전기차 공습에 맞서 현대차 등 업계가 도입을 요청한 전기차 생산세액공제(국내 생산·판매 시 법인세 감면)와 관련해 김정관 산업통상부 장관이",
-   "leaders": [
-    "현대차",
-    "기아"
-   ],
    "issue_rank": 14,
-   "db_themes": []
-  },
-  {
-   "id": "ytn/0102_20261126003757",
-   "title": "철도노조, 오늘부터 준법투쟁...비상대책본부 가동",
-   "url": "https://www.ytn.co.kr/_ln/0102_20261126003757",
-   "press": "YTN",
-   "time": "2026-11-26T00:37:57+09:00",
-   "section": "YTN 경제",
-   "source": "press",
-   "main_rank": null,
-   "theme": "etc",
-   "theme_label": "기타",
-   "tags": [],
-   "presses": 1,
-   "press_list": [
-    "YTN"
-   ],
-   "related": [],
-   "article_count": 2,
-   "breaking": false,
-   "relevance": 0,
-   "civic": true,
-   "summary": "[앵커] 다음 달 10일 총파업을 예고한 철도노조가 오늘부터 안전운행 투...",
-   "leaders": [
-    "삼영엠텍",
-    "파라텍",
-    "포메탈"
-   ],
-   "issue_rank": 15,
-   "db_themes": []
-  },
-  {
-   "id": "ytn/0102_20261126003531",
-   "title": "식자재 업계 '기부금 리베이트 의혹' 제재 착수...업계 \"사실 아냐\"",
-   "url": "https://www.ytn.co.kr/_ln/0102_20261126003531",
-   "press": "YTN",
-   "time": "2026-11-26T00:35:31+09:00",
-   "section": "YTN 경제",
-   "source": "press",
-   "main_rank": null,
-   "theme": "geopolitics",
-   "theme_label": "남북·지정학",
-   "tags": [
-    "제재"
-   ],
-   "presses": 1,
-   "press_list": [
-    "YTN"
-   ],
-   "related": [],
-   "article_count": 1,
-   "breaking": false,
-   "relevance": 7,
-   "civic": true,
-   "summary": "[앵커] 공정거래위원회가 CJ프레시웨이 등 식자재 납품업체들이 복지시설...",
-   "leaders": [],
-   "issue_rank": 16,
-   "db_themes": []
-  },
-  {
-   "id": "ytn/0101_20261126000938",
-   "title": "청해부대 임무 구역 확대안, 오늘 국회 국방위 의결 예정",
-   "url": "https://www.ytn.co.kr/_ln/0101_20261126000938",
-   "press": "YTN",
-   "time": "2026-11-26T00:09:38+09:00",
-   "section": "YTN 정치",
-   "source": "press",
-   "main_rank": null,
-   "theme": "defense",
-   "theme_label": "방산·우주",
-   "tags": [
-    "국방"
-   ],
-   "presses": 1,
-   "press_list": [
-    "YTN"
-   ],
-   "related": [],
-   "article_count": 1,
-   "breaking": false,
-   "relevance": 7,
-   "civic": true,
-   "summary": "국회 국방위원회는 오늘(26일) 전체회의를 열고 청해부대의 임무 구역 확대...",
-   "leaders": [
-    "LIG넥스원",
-    "빅텍",
-    "스페코",
-    "한일단조"
-   ],
-   "issue_rank": 17,
-   "db_themes": []
-  },
-  {
-   "id": "ytn/0101_20261126000843",
-   "title": "안덕수 국세청장 후보자, 오늘 국회 인사청문회",
-   "url": "https://www.ytn.co.kr/_ln/0101_20261126000843",
-   "press": "YTN",
-   "time": "2026-11-26T00:08:43+09:00",
-   "section": "YTN 정치",
-   "source": "press",
-   "main_rank": null,
-   "theme": "policy",
-   "theme_label": "정책·건설",
-   "tags": [
-    "국회"
-   ],
-   "presses": 1,
-   "press_list": [
-    "YTN"
-   ],
-   "related": [],
-   "article_count": 1,
-   "breaking": false,
-   "relevance": 7,
-   "civic": true,
-   "summary": "안덕수 국세청장 후보자에 대한 국회 인사청문회가 오늘(26일) 열립니다. ...",
-   "leaders": [],
-   "issue_rank": 18,
    "db_themes": []
   },
   {
@@ -1865,10 +1750,48 @@
     "가온칩스",
     "티엘비"
    ],
-   "issue_rank": 19,
+   "issue_rank": 15,
    "db_themes": [
     "반도체·HBM 메모리 대표주 (삼전·하이닉스·HBM 장비)",
     "의료 AI·AI 진단 (루닛-서밋 협력·신의료기술평가)"
+   ]
+  },
+  {
+   "id": "031/0001078464",
+   "title": "반도체주 급락 속…SK하이닉스, '100조 주주환원' 재확인",
+   "url": "https://n.news.naver.com/article/031/0001078464",
+   "press": "아이뉴스24",
+   "time": "2026-11-25T18:04:10+09:00",
+   "section": "네이버 메인",
+   "source": "main",
+   "main_rank": 3,
+   "theme": "semiconductor",
+   "theme_label": "반도체·AI",
+   "tags": [
+    "반도체",
+    "SK하이닉스"
+   ],
+   "presses": 1,
+   "press_list": [
+    "아이뉴스24"
+   ],
+   "related": [],
+   "article_count": 1,
+   "breaking": false,
+   "relevance": 19,
+   "civic": false,
+   "summary": "현금배당 30조원·자사주 매입·소각 60조원 이상 추진 3분기 말 순현금 99조원…기업가치 제고 의지 강조 인공지능(AI) 투자 회의론과 메모리 반도체 수요 둔화 우려로 반도체주가 약세를 보이는 가운데 SK하이닉스가 100조원 규모의 주주환원 계획을 재확인했다.",
+   "leaders": [
+    "SK하이닉스",
+    "한미반도체",
+    "이수페타시스",
+    "가온칩스"
+   ],
+   "issue_rank": 16,
+   "db_themes": [
+    "반도체·HBM 메모리 대표주 (삼전·하이닉스·HBM 장비)",
+    "AI 메모리 기판 (SOCAMM·DDR5·CXL)",
+    "저PBR 자산주 재평가 (주주환원·자산가치 부각)"
    ]
   },
   {
@@ -1902,7 +1825,42 @@
     "샌즈랩",
     "한싹"
    ],
-   "issue_rank": 20,
+   "issue_rank": 17,
+   "db_themes": [
+    "AI 시험 부정행위 대응·전파탐지/물리보안"
+   ]
+  },
+  {
+   "id": "449/0000368700",
+   "title": "명문대도 뚫렸다…43개 대학서 부정행위 143건 적발",
+   "url": "https://n.news.naver.com/article/449/0000368700",
+   "press": "채널A",
+   "time": "2026-11-25T19:32:27+09:00",
+   "section": "네이버 메인",
+   "source": "main",
+   "main_rank": 2,
+   "theme": "aisec",
+   "theme_label": "AI·보안",
+   "tags": [
+    "부정행위"
+   ],
+   "presses": 1,
+   "press_list": [
+    "채널A"
+   ],
+   "related": [],
+   "article_count": 1,
+   "breaking": false,
+   "relevance": 10,
+   "civic": false,
+   "summary": "[앵커] 부정행위, 지성인들이 모인 대학가에서도 속출하고 있습니다. 오늘 공개된 걸 보니 서울대, 연세대, 홍익대, 명문대에서도 중간고사, 기말고사 때 부정행위를 하다 수두룩하게 적발되고 있습니다.",
+   "leaders": [
+    "지슨",
+    "라온시큐어",
+    "샌즈랩",
+    "한싹"
+   ],
+   "issue_rank": 18,
    "db_themes": [
     "AI 시험 부정행위 대응·전파탐지/물리보안"
    ]
@@ -1932,7 +1890,7 @@
    "civic": false,
    "summary": "◀앵커▶ 정부의 대형 국책 사업인 '피지컬AI' 연구에 참여한 전북대학생들이 석 달째 인건비를 한 푼도 받지 못하고 있습니다. 당장 생계에 타격을 입은 학생들도 적지 않은데, 정작 사업을 운영하는 추진단은 몇 명이 얼마나 못 받았는지 파악조차 못하고 있습니다.",
    "leaders": [],
-   "issue_rank": 21,
+   "issue_rank": 19,
    "db_themes": [
     "로봇·피지컬 AI (엔비디아·현대차그룹)",
     "CES 2026 피지컬 AI·휴머노이드 로봇 (엔비디아·현대차 아틀라스)",
@@ -1940,39 +1898,97 @@
    ]
   },
   {
-   "id": "417/0001165641",
-   "title": "최대 1억이 이틀 만에 최소 1억…주먹구구 수능 포상금",
-   "url": "https://n.news.naver.com/article/417/0001165641",
-   "press": "동행미디어 시대",
-   "time": "2026-11-25T17:14:48+09:00",
-   "section": "네이버 메인",
-   "source": "main",
-   "main_rank": 5,
-   "theme": "aisec",
-   "theme_label": "AI·보안",
+   "id": "ytn/0102_20261126003531",
+   "title": "식자재 업계 '기부금 리베이트 의혹' 제재 착수...업계 \"사실 아냐\"",
+   "url": "https://www.ytn.co.kr/_ln/0102_20261126003531",
+   "press": "YTN",
+   "time": "2026-11-26T00:35:31+09:00",
+   "section": "YTN 경제",
+   "source": "press",
+   "main_rank": null,
+   "theme": "geopolitics",
+   "theme_label": "남북·지정학",
    "tags": [
-    "수능"
+    "제재"
    ],
    "presses": 1,
    "press_list": [
-    "동행미디어 시대"
+    "YTN"
    ],
    "related": [],
    "article_count": 1,
    "breaking": false,
    "relevance": 7,
-   "civic": false,
-   "summary": "입시비리 포상금 2년 전 1000만원 대통령 글 한 줄에 최대 5억원 껑충 법엔 하한 없는데 수능만 1억 보장 2027학년도 대학수학능력시험이 실시된 지난 19일 서울 용산구 용산고등학교에서 수험생들이 시험을 준비하고 있다./뉴스1 정부가 대학수학능력시험(수능) 부정행위 신고 포상금에…",
+   "civic": true,
+   "summary": "[앵커] 공정거래위원회가 CJ프레시웨이 등 식자재 납품업체들이 복지시설...",
+   "leaders": [],
+   "issue_rank": 20,
+   "db_themes": []
+  },
+  {
+   "id": "052/0002438129",
+   "title": "고속도로 크레인 사고...버스 화재로 12명 긴급 대피",
+   "url": "https://n.news.naver.com/mnews/article/052/0002438129",
+   "press": "YTN",
+   "time": "2026-11-26T00:29:27+09:00",
+   "section": "사회",
+   "source": "civic",
+   "main_rank": null,
+   "theme": "disaster",
+   "theme_label": "재난·안전",
+   "tags": [
+    "대피"
+   ],
+   "presses": 1,
+   "press_list": [
+    "YTN"
+   ],
+   "related": [],
+   "article_count": 1,
+   "breaking": false,
+   "relevance": 10,
+   "civic": true,
+   "summary": "고속도로에서 작업하던 크레인이 기울어 극심한 교통 정체가 빚어졌습니다. 버스 화재로 운전자와 승객이 긴급 대피하는 사고도 있었습니다. 사건·사고 소식, 신지원 기자입니다.",
    "leaders": [
-    "지슨",
-    "라온시큐어",
-    "샌즈랩",
-    "한싹"
+    "삼영엠텍",
+    "파라텍",
+    "포메탈"
+   ],
+   "issue_rank": 21,
+   "db_themes": []
+  },
+  {
+   "id": "ytn/0101_20261126000938",
+   "title": "청해부대 임무 구역 확대안, 오늘 국회 국방위 의결 예정",
+   "url": "https://www.ytn.co.kr/_ln/0101_20261126000938",
+   "press": "YTN",
+   "time": "2026-11-26T00:09:38+09:00",
+   "section": "YTN 정치",
+   "source": "press",
+   "main_rank": null,
+   "theme": "defense",
+   "theme_label": "방산·우주",
+   "tags": [
+    "국방"
+   ],
+   "presses": 1,
+   "press_list": [
+    "YTN"
+   ],
+   "related": [],
+   "article_count": 1,
+   "breaking": false,
+   "relevance": 7,
+   "civic": true,
+   "summary": "국회 국방위원회는 오늘(26일) 전체회의를 열고 청해부대의 임무 구역 확대...",
+   "leaders": [
+    "LIG넥스원",
+    "빅텍",
+    "스페코",
+    "한일단조"
    ],
    "issue_rank": 22,
-   "db_themes": [
-    "AI 시험 부정행위 대응·전파탐지/물리보안"
-   ]
+   "db_themes": []
   },
   {
    "id": "ytn/0101_20261125221841",
@@ -2063,7 +2079,7 @@
   },
   {
    "id": "ytn/0102_20261125195022",
-   "title": "젠슨 황과 한배 탄 트럼프…백악관까지 공동운명체",
+   "title": "철도노조, 오늘부터 준법투쟁…비상대책본부 가동",
    "url": "https://www.ytn.co.kr/_ln/0102_20261125195022",
    "press": "YTN",
    "time": "2026-11-25T19:50:22+09:00",
@@ -2073,18 +2089,20 @@
    "theme": "geopolitics",
    "theme_label": "남북·지정학",
    "tags": [
-    "트럼프"
+    "관세",
+    "중국",
+    "일본"
    ],
    "presses": 1,
    "press_list": [
     "YTN"
    ],
    "related": [],
-   "article_count": 1,
+   "article_count": 6,
    "breaking": false,
-   "relevance": 7,
+   "relevance": 11,
    "civic": true,
-   "summary": "",
+   "summary": "[앵커] 미국 정부가 한국을 포함한 14개 경제주체에 대해 이른바 '과잉생산 관세' 조사 결과를 발표했습니다. 한국과 일본, 유럽연합에는 최대 15% 관세율을 유지하겠다고 밝힌 반면 중국에는 대상국 중 가장 ...",
    "leaders": [],
    "issue_rank": 26,
    "db_themes": []
@@ -2271,6 +2289,51 @@
    "issue_rank": 3
   },
   {
+   "id": "082/0001409012",
+   "title": "‘공무원 자질 비하’ 인재개발원장, 결국 명퇴",
+   "summary": "부산시의회 부산시 행감 후폭풍 감사중단 초래 국장도 명퇴 수순 협치 중단을 선언한 부산시의회가 진행한 고강도 행정사무감사가 거센 후폭풍을 몰고 왔다.",
+   "press": "부산일보",
+   "time": "2026-11-25T18:31:13+09:00",
+   "url": "https://n.news.naver.com/article/082/0001409012",
+   "theme": "policy",
+   "theme_label": "정책·건설",
+   "tags": [
+    "재개발"
+   ],
+   "section": "네이버 메인",
+   "relevance": 19,
+   "source": "main",
+   "leaders": [
+    "현대건설",
+    "대우건설",
+    "DL이앤씨"
+   ],
+   "issue_rank": 4
+  },
+  {
+   "id": "011/0004686186",
+   "title": "“삼성전자 망할 것 같아요?”…존리, 주가 반토막에도 ‘오히려 찬스’라는 이유가",
+   "summary": "삼성전자 주가가 고점 대비 반 토막 나는 등 국내 증시가 급등락을 반복하는 가운데 존리 존리의투자학교 대표가 주가 하락을 오히려 투자 기회로 바라볼 필요가 있다는 견해를 내놨다.",
+   "press": "서울경제",
+   "time": "2026-11-25T18:32:11+09:00",
+   "url": "https://n.news.naver.com/article/011/0004686186",
+   "theme": "semiconductor",
+   "theme_label": "반도체·AI",
+   "tags": [
+    "삼성전자"
+   ],
+   "section": "네이버 메인",
+   "relevance": 13,
+   "source": "main",
+   "leaders": [
+    "삼성전자",
+    "한미반도체",
+    "이수페타시스",
+    "가온칩스"
+   ],
+   "issue_rank": 5
+  },
+  {
    "id": "654/0000213376",
    "title": "강원 작년 수능 시험지 10만8181부 전량 폐기…보관기간 위반",
    "summary": "정부, 부정행위 사후 조사 위해 보관기간 5년 연장 추진 ▲ 춘천교육지원청에서 관계자들이 수능 시험지와 문답지를 옮기고 있다. 25일 강원도교육청에 따르면 도내 5개 시험지구에 보관 중이던 지난해 수능 시험지 10만8181부가 올해 수능 전에 전량 파쇄됐다.",
@@ -2292,30 +2355,43 @@
     "샌즈랩",
     "한싹"
    ],
-   "issue_rank": 4
+   "issue_rank": 6
   },
   {
-   "id": "011/0004686186",
-   "title": "“삼성전자 망할 것 같아요?”…존리, 주가 반토막에도 ‘오히려 찬스’라는 이유가",
-   "summary": "삼성전자 주가가 고점 대비 반 토막 나는 등 국내 증시가 급등락을 반복하는 가운데 존리 존리의투자학교 대표가 주가 하락을 오히려 투자 기회로 바라볼 필요가 있다는 견해를 내놨다.",
-   "press": "서울경제",
-   "time": "2026-11-25T18:38:12.934494+09:00",
-   "url": "https://n.news.naver.com/article/011/0004686186",
-   "theme": "semiconductor",
-   "theme_label": "반도체·AI",
+   "id": "144/0001151732",
+   "title": "인덴트코퍼레이션, AI로 K-의료관광 확대 지원",
+   "summary": "“한국인 ‘꿀피부’에 반해 한국 왔어요” AI가 외국인들의 K-의료관광 유치에 날개를 달고 있다. 커머스 AX 전문 기업 인덴트코퍼레이션이 최근 공개한 AI 마케팅 에이전트 ‘인덴트M’이 국내 병원 및 의료기관의 외",
+   "press": "스포츠경향",
+   "time": "2026-11-26T02:22:19+09:00",
+   "url": "https://n.news.naver.com/mnews/article/144/0001151732",
+   "theme": "bio",
+   "theme_label": "바이오·헬스케어",
    "tags": [
-    "삼성전자"
+    "의료"
    ],
-   "section": "네이버 메인",
-   "relevance": 13,
-   "source": "main",
-   "leaders": [
-    "삼성전자",
-    "한미반도체",
-    "이수페타시스",
-    "가온칩스"
+   "section": "경제 일반",
+   "relevance": 7,
+   "source": "section",
+   "leaders": [],
+   "issue_rank": 7
+  },
+  {
+   "id": "023/0004011808",
+   "title": "노란봉투법, 불복 소송이 타결의 3배… 로펌만 배 불렸다",
+   "summary": "유명무실한 ‘노사 대화법’ 정부가 올 3월부터 노사 간 대화 촉진과 원·하청 이중 구조 완화 등을 내걸고 노란봉투법을 시행했지만, 정작 현장에서는 대화와 합의보다는 법정 다툼이 더 많은 것으로 확인됐다.",
+   "press": "조선일보",
+   "time": "2026-11-26T00:53:14+09:00",
+   "url": "https://n.news.naver.com/mnews/article/023/0004011808",
+   "theme": "disaster",
+   "theme_label": "재난·안전",
+   "tags": [
+    "구조"
    ],
-   "issue_rank": 5
+   "section": "사회",
+   "relevance": 5,
+   "source": "civic",
+   "leaders": [],
+   "issue_rank": 8
   },
   {
    "id": "003/0014345624",
@@ -2334,29 +2410,7 @@
    "relevance": 16,
    "source": "section",
    "leaders": [],
-   "issue_rank": 6
-  },
-  {
-   "id": "586/0000143006",
-   "title": "\"9급 공무원 시험, 고졸 수준\"…'막말 논란' 부산 인재개발원장, 결국 인사 조치",
-   "summary": "[박선우 기자 capote1992@naver.com] 7월 부산시의회서 발언 논란…최근 입장 변화 묻는 질문에도 \"똑같이 생각\" 부산공무원노조 \"공개 사과 및 인사 조치 등 이뤄질 때까지 총력 투쟁\" 저연차 공무원 비하 발언 논란에 휩싸인 정영란 부산시 인재개발원장(오른쪽) ⓒ국민의힘…",
-   "press": "시사저널",
-   "time": "2026-11-25T13:51:09+09:00",
-   "url": "https://n.news.naver.com/article/586/0000143006",
-   "theme": "policy",
-   "theme_label": "정책·건설",
-   "tags": [
-    "재개발"
-   ],
-   "section": "네이버 메인",
-   "relevance": 19,
-   "source": "main",
-   "leaders": [
-    "현대건설",
-    "대우건설",
-    "DL이앤씨"
-   ],
-   "issue_rank": 7
+   "issue_rank": 9
   },
   {
    "id": "087/0001233485",
@@ -2379,42 +2433,6 @@
     "HLB",
     "삼성바이오로직스"
    ],
-   "issue_rank": 8
-  },
-  {
-   "id": "144/0001151732",
-   "title": "인덴트코퍼레이션, AI로 K-의료관광 확대 지원",
-   "summary": "“한국인 ‘꿀피부’에 반해 한국 왔어요” AI가 외국인들의 K-의료관광 유치에 날개를 달고 있다. 커머스 AX 전문 기업 인덴트코퍼레이션이 최근 공개한 AI 마케팅 에이전트 ‘인덴트M’이 국내 병원 및 의료기관의 외",
-   "press": "스포츠경향",
-   "time": "2026-11-26T02:22:19+09:00",
-   "url": "https://n.news.naver.com/mnews/article/144/0001151732",
-   "theme": "bio",
-   "theme_label": "바이오·헬스케어",
-   "tags": [
-    "의료"
-   ],
-   "section": "경제 일반",
-   "relevance": 7,
-   "source": "section",
-   "leaders": [],
-   "issue_rank": 9
-  },
-  {
-   "id": "023/0004011808",
-   "title": "노란봉투법, 불복 소송이 타결의 3배… 로펌만 배 불렸다",
-   "summary": "유명무실한 ‘노사 대화법’ 정부가 올 3월부터 노사 간 대화 촉진과 원·하청 이중 구조 완화 등을 내걸고 노란봉투법을 시행했지만, 정작 현장에서는 대화와 합의보다는 법정 다툼이 더 많은 것으로 확인됐다.",
-   "press": "조선일보",
-   "time": "2026-11-26T00:53:14+09:00",
-   "url": "https://n.news.naver.com/mnews/article/023/0004011808",
-   "theme": "disaster",
-   "theme_label": "재난·안전",
-   "tags": [
-    "구조"
-   ],
-   "section": "사회",
-   "relevance": 5,
-   "source": "civic",
-   "leaders": [],
    "issue_rank": 10
   },
   {
@@ -2436,48 +2454,22 @@
    "issue_rank": 11
   },
   {
-   "id": "031/0001078493",
-   "title": "삼성·SK, 내년 낸드값 하락 전망…D램 상승 폭도 줄어",
-   "summary": "트렌드포스, 내년 D램·낸드 매출 전망치 하향 中 주문 감소에 낸드 공급과잉 우려 북미 수요에 D램 공급난 지속…가격 상승 폭은 둔화 삼성전자와 SK하이닉스가 주도하는 메모리 반도체 시장에 가격 하락 우려가 커지고 있다.",
-   "press": "아이뉴스24",
-   "time": "2026-11-25T22:56:13+09:00",
-   "url": "https://n.news.naver.com/article/031/0001078493",
-   "theme": "semiconductor",
-   "theme_label": "반도체·AI",
-   "tags": [
-    "낸드",
-    "D램"
-   ],
-   "section": "네이버 메인",
-   "relevance": 19,
-   "source": "main",
-   "leaders": [
-    "한미반도체",
-    "이수페타시스",
-    "가온칩스",
-    "티엘비"
-   ],
-   "issue_rank": 12
-  },
-  {
-   "id": "047/0002537255",
-   "title": "오늘은 부동산 현장... 이 대통령 \"공공 임대, 대대적으로 바꿔야\"",
-   "summary": "[앵커] 이재명 대통령이 공공주도의 주택 공급 현장을 직접 찾아, 부동산...",
-   "press": "오마이뉴스",
-   "time": "2026-11-25T17:41:16+09:00",
-   "url": "https://n.news.naver.com/article/047/0002537255",
+   "id": "ytn/0103_20261126032604",
+   "title": "의정부에서 시내버스가 신호등 충돌...2명 부상",
+   "summary": "어젯밤(25일) 9시 반쯤 경기도 의정부시 낙양동에 있는 도로에서 주행 중이...",
+   "press": "YTN",
+   "time": "2026-11-26T03:26:04+09:00",
+   "url": "https://www.ytn.co.kr/_ln/0103_20261126032604",
    "theme": "policy",
    "theme_label": "정책·건설",
    "tags": [
-    "부동산",
-    "대통령",
-    "공공"
+    "정부"
    ],
-   "section": "네이버 메인",
-   "relevance": 16,
-   "source": "main",
+   "section": "YTN 사회",
+   "relevance": 4,
+   "source": "press",
    "leaders": [],
-   "issue_rank": 13
+   "issue_rank": 12
   },
   {
    "id": "023/0004011811",
@@ -2498,86 +2490,27 @@
     "현대차",
     "기아"
    ],
-   "issue_rank": 14
+   "issue_rank": 13
   },
   {
-   "id": "ytn/0102_20261126003757",
-   "title": "철도노조, 오늘부터 준법투쟁...비상대책본부 가동",
-   "summary": "[앵커] 다음 달 10일 총파업을 예고한 철도노조가 오늘부터 안전운행 투...",
-   "press": "YTN",
-   "time": "2026-11-26T00:37:57+09:00",
-   "url": "https://www.ytn.co.kr/_ln/0102_20261126003757",
-   "theme": "etc",
-   "theme_label": "기타",
-   "tags": [],
-   "section": "YTN 경제",
-   "relevance": 0,
-   "source": "press",
-   "leaders": [
-    "삼영엠텍",
-    "파라텍",
-    "포메탈"
-   ],
-   "issue_rank": 15
-  },
-  {
-   "id": "ytn/0102_20261126003531",
-   "title": "식자재 업계 '기부금 리베이트 의혹' 제재 착수...업계 \"사실 아냐\"",
-   "summary": "[앵커] 공정거래위원회가 CJ프레시웨이 등 식자재 납품업체들이 복지시설...",
-   "press": "YTN",
-   "time": "2026-11-26T00:35:31+09:00",
-   "url": "https://www.ytn.co.kr/_ln/0102_20261126003531",
-   "theme": "geopolitics",
-   "theme_label": "남북·지정학",
-   "tags": [
-    "제재"
-   ],
-   "section": "YTN 경제",
-   "relevance": 7,
-   "source": "press",
-   "leaders": [],
-   "issue_rank": 16
-  },
-  {
-   "id": "ytn/0101_20261126000938",
-   "title": "청해부대 임무 구역 확대안, 오늘 국회 국방위 의결 예정",
-   "summary": "국회 국방위원회는 오늘(26일) 전체회의를 열고 청해부대의 임무 구역 확대...",
-   "press": "YTN",
-   "time": "2026-11-26T00:09:38+09:00",
-   "url": "https://www.ytn.co.kr/_ln/0101_20261126000938",
-   "theme": "defense",
-   "theme_label": "방산·우주",
-   "tags": [
-    "국방"
-   ],
-   "section": "YTN 정치",
-   "relevance": 7,
-   "source": "press",
-   "leaders": [
-    "LIG넥스원",
-    "빅텍",
-    "스페코",
-    "한일단조"
-   ],
-   "issue_rank": 17
-  },
-  {
-   "id": "ytn/0101_20261126000843",
-   "title": "안덕수 국세청장 후보자, 오늘 국회 인사청문회",
-   "summary": "안덕수 국세청장 후보자에 대한 국회 인사청문회가 오늘(26일) 열립니다. ...",
-   "press": "YTN",
-   "time": "2026-11-26T00:08:43+09:00",
-   "url": "https://www.ytn.co.kr/_ln/0101_20261126000843",
+   "id": "047/0002537255",
+   "title": "오늘은 부동산 현장... 이 대통령 \"공공 임대, 대대적으로 바꿔야\"",
+   "summary": "[앵커] 이재명 대통령이 공공주도의 주택 공급 현장을 직접 찾아, 부동산...",
+   "press": "오마이뉴스",
+   "time": "2026-11-25T17:41:16+09:00",
+   "url": "https://n.news.naver.com/article/047/0002537255",
    "theme": "policy",
    "theme_label": "정책·건설",
    "tags": [
-    "국회"
+    "부동산",
+    "대통령",
+    "공공"
    ],
-   "section": "YTN 정치",
-   "relevance": 7,
-   "source": "press",
+   "section": "네이버 메인",
+   "relevance": 16,
+   "source": "main",
    "leaders": [],
-   "issue_rank": 18
+   "issue_rank": 14
   },
   {
    "id": "009/0005769081",
@@ -2600,7 +2533,31 @@
     "가온칩스",
     "티엘비"
    ],
-   "issue_rank": 19
+   "issue_rank": 15
+  },
+  {
+   "id": "031/0001078464",
+   "title": "반도체주 급락 속…SK하이닉스, '100조 주주환원' 재확인",
+   "summary": "현금배당 30조원·자사주 매입·소각 60조원 이상 추진 3분기 말 순현금 99조원…기업가치 제고 의지 강조 인공지능(AI) 투자 회의론과 메모리 반도체 수요 둔화 우려로 반도체주가 약세를 보이는 가운데 SK하이닉스가 100조원 규모의 주주환원 계획을 재확인했다.",
+   "press": "아이뉴스24",
+   "time": "2026-11-25T18:04:10+09:00",
+   "url": "https://n.news.naver.com/article/031/0001078464",
+   "theme": "semiconductor",
+   "theme_label": "반도체·AI",
+   "tags": [
+    "반도체",
+    "SK하이닉스"
+   ],
+   "section": "네이버 메인",
+   "relevance": 19,
+   "source": "main",
+   "leaders": [
+    "SK하이닉스",
+    "한미반도체",
+    "이수페타시스",
+    "가온칩스"
+   ],
+   "issue_rank": 16
   },
   {
    "id": "127/0000040116",
@@ -2624,7 +2581,30 @@
     "샌즈랩",
     "한싹"
    ],
-   "issue_rank": 20
+   "issue_rank": 17
+  },
+  {
+   "id": "449/0000368700",
+   "title": "명문대도 뚫렸다…43개 대학서 부정행위 143건 적발",
+   "summary": "[앵커] 부정행위, 지성인들이 모인 대학가에서도 속출하고 있습니다. 오늘 공개된 걸 보니 서울대, 연세대, 홍익대, 명문대에서도 중간고사, 기말고사 때 부정행위를 하다 수두룩하게 적발되고 있습니다.",
+   "press": "채널A",
+   "time": "2026-11-25T19:32:27+09:00",
+   "url": "https://n.news.naver.com/article/449/0000368700",
+   "theme": "aisec",
+   "theme_label": "AI·보안",
+   "tags": [
+    "부정행위"
+   ],
+   "section": "네이버 메인",
+   "relevance": 10,
+   "source": "main",
+   "leaders": [
+    "지슨",
+    "라온시큐어",
+    "샌즈랩",
+    "한싹"
+   ],
+   "issue_rank": 18
   },
   {
    "id": "659/0000049028",
@@ -2642,28 +2622,68 @@
    "relevance": 10,
    "source": "main",
    "leaders": [],
+   "issue_rank": 19
+  },
+  {
+   "id": "ytn/0102_20261126003531",
+   "title": "식자재 업계 '기부금 리베이트 의혹' 제재 착수...업계 \"사실 아냐\"",
+   "summary": "[앵커] 공정거래위원회가 CJ프레시웨이 등 식자재 납품업체들이 복지시설...",
+   "press": "YTN",
+   "time": "2026-11-26T00:35:31+09:00",
+   "url": "https://www.ytn.co.kr/_ln/0102_20261126003531",
+   "theme": "geopolitics",
+   "theme_label": "남북·지정학",
+   "tags": [
+    "제재"
+   ],
+   "section": "YTN 경제",
+   "relevance": 7,
+   "source": "press",
+   "leaders": [],
+   "issue_rank": 20
+  },
+  {
+   "id": "052/0002438129",
+   "title": "고속도로 크레인 사고...버스 화재로 12명 긴급 대피",
+   "summary": "고속도로에서 작업하던 크레인이 기울어 극심한 교통 정체가 빚어졌습니다. 버스 화재로 운전자와 승객이 긴급 대피하는 사고도 있었습니다. 사건·사고 소식, 신지원 기자입니다.",
+   "press": "YTN",
+   "time": "2026-11-26T00:29:27+09:00",
+   "url": "https://n.news.naver.com/mnews/article/052/0002438129",
+   "theme": "disaster",
+   "theme_label": "재난·안전",
+   "tags": [
+    "대피"
+   ],
+   "section": "사회",
+   "relevance": 10,
+   "source": "civic",
+   "leaders": [
+    "삼영엠텍",
+    "파라텍",
+    "포메탈"
+   ],
    "issue_rank": 21
   },
   {
-   "id": "417/0001165641",
-   "title": "최대 1억이 이틀 만에 최소 1억…주먹구구 수능 포상금",
-   "summary": "입시비리 포상금 2년 전 1000만원 대통령 글 한 줄에 최대 5억원 껑충 법엔 하한 없는데 수능만 1억 보장 2027학년도 대학수학능력시험이 실시된 지난 19일 서울 용산구 용산고등학교에서 수험생들이 시험을 준비하고 있다./뉴스1 정부가 대학수학능력시험(수능) 부정행위 신고 포상금에…",
-   "press": "동행미디어 시대",
-   "time": "2026-11-25T17:14:48+09:00",
-   "url": "https://n.news.naver.com/article/417/0001165641",
-   "theme": "aisec",
-   "theme_label": "AI·보안",
+   "id": "ytn/0101_20261126000938",
+   "title": "청해부대 임무 구역 확대안, 오늘 국회 국방위 의결 예정",
+   "summary": "국회 국방위원회는 오늘(26일) 전체회의를 열고 청해부대의 임무 구역 확대...",
+   "press": "YTN",
+   "time": "2026-11-26T00:09:38+09:00",
+   "url": "https://www.ytn.co.kr/_ln/0101_20261126000938",
+   "theme": "defense",
+   "theme_label": "방산·우주",
    "tags": [
-    "수능"
+    "국방"
    ],
-   "section": "네이버 메인",
+   "section": "YTN 정치",
    "relevance": 7,
-   "source": "main",
+   "source": "press",
    "leaders": [
-    "지슨",
-    "라온시큐어",
-    "샌즈랩",
-    "한싹"
+    "LIG넥스원",
+    "빅텍",
+    "스페코",
+    "한일단조"
    ],
    "issue_rank": 22
   },
@@ -2726,18 +2746,20 @@
   },
   {
    "id": "ytn/0102_20261125195022",
-   "title": "젠슨 황과 한배 탄 트럼프…백악관까지 공동운명체",
-   "summary": "",
+   "title": "철도노조, 오늘부터 준법투쟁…비상대책본부 가동",
+   "summary": "[앵커] 미국 정부가 한국을 포함한 14개 경제주체에 대해 이른바 '과잉생산 관세' 조사 결과를 발표했습니다. 한국과 일본, 유럽연합에는 최대 15% 관세율을 유지하겠다고 밝힌 반면 중국에는 대상국 중 가장 ...",
    "press": "YTN",
    "time": "2026-11-25T19:50:22+09:00",
    "url": "https://www.ytn.co.kr/_ln/0102_20261125195022",
    "theme": "geopolitics",
    "theme_label": "남북·지정학",
    "tags": [
-    "트럼프"
+    "관세",
+    "중국",
+    "일본"
    ],
    "section": "YTN 경제",
-   "relevance": 7,
+   "relevance": 11,
    "source": "press",
    "leaders": [],
    "issue_rank": 26
