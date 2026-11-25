@@ -11,8 +11,9 @@ const NEWS_KEY = './data/news.json';   // 쿼리스트링이 붙어도 캐시에
 
 self.addEventListener('install', e => {
   self.skipWaiting();
-  /* 껍데기(index.html)도 브라우저 HTTP 캐시에 기대지 않고 서버에서 새로 받아 둔다 */
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL.map(u => new Request(u, {cache:'reload'})))).catch(() => {}));
+  /* 껍데기(index.html)도 브라우저 HTTP 캐시에 기대지 않고 서버에서 새로 받아 둔다
+     파일별로 따로 받는다 — 아직 없는 자료(calendar·radar 등)가 하나 있어도 나머지 껍데기는 캐시에 남게 */
+  e.waitUntil(caches.open(CACHE).then(c => Promise.all(SHELL.map(u => c.add(new Request(u, {cache:'reload'})).catch(() => {})))).catch(() => {}));
 });
 
 self.addEventListener('activate', e => {
@@ -77,7 +78,7 @@ self.addEventListener('fetch', e => {
       const fresh = await fetch(req, {cache: (doc || news || cal || rdr || hot || hotmon || popup || day || week || sch) ? 'no-store' : 'no-cache'});
       if (fresh && fresh.ok && (fresh.type === 'basic' || fresh.type === 'default')) {
         const copy = fresh.clone();
-        const key = doc ? './index.html' : (news ? NEWS_KEY : (cal ? CAL_KEY : (rdr ? RADAR_KEY : (hot ? HOT_KEY : (hotmon ? HOTMON_KEY : (popup ? POPUP_KEY : (day ? DAY_KEY : (week ? WEEK_KEY : (sch ? SCHED_KEY : req))))))))));   // 데이터 파일은 한 자리에만 저장(매번 다른 ?_= 주소로 쌓이지 않게)
+        const key = doc ? './index.html' : (news ? NEWS_KEY : (cal ? CAL_KEY : (rdr ? RADAR_KEY : (hot ? HOT_KEY : (hotmon ? HOTMON_KEY : (popup ? POPUP_KEY : (day ? DAY_KEY : (week ? WEEK_KEY : (sch ? SCHED_KEY : req)))))))));   // 데이터 파일은 한 자리에만 저장(매번 다른 ?_= 주소로 쌓이지 않게)
         caches.open(CACHE).then(c => c.put(key, copy)).catch(() => {});
       }
       return fresh;
