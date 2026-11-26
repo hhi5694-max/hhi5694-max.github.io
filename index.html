@@ -5209,7 +5209,7 @@ async function unlockHotbar(code){
     const sealed = await loadSealed();
     if(!sealed) return false;
     const d = (Number(sealed.enc) === 1) ? await hotDecrypt(sealed, code) : sealed;
-    if(!d || !(d.sections || []).length) return false;
+    if(!d || (!((d.sections || []).length) && !((d.boards || []).length))) return false;
     hotbarData = d;
     secretOn = true;
     saveCode(code);
