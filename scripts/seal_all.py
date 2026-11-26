@@ -22,6 +22,8 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="data/*.json 전부 잠그기")
     ap.add_argument("--code", default="", help="비밀코드(기본: NR_CODE · private-plain/.picks_code)")
     ap.add_argument("--check", action="store_true", help="상태만 확인하고 고치지 않는다")
+    ap.add_argument("--force", action="store_true",
+                    help="평문 사본으로 data/*.json 전체를 다시 잠근다(비밀코드를 바꿀 때)")
     ap.add_argument("--quiet", action="store_true")
     args = ap.parse_args()
 
@@ -32,7 +34,7 @@ def main() -> None:
               + (f" · 평문 {len(bad)}개: {', '.join(bad)}" if bad else " · 평문 0개"))
         raise SystemExit(1 if bad else 0)
 
-    stats = NR.seal_all(args.code, verbose=not args.quiet)
+    stats = NR.seal_all(args.code, verbose=not args.quiet, force=args.force)
     if stats["failed"]:
         print(f"[seal] 읽지 못한 파일: {', '.join(stats['failed'])}", file=sys.stderr)
     raise SystemExit(1 if stats["plain_left"] or stats["failed"] else 0)

@@ -178,7 +178,7 @@ def save(name: str, doc, pw: str = "") -> None:
 
 
 # ------------------------------------------------------------------ 전체 잠금
-def seal_all(pw: str = "", verbose: bool = True) -> dict:
+def seal_all(pw: str = "", verbose: bool = True, force: bool = False) -> dict:
     """data/*.json 전부를 잠근다.
 
     · 평문 파일이 있으면 평문 사본을 남기고 잠근다.
@@ -223,7 +223,7 @@ def seal_all(pw: str = "", verbose: bool = True) -> dict:
             src = os.path.join(pd, fn)
             dst = public_path(fn)
             try:
-                if os.path.exists(dst) and os.path.getmtime(src) <= os.path.getmtime(dst):
+                if not force and os.path.exists(dst) and os.path.getmtime(src) <= os.path.getmtime(dst):
                     continue
                 doc = read_json(src, None)
                 if doc is None:
