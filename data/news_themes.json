@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-26T20:33:22+09:00",
- "generated_at_kst": "2026.11.26 20:33",
- "news_updated_kst": "2026.11.26 20:33",
+ "generated_at": "2026-11-26T21:14:30+09:00",
+ "generated_at_kst": "2026.11.26 21:14",
+ "news_updated_kst": "2026.11.26 21:14",
  "note": "오늘 뉴스 이슈를 테마달력(calendar.json)의 테마·종목에 이어 붙인 목록 — 테마가 나오면 테마와 종목을 여기에 적어 두고, 화면에서는 종목을 눌러 125봉 차트를 연다.",
  "news_links": [
   {
@@ -10,9 +10,9 @@
    "kind": "동반테마",
    "issue": "\"이재용, '반도체 장기구매할게' 머스크에 '그럼 뭘 해줄건데'\"",
    "issue_url": "https://n.news.naver.com/article/001/0016466655",
-   "presses": 2,
-   "presses_max": 2,
-   "articles": 3,
+   "presses": 3,
+   "presses_max": 3,
+   "articles": 4,
    "kw": [
     "반도체"
    ],
@@ -53,6 +53,37 @@
    "upper_count": 0
   },
   {
+   "theme": "오너 승계·지배구조 개편 (한화에너지 지분 매각·삼화페인트 승계)",
+   "short": "오너 승계·지배구조 개편",
+   "kind": "동반테마",
+   "issue": "“젠슨 황이 곧 엔비디아… AI 버블 논하기에 너무 일러”",
+   "issue_url": "https://n.news.naver.com/article/037/0000039217",
+   "presses": 3,
+   "presses_max": 3,
+   "articles": 3,
+   "kw": [
+    "엔비디아",
+    "AI"
+   ],
+   "stocks": [
+    {
+     "name": "깨끗한나라",
+     "code": "004540"
+    },
+    {
+     "name": "한화갤러리아",
+     "code": "452260"
+    },
+    {
+     "name": "SP삼화",
+     "code": "000390"
+    }
+   ],
+   "last_lu": "2026-11-05",
+   "more": [],
+   "upper_count": 0
+  },
+  {
    "theme": "AI 시험 부정행위 대응·전파탐지/물리보안",
    "short": "AI 시험 부정행위 대응·전파탐지/물리보안",
    "kind": "동반테마",
@@ -87,52 +118,36 @@
      "url": "https://www.ytn.co.kr/_ln/0103_20261126145412"
     },
     {
-     "title": "수능 만점 최소 3명이지만 '쉬쉬'… 신원 공개 거부하는 이유",
+     "title": "고교 기말고사도 'AI 커닝' 비상… 금속탐지기 1만 2000개 추가 구매",
      "presses": 1,
-     "url": "https://n.news.naver.com/article/656/0000193616"
+     "url": "https://n.news.naver.com/article/656/0000193615"
     }
    ],
    "upper_count": 0
   },
   {
-   "theme": "CES 2026 피지컬 AI·휴머노이드 로봇 (엔비디아·현대차 아틀라스)",
-   "short": "CES 2026 피지컬 AI·휴머노이드 로봇",
+   "theme": "HLB 그룹 글로벌 자본 유치 (LMR파트너스 2,069억 투자)",
+   "short": "HLB 그룹 글로벌 자본 유치",
    "kind": "동반테마",
-   "issue": "[르포] 中 로봇에 ‘젠슨 황 복귀’ 묻자 “AI 발전할 것”… 샤오펑 AI데이 가보니",
-   "issue_url": "https://n.news.naver.com/article/366/0001207496",
+   "issue": "[단독] 신세계, HLL중앙 인수전 발 뺐다…중앙일보 730억 투자에 무게",
+   "issue_url": "https://n.news.naver.com/article/293/0000093893",
    "presses": 1,
    "presses_max": 1,
    "articles": 1,
    "kw": [
-    "로봇"
+    "인수"
    ],
    "stocks": [
     {
-     "name": "앤로보틱스",
-     "code": "138360"
+     "name": "HLB글로벌",
+     "code": "003580"
     },
     {
-     "name": "유디엠텍",
-     "code": "389680"
-    },
-    {
-     "name": "시선AI",
-     "code": "340810"
-    },
-    {
-     "name": "리브스메드",
-     "code": "491000"
-    },
-    {
-     "name": "유일로보틱스",
-     "code": "388720"
-    },
-    {
-     "name": "해성에어로보틱스",
-     "code": "059270"
+     "name": "HLB바이오스텝",
+     "code": "278650"
     }
    ],
-   "last_lu": "2026-01-27",
+   "last_lu": "2026-07-15",
    "more": [],
    "upper_count": 0
   },
@@ -179,58 +194,16 @@
    "upper_count": 0
   },
   {
-   "theme": "로봇·피지컬 AI (엔비디아·현대차그룹)",
-   "short": "로봇·피지컬 AI",
-   "kind": "동반테마",
-   "issue": "전북대, 석달째 무급 피지컬AI 전북대생 규모는 못 밝혀",
-   "issue_url": "https://n.news.naver.com/article/659/0000049054",
-   "presses": 1,
-   "presses_max": 1,
-   "articles": 1,
-   "kw": [
-    "피지컬AI"
-   ],
-   "stocks": [
-    {
-     "name": "유니켐",
-     "code": "011330"
-    },
-    {
-     "name": "로보스타",
-     "code": "090360"
-    },
-    {
-     "name": "메이슨캐피탈",
-     "code": "021880"
-    },
-    {
-     "name": "쏘카",
-     "code": "403550"
-    },
-    {
-     "name": "비투엔",
-     "code": "307870"
-    },
-    {
-     "name": "전진건설로봇",
-     "code": "079900"
-    }
-   ],
-   "last_lu": "2026-11-24",
-   "more": [],
-   "upper_count": 0
-  },
-  {
    "theme": "서남권(호남) 제2반도체 클러스터·지역 건설/소재",
    "short": "서남권 제2반도체 클러스터·지역 건설/소재",
    "kind": "동반테마",
-   "issue": "호남 클러스터 등 지적에 반박...정부 \"대응책 마련\"",
-   "issue_url": "https://www.ytn.co.kr/_ln/0102_20261126202635",
+   "issue": "호남 클러스터 등 지적에 반박…정부 \"대응책 마련\"",
+   "issue_url": "https://www.ytn.co.kr/_ln/0101_20261126190759",
    "presses": 1,
    "presses_max": 1,
    "articles": 1,
    "kw": [
-    "반도체"
+    "정부"
    ],
    "stocks": [
     {
