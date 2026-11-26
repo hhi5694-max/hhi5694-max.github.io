@@ -1,88 +1,47 @@
 {
- "generated_at": "2026-11-26T22:14:37+09:00",
- "generated_at_kst": "2026.11.26 22:14",
- "news_updated_kst": "2026.11.26 22:14",
+ "generated_at": "2026-11-26T23:14:22+09:00",
+ "generated_at_kst": "2026.11.26 23:14",
+ "news_updated_kst": "2026.11.26 23:14",
  "note": "오늘 뉴스 이슈를 테마달력(calendar.json)의 테마·종목에 이어 붙인 목록 — 테마가 나오면 테마와 종목을 여기에 적어 두고, 화면에서는 종목을 눌러 125봉 차트를 연다.",
  "news_links": [
   {
-   "theme": "스페이스X IPO·우주항공 공급망 (위성·발사체·특수소재)",
-   "short": "스페이스X IPO·우주항공 공급망",
+   "theme": "반도체·HBM 메모리 대표주 (삼전·하이닉스·HBM 장비)",
+   "short": "반도체·HBM 메모리 대표주",
    "kind": "동반테마",
-   "issue": "이재용, 머스크의 반도체 장기 구매 제안에 \"뭘 더 해줄 수 있는데\"",
-   "issue_url": "https://n.news.naver.com/mnews/article/658/0000162430",
-   "presses": 5,
-   "presses_max": 5,
-   "articles": 8,
+   "issue": "\"이재용, '반도체 장기구매할게' 머스크에 '그럼 뭘 해줄건데'\"",
+   "issue_url": "https://n.news.naver.com/article/001/0016466655",
+   "presses": 7,
+   "presses_max": 7,
+   "articles": 13,
    "kw": [
-    "반도체",
-    "인공지능",
-    "메모리"
+    "반도체"
    ],
    "stocks": [
     {
-     "name": "러셀",
-     "code": "217500"
+     "name": "멜콘",
+     "code": "179880"
     },
     {
-     "name": "미래에셋벤처투자",
-     "code": "100790"
+     "name": "한미반도체",
+     "code": "042700"
     },
     {
-     "name": "이녹스",
-     "code": "088390"
+     "name": "테크윙",
+     "code": "089030"
     },
     {
-     "name": "하이즈항공",
-     "code": "221840"
-    },
-    {
-     "name": "아주IB투자",
-     "code": "027360"
-    },
-    {
-     "name": "한컴위드",
-     "code": "054920"
+     "name": "SK하이닉스",
+     "code": "000660"
     }
    ],
-   "last_lu": "2026-02-03",
+   "last_lu": "2026-10-27",
    "more": [
     {
-     "title": "머스크 “미 어린이 1명당 스페이스X 주식 2주 주겠다”",
-     "presses": 3,
-     "url": "https://n.news.naver.com/article/032/0003485389"
+     "title": "美 “삼성전자·SK하이닉스, 李대통령” 콕 집어…韓에 최대 25% 관세 으름장",
+     "presses": 4,
+     "url": "https://n.news.naver.com/article/081/0003703638"
     }
    ],
-   "upper_count": 0
-  },
-  {
-   "theme": "오너 승계·지배구조 개편 (한화에너지 지분 매각·삼화페인트 승계)",
-   "short": "오너 승계·지배구조 개편",
-   "kind": "동반테마",
-   "issue": "“젠슨 황이 곧 엔비디아… AI 버블 논하기에 너무 일러”",
-   "issue_url": "https://n.news.naver.com/article/037/0000039217",
-   "presses": 3,
-   "presses_max": 3,
-   "articles": 3,
-   "kw": [
-    "엔비디아",
-    "AI"
-   ],
-   "stocks": [
-    {
-     "name": "깨끗한나라",
-     "code": "004540"
-    },
-    {
-     "name": "한화갤러리아",
-     "code": "452260"
-    },
-    {
-     "name": "SP삼화",
-     "code": "000390"
-    }
-   ],
-   "last_lu": "2026-11-05",
-   "more": [],
    "upper_count": 0
   },
   {
@@ -91,8 +50,8 @@
    "kind": "동반테마",
    "issue": "의사 국시 만점 4년 새 7배 늘어… 복지부 “AI 부정행위 정황 없다”",
    "issue_url": "https://n.news.naver.com/mnews/article/022/0004178434",
-   "presses": 2,
-   "presses_max": 2,
+   "presses": 1,
+   "presses_max": 1,
    "articles": 3,
    "kw": [
     "부정행위",
@@ -116,9 +75,14 @@
    "last_lu": "2026-01-27",
    "more": [
     {
-     "title": "[단독] '리트 만점 의혹' 8일 만에 강제수사...성명불상 공범 적시",
+     "title": "토익도 'AI 커닝' 차단…안경에 스티커·샤프 금지",
      "presses": 1,
-     "url": "https://www.ytn.co.kr/_ln/0103_20261126220955"
+     "url": "https://www.ytn.co.kr/_ln/0104_20261126221035"
+    },
+    {
+     "title": "수능 만점 받고도 쉬쉬…3명 모두 신원 공개 거부한 이유",
+     "presses": 1,
+     "url": "https://n.news.naver.com/article/053/0000063361"
     }
    ],
    "upper_count": 0
@@ -166,109 +130,46 @@
    "upper_count": 0
   },
   {
-   "theme": "서남권(호남) 제2반도체 클러스터·지역 건설/소재",
-   "short": "서남권 제2반도체 클러스터·지역 건설/소재",
+   "theme": "스페이스X IPO·우주항공 공급망 (위성·발사체·특수소재)",
+   "short": "스페이스X IPO·우주항공 공급망",
    "kind": "동반테마",
-   "issue": "호남 클러스터 등 지적에 반박…정부 \"대응책 마련\"",
-   "issue_url": "https://www.ytn.co.kr/_ln/0101_20261126190759",
+   "issue": "'산타' 스페이스X, 트럼프 '아동계좌'에 주식 기부",
+   "issue_url": "https://n.news.naver.com/mnews/article/014/0005610494",
    "presses": 1,
    "presses_max": 1,
    "articles": 1,
    "kw": [
-    "정부"
+    "스페이스X",
+    "우주"
    ],
    "stocks": [
     {
-     "name": "서산",
-     "code": "079650"
+     "name": "러셀",
+     "code": "217500"
     },
     {
-     "name": "부국철강",
-     "code": "026940"
+     "name": "미래에셋벤처투자",
+     "code": "100790"
     },
     {
-     "name": "파루",
-     "code": "043200"
+     "name": "이녹스",
+     "code": "088390"
     },
     {
-     "name": "금호전기",
-     "code": "001210"
+     "name": "하이즈항공",
+     "code": "221840"
     },
     {
-     "name": "에이테크솔루션",
-     "code": "071670"
+     "name": "아주IB투자",
+     "code": "027360"
     },
     {
-     "name": "금호타이어",
-     "code": "073240"
+     "name": "한컴위드",
+     "code": "054920"
     }
    ],
-   "last_lu": "2026-07-10",
+   "last_lu": "2026-02-03",
    "more": [],
-   "upper_count": 0
-  },
-  {
-   "theme": "정보보안 (쿠팡 3,400만명 개인정보 유출)",
-   "short": "정보보안",
-   "kind": "개별상한가",
-   "issue": "CJ올리브영 개인정보 유출...회원번호·생년월일 등",
-   "issue_url": "https://www.ytn.co.kr/_ln/0103_20261126220114",
-   "presses": 1,
-   "presses_max": 1,
-   "articles": 1,
-   "kw": [
-    "개인정보"
-   ],
-   "stocks": [
-    {
-     "name": "소프트캠프",
-     "code": "258790"
-    }
-   ],
-   "last_lu": "2025-12-01",
-   "more": [],
-   "upper_count": 0
-  },
-  {
-   "theme": "항공·유가 하락 (미-이란 긴장 완화·항공사 통합)",
-   "short": "항공·유가 하락",
-   "kind": "동반테마",
-   "issue": "동성부부 ‘가족 마일리지’ 합산 거부한 국내 항공사…인권위 “차별”",
-   "issue_url": "https://n.news.naver.com/mnews/article/018/0006416277",
-   "presses": 1,
-   "presses_max": 1,
-   "articles": 2,
-   "kw": [],
-   "stocks": [
-    {
-     "name": "아시아나IDT",
-     "code": "267850"
-    },
-    {
-     "name": "엠앤씨솔루션",
-     "code": "484870"
-    },
-    {
-     "name": "링네트",
-     "code": "042500"
-    },
-    {
-     "name": "진에어",
-     "code": "272450"
-    },
-    {
-     "name": "한진",
-     "code": "002320"
-    }
-   ],
-   "last_lu": "2026-11-10",
-   "more": [
-    {
-     "title": "[오늘의증시] 삼전17만·SK하닉105만 사수…우주·태양광 '빨간불'",
-     "presses": 1,
-     "url": "https://n.news.naver.com/article/243/0000106347"
-    }
-   ],
    "upper_count": 0
   }
  ]
