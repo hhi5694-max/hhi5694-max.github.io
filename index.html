@@ -4275,12 +4275,34 @@ function chartPoint(e){
    기준선·1~10단계·앞쪽/뒷쪽·유형·점수 같은 개인 자는 하나도 그리지 않는다.
    비밀 핫바가 잠겨 있어도, 열려 있어도 이 차트는 같은 공개 자료만 본다. */
 let dayDoc = null, dayLoading = null;
+/* 2026-11-26 — 먼저 받는 작은 판(data/day125_hot.json, 화면에 뜨는 종목만).
+   전체 day125.json 은 8MB라 종목을 누를 때마다 전부 기다리면 느리고 느린 회선에서는 실패한다.
+   작은 판에 있는 종목은 바로 그리고, 전체 자료는 뒤에서 받아 둔다. */
+let dayHot = null, dayHotLoading = null;
 const DAY_CODE_KEY = 'newsradar_day125';
+
+async function ensureDayHot(){
+  if(dayHot) return dayHot;
+  if(dayHotLoading) return dayHotLoading;
+  dayHotLoading = (async () => {
+    try{
+      const res = await fetch('data/day125_hot.json?_=' + Date.now(), {cache:'no-store'});
+      if(res.ok){
+        const d = await res.json();
+        if(d && d.stocks && Object.keys(d.stocks).length) dayHot = d;
+      }
+    }catch(e){}
+    dayHotLoading = null;
+    return dayHot;
+  })();
+  return dayHotLoading;
+}
 
 async function ensureDay(){
   if(dayDoc) return dayDoc;
   if(dayLoading) return dayLoading;
   dayLoading = (async () => {
+    await ensureDayHot();               /* ① 화면에 뜨는 종목만 담은 작은 판부터 */
     try{
       const res = await fetch('data/day125.json?_=' + Date.now(), {cache:'no-store'});
       if(res.ok){
@@ -4334,11 +4356,19 @@ function pinkDatesOf(code){
   return [...set].sort();
 }
 
-/* 종목 하나의 봉 — 날짜는 한 벌(dayDoc.dates)에 있고, 종목은 그 안의 자리(o0 / x)만 갖는다 */
+/* 종목 하나의 봉 — 날짜는 한 벌(dates)에 있고, 종목은 그 안의 자리(o0 / x)만 갖는다.
+   작은 판(dayHot)에 있는 종목이 먼저 열린다 — 전체 자료가 없어도 차트가 바로 뜨다. */
 function dayItem(code, name){
-  const s = dayDoc && dayDoc.stocks && dayDoc.stocks[String(code)];
-  if(!s || !(s.b || []).length) return null;
-  const dates = dayDoc.dates || [];
+  const c = String(code);
+  for(const doc of [dayDoc, dayHot]){
+    const s = doc && doc.stocks && doc.stocks[c];
+    if(s && (s.b || []).length) return dayFromDoc(doc, code, name, s);
+  }
+  return null;
+}
+
+function dayFromDoc(doc, code, name, s){
+  const dates = doc.dates || [];
   const xs = s.x || s.b.map((_, i) => (Number(s.o0) || 0) + i);
   const cs = s.b.map((x, i) => [ymd6(dates[xs[i]]), x[0], x[1], x[2], x[3], x[4]]);
   const last = cs[cs.length - 1], prev = cs[cs.length - 2] || last;
@@ -4364,10 +4394,16 @@ function dayItem(code, name){
 }
 
 async function openDayChart(code, name){
-  const have = dayDoc && dayDoc.stocks && dayDoc.stocks[String(code)];
-  if(!have) toast('일봉 차트 불러오는 중…');
+  if(!dayItem(code, name)) toast('일봉 차트 불러오는 중…');
+  await ensureDayHot();               /* ① 화면에 뜨는 종목만 담은 작은 판 — 바로 뜬다 */
+  let it = dayItem(code, name);
+  if(it){
+    openChart(it);
+    ensureDay().catch(() => {});      /* 전체 자료는 뒤에서 받아 두고 다음 번에 쓴다 */
+    return;
+  }
   await ensureDay();
-  const it = dayItem(code, name);
+  it = dayItem(code, name);
   if(it){ openChart(it); return; }
   /* 안전망 — 공개 125봉 자료에 아직 없는 종목도 잠금이 풀린 본인 화면이면 차트를 연다.
      형광↑ 알림 팝업에는 비밀 핫바에만 형광↑가 뜬 종목이 오는데, 그 종목이 테마달력·상한가에 없으면
@@ -4407,6 +4443,7 @@ function codeOfName(nm){
   nm = String(nm || '').trim();
   if(!nm) return '';
   if(dayDoc && dayDoc.names && dayDoc.names[nm]) return dayDoc.names[nm];
+  if(dayHot && dayHot.names && dayHot.names[nm]) return dayHot.names[nm];
   const cal = state.calendar;
   for(const m of ((cal && cal.months) || [])){
     for(const t of (m.themes || [])){
@@ -4437,10 +4474,14 @@ function bindStockChart(sel){
     e.stopPropagation();
     if(code){ openDayChart(code, name); return; }
     /* 이름만 있는 자리(관련 종목 칩) — 자료를 아직 안 받았으면 한 번 받아 보고 이름으로 다시 찾는다 */
-    ensureDay().then(() => {
-      const c = codeOfName(name) || t.dataset.code;
-      if(!c){ toast('이 종목 일봉 시세가 아직 없습니다 — 다음 자동 갱신 때 채워집니다'); return; }
-      openDayChart(c, name);
+    ensureDayHot().then(() => {
+      let c = codeOfName(name) || t.dataset.code;
+      if(c){ openDayChart(c, name); return; }
+      return ensureDay().then(() => {
+        c = codeOfName(name) || t.dataset.code;
+        if(!c){ toast('이 종목 일봉 시세가 아직 없습니다 — 다음 자동 갱신 때 채워집니다'); return; }
+        openDayChart(c, name);
+      });
     });
   });
 }

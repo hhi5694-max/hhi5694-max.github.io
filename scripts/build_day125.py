@@ -467,6 +467,40 @@ def hot_codes(old: dict, today: str) -> list[str]:
     return out
 
 
+def public_hot_codes(today: str) -> set:
+    """화면에 먼저 뜨는 종목 — 오늘 상한가 · 오늘 뉴스 테마 · 최근 60일 상한가가 있던 달력 종목.
+
+    작은 판(day125_hot.json)에 담을 코드. 종목을 눌렀을 때 8MB 전체를 기다리지 않게 한다.
+    """
+    out: set = set()
+    news = jload("news.json")
+    name_to_code = jload("day125.json").get("names") or {}
+    for it in ((news.get("upper_limits") or {}).get("items") or []):
+        if it.get("code"):
+            out.add(str(it["code"]))
+    for key in ("flash", "issues", "articles"):
+        for a in news.get(key) or []:
+            for nm in a.get("leaders") or []:
+                c = name_to_code.get(str(nm).strip())
+                if c:
+                    out.add(str(c))
+    for ln in (jload("news_themes.json").get("news_links") or []):
+        for s in ln.get("stocks") or []:
+            if (s or {}).get("code"):
+                out.add(str(s["code"]))
+    try:
+        cut = (datetime.strptime(today, "%Y-%m-%d") - timedelta(days=60)).strftime("%Y-%m-%d")
+    except ValueError:
+        cut = ""
+    for m in (jload_calendar().get("months") or []):
+        for t in (m.get("themes") or []):
+            for s in (t.get("stocks") or []):
+                dates = [str(x) for x in (s.get("dates") or [])]
+                if dates and max(dates) >= cut and s.get("code"):
+                    out.add(str(s["code"]))
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--days", type=int, default=125)
@@ -602,6 +636,24 @@ def main():
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(doc, f, ensure_ascii=False, separators=(",", ":"))
     os.replace(tmp, out_path)
+
+    # 화면에 먼저 뜨는 종목만 담은 작은 판(day125_hot.json) — 종목을 누를 때 8MB 전부를 기다리지 않게.
+    #   오늘 상한가 · 오늘 뉴스 테마 종목 · 최근 60일에 상한가가 있던 달력 종목까지. 일봉+240선만 담는다.
+    hot = public_hot_codes(as_of or today)
+    hot_doc = {
+        "generated_at": doc["generated_at"],
+        "as_of": as_of,
+        "days": args.days,
+        "dates": enc["dates"],
+        "stocks": {c: {k: v for k, v in rec.items() if k in ("n", "b", "o0", "x", "ma240")}
+                   for c, rec in enc["stocks"].items() if c in hot},
+        "names": {nm: c for nm, c in doc["names"].items() if c in hot},
+    }
+    hot_path = os.path.join(os.path.dirname(out_path), "day125_hot.json")
+    htmp = hot_path + ".tmp"
+    with open(htmp, "w", encoding="utf-8") as f:
+        json.dump(hot_doc, f, ensure_ascii=False, separators=(",", ":"))
+    os.replace(htmp, hot_path)
     bars_n = sum(len(v["b"]) for v in doc["stocks"].values())
     w_n = sum(1 for v in doc["stocks"].values() if v.get("w"))
     m_n = sum(1 for v in doc["stocks"].values() if v.get("m"))
@@ -612,6 +664,8 @@ def main():
              os.path.getsize(out_path) / 1024,
              (" · 못 받은 종목 %d(이전 봉 유지)" % len(miss)) if miss else ""), flush=True)
     print("  240일선 %d종목 · 주봉 %d종목 · 월봉 %d종목" % (ma_n, w_n, m_n), flush=True)
+    print("  먼저 뜨는 종목 %d개 -> %s (%.0fKB)"
+          % (len(hot_doc["stocks"]), hot_path, os.path.getsize(hot_path) / 1024), flush=True)
 
 
 if __name__ == "__main__":
