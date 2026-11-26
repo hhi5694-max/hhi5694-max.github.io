@@ -1,20 +1,22 @@
 {
- "generated_at": "2026-11-26T21:14:30+09:00",
- "generated_at_kst": "2026.11.26 21:14",
- "news_updated_kst": "2026.11.26 21:14",
+ "generated_at": "2026-11-26T22:14:37+09:00",
+ "generated_at_kst": "2026.11.26 22:14",
+ "news_updated_kst": "2026.11.26 22:14",
  "note": "오늘 뉴스 이슈를 테마달력(calendar.json)의 테마·종목에 이어 붙인 목록 — 테마가 나오면 테마와 종목을 여기에 적어 두고, 화면에서는 종목을 눌러 125봉 차트를 연다.",
  "news_links": [
   {
    "theme": "스페이스X IPO·우주항공 공급망 (위성·발사체·특수소재)",
    "short": "스페이스X IPO·우주항공 공급망",
    "kind": "동반테마",
-   "issue": "\"이재용, '반도체 장기구매할게' 머스크에 '그럼 뭘 해줄건데'\"",
-   "issue_url": "https://n.news.naver.com/article/001/0016466655",
-   "presses": 3,
-   "presses_max": 3,
-   "articles": 4,
+   "issue": "이재용, 머스크의 반도체 장기 구매 제안에 \"뭘 더 해줄 수 있는데\"",
+   "issue_url": "https://n.news.naver.com/mnews/article/658/0000162430",
+   "presses": 5,
+   "presses_max": 5,
+   "articles": 8,
    "kw": [
-    "반도체"
+    "반도체",
+    "인공지능",
+    "메모리"
    ],
    "stocks": [
     {
@@ -45,9 +47,9 @@
    "last_lu": "2026-02-03",
    "more": [
     {
-     "title": "'산타' 된 머스크, 美 어린이들에 주식 선물",
-     "presses": 1,
-     "url": "https://n.news.naver.com/mnews/article/014/0005610494"
+     "title": "머스크 “미 어린이 1명당 스페이스X 주식 2주 주겠다”",
+     "presses": 3,
+     "url": "https://n.news.naver.com/article/032/0003485389"
     }
    ],
    "upper_count": 0
@@ -87,13 +89,14 @@
    "theme": "AI 시험 부정행위 대응·전파탐지/물리보안",
    "short": "AI 시험 부정행위 대응·전파탐지/물리보안",
    "kind": "동반테마",
-   "issue": "[단독] 세무냥이 \"부정행위 했다\"던 회계사시험, 초고득점자 3년 내리 0명이다가 올해 10명으로 '쑥'",
-   "issue_url": "https://n.news.naver.com/article/448/0000653634",
-   "presses": 1,
-   "presses_max": 1,
+   "issue": "의사 국시 만점 4년 새 7배 늘어… 복지부 “AI 부정행위 정황 없다”",
+   "issue_url": "https://n.news.naver.com/mnews/article/022/0004178434",
+   "presses": 2,
+   "presses_max": 2,
    "articles": 3,
    "kw": [
     "부정행위",
+    "탐지",
     "시험"
    ],
    "stocks": [
@@ -113,42 +116,11 @@
    "last_lu": "2026-01-27",
    "more": [
     {
-     "title": "토익도 'AI 커닝' 차단…안경에 스티커·샤프 금지",
+     "title": "[단독] '리트 만점 의혹' 8일 만에 강제수사...성명불상 공범 적시",
      "presses": 1,
-     "url": "https://www.ytn.co.kr/_ln/0103_20261126145412"
-    },
-    {
-     "title": "고교 기말고사도 'AI 커닝' 비상… 금속탐지기 1만 2000개 추가 구매",
-     "presses": 1,
-     "url": "https://n.news.naver.com/article/656/0000193615"
+     "url": "https://www.ytn.co.kr/_ln/0103_20261126220955"
     }
    ],
-   "upper_count": 0
-  },
-  {
-   "theme": "HLB 그룹 글로벌 자본 유치 (LMR파트너스 2,069억 투자)",
-   "short": "HLB 그룹 글로벌 자본 유치",
-   "kind": "동반테마",
-   "issue": "[단독] 신세계, HLL중앙 인수전 발 뺐다…중앙일보 730억 투자에 무게",
-   "issue_url": "https://n.news.naver.com/article/293/0000093893",
-   "presses": 1,
-   "presses_max": 1,
-   "articles": 1,
-   "kw": [
-    "인수"
-   ],
-   "stocks": [
-    {
-     "name": "HLB글로벌",
-     "code": "003580"
-    },
-    {
-     "name": "HLB바이오스텝",
-     "code": "278650"
-    }
-   ],
-   "last_lu": "2026-07-15",
-   "more": [],
    "upper_count": 0
   },
   {
@@ -236,47 +208,67 @@
    "upper_count": 0
   },
   {
-   "theme": "현대차 로보틱스 밸류체인·자동차부품 (美 관세·전장 수주)",
-   "short": "현대차 로보틱스 밸류체인·자동차부품",
-   "kind": "동반테마",
-   "issue": "레인보우로보틱스, 코스닥 ‘시총 2위’ 등극",
-   "issue_url": "https://n.news.naver.com/mnews/article/014/0005610508",
+   "theme": "정보보안 (쿠팡 3,400만명 개인정보 유출)",
+   "short": "정보보안",
+   "kind": "개별상한가",
+   "issue": "CJ올리브영 개인정보 유출...회원번호·생년월일 등",
+   "issue_url": "https://www.ytn.co.kr/_ln/0103_20261126220114",
    "presses": 1,
    "presses_max": 1,
    "articles": 1,
    "kw": [
-    "레인보우로보틱스",
-    "휴머노이드",
-    "로봇"
+    "개인정보"
    ],
    "stocks": [
     {
-     "name": "에스팀",
-     "code": "458350"
-    },
-    {
-     "name": "화신정공",
-     "code": "126640"
-    },
-    {
-     "name": "일지테크",
-     "code": "019540"
-    },
-    {
-     "name": "모베이스전자",
-     "code": "012860"
-    },
-    {
-     "name": "성문전자",
-     "code": "014910"
-    },
-    {
-     "name": "삼성공조",
-     "code": "006660"
+     "name": "소프트캠프",
+     "code": "258790"
     }
    ],
-   "last_lu": "2026-10-20",
+   "last_lu": "2025-12-01",
    "more": [],
+   "upper_count": 0
+  },
+  {
+   "theme": "항공·유가 하락 (미-이란 긴장 완화·항공사 통합)",
+   "short": "항공·유가 하락",
+   "kind": "동반테마",
+   "issue": "동성부부 ‘가족 마일리지’ 합산 거부한 국내 항공사…인권위 “차별”",
+   "issue_url": "https://n.news.naver.com/mnews/article/018/0006416277",
+   "presses": 1,
+   "presses_max": 1,
+   "articles": 2,
+   "kw": [],
+   "stocks": [
+    {
+     "name": "아시아나IDT",
+     "code": "267850"
+    },
+    {
+     "name": "엠앤씨솔루션",
+     "code": "484870"
+    },
+    {
+     "name": "링네트",
+     "code": "042500"
+    },
+    {
+     "name": "진에어",
+     "code": "272450"
+    },
+    {
+     "name": "한진",
+     "code": "002320"
+    }
+   ],
+   "last_lu": "2026-11-10",
+   "more": [
+    {
+     "title": "[오늘의증시] 삼전17만·SK하닉105만 사수…우주·태양광 '빨간불'",
+     "presses": 1,
+     "url": "https://n.news.naver.com/article/243/0000106347"
+    }
+   ],
    "upper_count": 0
   }
  ]
