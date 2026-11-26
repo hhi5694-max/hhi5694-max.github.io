@@ -5,7 +5,7 @@
    activate 에서 옛 버전 캐시를 전부 지운 뒤 화면을 넘겨받는다(clients.claim).
    그래서 사용자가 캐시를 직접 지우거나 새로고침하지 않아도 접속할 때마다 최신 화면·최신 데이터가 뜬다.
    index.html · data/*.json 은 쿼리스트링까지 포함해 언제나 네트워크를 먼저 탄다(cache:'no-store'). */
-const CACHE = 'newsradar-v112';
+const CACHE = 'newsradar-v113';
 const SHELL = ['./', './index.html', './manifest.json', './icons/icon-192.png', './data/calendar.json', './data/radar.json'];
 const NEWS_KEY = './data/news.json';   // 쿼리스트링이 붙어도 캐시에는 이 한 자리에만 남긴다
 
@@ -32,6 +32,7 @@ const isHotMonJson = url => /\/data\/hotbar_monthly\.json$/.test(url.pathname);
 const isPopupJson = url => /\/data\/popup\.json$/.test(url.pathname);
 const isDayJson = url => /\/data\/day125\.json$/.test(url.pathname);
 const isSchedJson = url => /\/data\/schedule\.json$/.test(url.pathname);
+const isPicksJson = url => /\/data\/picks_results\.json$/.test(url.pathname);
 /* 화면 문서는 index.html 하나다 — 주소가 '/'든 '/index.html'이든, 새로 열든 늘 서버에서 새로 */
 const isDoc = (req, url) => req.mode === 'navigate' || /\/index\.html$/.test(url.pathname) || url.pathname.endsWith('/');
 const CAL_KEY = './data/calendar.json';
@@ -41,6 +42,7 @@ const HOTMON_KEY = './data/hotbar_monthly.json';
 const POPUP_KEY = './data/popup.json';
 const DAY_KEY = './data/day125.json';
 const SCHED_KEY = './data/schedule.json';
+const PICKS_KEY = './data/picks_results.json';
 
 /* 캐시에 저장할 자리 — 데이터 파일은 한 자리에만 남긴다(매번 다른 ?_= 주소로 쌓이지 않게) */
 function cacheKeyFor(req, url){
@@ -53,6 +55,7 @@ function cacheKeyFor(req, url){
   if (isPopupJson(url)) return POPUP_KEY;
   if (isDayJson(url)) return DAY_KEY;
   if (isSchedJson(url)) return SCHED_KEY;
+  if (isPicksJson(url)) return PICKS_KEY;
   return req;
 }
 
@@ -81,12 +84,13 @@ self.addEventListener('fetch', e => {
   const popup = isPopupJson(url);
   const day = isDayJson(url);
   const sch = isSchedJson(url);
+  const picks = isPicksJson(url);
   const doc = isDoc(req, url);
 
   e.respondWith((async () => {
     try {
       // 문서·데이터는 쿼리스트링과 무관하게 항상 네트워크가 먼저(그리고 캐시 협상 없이)
-      const fresh = await fetch(req, {cache: (doc || news || cal || rdr || hot || hotmon || popup || day || sch) ? 'no-store' : 'no-cache'});
+      const fresh = await fetch(req, {cache: (doc || news || cal || rdr || hot || hotmon || popup || day || sch || picks) ? 'no-store' : 'no-cache'});
       if (fresh && fresh.ok && (fresh.type === 'basic' || fresh.type === 'default')) {
         const copy = fresh.clone();
         caches.open(CACHE).then(c => c.put(cacheKeyFor(req, url), copy)).catch(() => {});
