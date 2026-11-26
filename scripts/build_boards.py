@@ -114,6 +114,7 @@ def pick_card(p: dict) -> dict:
         "name": str(p.get("name") or ""),
         "market": str(p.get("market") or ""),
         "theme": str(p.get("theme") or ""),
+        "tier": str(p.get("tier") or ""),          # 장중픽 — 'core'(핵심 1~5) · 'extra'(추가 6~10)
         "reason": str(p.get("reason") or ""),
         "pick_time": str(p.get("pick_time") or ""),
         "ref_kind": str(p.get("ref_kind") or "기준가"),
@@ -154,6 +155,11 @@ def group_by_theme(picks: list, pre_codes: set) -> list:
 def build_hotbar(date: str, pre: list, intra: list, after: list, session: str) -> dict:
     stamp = now_kst()
     n = len(pre) + len(intra) + len(after)
+    n_core = sum(1 for p in intra if p.get("tier") == "core")
+    n_extra = sum(1 for p in intra if p.get("tier") == "extra")
+    intra_note = "기준 포착가 · 장중에 잡은 자리"
+    if n_extra:
+        intra_note += f" · 핵심 {n_core} · 추가 {n_extra}"
     return {
         "v": 3,
         "kind": "picks",
@@ -162,11 +168,12 @@ def build_hotbar(date: str, pre: list, intra: list, after: list, session: str) -
         "base_date": date,
         "base_date_text": f"{date_text(date)} {session} 기준 · 장전 {len(pre)} · 장중 {len(intra)} · 장후 {len(after)}",
         "session": session,
-        "counts": {"premarket": len(pre), "intraday": len(intra), "aftermarket": len(after), "picks": n},
+        "counts": {"premarket": len(pre), "intraday": len(intra), "aftermarket": len(after), "picks": n,
+                   "intraday_core": n_core, "intraday_extra": n_extra},
         "boards": [
             {"key": "premarket", "title": "🌅 장전픽", "note": "기준 전일 종가 · 아침에 고른 자리",
              "empty": "오늘 아침에는 조건에 맞는 자리가 없었습니다.", "picks": pre},
-            {"key": "intraday", "title": "⚡ 장중픽", "note": "기준 포착가 · 장중에 잡은 자리",
+            {"key": "intraday", "title": "⚡ 장중픽", "note": intra_note,
              "empty": "오늘은 장중에 새로 잡힌 자리가 없습니다.", "picks": intra},
             {"key": "aftermarket", "title": "🌙 장후픽", "note": "기준 오늘 종가 · 내일 볼 자리",
              "empty": "장 마감(15:30) 뒤 15:45에 자동으로 선정합니다." if not after else "", "picks": after},
@@ -270,7 +277,7 @@ def build_popup(date: str, pre: list, intra: list, after: list, session: str) ->
                    "after": len(after), "after_all": len(after), "pink": 0},
         "sections": {
             "buy": [row(p, "장전픽", 2) for p in pre],
-            "radar": [row(p, "장중픽", 3) for p in intra],
+            "radar": [row(p, "핵심" if p.get("tier") == "core" else "추가", 3) for p in intra],
             "after": [row(p, "장후픽", 4) for p in after],
             "pink": [],
         },
@@ -283,6 +290,9 @@ def build(date: str, book: dict) -> dict:
     pre = [pick_card(p) for p in (rec.get("premarket") or []) if p.get("code")]
     intra = [pick_card(p) for p in (rec.get("intraday") or []) if p.get("code")]
     after = [pick_card(p) for p in (rec.get("aftermarket") or []) if p.get("code")]
+    for i, p in enumerate(intra, 1):        # tier 없는 기록도 장중픽 순서(1~5 핵심 · 6~10 추가)로 채운다
+        if not p.get("tier"):
+            p["tier"] = "core" if i <= 5 else "extra"
     for p in pre:
         p["_leg"] = "premarket"
     for p in intra:

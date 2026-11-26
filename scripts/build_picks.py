@@ -11,7 +11,8 @@
   --mode pre     평일 08:30~08:55. 직전 거래일 기준 장전픽 3~5종목. 이미 확정된 당일 장전픽은 덮어쓰지 않고
                  가격·등락률만 갱신한다(픽은 그날 아침의 판단을 그대로 둔다).
   --mode intra   평일 09:05~15:25. 오늘 실시간 상한가·급등 테마 선도주 중 아직 없는 종목을 장중픽으로 추가
-                 (하루 최대 5개)하고, 기존 픽의 현재가·등락률을 갱신한다.
+                 (하루 최대 10개 — 1~5번째 tier='core'(핵심), 6~10번째 tier='extra'(추가 후보))하고,
+                 기존 픽의 현재가·등락률을 갱신한다.
   --mode after   장 마감 뒤(15:30 이후). 오늘 종가·상한가·테마·마감 뒤 뉴스로 **내일 볼 장후픽 3~5종목**을
                  뽑는다(기준가 = 오늘 종가). 이미 뽑혀 있으면 덮어쓰지 않고 가격만 갱신한다.
                  --mode update 도 15:30 이후에는 장후픽을 함께 만든다.
@@ -84,7 +85,8 @@ BOX_RANGE_MAX = UR.BOX_RANGE_MAX  # 80%
 BOTTOM_DD = UR.BOTTOM_DD          # -40%
 BOX_POS_MAX = UR.BOX_POS_MAX      # 0.35
 PRE_MIN, PRE_MAX = 3, 5           # 장전픽 3~5종목
-INTRA_MAX = 5                     # 장중픽 하루 최대 5종목
+INTRA_MAX = 10                    # 장중픽 하루 최대 10종목
+INTRA_CORE = 5                    # 그중 1~5번째는 핵심 픽 · 6~10번째는 추가 후보
 AFTER_MIN, AFTER_MAX = 3, 5       # 장후픽 3~5종목 (내일 볼 자리)
 INTRA_SURGE = 8.0                 # 장중 '급등'으로 볼 등락률(%)
 CAPTURE_SURGE = 5.0               # 1분봉에서 '포착'으로 보는 등락률(%) — 포착가를 잡는 기준
@@ -693,6 +695,19 @@ def refresh_prices(book: dict, date: str, day: dict, mark_closed: bool) -> int:
 
 
 # ------------------------------------------------------------------ 장전픽
+def tier_of(pos: int) -> str:
+    """장중픽 몇 번째(1부터)인가 — 1~5 핵심('core') · 6~10 추가('extra')."""
+    return "core" if pos <= INTRA_CORE else "extra"
+
+
+def with_tiers(rows: list) -> list:
+    """장중픽에 순서대로 tier 를 붙인다 — tier 가 없는 예전 기록도 순서(1~5/6~10)만으로 채운다."""
+    for i, p in enumerate(rows or [], 1):
+        if isinstance(p, dict) and not p.get("tier"):
+            p["tier"] = tier_of(i)
+    return rows
+
+
 def pick_reason(name: str, theme: str, m: dict, news_hit: dict | None,
                 cal_rec: dict | None, upper_date: str) -> str:
     """선정 근거 한 줄 — 실제로 잰 값만 적는다."""
@@ -815,6 +830,7 @@ def build_pre(book: dict, day: dict, cal: dict, news: dict, date: str, force: bo
 # ------------------------------------------------------------------ 장중픽
 def build_intra(book: dict, day: dict, cal: dict, news: dict, date: str, phase: str) -> list:
     rec = day_rec(book, date)
+    with_tiers(rec["intraday"])          # 오늘 먼저 잡힌 픽이 있으면 그 순서대로 tier 를 채워 둔다
     by_name, by_code = calendar_index(cal or {})
     nidx = news_index(news or {})
     rows = rank_rows(200)
@@ -886,6 +902,7 @@ def build_intra(book: dict, day: dict, cal: dict, news: dict, date: str, phase: 
         if n_hit and n_hit.get("title"):
             why.append(f"뉴스 「{n_hit['title'][:30]}」 {n_hit.get('presses', 1)}곳")
         rec["intraday"].append({
+            "tier": tier_of(len(rec["intraday"]) + 1),     # 1~5 핵심 · 6~10 추가
             "code": r["code"], "name": r["name"], "market": r.get("market") or "",
             "theme": short_theme(th) or "개별",
             "reason": " · ".join(why)[:160],
@@ -897,7 +914,9 @@ def build_intra(book: dict, day: dict, cal: dict, news: dict, date: str, phase: 
             "status": "진행" if phase == "open" else "마감",
         })
         added += 1
-    print(f"[ok] 장중픽 {added}종목 추가 — 오늘 장중픽 {len(rec['intraday'])}종목")
+    n_core = sum(1 for p in rec["intraday"] if p.get("tier") == "core")
+    print(f"[ok] 장중픽 {added}종목 추가 — 오늘 장중픽 {len(rec['intraday'])}종목"
+          + (f" (핵심 {n_core} · 추가 {len(rec['intraday']) - n_core})" if rec["intraday"] else ""))
     return rec["intraday"]
 
 
