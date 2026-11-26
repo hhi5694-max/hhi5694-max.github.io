@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-26T12:30:24+09:00",
- "generated_at_kst": "2026.11.26 12:30",
- "news_updated_kst": "2026.11.26 12:30",
+ "generated_at": "2026-11-26T12:49:30+09:00",
+ "generated_at_kst": "2026.11.26 12:49",
+ "news_updated_kst": "2026.11.26 12:49",
  "note": "오늘 뉴스 이슈를 테마달력(calendar.json)의 테마·종목에 이어 붙인 목록 — 테마가 나오면 테마와 종목을 여기에 적어 두고, 화면에서는 종목을 눌러 125봉 차트를 연다.",
  "news_links": [
   {
@@ -12,7 +12,7 @@
    "issue_url": "https://n.news.naver.com/mnews/article/002/0002467690",
    "presses": 4,
    "presses_max": 4,
-   "articles": 7,
+   "articles": 9,
    "kw": [
     "커닝",
     "부정행위",
@@ -35,14 +35,63 @@
    "last_lu": "2026-01-27",
    "more": [
     {
+     "title": "갑작스런 만점자 급증…\"의사·간호사 국시도 설마\"",
+     "presses": 2,
+     "url": "https://n.news.naver.com/mnews/article/215/0001274049"
+    },
+    {
      "title": "수능 만점 최소 3명 나왔는데…“신원 공개 거부” 쉬쉬하는 이유",
      "presses": 2,
      "url": "https://n.news.naver.com/article/025/0003568096"
+    }
+   ],
+   "upper_count": 0
+  },
+  {
+   "theme": "스페이스X IPO·우주항공 공급망 (위성·발사체·특수소재)",
+   "short": "스페이스X IPO·우주항공 공급망",
+   "kind": "동반테마",
+   "issue": "스페이스X, '트럼프 계좌'에 자사 주식 1주씩 기부하기로",
+   "issue_url": "https://n.news.naver.com/mnews/article/014/0005610207",
+   "presses": 2,
+   "presses_max": 2,
+   "articles": 3,
+   "kw": [
+    "스페이스X",
+    "우주"
+   ],
+   "stocks": [
+    {
+     "name": "러셀",
+     "code": "217500"
     },
     {
-     "title": "[뭐라노] 부정행위와의 전쟁",
+     "name": "미래에셋벤처투자",
+     "code": "100790"
+    },
+    {
+     "name": "이녹스",
+     "code": "088390"
+    },
+    {
+     "name": "하이즈항공",
+     "code": "221840"
+    },
+    {
+     "name": "아주IB투자",
+     "code": "027360"
+    },
+    {
+     "name": "한컴위드",
+     "code": "054920"
+    }
+   ],
+   "last_lu": "2026-02-03",
+   "more": [
+    {
+     "title": "머스크, 우주에 AI 데이터센터 짓는다…美 FCC, 위성 100만기 승인",
      "presses": 1,
-     "url": "https://n.news.naver.com/article/658/0000162324"
+     "url": "https://n.news.naver.com/article/092/0002446992"
     }
    ],
    "upper_count": 0
@@ -245,54 +294,6 @@
      "title": "“올랐다가 폭삭”…삼전닉스 개미들 멘붕, 증권가도 의견 ‘분분’ [종목e슈]",
      "presses": 1,
      "url": "https://n.news.naver.com/article/018/0006415605"
-    }
-   ],
-   "upper_count": 0
-  },
-  {
-   "theme": "스페이스X IPO·우주항공 공급망 (위성·발사체·특수소재)",
-   "short": "스페이스X IPO·우주항공 공급망",
-   "kind": "동반테마",
-   "issue": "머스크·스페이스X, 어린이 대상 ‘트럼프 계좌’에 24조원 규모 주식 기부",
-   "issue_url": "https://n.news.naver.com/mnews/article/009/0005769303",
-   "presses": 1,
-   "presses_max": 1,
-   "articles": 2,
-   "kw": [
-    "스페이스X"
-   ],
-   "stocks": [
-    {
-     "name": "러셀",
-     "code": "217500"
-    },
-    {
-     "name": "미래에셋벤처투자",
-     "code": "100790"
-    },
-    {
-     "name": "이녹스",
-     "code": "088390"
-    },
-    {
-     "name": "하이즈항공",
-     "code": "221840"
-    },
-    {
-     "name": "아주IB투자",
-     "code": "027360"
-    },
-    {
-     "name": "한컴위드",
-     "code": "054920"
-    }
-   ],
-   "last_lu": "2026-02-03",
-   "more": [
-    {
-     "title": "머스크, 우주에 AI 데이터센터 짓는다…美 FCC, 위성 100만기 승인",
-     "presses": 1,
-     "url": "https://n.news.naver.com/article/092/0002446992"
     }
    ],
    "upper_count": 0
