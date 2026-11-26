@@ -1,64 +1,21 @@
 {
- "generated_at": "2026-11-26T13:55:56+09:00",
- "generated_at_kst": "2026.11.26 13:55",
- "news_updated_kst": "2026.11.26 13:55",
+ "generated_at": "2026-11-26T14:57:21+09:00",
+ "generated_at_kst": "2026.11.26 14:57",
+ "news_updated_kst": "2026.11.26 14:57",
  "note": "오늘 뉴스 이슈를 테마달력(calendar.json)의 테마·종목에 이어 붙인 목록 — 테마가 나오면 테마와 종목을 여기에 적어 두고, 화면에서는 종목을 눌러 125봉 차트를 연다.",
  "news_links": [
-  {
-   "theme": "저PBR 자산주 재평가 (주주환원·자산가치 부각)",
-   "short": "저PBR 자산주 재평가",
-   "kind": "동반테마",
-   "issue": "삼성SDI, 1.4조 규모 자사주 소각…호실적 이어 주주환원 속도전",
-   "issue_url": "https://n.news.naver.com/article/293/0000093856",
-   "presses": 4,
-   "presses_max": 4,
-   "articles": 4,
-   "kw": [
-    "자사주",
-    "실적",
-    "주주"
-   ],
-   "stocks": [
-    {
-     "name": "성창기업지주",
-     "code": "000180"
-    },
-    {
-     "name": "와이즈넛",
-     "code": "096250"
-    },
-    {
-     "name": "코미코",
-     "code": "183300"
-    },
-    {
-     "name": "SG세계물산",
-     "code": "004060"
-    },
-    {
-     "name": "원익큐브",
-     "code": "014190"
-    },
-    {
-     "name": "바이오스마트",
-     "code": "038460"
-    }
-   ],
-   "last_lu": "2026-11-05",
-   "more": [],
-   "upper_count": 0
-  },
   {
    "theme": "AI 시험 부정행위 대응·전파탐지/물리보안",
    "short": "AI 시험 부정행위 대응·전파탐지/물리보안",
    "kind": "동반테마",
-   "issue": "수능 만점 최소 3명 나왔는데…“신원 공개 거부” 쉬쉬하는 이유",
-   "issue_url": "https://n.news.naver.com/article/025/0003568096",
-   "presses": 3,
-   "presses_max": 3,
-   "articles": 6,
+   "issue": "복지부 \"의사·간호사 국시 일부 과목 만점자 증가, 부정행위 아냐\"",
+   "issue_url": "https://www.ytn.co.kr/_ln/0103_20261126145412",
+   "presses": 4,
+   "presses_max": 4,
+   "articles": 8,
    "kw": [
-    "수능"
+    "부정행위",
+    "시험"
    ],
    "stocks": [
     {
@@ -77,14 +34,14 @@
    "last_lu": "2026-01-27",
    "more": [
     {
-     "title": "[속보] 의사 국가시험 법규 만점자 20→137명, 7배 급증…간호사도 3배, 국회서 \"전수조사\" 제기",
-     "presses": 2,
-     "url": "https://n.news.naver.com/mnews/article/088/0001042441"
+     "title": "수능 만점 최소 3명 나왔는데…“신원 공개 거부” 쉬쉬하는 이유",
+     "presses": 3,
+     "url": "https://n.news.naver.com/article/025/0003568096"
     },
     {
-     "title": "변호사시험, 객관식 아닌 논술형 5년치 분석... 법조계 “커닝 판별은 글쎄”",
+     "title": "서울 고교생 전원, 기말고사 다른 교실서 본다...\"부정행위 특단 조치\"",
      "presses": 1,
-     "url": "https://n.news.naver.com/mnews/article/366/0001207505"
+     "url": "https://n.news.naver.com/article/660/0000122236"
     }
    ],
    "upper_count": 0
@@ -95,9 +52,9 @@
    "kind": "동반테마",
    "issue": "스페이스X, '트럼프 계좌'에 자사 주식 1주씩 기부하기로",
    "issue_url": "https://n.news.naver.com/mnews/article/014/0005610207",
-   "presses": 2,
-   "presses_max": 2,
-   "articles": 2,
+   "presses": 3,
+   "presses_max": 3,
+   "articles": 3,
    "kw": [
     "스페이스X",
     "우주"
@@ -133,70 +90,86 @@
    "upper_count": 0
   },
   {
-   "theme": "조선·조선기자재 (한미 핵잠 건조 합의·LNG선 발주)",
-   "short": "조선·조선기자재",
+   "theme": "반도체·HBM 메모리 대표주 (삼전·하이닉스·HBM 장비)",
+   "short": "반도체·HBM 메모리 대표주",
    "kind": "동반테마",
-   "issue": "[단독]“北, 수소탄 다종화…핵잠 원자로·엔진 첫 공개, 新 우라늄 농축시설 과시”",
-   "issue_url": "https://n.news.naver.com/mnews/article/021/0002835768",
+   "issue": "삼성전자, 메모리 개발체제 일원화…시스템LSI '전략마케팅실' 부활",
+   "issue_url": "https://n.news.naver.com/article/031/0001078657",
    "presses": 2,
    "presses_max": 2,
    "articles": 3,
    "kw": [
-    "수소"
+    "삼성전자",
+    "메모리"
    ],
    "stocks": [
     {
-     "name": "동일스틸럭스",
-     "code": "023790"
+     "name": "멜콘",
+     "code": "179880"
+    },
+    {
+     "name": "한미반도체",
+     "code": "042700"
+    },
+    {
+     "name": "테크윙",
+     "code": "089030"
+    },
+    {
+     "name": "SK하이닉스",
+     "code": "000660"
     }
    ],
-   "last_lu": "2026-04-22",
+   "last_lu": "2026-10-27",
    "more": [
     {
-     "title": "수주 목표 달성 눈앞에 둔 K조선, LNG선 파고든 중국",
+     "title": "코스피, 하루 만에 반등…삼성전자·하이닉스 강세",
      "presses": 1,
-     "url": "https://n.news.naver.com/mnews/article/417/0001165745"
+     "url": "https://n.news.naver.com/article/422/0000930088"
     }
    ],
    "upper_count": 0
   },
   {
-   "theme": "글로벌 신약 기술수출·임상 (릴리 3.8조·WHO 성분명 등재)",
-   "short": "글로벌 신약 기술수출·임상",
+   "theme": "HLB 담관암 신약 리픽투 FDA 승인",
+   "short": "HLB 담관암 신약 리픽투 FDA 승인",
    "kind": "동반테마",
-   "issue": "[바이오사 리포트] 에이비엘바이오, 릴리 투자금 86% 집행",
-   "issue_url": "https://n.news.naver.com/mnews/article/293/0000093865",
+   "issue": "머스크의 ‘뇌 이식칩’ FDA 임상 승인…상용화 성큼",
+   "issue_url": "https://n.news.naver.com/article/005/0001887595",
    "presses": 1,
    "presses_max": 1,
    "articles": 1,
    "kw": [
-    "바이오",
-    "신약",
-    "제약"
+    "임상",
+    "FDA"
    ],
    "stocks": [
     {
-     "name": "신테카바이오",
-     "code": "226330"
+     "name": "HLB",
+     "code": "028300"
     },
     {
-     "name": "그린생명과학",
-     "code": "114450"
+     "name": "HLB글로벌",
+     "code": "003580"
     },
     {
-     "name": "삼익제약",
-     "code": "014950"
+     "name": "HLB바이오스텝",
+     "code": "278650"
     },
     {
-     "name": "바이젠셀",
-     "code": "308080"
+     "name": "HLB생명과학",
+     "code": "067630"
     },
     {
-     "name": "메드팩토",
-     "code": "235980"
+     "name": "HLB이노베이션",
+     "code": "024850"
+    },
+    {
+     "name": "HLB제넥스",
+     "code": "187420"
     }
    ],
-   "last_lu": "2026-07-28",
+   "last_lu": "2026-07-15",
    "more": [],
    "upper_count": 0
   },
@@ -243,77 +216,69 @@
    "upper_count": 0
   },
   {
-   "theme": "항공·유가 하락 (미-이란 긴장 완화·항공사 통합)",
-   "short": "항공·유가 하락",
+   "theme": "저PBR 자산주 재평가 (주주환원·자산가치 부각)",
+   "short": "저PBR 자산주 재평가",
    "kind": "동반테마",
-   "issue": "통합 진에어 본사 '부산' 확정, 내년 3월 3사 통합 출범",
-   "issue_url": "https://n.news.naver.com/mnews/article/002/0002467703",
+   "issue": "삼성SDI, 1.4조 규모 자사주 소각…호실적 이어 주주환원 속도전",
+   "issue_url": "https://n.news.naver.com/article/293/0000093856",
    "presses": 1,
    "presses_max": 1,
-   "articles": 2,
-   "kw": [],
+   "articles": 1,
+   "kw": [
+    "자사주",
+    "실적",
+    "주주"
+   ],
    "stocks": [
     {
-     "name": "아시아나IDT",
-     "code": "267850"
+     "name": "성창기업지주",
+     "code": "000180"
     },
     {
-     "name": "엠앤씨솔루션",
-     "code": "484870"
+     "name": "와이즈넛",
+     "code": "096250"
     },
     {
-     "name": "링네트",
-     "code": "042500"
+     "name": "코미코",
+     "code": "183300"
     },
     {
-     "name": "진에어",
-     "code": "272450"
+     "name": "SG세계물산",
+     "code": "004060"
     },
     {
-     "name": "한진",
-     "code": "002320"
+     "name": "원익큐브",
+     "code": "014190"
+    },
+    {
+     "name": "바이오스마트",
+     "code": "038460"
     }
    ],
-   "last_lu": "2026-11-10",
-   "more": [
-    {
-     "title": "증시 폭락에 이것부터 줄인다?…백화점 긴장",
-     "presses": 1,
-     "url": "https://n.news.naver.com/article/374/0000546038"
-    }
-   ],
+   "last_lu": "2026-11-05",
+   "more": [],
    "upper_count": 0
   },
   {
-   "theme": "희토류 프리 LED·광반도체 (와이캅3 개발)",
-   "short": "희토류 프리 LED·광반도체",
+   "theme": "조선·조선기자재 (한미 핵잠 건조 합의·LNG선 발주)",
+   "short": "조선·조선기자재",
    "kind": "동반테마",
-   "issue": "한화에어로·항우연, ‘재사용 발사체’ 개발 본격화",
-   "issue_url": "https://n.news.naver.com/mnews/article/011/0004686445",
+   "issue": "LNG선까지 정조준한 中에 텃밭 뺏길 위기… K-조선 '초격차 해법' 있나",
+   "issue_url": "https://n.news.naver.com/article/629/0000555709",
    "presses": 1,
    "presses_max": 1,
-   "articles": 2,
+   "articles": 1,
    "kw": [
-    "발사체"
+    "LNG"
    ],
    "stocks": [
     {
-     "name": "서울반도체",
-     "code": "046890"
-    },
-    {
-     "name": "서울바이오시스",
-     "code": "092190"
+     "name": "동일스틸럭스",
+     "code": "023790"
     }
    ],
-   "last_lu": "2026-02-25",
-   "more": [
-    {
-     "title": "LS일렉트릭, 100분기 연속 흑자…3분기 영업익 132% 급증",
-     "presses": 1,
-     "url": "https://n.news.naver.com/mnews/article/011/0004686440"
-    }
-   ],
+   "last_lu": "2026-04-22",
+   "more": [],
    "upper_count": 0
   }
  ]
