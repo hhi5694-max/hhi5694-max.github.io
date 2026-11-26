@@ -307,6 +307,7 @@
   .nf{display:flex;align-items:center;gap:6px;margin:0 0 8px;padding:6px 8px;border-radius:9px;
     background:rgba(201,162,255,.1);border:1px solid rgba(201,162,255,.28);font-size:11px;color:#e6ddff}
   .nf b{font-weight:800}
+  #newsFilter{scroll-margin-top:96px}
   .nf button{appearance:none;margin-left:auto;border:0;background:transparent;color:#c9a2ff;
     font-family:inherit;font-weight:800;font-size:11px;cursor:pointer}
 
@@ -1920,7 +1921,7 @@ async function openNewsTheme(name, stockNames){
   switchTab('news');
   renderNews(true);
   const f = $('#newsFilter');
-  if(f) f.scrollIntoView({block: 'start', behavior: 'smooth'});
+  if(f) f.scrollIntoView({block: 'center', behavior: 'smooth'});
 }
 
 /* ---------------- 테마달력 ---------------- */
