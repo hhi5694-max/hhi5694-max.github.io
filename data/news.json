@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-11-26T23:12:46.502824+09:00",
- "generated_at_kst": "2026.11.26 23:12",
+ "generated_at": "2026-11-26T23:59:19.218365+09:00",
+ "generated_at_kst": "2026.11.26 23:59",
  "flash_count": 2,
  "flash_fresh_min": 60,
  "flash_fresh_count": 1,
- "flash_updated": "2026-11-26T22:44:13+09:00",
- "count": 24,
- "article_count": 40,
+ "flash_updated": "2026-11-26T23:38:24+09:00",
+ "count": 26,
+ "article_count": 42,
  "main_source": {
   "presses": 83,
   "collected": 411,
@@ -28,6 +28,12 @@
    "id": "defense",
    "label": "방산·우주",
    "color": "#f0a35e",
+   "count": 3
+  },
+  {
+   "id": "battery",
+   "label": "2차전지·에너지",
+   "color": "#8bd450",
    "count": 3
   },
   {
@@ -59,12 +65,6 @@
    "label": "남북·지정학",
    "color": "#ff8b8b",
    "count": 2
-  },
-  {
-   "id": "battery",
-   "label": "2차전지·에너지",
-   "color": "#8bd450",
-   "count": 1
   },
   {
    "id": "etc",
@@ -214,19 +214,19 @@
    "day_count": 30,
    "hot": 12,
    "presses": 24,
-   "span_hours": 0.7,
+   "span_hours": 3.4,
    "keywords": [
+    "우주",
     "위성",
     "스페이스X",
-    "무기",
-    "우주"
+    "무기"
    ],
    "headlines": [
     {
-     "title": "[KSFY] 행정고시 5년 준비하고 기업 200곳 탈락한 문과 출신 위성AI 개발자",
-     "url": "https://n.news.naver.com/article/584/0000040337",
-     "press": "동아사이언스",
-     "time": "2026-11-26T19:12:46.502824+09:00"
+     "title": "北 김정은, 새 핵시설 공개하며 \"핵 보유국 부정은 선전포고\"",
+     "url": "https://n.news.naver.com/mnews/article/448/0000653662",
+     "press": "TV조선",
+     "time": "2026-11-26T21:42:16+09:00"
     },
     {
      "title": "'산타' 스페이스X, 트럼프 '아동계좌'에 주식 기부",
@@ -257,10 +257,9 @@
    "day_count": 34,
    "hot": 11,
    "presses": 20,
-   "span_hours": 4.5,
+   "span_hours": 4.4,
    "keywords": [
-    "인수",
-    "목표주가"
+    "매출"
    ],
    "headlines": [
     {
@@ -270,10 +269,10 @@
      "time": "2026-11-26T21:21:07+09:00"
     },
     {
-     "title": "“폭락장서 나 홀로 27% 급등”…증권가 목표가 줄상향한 ‘이 종목’",
-     "url": "https://n.news.naver.com/article/018/0006416182",
-     "press": "이데일리",
-     "time": "2026-11-26T16:52:12+09:00"
+     "title": "\"일본 난리났다\" 인구 1천명 시골서 매출 202억원?…무슨 일 [영상]",
+     "url": "https://n.news.naver.com/article/088/0001042557",
+     "press": "매일신문",
+     "time": "2026-11-26T17:02:11+09:00"
     }
    ],
    "leaders": [],
@@ -325,6 +324,49 @@
    "rank": 6
   },
   {
+   "id": "battery",
+   "label": "2차전지·에너지",
+   "color": "#8bd450",
+   "count": 3,
+   "recent_6h": 5,
+   "recent_6h_ratio": 28,
+   "day_count": 18,
+   "hot": 2,
+   "presses": 17,
+   "span_hours": 1.9,
+   "keywords": [
+    "수소",
+    "충전",
+    "ESS",
+    "유가"
+   ],
+   "headlines": [
+    {
+     "title": "“온세상이 변동성이다”…후티공격에 브렌트유 하루만에 3.5% 급등",
+     "url": "https://n.news.naver.com/mnews/article/009/0005769761",
+     "press": "매일경제",
+     "time": "2026-11-26T23:36:06+09:00"
+    },
+    {
+     "title": "3차 ESS 중앙계약시장 우선협상 대상자 선정⋯1194MW 규모",
+     "url": "https://n.news.naver.com/mnews/article/031/0001078902",
+     "press": "아이뉴스24",
+     "time": "2026-11-26T23:22:08+09:00"
+    }
+   ],
+   "leaders": [
+    "에코프로비엠",
+    "리튬포어스",
+    "하이드로리튬"
+   ],
+   "hint": {
+    "type": "medium",
+    "label": "중기 흐름",
+    "reason": "보도 폭 23.0시간 · 14개 시간대 · 매체 17곳 · 24시간 18건 · 최근 6시간 5건(28%) · 업황·정책 표현 7건"
+   },
+   "rank": 7
+  },
+  {
    "id": "geopolitics",
    "label": "남북·지정학",
    "color": "#ff8b8b",
@@ -362,41 +404,6 @@
     "type": "medium",
     "label": "중기 흐름",
     "reason": "보도 폭 22.0시간 · 20개 시간대 · 매체 17곳 · 24시간 36건 · 최근 6시간 4건(11%) · 업황·정책 표현 5건"
-   },
-   "rank": 7
-  },
-  {
-   "id": "battery",
-   "label": "2차전지·에너지",
-   "color": "#8bd450",
-   "count": 1,
-   "recent_6h": 3,
-   "recent_6h_ratio": 19,
-   "day_count": 16,
-   "hot": 2,
-   "presses": 16,
-   "span_hours": 0.0,
-   "keywords": [
-    "수소",
-    "충전"
-   ],
-   "headlines": [
-    {
-     "title": "대낮에 문 닫는 충전소...수소 수급난에 '발 동동'",
-     "url": "https://n.news.naver.com/mnews/article/655/0000033716",
-     "press": "CJB청주방송",
-     "time": "2026-11-26T21:41:10+09:00"
-    }
-   ],
-   "leaders": [
-    "에코프로비엠",
-    "리튬포어스",
-    "하이드로리튬"
-   ],
-   "hint": {
-    "type": "medium",
-    "label": "중기 흐름",
-    "reason": "보도 폭 21.0시간 · 13개 시간대 · 매체 16곳 · 24시간 16건 · 최근 6시간 3건(19%) · 업황·정책 표현 5건"
    },
    "rank": 8
   }
@@ -1006,6 +1013,7 @@
   ],
   "themes": [
    {
+    "master": null,
     "name": "셀로맥스사이언스",
     "short": "셀로맥스사이언스",
     "kind": "개별상한가",
@@ -1028,6 +1036,7 @@
     ]
    },
    {
+    "master": null,
     "name": "스페이스X·우주항공 (위성·발사체 공급망)",
     "short": "스페이스X·우주항공",
     "kind": "동반테마",
@@ -1058,6 +1067,26 @@
     ]
    },
    {
+    "master": {
+     "name": "AI에이전트",
+     "stocks": [
+      {
+       "role": "대장주",
+       "name": "폴라리스오피스",
+       "code": "041020"
+      },
+      {
+       "role": "부대장주",
+       "name": "아크릴",
+       "code": "0007C0"
+      },
+      {
+       "role": "3등주",
+       "name": "매드업",
+       "code": "0039P0"
+      }
+     ]
+    },
     "name": "AI 소프트웨어·AI 에이전트 (국산 LLM·산업 AI)",
     "short": "AI 소프트웨어·AI 에이전트",
     "kind": "동반테마",
@@ -1080,6 +1109,7 @@
     ]
    },
    {
+    "master": null,
     "name": "에이유브랜즈",
     "short": "에이유브랜즈",
     "kind": "개별상한가",
@@ -1102,6 +1132,7 @@
     ]
    },
    {
+    "master": null,
     "name": "AI·데이터센터 관련",
     "short": "AI·데이터센터 관련",
     "kind": "새 이슈",
@@ -1124,6 +1155,7 @@
     ]
    },
    {
+    "master": null,
     "name": "글로벌 학회·임상·FDA 바이오 (SITC·바이오유럽·Cancer Cell)",
     "short": "글로벌 학회·임상·FDA 바이오",
     "kind": "동반테마",
@@ -1146,6 +1178,7 @@
     ]
    },
    {
+    "master": null,
     "name": "진코스텍",
     "short": "진코스텍",
     "kind": "개별상한가",
@@ -1168,6 +1201,7 @@
     ]
    },
    {
+    "master": null,
     "name": "서울고속버스터미널 복합개발 (자산 재평가)",
     "short": "서울고속버스터미널 복합개발",
     "kind": "동반테마",
@@ -1224,7 +1258,7 @@
   ]
  },
  "market_mood": {
-  "generated_at": "2026-11-26T23:12:46.502824+09:00",
+  "generated_at": "2026-11-26T23:59:19.218365+09:00",
   "kr": {
    "key": "good",
    "label": "호재",
@@ -3698,10 +3732,47 @@
     0,
     0,
     0
+   ],
+   [
+    "009/0005769761",
+    "2026-11-26T23",
+    "매일경제",
+    0,
+    1,
+    1
+   ],
+   [
+    "031/0001078902",
+    "2026-11-26T23",
+    "아이뉴스24",
+    0,
+    1,
+    0
    ]
   ]
  },
  "flash": [
+  {
+   "id": "215/0001274134",
+   "title": "SK하이닉스 호황에 웃는다…\"아직 저평가\"라는 종목 [주식R]",
+   "press": "한국경제TV",
+   "time": "2026-11-26T23:38:24+09:00",
+   "url": "https://n.news.naver.com/article/215/0001274134",
+   "summary": "KB증권은 26일 SK에 대해 자회사들의 수익성 개선이 주가에 충분히 반영되지 않았다며 목표주가 80만원과 투자의견 '매수'를 유지했다.",
+   "theme": "earnings",
+   "theme_label": "실적·공시·수급",
+   "theme_color": "#f5d06b",
+   "leaders": [
+    "SK하이닉스",
+    "한미반도체"
+   ],
+   "master_themes": [
+    "소캠"
+   ],
+   "hot": 2.0,
+   "fresh": true,
+   "breaking": false
+  },
   {
    "id": "021/0002835859",
    "title": "저점에서 41억 풀매수 안철수…안랩 사상최고가",
@@ -3713,21 +3784,7 @@
    "theme_label": "실적·공시·수급",
    "theme_color": "#f5d06b",
    "leaders": [],
-   "hot": 2.0,
-   "fresh": true,
-   "breaking": false
-  },
-  {
-   "id": "009/0005769751",
-   "title": "금리 올렸는데 은행주 왜 파래요…한발 먼저 가는 주식 ‘선반영’ 해석",
-   "press": "매일경제",
-   "time": "2026-11-26T22:07:10+09:00",
-   "url": "https://n.news.naver.com/article/009/0005769751",
-   "summary": "한은 기준금리 0.25%P 인상 수혜 은행주들 일제히 하락세 반도체주로 머니무브 영향도 한국은행이 기준금리를 인상했지만 국내 금융지주 주가는 일제히 하락세를 보였다.",
-   "theme": "macro",
-   "theme_label": "거시·환율·금리",
-   "theme_color": "#7fd3e8",
-   "leaders": [],
+   "master_themes": [],
    "hot": 0.0,
    "fresh": false,
    "breaking": false
@@ -3735,129 +3792,11 @@
  ],
  "issues": [
   {
-   "id": "081/0003703638",
-   "title": "美 “삼성전자·SK하이닉스, 李대통령” 콕 집어…韓에 최대 25% 관세 으름장",
-   "url": "https://n.news.naver.com/article/081/0003703638",
-   "press": "서울신문",
-   "time": "2026-11-26T20:28:16+09:00",
-   "section": "네이버 메인",
-   "source": "main",
-   "main_rank": 2,
-   "theme": "semiconductor",
-   "theme_label": "반도체·AI",
-   "tags": [
-    "SK하이닉스",
-    "삼성전자"
-   ],
-   "presses": 4,
-   "press_list": [
-    "서울신문",
-    "JTBC",
-    "매일경제",
-    "YTN"
-   ],
-   "related": [
-    {
-     "title": "한국 콕 집어 \"미국에 피해\"…'약속 어기면' 관세 25%?",
-     "press": "JTBC",
-     "url": "https://n.news.naver.com/article/437/0000522654",
-     "time": "2026-11-26T19:12:46.502824+09:00"
-    },
-    {
-     "title": "'호남 팹' 딴지건 美 … 관세 25% 카드로 압박",
-     "press": "매일경제",
-     "url": "https://n.news.naver.com/mnews/article/009/0005769704",
-     "time": ""
-    },
-    {
-     "title": "미, 반도체 겨냥 \"과잉생산 징후\"…관세 이어 투자 압박?",
-     "press": "YTN",
-     "url": "https://www.ytn.co.kr/_ln/0102_20261126223546",
-     "time": "2026-11-26T22:35:46+09:00"
-    }
-   ],
-   "article_count": 6,
-   "breaking": false,
-   "relevance": 25,
-   "civic": true,
-   "summary": "USTR 과잉생산 관세 보고서 \"韓산업정책이 시장 왜곡\" 삼전닉스 국내 투자전략 견제 … 업계 \"공급 부족\" 반발 미국 무역대표부(USTR)가 한국의 반도체·자동차 산업 육성 정책을 '과잉 생산 관세' 부과의 핵심",
-   "leaders": [
-    "SK하이닉스",
-    "삼성전자",
-    "한미반도체",
-    "이수페타시스"
-   ],
-   "issue_rank": 1,
-   "db_themes": [
-    "반도체·HBM 메모리 대표주 (삼전·하이닉스·HBM 장비)"
-   ]
-  },
-  {
-   "id": "001/0016466655",
-   "title": "\"이재용, '반도체 장기구매할게' 머스크에 '그럼 뭘 해줄건데'\"",
-   "url": "https://n.news.naver.com/article/001/0016466655",
-   "press": "연합뉴스",
-   "time": "2026-11-26T19:20:22+09:00",
-   "section": "네이버 메인",
-   "source": "main",
-   "main_rank": 1,
-   "theme": "semiconductor",
-   "theme_label": "반도체·AI",
-   "tags": [
-    "반도체"
-   ],
-   "presses": 7,
-   "press_list": [
-    "연합뉴스",
-    "아이뉴스24",
-    "이데일리",
-    "조선일보",
-    "경향신문",
-    "서울경제"
-   ],
-   "related": [
-    {
-     "title": "머스크 \"반도체 좀 팔아줘\"…이재용 \"그럼 뭘 해줄건데\"",
-     "press": "아이뉴스24",
-     "url": "https://n.news.naver.com/article/031/0001078900",
-     "time": "2026-11-26T22:12:46.502824+09:00"
-    },
-    {
-     "title": "\"'반도체 장기 구매할게' 머스크 제안에…이재용 '뭘 더 해줄 수 있나'\"",
-     "press": "이데일리",
-     "url": "https://n.news.naver.com/article/018/0006416281",
-     "time": "2026-11-26T22:12:46.502824+09:00"
-    },
-    {
-     "title": "머스크도 퇴짜 맞은 메모리… 이재용 “뭘 더 해줄 건데?”",
-     "press": "조선일보",
-     "url": "https://n.news.naver.com/article/023/0004011958",
-     "time": "2026-11-26T21:12:46.502824+09:00"
-    }
-   ],
-   "article_count": 7,
-   "breaking": false,
-   "relevance": 28,
-   "civic": false,
-   "summary": "인공지능(AI) 인프라 투자 붐으로 메모리 반도체가 극심한 공급난을 겪으면서 글로벌 전자 업계가 메모리 칩 확보 쟁탈전을 벌이고 있다. 일부 거대 AI 기업들은 삼성전자 반도체 공장 인근에 숙소를 잡고 직원을 상주시",
-   "leaders": [
-    "한미반도체",
-    "이수페타시스",
-    "가온칩스",
-    "티엘비"
-   ],
-   "issue_rank": 2,
-   "db_themes": [
-    "반도체·HBM 메모리 대표주 (삼전·하이닉스·HBM 장비)",
-    "AI 메모리 기판 (SOCAMM·DDR5·CXL)"
-   ]
-  },
-  {
    "id": "448/0000653662",
    "title": "北 김정은, 새 핵시설 공개하며 \"핵 보유국 부정은 선전포고\"",
    "url": "https://n.news.naver.com/mnews/article/448/0000653662",
    "press": "TV조선",
-   "time": "",
+   "time": "2026-11-26T21:42:16+09:00",
    "section": "정치",
    "source": "civic",
    "main_rank": null,
@@ -3898,10 +3837,145 @@
    "breaking": false,
    "relevance": 20,
    "civic": true,
+   "master_themes": [],
+   "master_hits": [],
    "summary": "북한 김정은이 새로운 우라늄 농축시설과 핵추진 잠수함의 원자로로 추정되는 장비를 공개했습니다. 핵무기 생산 능력은 물론 수중 핵 보복 능력까지 과시한 건데, 자신들의 핵보유국 지위를 부정한다면, 선전 포고로 간주하겠",
    "leaders": [],
-   "issue_rank": 3,
+   "issue_rank": 1,
    "db_themes": []
+  },
+  {
+   "id": "081/0003703638",
+   "title": "美 “삼성전자·SK하이닉스, 李대통령” 콕 집어…韓에 최대 25% 관세 으름장",
+   "url": "https://n.news.naver.com/article/081/0003703638",
+   "press": "서울신문",
+   "time": "2026-11-26T20:28:16+09:00",
+   "section": "네이버 메인",
+   "source": "main",
+   "main_rank": 2,
+   "theme": "semiconductor",
+   "theme_label": "반도체·AI",
+   "tags": [
+    "SK하이닉스",
+    "삼성전자"
+   ],
+   "presses": 4,
+   "press_list": [
+    "서울신문",
+    "JTBC",
+    "매일경제",
+    "YTN"
+   ],
+   "related": [
+    {
+     "title": "한국 콕 집어 \"미국에 피해\"…'약속 어기면' 관세 25%?",
+     "press": "JTBC",
+     "url": "https://n.news.naver.com/article/437/0000522654",
+     "time": "2026-11-26T18:59:19.218365+09:00"
+    },
+    {
+     "title": "'호남 팹' 딴지건 美 … 관세 25% 카드로 압박",
+     "press": "매일경제",
+     "url": "https://n.news.naver.com/mnews/article/009/0005769704",
+     "time": ""
+    },
+    {
+     "title": "미, 반도체 겨냥 \"과잉생산 징후\"…관세 이어 투자 압박?",
+     "press": "YTN",
+     "url": "https://www.ytn.co.kr/_ln/0102_20261126223546",
+     "time": "2026-11-26T22:35:46+09:00"
+    }
+   ],
+   "article_count": 6,
+   "breaking": false,
+   "relevance": 25,
+   "civic": true,
+   "master_themes": [
+    "소캠"
+   ],
+   "master_hits": [
+    {
+     "name": "소캠",
+     "score": 4.8,
+     "kw": [
+      "삼성전자",
+      "SK하이닉스"
+     ]
+    }
+   ],
+   "summary": "USTR 과잉생산 관세 보고서 \"韓산업정책이 시장 왜곡\" 삼전닉스 국내 투자전략 견제 … 업계 \"공급 부족\" 반발 미국 무역대표부(USTR)가 한국의 반도체·자동차 산업 육성 정책을 '과잉 생산 관세' 부과의 핵심",
+   "leaders": [
+    "SK하이닉스",
+    "삼성전자",
+    "한미반도체",
+    "이수페타시스"
+   ],
+   "issue_rank": 2,
+   "db_themes": [
+    "반도체·HBM 메모리 대표주 (삼전·하이닉스·HBM 장비)"
+   ]
+  },
+  {
+   "id": "001/0016466655",
+   "title": "\"이재용, '반도체 장기구매할게' 머스크에 '그럼 뭘 해줄건데'\"",
+   "url": "https://n.news.naver.com/article/001/0016466655",
+   "press": "연합뉴스",
+   "time": "2026-11-26T19:20:22+09:00",
+   "section": "네이버 메인",
+   "source": "main",
+   "main_rank": 1,
+   "theme": "semiconductor",
+   "theme_label": "반도체·AI",
+   "tags": [
+    "반도체"
+   ],
+   "presses": 7,
+   "press_list": [
+    "연합뉴스",
+    "아이뉴스24",
+    "이데일리",
+    "조선일보",
+    "경향신문",
+    "서울경제"
+   ],
+   "related": [
+    {
+     "title": "머스크 \"반도체 좀 팔아줘\"…이재용 \"그럼 뭘 해줄건데\"",
+     "press": "아이뉴스24",
+     "url": "https://n.news.naver.com/article/031/0001078900",
+     "time": "2026-11-26T21:59:19.218365+09:00"
+    },
+    {
+     "title": "\"'반도체 장기 구매할게' 머스크 제안에…이재용 '뭘 더 해줄 수 있나'\"",
+     "press": "이데일리",
+     "url": "https://n.news.naver.com/article/018/0006416281",
+     "time": "2026-11-26T21:59:19.218365+09:00"
+    },
+    {
+     "title": "머스크도 퇴짜 맞은 메모리… 이재용 “뭘 더 해줄 건데?”",
+     "press": "조선일보",
+     "url": "https://n.news.naver.com/article/023/0004011958",
+     "time": "2026-11-26T20:59:19.218365+09:00"
+    }
+   ],
+   "article_count": 7,
+   "breaking": false,
+   "relevance": 28,
+   "civic": false,
+   "master_themes": [],
+   "master_hits": [],
+   "summary": "로이터 = 재판매 및 DB금지] (서울=연합뉴스) 이지헌 기자 = 인공지능(AI) 인프라 투자 붐으로 메모리 반도체가 극심한 공급난을 겪으면서 글로벌 전자 업계가 메모리 칩 확보 쟁탈전을 벌이고 있다고 미 월스트리트저널(WSJ)이 25일(현지시간) 조명했다.",
+   "leaders": [
+    "한미반도체",
+    "이수페타시스",
+    "가온칩스",
+    "티엘비"
+   ],
+   "issue_rank": 3,
+   "db_themes": [
+    "반도체·HBM 메모리 대표주 (삼전·하이닉스·HBM 장비)",
+    "AI 메모리 기판 (SOCAMM·DDR5·CXL)"
+   ]
   },
   {
    "id": "374/0000546158",
@@ -3929,7 +4003,7 @@
      "title": "\"메모리 개발 속도, M&A 힘 싣는다\"…삼성전자, 조직개편 단행(종합)",
      "press": "뉴스1",
      "url": "https://n.news.naver.com/article/421/0009313075",
-     "time": "2026-11-26T19:12:46.502824+09:00"
+     "time": "2026-11-26T18:59:19.218365+09:00"
     },
     {
      "title": "삼성전자 DX, M&A 조직 강화…DS는 메모리 개발체제 일원화",
@@ -3942,6 +4016,18 @@
    "breaking": false,
    "relevance": 16,
    "civic": false,
+   "master_themes": [
+    "소캠"
+   ],
+   "master_hits": [
+    {
+     "name": "소캠",
+     "score": 2.8,
+     "kw": [
+      "삼성전자"
+     ]
+    }
+   ],
    "summary": "삼성전자가 미래 성장 동력 확보와 기술 경쟁력 강화에 초점을 맞춘 조직개편을 단행했다. 26일 업계에 따르면 삼성전자 완성품 사업 담당 DX(디바이스경험) 부문과 반도체 사업 담당 DS(디바이스솔루션) 부문은 조직개",
    "leaders": [
     "삼성전자",
@@ -3977,6 +4063,19 @@
    "breaking": false,
    "relevance": 16,
    "civic": true,
+   "master_themes": [
+    "의료AI"
+   ],
+   "master_hits": [
+    {
+     "name": "의료AI",
+     "score": 2.4,
+     "kw": [
+      "의료",
+      "AI"
+     ]
+    }
+   ],
    "summary": "보건의약법규 과목 20명→137명 기말 앞둔 서울 고교 대책 분주 학급별 1대씩 금속탐지기 보급 토익도 안경·옷 단추에 스티커 최근 보건의료인 국가시험 일부 과목에서 합격자 수 증가 등이 확인됐지만 정부는 전수조사",
    "leaders": [
     "지슨",
@@ -4013,6 +4112,8 @@
    "breaking": false,
    "relevance": 10,
    "civic": true,
+   "master_themes": [],
+   "master_hits": [],
    "summary": "",
    "leaders": [
     "지슨",
@@ -4023,41 +4124,6 @@
    "issue_rank": 6,
    "db_themes": [
     "AI 시험 부정행위 대응·전파탐지/물리보안"
-   ]
-  },
-  {
-   "id": "018/0006416182",
-   "title": "“폭락장서 나 홀로 27% 급등”…증권가 목표가 줄상향한 ‘이 종목’",
-   "url": "https://n.news.naver.com/article/018/0006416182",
-   "press": "이데일리",
-   "time": "2026-11-26T16:52:12+09:00",
-   "section": "네이버 메인",
-   "source": "main",
-   "main_rank": 4,
-   "theme": "earnings",
-   "theme_label": "실적·공시·수급",
-   "tags": [
-    "급등"
-   ],
-   "presses": 1,
-   "press_list": [
-    "이데일리"
-   ],
-   "related": [],
-   "article_count": 1,
-   "breaking": false,
-   "relevance": 10,
-   "civic": false,
-   "summary": "증권가, 화장품주 목표주가 잇단 상향 약세장에도 실리콘투·에이피알·코스맥스 강세 이달 화장품 수출 8.29억 달러 전년比 61.7%↑ 한주간 ETF수익률 인버스 이어 화장품 상위권 [이데일리 박민 기자] 인공지능(AI) 수익성 우려로 반도체 투자 수요가 크게 위축된 가운데 ‘K-뷰티’가 투자…",
-   "leaders": [
-    "한미반도체",
-    "이수페타시스",
-    "가온칩스",
-    "티엘비"
-   ],
-   "issue_rank": 7,
-   "db_themes": [
-    "K-뷰티·화장품 (수출 회복·중국 소비)"
    ]
   },
   {
@@ -4084,16 +4150,111 @@
    "breaking": false,
    "relevance": 14,
    "civic": false,
+   "master_themes": [
+    "스페이스X"
+   ],
+   "master_hits": [
+    {
+     "name": "스페이스X",
+     "score": 2.4,
+     "kw": [
+      "스페이스X"
+     ]
+    }
+   ],
    "summary": "일론 머스크의 우주기업 스페이스X가 미국의 모든 활성 '트럼프 계좌'에 자사 주식 1주씩을 기부하기로 했다. 이는 앞서 최고경영진이 발표한 개인 기부 계획을 회사 차원으로 대폭 확대한 조치다.",
    "leaders": [
     "쎄트렉아이",
     "한국항공우주"
    ],
-   "issue_rank": 8,
+   "issue_rank": 7,
    "db_themes": [
     "스페이스X IPO·우주항공 공급망 (위성·발사체·특수소재)",
     "스페이스X·우주항공 (위성·발사체 공급망)"
    ]
+  },
+  {
+   "id": "009/0005769761",
+   "title": "“온세상이 변동성이다”…후티공격에 브렌트유 하루만에 3.5% 급등",
+   "url": "https://n.news.naver.com/mnews/article/009/0005769761",
+   "press": "매일경제",
+   "time": "2026-11-26T23:36:06+09:00",
+   "section": "글로벌 경제",
+   "source": "section",
+   "main_rank": null,
+   "theme": "battery",
+   "theme_label": "2차전지·에너지",
+   "tags": [
+    "정유",
+    "유가"
+   ],
+   "presses": 1,
+   "press_list": [
+    "매일경제"
+   ],
+   "related": [],
+   "article_count": 1,
+   "breaking": false,
+   "relevance": 11,
+   "civic": false,
+   "master_themes": [
+    "정유유가"
+   ],
+   "master_hits": [
+    {
+     "name": "정유유가",
+     "score": 2.4,
+     "kw": [
+      "정유",
+      "유가"
+     ]
+    }
+   ],
+   "summary": "예멘의 친이란 후티 반군이 사우디아라비아 최대 정유시설을 공격했다는 소식에 국제유가가 급등했다. 사우디가 지원하는 예멘 정부군의 핵심 거점인 아덴을 압박하고 있는 후티 반군이 사우디에 대한 공세 수위까지 높이면서 중",
+   "leaders": [],
+   "issue_rank": 8,
+   "db_themes": []
+  },
+  {
+   "id": "031/0001078902",
+   "title": "3차 ESS 중앙계약시장 우선협상 대상자 선정⋯1194MW 규모",
+   "url": "https://n.news.naver.com/mnews/article/031/0001078902",
+   "press": "아이뉴스24",
+   "time": "2026-11-26T23:22:08+09:00",
+   "section": "산업/재계",
+   "source": "section",
+   "main_rank": null,
+   "theme": "battery",
+   "theme_label": "2차전지·에너지",
+   "tags": [
+    "ESS",
+    "에너지"
+   ],
+   "presses": 1,
+   "press_list": [
+    "아이뉴스24"
+   ],
+   "related": [],
+   "article_count": 1,
+   "breaking": false,
+   "relevance": 12,
+   "civic": false,
+   "master_themes": [
+    "아이폰"
+   ],
+   "master_hits": [
+    {
+     "name": "아이폰",
+     "score": 2.0,
+     "kw": [
+      "삼성SDI"
+     ]
+    }
+   ],
+   "summary": "제3차 에너지저장장치(ESS) 중앙계약시장 우선협상 대상자 선정이 마무리됐다. 총 선정 용량은 1194메가와트(MW)로 당초 공고 물량인 1180MW를 웃돌았다. LG에너지솔루션이 입찰에 불참한 가운데 삼성SDI와",
+   "leaders": [],
+   "issue_rank": 9,
+   "db_themes": []
   },
   {
    "id": "ytn/0103_20261126230459",
@@ -4118,9 +4279,11 @@
    "breaking": false,
    "relevance": 4,
    "civic": true,
+   "master_themes": [],
+   "master_hits": [],
    "summary": "[앵커] 급식과 돌봄, 특수교육 등을 담당하는 학교 비정규직 노조가 교육...",
    "leaders": [],
-   "issue_rank": 9,
+   "issue_rank": 10,
    "db_themes": []
   },
   {
@@ -4146,9 +4309,11 @@
    "breaking": false,
    "relevance": 4,
    "civic": true,
+   "master_themes": [],
+   "master_hits": [],
    "summary": "",
    "leaders": [],
-   "issue_rank": 10,
+   "issue_rank": 11,
    "db_themes": []
   },
   {
@@ -4172,9 +4337,11 @@
    "breaking": false,
    "relevance": 0,
    "civic": true,
+   "master_themes": [],
+   "master_hits": [],
    "summary": "",
    "leaders": [],
-   "issue_rank": 11,
+   "issue_rank": 12,
    "db_themes": []
   },
   {
@@ -4201,9 +4368,11 @@
    "breaking": false,
    "relevance": 13,
    "civic": false,
+   "master_themes": [],
+   "master_hits": [],
    "summary": "수소차 보급이 늘면서 충전 수요도 커지고 있지만, 정작 공급은 이를 따라가지 못하고 있습니다. 최근에는 주요 생산시설의 정비까지 겹치면서 청주지역 수소충전소 곳곳에서 운영이 중단되는 사태까지 벌어졌는데요.",
    "leaders": [],
-   "issue_rank": 12,
+   "issue_rank": 13,
    "db_themes": []
   },
   {
@@ -4229,9 +4398,11 @@
    "breaking": false,
    "relevance": 10,
    "civic": false,
+   "master_themes": [],
+   "master_hits": [],
    "summary": "이재명 대통령의 ‘숨은 부동산 책사’로서 정부 정책에 우호적인 견해를 밝혀온 이광수 광수네복덕방 대표가 유튜브 채널 ‘김어준의 겸손은힘들다 뉴스공장’에 출연해 증시 폭락으로 손실을 본 개인 투자자들의 처지를 이야기하다 눈물을 흘렸다.",
    "leaders": [],
-   "issue_rank": 13,
+   "issue_rank": 14,
    "db_themes": []
   },
   {
@@ -4257,9 +4428,11 @@
    "breaking": false,
    "relevance": 10,
    "civic": false,
+   "master_themes": [],
+   "master_hits": [],
    "summary": "[앵커] 연말이 되자 공시가 12억 원을 넘는 집 소유자들에게 어김없이 종합부동산세 고지서가 발송됐습니다. 올해 주택 종부세 대상자는 73만 명에 육박합니다.",
    "leaders": [],
-   "issue_rank": 14,
+   "issue_rank": 15,
    "db_themes": []
   },
   {
@@ -4286,6 +4459,8 @@
    "breaking": false,
    "relevance": 16,
    "civic": false,
+   "master_themes": [],
+   "master_hits": [],
    "summary": "美 '과잉생산 관세' 공개…15% 유지하되 최대 25% 검토 3대 메가 프로젝트까지 겨냥…韓 산업정책 도마 위 과잉생산은 명분…대미 투자·디지털 규제 압박 포석 전문가 \"선제적 양보보다 패키지 협상 나서야\" 도널드 트럼프 미국 행정부가 한국산 제품에 대한 관세 상한을 기존 합의대로 15%로…",
    "leaders": [
     "한미반도체",
@@ -4293,7 +4468,7 @@
     "가온칩스",
     "티엘비"
    ],
-   "issue_rank": 15,
+   "issue_rank": 16,
    "db_themes": [
     "관세·트럼프 통상",
     "K-온디바이스 AI 반도체 (정부 8,002억 프로젝트)",
@@ -4323,39 +4498,10 @@
    "breaking": false,
    "relevance": 4,
    "civic": true,
+   "master_themes": [],
+   "master_hits": [],
    "summary": "",
    "leaders": [],
-   "issue_rank": 16,
-   "db_themes": []
-  },
-  {
-   "id": "584/0000040337",
-   "title": "[KSFY] 행정고시 5년 준비하고 기업 200곳 탈락한 문과 출신 위성AI 개발자",
-   "url": "https://n.news.naver.com/article/584/0000040337",
-   "press": "동아사이언스",
-   "time": "2026-11-26T19:12:46.502824+09:00",
-   "section": "네이버 메인",
-   "source": "main",
-   "main_rank": 1,
-   "theme": "defense",
-   "theme_label": "방산·우주",
-   "tags": [
-    "위성"
-   ],
-   "presses": 1,
-   "press_list": [
-    "동아사이언스"
-   ],
-   "related": [],
-   "article_count": 1,
-   "breaking": false,
-   "relevance": 10,
-   "civic": false,
-   "summary": "",
-   "leaders": [
-    "쎄트렉아이",
-    "한국항공우주"
-   ],
    "issue_rank": 17,
    "db_themes": []
   },
@@ -4382,9 +4528,44 @@
    "breaking": false,
    "relevance": 8,
    "civic": false,
+   "master_themes": [],
+   "master_hits": [],
    "summary": "26일 유럽 주요 증시가 장 초반 일제히 반등했다. 전날 뉴욕증시가 장 후반 낙폭을 줄인 데다 미국의 새 관세안이 기존 관세에 추가로 얹히지 않을 것이라는 전망에 은행주와 기술주를 중심으로 매수세가 유입됐다.",
    "leaders": [],
    "issue_rank": 18,
+   "db_themes": []
+  },
+  {
+   "id": "584/0000040337",
+   "title": "[KSFY] 행정고시 5년 준비하고 기업 200곳 탈락한 문과 출신 위성AI 개발자",
+   "url": "https://n.news.naver.com/article/584/0000040337",
+   "press": "동아사이언스",
+   "time": "2026-11-26T18:16:16+09:00",
+   "section": "네이버 메인",
+   "source": "main",
+   "main_rank": 1,
+   "theme": "defense",
+   "theme_label": "방산·우주",
+   "tags": [
+    "위성"
+   ],
+   "presses": 1,
+   "press_list": [
+    "동아사이언스"
+   ],
+   "related": [],
+   "article_count": 1,
+   "breaking": false,
+   "relevance": 10,
+   "civic": false,
+   "master_themes": [],
+   "master_hits": [],
+   "summary": "26일 국립과천과학관 천체투영관에서 열린 '제1회 코리아스페이스포럼Y'에서 심상철 텔레픽스 우주AI팀 선임연구원이 발언하고 있다. 행정고시를 5년간 준비하다 실패한 뒤 인공지능(AI)이 뜬다는 소식에 시도해 봤습니다.",
+   "leaders": [
+    "쎄트렉아이",
+    "한국항공우주"
+   ],
+   "issue_rank": 19,
    "db_themes": []
   },
   {
@@ -4410,11 +4591,23 @@
    "breaking": false,
    "relevance": 10,
    "civic": false,
+   "master_themes": [
+    "소캠"
+   ],
+   "master_hits": [
+    {
+     "name": "소캠",
+     "score": 2.8,
+     "kw": [
+      "삼성전자"
+     ]
+    }
+   ],
    "summary": "김아현 전문가가 삼성전자 단일종목 레버리지 상품의 차트를 확인하던 중 울먹이고 있다. 26일 서울경제TV에 따르면 지난 25일 방영된 증시 분석 프로그램 '김아현의 금빛 스탁'에서 김아현 전문가는 나스닥 지수 차트를 살펴보며 추가 하락 가능성을 전망했다.",
    "leaders": [
     "삼성전자"
    ],
-   "issue_rank": 19,
+   "issue_rank": 20,
    "db_themes": []
   },
   {
@@ -4440,9 +4633,11 @@
    "breaking": false,
    "relevance": 10,
    "civic": true,
+   "master_themes": [],
+   "master_hits": [],
    "summary": "",
    "leaders": [],
-   "issue_rank": 20,
+   "issue_rank": 21,
    "db_themes": []
   },
   {
@@ -4466,37 +4661,71 @@
    "breaking": false,
    "relevance": 0,
    "civic": false,
+   "master_themes": [],
+   "master_hits": [],
    "summary": "개인·외인 순매수 톱10 평균 손실 기관 순매수 톱10 ETF 5.91%↑ 기관 상위 ETF 4개 ‘인버스’ 코스피가 강보합 마감한 26일 서울 중구 하나은행 딜링룸 현황판에 코스피·코스닥 종가가 표시돼있다.",
    "leaders": [],
-   "issue_rank": 21,
+   "issue_rank": 22,
    "db_themes": []
   },
   {
-   "id": "293/0000093893",
-   "title": "[단독] 신세계, HLL중앙 인수전 발 뺐다…중앙일보 730억 투자에 무게",
-   "url": "https://n.news.naver.com/article/293/0000093893",
-   "press": "블로터",
-   "time": "2026-11-26T16:50:15+09:00",
+   "id": "088/0001042557",
+   "title": "\"일본 난리났다\" 인구 1천명 시골서 매출 202억원?…무슨 일 [영상]",
+   "url": "https://n.news.naver.com/article/088/0001042557",
+   "press": "매일신문",
+   "time": "2026-11-26T17:02:11+09:00",
    "section": "네이버 메인",
    "source": "main",
-   "main_rank": 4,
+   "main_rank": 2,
    "theme": "earnings",
    "theme_label": "실적·공시·수급",
    "tags": [
-    "인수"
+    "매출"
    ],
    "presses": 1,
    "press_list": [
-    "블로터"
+    "매일신문"
    ],
    "related": [],
    "article_count": 1,
    "breaking": false,
    "relevance": 7,
    "civic": false,
-   "summary": "구글 제미나이의 도움을 받아 제작한 이미지입니다. 신세계그룹이 중앙그룹 라이프스타일 미디어 계열사 에이치엘엘중앙(HLL중앙) 인수전에서 발을 뺐다.",
+   "master_themes": [],
+   "master_hits": [],
+   "summary": "日 미사키정, '현명한 축소'…인구 감소에 맞춰 공공시설 재편 주민들은 서로 안부 살피고, 지역 기업 아이디어로 도시 청년 이주 지역 산림 자원 이용해 70개 사업 탄생·매출 24억엔 아오노 다카하루 미사키정장이 '현명한 축소(Smart shrink)' 정책을 소개하고 있다.",
    "leaders": [],
-   "issue_rank": 22,
+   "issue_rank": 23,
+   "db_themes": []
+  },
+  {
+   "id": "018/0006416182",
+   "title": "“폭락장서 나 홀로 27% 급등”…증권가 목표가 줄상향한 ‘이 종목’",
+   "url": "https://n.news.naver.com/article/018/0006416182",
+   "press": "이데일리",
+   "time": "2026-11-26T16:59:19.218365+09:00",
+   "section": "네이버 메인",
+   "source": "main",
+   "main_rank": 4,
+   "theme": "earnings",
+   "theme_label": "실적·공시·수급",
+   "tags": [
+    "급등"
+   ],
+   "presses": 1,
+   "press_list": [
+    "이데일리"
+   ],
+   "related": [],
+   "article_count": 1,
+   "breaking": false,
+   "relevance": 10,
+   "civic": false,
+   "master_themes": [],
+   "master_hits": [],
+   "summary": "",
+   "leaders": [],
+   "issue_rank": 24,
    "db_themes": []
   },
   {
@@ -4520,6 +4749,8 @@
    "breaking": false,
    "relevance": 0,
    "civic": true,
+   "master_themes": [],
+   "master_hits": [],
    "summary": "",
    "leaders": [
     "인디에프",
@@ -4527,7 +4758,7 @@
     "코데즈컴바인",
     "아난티"
    ],
-   "issue_rank": 23,
+   "issue_rank": 25,
    "db_themes": []
   },
   {
@@ -4553,15 +4784,37 @@
    "breaking": false,
    "relevance": 7,
    "civic": false,
+   "master_themes": [],
+   "master_hits": [],
    "summary": "23일 서울 여의도 국회 의원회관에서 열린 AI글라스 악용 방지 및 공정한 산업 생태계 조성을 위한 국회 토론회에 AI글라스와 2027년도 수능 문제지가 놓여져 있다.",
    "leaders": [],
-   "issue_rank": 24,
+   "issue_rank": 26,
    "db_themes": [
     "AI 시험 부정행위 대응·전파탐지/물리보안"
    ]
   }
  ],
  "articles": [
+  {
+   "id": "448/0000653662",
+   "title": "北 김정은, 새 핵시설 공개하며 \"핵 보유국 부정은 선전포고\"",
+   "summary": "북한 김정은이 새로운 우라늄 농축시설과 핵추진 잠수함의 원자로로 추정되는 장비를 공개했습니다. 핵무기 생산 능력은 물론 수중 핵 보복 능력까지 과시한 건데, 자신들의 핵보유국 지위를 부정한다면, 선전 포고로 간주하겠",
+   "press": "TV조선",
+   "time": "2026-11-26T21:42:16+09:00",
+   "url": "https://n.news.naver.com/mnews/article/448/0000653662",
+   "theme": "defense",
+   "theme_label": "방산·우주",
+   "tags": [
+    "잠수함",
+    "무기"
+   ],
+   "section": "정치",
+   "relevance": 20,
+   "source": "civic",
+   "leaders": [],
+   "issue_rank": 1,
+   "master_themes": []
+  },
   {
    "id": "081/0003703638",
    "title": "美 “삼성전자·SK하이닉스, 李대통령” 콕 집어…韓에 최대 25% 관세 으름장",
@@ -4584,12 +4837,15 @@
     "한미반도체",
     "이수페타시스"
    ],
-   "issue_rank": 1
+   "issue_rank": 2,
+   "master_themes": [
+    "소캠"
+   ]
   },
   {
    "id": "001/0016466655",
    "title": "\"이재용, '반도체 장기구매할게' 머스크에 '그럼 뭘 해줄건데'\"",
-   "summary": "인공지능(AI) 인프라 투자 붐으로 메모리 반도체가 극심한 공급난을 겪으면서 글로벌 전자 업계가 메모리 칩 확보 쟁탈전을 벌이고 있다. 일부 거대 AI 기업들은 삼성전자 반도체 공장 인근에 숙소를 잡고 직원을 상주시",
+   "summary": "로이터 = 재판매 및 DB금지] (서울=연합뉴스) 이지헌 기자 = 인공지능(AI) 인프라 투자 붐으로 메모리 반도체가 극심한 공급난을 겪으면서 글로벌 전자 업계가 메모리 칩 확보 쟁탈전을 벌이고 있다고 미 월스트리트저널(WSJ)이 25일(현지시간) 조명했다.",
    "press": "연합뉴스",
    "time": "2026-11-26T19:20:22+09:00",
    "url": "https://n.news.naver.com/article/001/0016466655",
@@ -4607,26 +4863,8 @@
     "가온칩스",
     "티엘비"
    ],
-   "issue_rank": 2
-  },
-  {
-   "id": "448/0000653662",
-   "title": "北 김정은, 새 핵시설 공개하며 \"핵 보유국 부정은 선전포고\"",
-   "summary": "북한 김정은이 새로운 우라늄 농축시설과 핵추진 잠수함의 원자로로 추정되는 장비를 공개했습니다. 핵무기 생산 능력은 물론 수중 핵 보복 능력까지 과시한 건데, 자신들의 핵보유국 지위를 부정한다면, 선전 포고로 간주하겠",
-   "press": "TV조선",
-   "time": "",
-   "url": "https://n.news.naver.com/mnews/article/448/0000653662",
-   "theme": "defense",
-   "theme_label": "방산·우주",
-   "tags": [
-    "잠수함",
-    "무기"
-   ],
-   "section": "정치",
-   "relevance": 20,
-   "source": "civic",
-   "leaders": [],
-   "issue_rank": 3
+   "issue_rank": 3,
+   "master_themes": []
   },
   {
    "id": "374/0000546158",
@@ -4650,7 +4888,10 @@
     "이수페타시스",
     "가온칩스"
    ],
-   "issue_rank": 4
+   "issue_rank": 4,
+   "master_themes": [
+    "소캠"
+   ]
   },
   {
    "id": "022/0004178434",
@@ -4675,7 +4916,10 @@
     "샌즈랩",
     "한싹"
    ],
-   "issue_rank": 5
+   "issue_rank": 5,
+   "master_themes": [
+    "의료AI"
+   ]
   },
   {
    "id": "ytn/0104_20261126221035",
@@ -4698,30 +4942,8 @@
     "샌즈랩",
     "한싹"
    ],
-   "issue_rank": 6
-  },
-  {
-   "id": "018/0006416182",
-   "title": "“폭락장서 나 홀로 27% 급등”…증권가 목표가 줄상향한 ‘이 종목’",
-   "summary": "증권가, 화장품주 목표주가 잇단 상향 약세장에도 실리콘투·에이피알·코스맥스 강세 이달 화장품 수출 8.29억 달러 전년比 61.7%↑ 한주간 ETF수익률 인버스 이어 화장품 상위권 [이데일리 박민 기자] 인공지능(AI) 수익성 우려로 반도체 투자 수요가 크게 위축된 가운데 ‘K-뷰티’가 투자…",
-   "press": "이데일리",
-   "time": "2026-11-26T16:52:12+09:00",
-   "url": "https://n.news.naver.com/article/018/0006416182",
-   "theme": "earnings",
-   "theme_label": "실적·공시·수급",
-   "tags": [
-    "급등"
-   ],
-   "section": "네이버 메인",
-   "relevance": 10,
-   "source": "main",
-   "leaders": [
-    "한미반도체",
-    "이수페타시스",
-    "가온칩스",
-    "티엘비"
-   ],
-   "issue_rank": 7
+   "issue_rank": 6,
+   "master_themes": []
   },
   {
    "id": "014/0005610494",
@@ -4743,7 +4965,54 @@
     "쎄트렉아이",
     "한국항공우주"
    ],
-   "issue_rank": 8
+   "issue_rank": 7,
+   "master_themes": [
+    "스페이스X"
+   ]
+  },
+  {
+   "id": "009/0005769761",
+   "title": "“온세상이 변동성이다”…후티공격에 브렌트유 하루만에 3.5% 급등",
+   "summary": "예멘의 친이란 후티 반군이 사우디아라비아 최대 정유시설을 공격했다는 소식에 국제유가가 급등했다. 사우디가 지원하는 예멘 정부군의 핵심 거점인 아덴을 압박하고 있는 후티 반군이 사우디에 대한 공세 수위까지 높이면서 중",
+   "press": "매일경제",
+   "time": "2026-11-26T23:36:06+09:00",
+   "url": "https://n.news.naver.com/mnews/article/009/0005769761",
+   "theme": "battery",
+   "theme_label": "2차전지·에너지",
+   "tags": [
+    "정유",
+    "유가"
+   ],
+   "section": "글로벌 경제",
+   "relevance": 11,
+   "source": "section",
+   "leaders": [],
+   "issue_rank": 8,
+   "master_themes": [
+    "정유유가"
+   ]
+  },
+  {
+   "id": "031/0001078902",
+   "title": "3차 ESS 중앙계약시장 우선협상 대상자 선정⋯1194MW 규모",
+   "summary": "제3차 에너지저장장치(ESS) 중앙계약시장 우선협상 대상자 선정이 마무리됐다. 총 선정 용량은 1194메가와트(MW)로 당초 공고 물량인 1180MW를 웃돌았다. LG에너지솔루션이 입찰에 불참한 가운데 삼성SDI와",
+   "press": "아이뉴스24",
+   "time": "2026-11-26T23:22:08+09:00",
+   "url": "https://n.news.naver.com/mnews/article/031/0001078902",
+   "theme": "battery",
+   "theme_label": "2차전지·에너지",
+   "tags": [
+    "ESS",
+    "에너지"
+   ],
+   "section": "산업/재계",
+   "relevance": 12,
+   "source": "section",
+   "leaders": [],
+   "issue_rank": 9,
+   "master_themes": [
+    "아이폰"
+   ]
   },
   {
    "id": "ytn/0103_20261126230459",
@@ -4761,7 +5030,8 @@
    "relevance": 4,
    "source": "press",
    "leaders": [],
-   "issue_rank": 9
+   "issue_rank": 10,
+   "master_themes": []
   },
   {
    "id": "ytn/0103_20261126225740",
@@ -4779,7 +5049,8 @@
    "relevance": 4,
    "source": "press",
    "leaders": [],
-   "issue_rank": 10
+   "issue_rank": 11,
+   "master_themes": []
   },
   {
    "id": "ytn/0102_20261126223456",
@@ -4795,7 +5066,8 @@
    "relevance": 0,
    "source": "press",
    "leaders": [],
-   "issue_rank": 11
+   "issue_rank": 12,
+   "master_themes": []
   },
   {
    "id": "655/0000033716",
@@ -4814,7 +5086,8 @@
    "relevance": 13,
    "source": "main",
    "leaders": [],
-   "issue_rank": 12
+   "issue_rank": 13,
+   "master_themes": []
   },
   {
    "id": "081/0003703643",
@@ -4832,7 +5105,8 @@
    "relevance": 10,
    "source": "main",
    "leaders": [],
-   "issue_rank": 13
+   "issue_rank": 14,
+   "master_themes": []
   },
   {
    "id": "448/0000653651",
@@ -4850,7 +5124,8 @@
    "relevance": 10,
    "source": "main",
    "leaders": [],
-   "issue_rank": 14
+   "issue_rank": 15,
+   "master_themes": []
   },
   {
    "id": "648/0000053013",
@@ -4874,7 +5149,8 @@
     "가온칩스",
     "티엘비"
    ],
-   "issue_rank": 15
+   "issue_rank": 16,
+   "master_themes": []
   },
   {
    "id": "ytn/0103_20261126195213",
@@ -4892,28 +5168,8 @@
    "relevance": 4,
    "source": "press",
    "leaders": [],
-   "issue_rank": 16
-  },
-  {
-   "id": "584/0000040337",
-   "title": "[KSFY] 행정고시 5년 준비하고 기업 200곳 탈락한 문과 출신 위성AI 개발자",
-   "summary": "",
-   "press": "동아사이언스",
-   "time": "2026-11-26T19:12:46.502824+09:00",
-   "url": "https://n.news.naver.com/article/584/0000040337",
-   "theme": "defense",
-   "theme_label": "방산·우주",
-   "tags": [
-    "위성"
-   ],
-   "section": "네이버 메인",
-   "relevance": 10,
-   "source": "main",
-   "leaders": [
-    "쎄트렉아이",
-    "한국항공우주"
-   ],
-   "issue_rank": 17
+   "issue_rank": 17,
+   "master_themes": []
   },
   {
    "id": "277/0005848478",
@@ -4931,7 +5187,30 @@
    "relevance": 8,
    "source": "section",
    "leaders": [],
-   "issue_rank": 18
+   "issue_rank": 18,
+   "master_themes": []
+  },
+  {
+   "id": "584/0000040337",
+   "title": "[KSFY] 행정고시 5년 준비하고 기업 200곳 탈락한 문과 출신 위성AI 개발자",
+   "summary": "26일 국립과천과학관 천체투영관에서 열린 '제1회 코리아스페이스포럼Y'에서 심상철 텔레픽스 우주AI팀 선임연구원이 발언하고 있다. 행정고시를 5년간 준비하다 실패한 뒤 인공지능(AI)이 뜬다는 소식에 시도해 봤습니다.",
+   "press": "동아사이언스",
+   "time": "2026-11-26T18:16:16+09:00",
+   "url": "https://n.news.naver.com/article/584/0000040337",
+   "theme": "defense",
+   "theme_label": "방산·우주",
+   "tags": [
+    "위성"
+   ],
+   "section": "네이버 메인",
+   "relevance": 10,
+   "source": "main",
+   "leaders": [
+    "쎄트렉아이",
+    "한국항공우주"
+   ],
+   "issue_rank": 19,
+   "master_themes": []
   },
   {
    "id": "030/0003490497",
@@ -4951,7 +5230,10 @@
    "leaders": [
     "삼성전자"
    ],
-   "issue_rank": 19
+   "issue_rank": 20,
+   "master_themes": [
+    "소캠"
+   ]
   },
   {
    "id": "ytn/0134_20261126172939",
@@ -4969,7 +5251,8 @@
    "relevance": 10,
    "source": "press",
    "leaders": [],
-   "issue_rank": 20
+   "issue_rank": 21,
+   "master_themes": []
   },
   {
    "id": "024/0000109910",
@@ -4985,25 +5268,46 @@
    "relevance": 0,
    "source": "main",
    "leaders": [],
-   "issue_rank": 21
+   "issue_rank": 22,
+   "master_themes": []
   },
   {
-   "id": "293/0000093893",
-   "title": "[단독] 신세계, HLL중앙 인수전 발 뺐다…중앙일보 730억 투자에 무게",
-   "summary": "구글 제미나이의 도움을 받아 제작한 이미지입니다. 신세계그룹이 중앙그룹 라이프스타일 미디어 계열사 에이치엘엘중앙(HLL중앙) 인수전에서 발을 뺐다.",
-   "press": "블로터",
-   "time": "2026-11-26T16:50:15+09:00",
-   "url": "https://n.news.naver.com/article/293/0000093893",
+   "id": "088/0001042557",
+   "title": "\"일본 난리났다\" 인구 1천명 시골서 매출 202억원?…무슨 일 [영상]",
+   "summary": "日 미사키정, '현명한 축소'…인구 감소에 맞춰 공공시설 재편 주민들은 서로 안부 살피고, 지역 기업 아이디어로 도시 청년 이주 지역 산림 자원 이용해 70개 사업 탄생·매출 24억엔 아오노 다카하루 미사키정장이 '현명한 축소(Smart shrink)' 정책을 소개하고 있다.",
+   "press": "매일신문",
+   "time": "2026-11-26T17:02:11+09:00",
+   "url": "https://n.news.naver.com/article/088/0001042557",
    "theme": "earnings",
    "theme_label": "실적·공시·수급",
    "tags": [
-    "인수"
+    "매출"
    ],
    "section": "네이버 메인",
    "relevance": 7,
    "source": "main",
    "leaders": [],
-   "issue_rank": 22
+   "issue_rank": 23,
+   "master_themes": []
+  },
+  {
+   "id": "018/0006416182",
+   "title": "“폭락장서 나 홀로 27% 급등”…증권가 목표가 줄상향한 ‘이 종목’",
+   "summary": "",
+   "press": "이데일리",
+   "time": "2026-11-26T16:59:19.218365+09:00",
+   "url": "https://n.news.naver.com/article/018/0006416182",
+   "theme": "earnings",
+   "theme_label": "실적·공시·수급",
+   "tags": [
+    "급등"
+   ],
+   "section": "네이버 메인",
+   "relevance": 10,
+   "source": "main",
+   "leaders": [],
+   "issue_rank": 24,
+   "master_themes": []
   },
   {
    "id": "ytn/0101_20261126162906",
@@ -5024,7 +5328,8 @@
     "코데즈컴바인",
     "아난티"
    ],
-   "issue_rank": 23
+   "issue_rank": 25,
+   "master_themes": []
   },
   {
    "id": "053/0000063361",
@@ -5042,7 +5347,8 @@
    "relevance": 7,
    "source": "main",
    "leaders": [],
-   "issue_rank": 24
+   "issue_rank": 26,
+   "master_themes": []
   }
  ]
 }

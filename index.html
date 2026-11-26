@@ -299,6 +299,7 @@
   .up-bdg.tm{color:#9fc0ff;background:rgba(79,140,255,.12);border:1px solid rgba(79,140,255,.3)}
   .up-bdg.tm.wait{color:#8b98ad;background:rgba(139,152,173,.1);border:1px dashed rgba(139,152,173,.34)}
   .up-bdg.cal{color:#c9a2ff;background:rgba(201,162,255,.13);border:1px solid rgba(201,162,255,.32);cursor:pointer}
+  .up-grp .gm{font-size:9.5px;font-weight:700;color:#b9a6e6;letter-spacing:-.1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
   .cl-th[data-caltheme]{cursor:pointer}
   .th-hl{outline:2px solid rgba(255,209,102,.55);outline-offset:1px;border-radius:10px}
   .th-acts{display:flex;gap:6px;flex-wrap:wrap;padding:6px 0 2px}
@@ -570,6 +571,34 @@
     line-height:14px;margin-right:4px;vertical-align:1px;border:1px solid rgba(255,255,255,.12)}
   .res-nm .tier.core{color:#9dbcff;border-color:rgba(79,140,255,.45);background:rgba(79,140,255,.14)}
   .res-nm .tier.extra{color:#c9b8ff;border-color:rgba(180,160,255,.42);background:rgba(180,160,255,.12)}
+  /* 1~10단계 자체 판정 배지 (2026-11-26) — 실전 픽 카드·레이더 대기·종합 안내가 같은 배지를 쓴다 */
+  .stg{font-size:8.5px;font-weight:900;letter-spacing:0;border-radius:4px;padding:0 4px;line-height:14px;
+    margin-right:4px;vertical-align:1px;border:1px solid rgba(255,255,255,.14);color:#c3cfe4;
+    background:rgba(255,255,255,.05);white-space:nowrap}
+  .stg.s1,.stg.s2{color:#ffd166;border-color:rgba(255,209,102,.45);background:rgba(255,209,102,.12)}
+  .stg.s3,.stg.s4{color:#7ff0c0;border-color:rgba(56,214,168,.42);background:rgba(56,214,168,.12)}
+  .stg.s5,.stg.s6,.stg.s7{color:#9dbcff;border-color:rgba(79,140,255,.42);background:rgba(79,140,255,.12)}
+  .stg.s8{color:#ff8b8b;border-color:rgba(255,139,139,.45);background:rgba(255,139,139,.12)}
+  .stg.s9,.stg.s10{color:#c9b8ff;border-color:rgba(180,160,255,.42);background:rgba(180,160,255,.12)}
+  .res-why.stgwhy{color:#8fa0bb}
+  /* 테마달력 — 마스터 테마(대장주·부대장주·3등주) 줄 */
+  .cl-th.ms{color:#c9a2ff;border-color:rgba(201,162,255,.36);background:rgba(201,162,255,.1);cursor:pointer}
+  .th-ms{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;margin:2px 0 6px;padding:5px 7px;
+    border-radius:8px;border:1px dashed rgba(201,162,255,.32);background:rgba(201,162,255,.06);
+    font-size:10.5px;color:#c9d3e6;letter-spacing:-.1px}
+  .th-ms b{color:#c9a2ff;font-weight:900}
+  .th-ms .stk{border:0;background:none;padding:0;font-size:10.5px;color:#dfe7f5;font-weight:800}
+  .th-ms .stk .cr{font-size:8.5px;color:#ffd166;margin-right:2px}
+  .th-ms i{font-style:normal;color:var(--dim2);font-size:9.5px}
+  .cal-master #calCal,.cal-master #calUpper{display:none}
+  #calMaster .th-card{margin-bottom:6px}
+  .ms-search{display:flex;gap:5px;margin:2px 0 6px}
+  .ms-search input{flex:1;min-width:0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+    border-radius:8px;color:#e6ecf7;font-size:12px;padding:6px 8px}
+  .ms-hd{font-size:11px;color:var(--dim2);margin:2px 0 6px;letter-spacing:-.1px}
+  .ms-months{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+  .ms-months button{font-size:9.5px;font-weight:800;padding:2px 6px;border-radius:6px;
+    border:1px solid rgba(201,162,255,.32);background:rgba(201,162,255,.08);color:#cdb9ff}
   .res-pct{font-size:15px;font-weight:900;letter-spacing:-.6px;font-variant-numeric:tabular-nums;
     white-space:nowrap;text-align:right}
   .res-pct.up{color:var(--up)} .res-pct.dn{color:#5b9dff} .res-pct.flat{color:var(--dim)}
@@ -1315,6 +1344,7 @@
       <button type="button" data-k="오늘 상한가" aria-pressed="true">오늘 상한가 <i>0</i></button>
       <button type="button" data-k="동반테마" aria-pressed="false">동반테마 <i>0</i></button>
       <button type="button" data-k="개별상한가" aria-pressed="false">개별상한가 <i>0</i></button>
+      <button type="button" data-k="마스터 테마" aria-pressed="false">🧩 마스터 <i>0</i></button>
     </div>
     <div id="calCal">
     <p class="cal-note">동반테마 = 같은 테마 종목이 상한가일 ±3거래일 안에 함께 15% 이상 오른 테마 · 개별상한가 = 실적·계약·인수·임상·허가·기술수출·경영권·자사주·신작·특허 등 단독 재료로 한 종목만 오른 경우</p>
@@ -1341,6 +1371,8 @@
         <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
       </div>
     </div>
+    <!-- 2026-11-26 — 마스터 테마(153개 · 대장주·부대장주·3등주) 사전 보기 -->
+    <div id="calMaster" hidden></div>
     </div>
   </section>
 </main>
@@ -1378,48 +1410,53 @@
     <div class="nt-body">
     <div class="nt-it">
       <span class="nt-n">1</span>
+      <div class="nt-c"><b>이번 업데이트 (11.26) · 🧩 마스터 테마 153개와 1~10단계 배지</b>
+        <p><em>테마달력</em> 위에 <em>[🧩 마스터]</em> 칸을 새로 달았습니다. <em>대장주·부대장주·3등주</em>를 붙여 둔 <em>마스터 테마 153개</em>를 검색해 보고(테마·종목 이름으로), 각 테마가 어느 달에 상한가를 냈는지 바로 건너갈 수 있습니다. 기존 테마 카드에는 🧩 줄로 그 테마의 <em>1등 대장주 · 2등 부대장주 · 3등주</em>가 함께 뜹니다. <em>실전</em> 픽 카드에는 <em>1~10단계</em> 배지가 붙고(1·2 초기 분출 / 3·4 매수 / 5~7 보유 / 8 매도 / 9·10 대기), <em>레이더</em>에는 <em>9·10단계 재부각 대기</em>가 125봉 상한가 이력 종목으로 채워집니다.</p></div>
+    </div>
+    <div class="nt-it">
+      <span class="nt-n">2</span>
       <div class="nt-c"><b>이번 업데이트 (11.24) · 테마달력 맨 앞에 [오늘 상한가] 칸</b>
         <p><em>테마달력</em> 위 칩을 <em>[오늘 상한가] [동반테마] [개별상한가]</em> 세 개로 바꿨습니다. 맨 앞 <em>오늘 상한가</em>를 누르면 월별 달력 대신 <em>오늘 상한가로 간 종목</em>이 <em>뉴스</em> 칸과 같은 카드(테마·거래대금·이슈 한 줄·원문 링크)로 바로 펼쳐집니다. 칩에 붙은 숫자는 각각 <em>오늘 상한가 종목 수</em> · <em>이 달 동반테마 수</em> · <em>이 달 개별상한가 수</em>입니다. <em>동반테마나 개별상한가</em>를 누르면 월별 달력과 테마 목록으로 돌아갑니다.</p></div>
     </div>
     <div class="nt-it">
-      <span class="nt-n">2</span>
+      <span class="nt-n">3</span>
       <div class="nt-c"><b>이번 업데이트 (11.24) · 화면을 네 칸으로 나누고, 공개·비공개를 갈랐습니다</b>
         <p>위쪽 탭이 <em>📰 뉴스 · 📅 테마달력 · 🔒 📡 레이더 · 🔒 🎯 실전</em> 네 칸으로 정리됐습니다. <em>뉴스</em>(오늘 자금 방향 · 주요 뉴스 · 오늘 상한가)와 <em>테마달력</em>은 누구나 봅니다. <em>레이더</em>(오늘 뉴스·일정 + 상한가 전 바닥 + 9·10단계 재부각 대기 — 유형 C 대기실)와 <em>실전</em>(상한가 뒤 1~8단계 A·B 타점 추적)은 본인 비밀코드로만 열립니다. 탭 바로 아래 한 줄에 지금 칸이 무엇을 보는 자리인지 적어 두었습니다.</p></div>
     </div>
     <div class="nt-it">
-      <span class="nt-n">3</span>
+      <span class="nt-n">4</span>
       <div class="nt-c"><b>이번 업데이트 (11.23) · 차트에 하늘색 장기선 (일봉 240일 · 주봉 240주 · 월봉 120월)</b>
         <p>종목을 눌러 여는 차트에 <em>하늘색 장기선</em>을 그렸습니다. 일봉에는 <em>240일선</em>, 주봉에는 <em>240주선</em>, 월봉에는 <em>120개월선</em>이 깔리고, 차트 위 <em>일봉·주봉·월봉</em> 버튼으로 바꿔 봐도 그 주기의 선이 따라갑니다. 차트 아래 범례에는 그 선의 지금 값이 숫자로 함께 나옵니다. 상장한 지 얼마 안 되어 봉이 모자란 구간은 선을 긋지 않습니다.</p></div>
     </div>
     <div class="nt-it">
-      <span class="nt-n">4</span>
+      <span class="nt-n">5</span>
       <div class="nt-c"><b>이번 업데이트 (11.22) · 각 매체 시사·정책 메인까지 읽고 레이더와 연결</b>
         <p>뉴스 탭이 네이버 경제면에 더해 <em>정치·사회면</em>과 <em>YTN 메인·속보</em>까지 함께 읽습니다. 가십·사건사고는 그대로 걸러내고 정책·규제·시험/교육·외교·재난·산업 이슈만 남깁니다. 위쪽 <em>실시간 속보</em>는 많이 본·여러 매체가 같이 다룬 <em>3건</em>으로 간결하게 줄였습니다. 같은 테마를 다룬 뉴스는 <em>대표 1건</em>만 순위에 세우고 <em>+ 같은 테마 뉴스 n건</em>으로 접어 두어, 목록이 한 테마로 길게 늘어서지 않습니다. <em>레이더</em> 맨 위에는 <em>📰 오늘 뉴스가 부른 테마</em>가 뉴스 제목·매체 수와 함께 먼저 서고, 거기 있는 종목을 누르면 바로 차트가 열립니다.</p></div>
     </div>
     <div class="nt-it">
-      <span class="nt-n">5</span>
+      <span class="nt-n">6</span>
       <div class="nt-c"><b>이번 업데이트 (11.26) · 오늘 상한가는 테마로 묶고, 불건전 종목은 뉴스로도 걸러냅니다</b>
         <p><em>테마달력 → 오늘 상한가</em>가 <em>같은 이슈·같은 섹터끼리 묶여</em> 나오고, 묶음마다 <em>👑 선도주</em>(오늘 상한가에 가장 먼저 닿은 종목)가 맨 앞에 섭니다. <em>🧱 첫 상한가</em>는 <em>일봉 125봉 바닥 횡보 뒤 처음 상한가</em>로, 그 테마의 <em>1번</em>이 됩니다. <em>🕐 도달 시각</em>은 장 마감(15:30) 뒤 1분봉으로 재어 확정합니다 — 장중에는 <em>장마감 후 확정</em>으로 표시됩니다. <em>관리종목·우선주·투자주의/경고/위험·거래정지·SPAC·자본잠식</em>은 물론, <em>환기종목·감사의견 거절/한정·상장폐지·횡령·배임·회생절차·파산</em>까지 <em>그 종목 기사</em>로 확인해 순위에서 뺍니다(뺐 때는 근거 기사·날짜를 남깁니다). 상장 첫날처럼 <em>일봉이 한 개뿐인 종목</em>도 125봉 차트가 열립니다. 과거 <em>테마달력</em>에서는 관리종목·투자경고·거래정지 등 불건전 종목을 덜어 냈습니다(우선주는 유지).</p></div>
     </div>
     <button class="nt-more" id="ntMore" type="button" aria-expanded="false" aria-controls="ntOld"><span class="lbl">지난 공지 4건 더보기</span><span class="ar" aria-hidden="true">▾</span></button>
     <div class="nt-old" id="ntOld" hidden>
     <div class="nt-it">
-      <span class="nt-n">6</span>
+      <span class="nt-n">7</span>
       <div class="nt-c"><b>이번 업데이트 (11.21) · 상한가 봉 표시</b>
         <p>종목을 눌러 여는 <em>일봉 125봉 차트</em>에 <em>노란 화살표 ▼</em> 를 붙였습니다. 전날 종가보다 28% 넘게 오른 <em>상한가 봉의 꼭대기 위</em>에 노란 화살표가 서서, 5·10·20·60일선 사이에서 상한가가 어디서 났는지 한눈에 보입니다.</p></div>
     </div>
     <div class="nt-it">
-      <span class="nt-n">7</span>
+      <span class="nt-n">8</span>
       <div class="nt-c"><b>이번 업데이트 (11.21) · 테마달력에 '동반테마 / 개별상한가' 구분 필터</b>
         <p><em>테마달력</em> 위에 <em>[동반테마] [개별상한가] [전체]</em> 칩을 달았습니다. 처음에는 <em>동반테마</em>가 선택돼 있어 같은 테마 종목들이 <em>함께 오른 진짜 테마</em>부터 보입니다. <em>개별상한가</em>를 누르면 실적·계약·인수·임상·허가·기술수출·경영권·자사주·신작·특허 같은 <em>단독 재료</em>로 한 종목만 오른 경우를 볼 수 있습니다.</p></div>
     </div>
     <div class="nt-it">
-      <span class="nt-n">8</span>
+      <span class="nt-n">9</span>
       <div class="nt-c"><b>종목 차트 보는 법</b>
         <p><em>뉴스(오늘 상한가 포함) · 테마달력 · 레이더 · 실전</em> 어느 화면에서든 종목 이름을 누르면 그 종목의 <em>일봉 125봉 차트</em> 가 열립니다. 봉을 짚으면 그날 종가·등락률·거래량과 5·10·20·60일선 값이 위에 뜨고, <em>전체 125봉 / 최근 60봉</em> 버튼으로 넓혀 보거나 좁혀 볼 수 있습니다.</p></div>
     </div>
     <div class="nt-it">
-      <span class="nt-n">9</span>
+      <span class="nt-n">10</span>
       <div class="nt-c"><b>지정시간 자동 업데이트</b>
         <p>평일 지정시간마다 뉴스와 차트가 자동으로 갱신됩니다. 화면 위 <em>⟳</em> 를 누르면 지금 바로 새로 받아옵니다.</p></div>
     </div>
@@ -1480,7 +1517,7 @@
 </div>
 
 <script>
-const state = { data:null, calendar:null, radar:null, month:null, tab:'news', more:false, open:new Set(), sameOpen:new Set(), hotOpen:new Set(), calKind:'오늘 상한가', newsFilter:null, resMonth:null, resOpen:new Set() };
+const state = { data:null, calendar:null, radar:null, month:null, tab:'news', more:false, open:new Set(), sameOpen:new Set(), hotOpen:new Set(), calKind:'오늘 상한가', newsFilter:null, resMonth:null, resOpen:new Set(), msQ:'' };
 /* 2026-11-24 역할 분담 — 다섯 칸. 오늘 상한가는 뉴스 칸 안에 있다('upper' 탭은 없어졌다).
    2026-11-26 — 실전 옆에 '결과'(장전픽·장중픽 누적)가 붙었다. */
 const TABS = ['news','radar','calendar','hotbar','results'];
@@ -1653,8 +1690,23 @@ function themeChip(a){
   if(db){
     out.push(`<span class="cl-th" data-caltheme="${esc(db)}" role="button" tabindex="0" title="테마달력에서 「${esc(db)}」 테마 보기">📅 ${esc(shortTheme(db))}</span>`);
   }
+  const ms = String(((a && a.master_themes) || [])[0] || '').trim();
+  if(ms){
+    out.push(`<span class="cl-th ms" data-mstheme="${esc(ms)}" role="button" tabindex="0" title="마스터 테마 사전에서 「${esc(ms)}」 보기 (대장주·부대장주·3등주)">🧩 ${esc(ms)}</span>`);
+  }
   if(!out.length) return '';
   return `<span class="sep">·</span>` + out.join(' ');
+}
+
+/* 마스터 테마 사전으로 건너가기 — 뉴스 카드의 🧩 칩 (2026-11-26) */
+async function openMasterTheme(name){
+  name = String(name || '').trim();
+  if(!name) return;
+  await ensureMaster();
+  state.calKind = '마스터 테마';
+  state.msQ = name;
+  switchTab('calendar');
+  await renderCalendar();
 }
 
 /* 속보 한 줄 — 챗방처럼 왼쪽 시간 · 오른쪽 제목/매체/테마/관련 종목 (2026-11-20 개편) */
@@ -1950,6 +2002,7 @@ function upperGroupsHtml(u, items){
       <span class="gn">${g.rank}. ${esc(g.short || shortTheme(g.name))}</span>
       <span class="gk ${kind}">${kindTxt}</span>${base}
       <span class="gc">${g.count}종목</span>
+      ${g.master && g.master.name ? `<span class="gm" title="마스터 테마 사전 — 1등 대장주 · 2등 부대장주 · 3등주">🧩 ${esc(g.master.name)} · ${(g.master.stocks || []).map(x => `${esc(x.role || '')} ${esc(x.name || '')}`.trim()).filter(Boolean).join(' / ')}</span>` : ''}
       ${g.issue ? `<span class="gi">${esc(g.issue)}</span>` : ''}
       ${link}
     </div>` + cards;
@@ -2046,6 +2099,7 @@ const CAL_KIND = Object.create(null);
    (핫바·레이더 자료는 그대로 비밀코드 AES-GCM 잠금.) */
 const CAL_CACHE_KEY = 'newsradar_cal';
 let calData = null;
+let CAL_MASTER_TOTAL = 0;          /* 달력 자료에 적힌 마스터 테마 수(153) — 칩 숫자에 쓴다 */
 
 async function loadCalendar(){
   if(calData) return calData;
@@ -2056,6 +2110,7 @@ async function loadCalendar(){
       /* 지난 배포의 잠금본({enc:1})이 남아 있으면 읽지 않는다 — 새 평문 자료를 기다린다. */
       if(Number(d && d.enc) === 1) return null;
       calData = d;
+      CAL_MASTER_TOTAL = Number(d.master_theme_total || 0) || CAL_MASTER_TOTAL;
       try{ localStorage.setItem(CAL_CACHE_KEY, JSON.stringify(calData)); }catch(e){}
       return calData;
     }
@@ -2071,6 +2126,7 @@ async function ensureCalendar(){
   const d = await loadCalendar();
   if(!d || !(d.months || []).length) return null;
   state.calendar = d;
+  CAL_MASTER_TOTAL = Number(d.master_theme_total || 0) || CAL_MASTER_TOTAL;
   for(const m of ((d.months) || [])){
     for(const t of (m.themes || [])){
       const n = String(t.name || '').trim();
@@ -2142,15 +2198,108 @@ function sortStocks(list){
     String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
 }
 
+/* 테마달력 위 칩 숫자 — 오늘 상한가 · 동반테마 · 개별상한가 · 마스터 테마 */
+function refreshCalChips(nD, nG){
+  const flt = $('#calFlt');
+  if(!flt) return;
+  const nUp = ((upperData() || {}).items || []).length;
+  const nMs = (masterData && masterData.theme_total) ? masterData.theme_total : (CAL_MASTER_TOTAL || 0);
+  flt.querySelectorAll('button').forEach(b => {
+    const k = b.dataset.k;
+    let n = nG;
+    if(k === '오늘 상한가') n = nUp;
+    else if(k === '동반테마') n = (nD == null ? 0 : nD);
+    else if(k === '마스터 테마') n = nMs;
+    b.setAttribute('aria-pressed', String(k === state.calKind));
+    const i = b.querySelector('i');
+    if(i) i.textContent = n;
+  });
+}
+
+/* 마스터 테마 한 줄 — 테마달력 카드마다 그 테마의 1등 대장주 · 2등 부대장주 · 3등주 (2026-11-26) */
+function msStockHtml(st){
+  if(!st || !st.name) return '';
+  const cls = 'stk' + (st.code ? '' : '');
+  return `<span class="${cls}"${st.code ? ` data-code="${esc(st.code)}" data-name="${esc(st.name)}" role="button" tabindex="0"` : ''}>${esc(st.name)}</span>`;
+}
+function masterLine(t){
+  const m = t && t.master;
+  if(!m || !m.leader || !m.leader.name) return '';
+  const others = (t.masters || []).filter(Boolean);
+  return `<div class="th-ms" title="마스터 테마 사전의 대장주·부대장주·3등주">
+    <b>🧩 ${esc(m.name)}</b><i>1등</i>${msStockHtml(m.leader)}<i>2등</i>${msStockHtml(m.sub)}<i>3등</i>${msStockHtml(m.third)}
+    ${others.length ? `<i>· 겹침 ${esc(others.join(' / '))}</i>` : ''}</div>`;
+}
+
+/* ---------------- 마스터 테마 사전 (153개) ---------------- */
+let masterData = null, masterLoading = null;
+async function ensureMaster(){
+  if(masterData) return masterData;
+  if(masterLoading) return masterLoading;
+  masterLoading = (async () => {
+    try{
+      const res = await fetch('data/master_themes.json?_=' + Date.now(), {cache:'no-store'});
+      if(res.ok) masterData = await res.json();
+    }catch(e){}
+    masterLoading = null;
+    return masterData;
+  })();
+  return masterLoading;
+}
+function renderMasterThemes(){
+  const box = $('#calMaster');
+  if(!box) return;
+  const d = masterData;
+  if(!d || !(d.themes || []).length){
+    box.innerHTML = `<div class="empty">마스터 테마 사전을 불러오지 못했습니다.<br>잠시 후 다시 열어 주세요.</div>`;
+    return;
+  }
+  const q = String(state.msQ || '').trim();
+  const rows = (d.themes || []).filter(t => !q || String(t.name || '').includes(q)
+    || (t.stocks || []).some(s => String(s.stock || s.name || '').includes(q)));
+  if($('#calSub')) $('#calSub').textContent = `마스터 테마 ${d.theme_total}개 · 종목 ${d.stock_total}개`;
+  box.innerHTML = `<div class="ms-search"><input id="msQ" type="search" placeholder="테마·종목 이름으로 찾기 (예: HBM, 한미반도체)" value="${esc(q)}"></div>
+    <div class="ms-hd">🧩 마스터 테마 ${d.theme_total}개 · 대장주·부대장주·3등주 ${d.stock_total}종목 — 달력 테마 ${d.linked_theme_total}개에 붙였습니다. 테마 이름이나 종목을 누르면 125봉 차트가 열립니다.</div>`
+    + (rows.length ? rows.map(t => {
+        const cal = (t.cal_themes || []);
+        const months = [...new Set((t.cal_months || []))].sort().reverse().slice(0, 8);
+        return `<article class="th-card">
+      <button class="th-head" type="button">
+        <span class="th-badge bd">🧩</span>
+        <span class="th-name"><b>${esc(t.name)}</b></span>
+        <span class="th-cnt">${esc(String(t.cal_upper || 0))}</span>
+        <span class="th-exp">▾</span>
+      </button>
+      <div class="th-body">
+        <div class="th-ms">
+          ${(t.stocks || []).map((st, i) => `<i>${esc(st.role || (i + 1) + '등')}</i>${msStockHtml(st)}`).join('')}
+        </div>
+        ${cal.length ? `<p class="th-why">달력 연결 — ${cal.map(c => `<button type="button" class="ms-cal" data-mscal="${esc(String(c.name).replace(/"/g, '&quot;'))}" title="테마달력에서 이 테마 보기">${esc(shortTheme(c.name))}</button>`).join(' ')}</p>`
+          : '<p class="th-why" style="color:#8b98ad">테마달력에 아직 같은 이름의 상한가 테마가 없습니다 — 상한가가 나오면 이 사전으로 묶입니다</p>'}
+        ${months.length ? `<div class="ms-months">${months.map(m => `<button type="button" data-msmonth="${esc(m)}">${esc(String(m).slice(2).replace('-', '.'))}</button>`).join('')}</div>` : ''}
+      </div>
+    </article>`;
+      }).join('') : `<div class="empty">「${esc(q)}」에 맞는 마스터 테마가 없습니다.</div>`);
+}
+
 async function renderCalendar(){
   const box = $('#calThemes');
   if(!box) return;
   /* 2026-11-24 지시 — '전체' 칩 자리에 '오늘 상한가'를 맨 앞에 두었다.
      이 칩을 고르면 월 그리드·테마 목록 대신 오늘 상한가 카드가 이 칸에 그려진다. */
   const upperMode = state.calKind === '오늘 상한가';
+  const masterMode = state.calKind === '마스터 테마';
   if($('#view-calendar')) $('#view-calendar').classList.toggle('cal-upper', upperMode);
+  if($('#view-calendar')) $('#view-calendar').classList.toggle('cal-master', masterMode);
   if($('#calUpper')) $('#calUpper').hidden = !upperMode;
+  if($('#calMaster')) $('#calMaster').hidden = !masterMode;
   if(upperMode) renderUpper();
+  if(masterMode){
+    await ensureMaster();
+    renderMasterThemes();
+    refreshCalChips();
+    return;
+  }
   const cal = await ensureCalendar();
   if(!cal || !(cal.months || []).length){
     if($('#monGrid')) $('#monGrid').innerHTML = '';
@@ -2186,17 +2335,7 @@ async function renderCalendar(){
   const mm = months.find(m => m.month === sel) || months[months.length - 1];
   const kc = mm.kind_count || {};
   const nD = kc['동반테마'] || 0, nG = kc['개별상한가'] || 0;
-  const flt = $('#calFlt');
-  if(flt){
-    const nUp = ((upperData() || {}).items || []).length;
-    flt.querySelectorAll('button').forEach(b => {
-      const k = b.dataset.k;
-      const n = k === '오늘 상한가' ? nUp : k === '동반테마' ? nD : nG;
-      b.setAttribute('aria-pressed', String(k === state.calKind));
-      const i = b.querySelector('i');
-      if(i) i.textContent = n;
-    });
-  }
+  refreshCalChips(nD, nG);
   if(upperMode) return;          /* 오늘 상한가 보기 — 아래 월별 달력·테마 목록은 그리지 않는다 */
   const all = mm.themes || [];
   const list = all.filter(t => ((t.kind || '동반테마') === state.calKind));
@@ -2234,6 +2373,7 @@ async function renderCalendar(){
       </button>
       <div class="th-body">
         <div class="th-acts"><button class="th-news" type="button" data-news-theme="${esc(t.name)}" data-news-names="${esc((t.stocks || []).map(s => s.name).filter(Boolean).join('|'))}">📰 이 테마 뉴스 보기</button></div>
+        ${masterLine(t)}
         ${t.why ? `<p class="th-why">${individual ? '개별 근거' : '동반 근거'} — ${esc(t.why)}</p>` : ''}
         ${t.summary ? `<p class="th-sum">${esc(t.summary)}</p>` : ''}
         <div class="stk-grid">${stkGroups(t.stocks)}</div>
@@ -4734,11 +4874,14 @@ function resCard(p, showWhy){
              : (p.tier === 'extra' ? '<span class="tier extra">추가</span>' : '');
   const st = p.status === '마감' ? '<span class="st">마감</span>'
            : (p.status === '대기' ? '<span class="st wait">대기</span>' : '<span class="st live">진행</span>');
+  const stgN = Number(p.stage10 || 0);
+  const stg = stgN >= 1 && stgN <= 10
+    ? `<span class="stg s${stgN}" title="${esc(p.stage_txt || (stgN + '단계'))}${p.stage_why ? ' — ' + esc(p.stage_why) : ''}">${stgN}단계</span>` : '';
   const refKind = esc(String(p.ref_kind || '기준가').split(' · ')[0]);
   const t = esc(p.pick_time || '');
   const why = (showWhy && p.reason) ? `<div class="res-why">${esc(p.reason)}</div>` : '';
   return `<div class="res-card"${code ? ` data-code="${esc(code)}" data-name="${nm}" role="button" tabindex="0" aria-label="${nm} 일봉 125봉 차트 보기"` : ''}>
-    <div class="res-nm">${tier}${nm}${mk}</div>
+    <div class="res-nm">${tier}${stg}${nm}${mk}</div>
     <div class="res-pct ${cls}">${resPctTxt(p.pct)}</div>
     ${why}
     <div class="res-num"><span>${refKind}</span><b>${resWon(p.ref_price)}</b><span>→ ${p.status === '대기' ? '기준' : '현재'}</span><b>${resWon(p.current_price)}</b>${st}${t ? `<span>· ${t}</span>` : ''}</div>
@@ -4980,6 +5123,33 @@ $('#calThemes').addEventListener('click', e => {
   const card = h.closest('.th-card');
   if(card) card.classList.toggle('open');
 });
+/* 테마달력 — 마스터 테마 사전: 검색 · 접기 · 달력 테마로 건너가기 · 그 달 보기 */
+$('#calMaster').addEventListener('input', e => {
+  const i = e.target.closest('#msQ');
+  if(!i) return;
+  state.msQ = i.value;
+  const box = $('#calMaster');
+  const pos = box ? box.scrollTop : 0;
+  renderMasterThemes();
+  if(box) box.scrollTop = pos;
+  const again = $('#msQ');
+  if(again){ again.focus(); try{ again.setSelectionRange(state.msQ.length, state.msQ.length); }catch(e2){} }
+});
+$('#calMaster').addEventListener('click', async e => {
+  const cal = e.target.closest('[data-mscal]');
+  if(cal){ e.preventDefault(); e.stopPropagation(); await openCalTheme(cal.dataset.mscal); return; }
+  const mon = e.target.closest('[data-msmonth]');
+  if(mon){
+    e.preventDefault(); e.stopPropagation();
+    state.month = mon.dataset.msmonth;
+    state.calKind = '동반테마';
+    await renderCalendar();
+    $('#calMonthTitle')?.scrollIntoView({block:'center'});
+    return;
+  }
+  const h = e.target.closest('.th-head');
+  if(h){ const card = h.closest('.th-card'); if(card) card.classList.toggle('open'); }
+});
 $('#calAll').addEventListener('click', () => {
   const cards = document.querySelectorAll('#calThemes .th-card');
   if(!cards.length) return;
@@ -5059,7 +5229,7 @@ $('#hotBody').addEventListener('keydown', e => {
   if(st) openChart(st);
 });
 /* 다른 메뉴(뉴스·상한가·테마달력·레이더)의 종목 이름 → 기준선 없는 주봉 차트 */
-['#calUpperList', '#calThemes', '#radarList', '#issueList', '#newsThemeList', '#hotBody'].forEach(bindStockChart);
+['#calUpperList', '#calThemes', '#calMaster', '#radarList', '#issueList', '#newsThemeList', '#hotBody'].forEach(bindStockChart);
 
 /* ---------------- 뉴스 ↔ 테마달력 잇는 길 (2026-11-26) ----------------
    뉴스 카드의 📅 테마 칩 → 테마달력의 그 테마 카드로
@@ -5071,6 +5241,13 @@ document.addEventListener('click', e => {
     e.preventDefault();
     e.stopPropagation();
     openCalTheme(ct.dataset.caltheme);
+    return;
+  }
+  const mst = e.target.closest('[data-mstheme]');
+  if(mst){
+    e.preventDefault();
+    e.stopPropagation();
+    openMasterTheme(mst.dataset.mstheme);
     return;
   }
   const nt = e.target.closest('[data-news-theme]');

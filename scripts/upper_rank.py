@@ -143,6 +143,49 @@ def calendar_index(cal: dict) -> tuple[dict, dict]:
     return by_name, by_code
 
 
+# ------------------------------------------------------------------ 마스터 테마(153) 색인
+def load_master(path: str = "") -> dict:
+    """data/master_themes.json — 테마마다 대장주·부대장주·3등주와 종목→테마 역색인."""
+    p = path or os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                             "data", "master_themes.json")
+    try:
+        with open(p, encoding="utf-8") as f:
+            d = json.load(f)
+        return d if isinstance(d, dict) and d.get("themes") else {}
+    except Exception:  # noqa: BLE001
+        return {}
+
+
+def master_index(doc: dict) -> tuple[dict, dict]:
+    """마스터 자료 → (테마명 색인, 종목코드 색인).
+
+    themes[name] = {"name","stocks":[{"role","name","code"}]}
+    by_code[code] = [테마명, ...]  (역색인 — 그 종목이 어느 마스터 테마에 속하는지)
+    """
+    themes: dict = {}
+    by_code: dict = {}
+    for mt in (doc.get("themes") or []):
+        name = str(mt.get("name") or "").strip()
+        if not name:
+            continue
+        stocks = [{"role": str(s.get("role") or ""), "name": str(s.get("stock") or s.get("name") or ""),
+                   "code": str(s.get("code") or "")} for s in (mt.get("stocks") or [])]
+        themes[name] = {"name": name, "stocks": stocks,
+                        "cal_themes": [str(c.get("name") or "") for c in (mt.get("cal_themes") or [])]}
+        for s in stocks:
+            if s["code"]:
+                by_code.setdefault(s["code"], [])
+                if name not in by_code[s["code"]]:
+                    by_code[s["code"]].append(name)
+    for code, lst in (doc.get("code_index") or {}).items():
+        for name in lst:
+            if name in themes:
+                by_code.setdefault(str(code), [])
+                if name not in by_code[str(code)]:
+                    by_code[str(code)].append(name)
+    return themes, by_code
+
+
 # ------------------------------------------------------------------ 1) 불건전 기업 제외
 def screen(row: dict) -> list:
     """상한가 랭킹 한 줄 → 제외 사유 목록(비어 있으면 통과).
@@ -362,15 +405,25 @@ def _short_theme(name: str) -> str:
     return s or (name or "")
 
 
-def group_items(items: list, by_name: dict, by_code: dict) -> tuple[list, list]:
+def group_items(items: list, by_name: dict, by_code: dict,
+                master: dict | None = None,
+                master_by_code: dict | None = None,
+                cal_master: dict | None = None) -> tuple[list, list]:
     """상한가 종목 → (테마 묶음 목록, 종목별 순위가 붙은 목록).
 
     묶는 순서
       ① 오늘 상한가 종목이 2개 이상 겹치는 달력 테마 (같은 이슈·같은 섹터)
+      ①-b 겹치는 종목이 없으면 마스터 테마(153개)에서 2개 이상 겹치는 테마 — 이름·대장주 그대로
       ② 겹치는 종목이 없으면 오늘 기사 키워드 테마가 같은 종목끼리
       ③ 그것도 없으면 그 종목이 속한 달력 테마 이름 하나(단독 묶음)
       ④ 달력에 없는 종목은 '개별 상한가'
+
+    master — 마스터 테마 색인({테마명: {name, stocks}}) · master_by_code — 종목→마스터 테마 역색인.
+    붙으면 묶음에 `master`(대장주·부대장주·3등주)를 실어 화면이 그대로 보여 준다.
     """
+    master = master or {}
+    master_by_code = master_by_code or {}
+    cal_master = cal_master or {}
     codes = [it["code"] for it in items]
     code_set = set(codes)
     # ① 달력 테마 겹침 — 오늘 상한가 종목이 2개 이상 함께 있는 테마
@@ -389,6 +442,22 @@ def group_items(items: list, by_name: dict, by_code: dict) -> tuple[list, list]:
             if cur is None or len(over) > cur["over"] or rec.get("last", "") > cur["last"]:
                 assign[c] = {"theme": name, "kind": rec.get("kind") or "동반테마",
                              "over": len(over), "last": rec.get("last", "")}
+    # ①-b 마스터 테마 겹침 — 달력에서 못 묶인 종목끼리 153개 사전으로 다시 묶는다
+    m_hits: dict = {}
+    for it in items:
+        if it["code"] in assign:
+            continue
+        for name in (master_by_code.get(it["code"]) or []):
+            over = [c for c in (s["code"] for s in master.get(name, {}).get("stocks") or [])
+                    if c and c in code_set]
+            if len(over) >= 2 and it["code"] in over:
+                m_hits.setdefault(name, set()).update(over)
+    for name, over in m_hits.items():
+        for c in over:
+            if c in assign:
+                continue
+            assign[c] = {"theme": name, "kind": "동반테마", "over": len(over), "last": "",
+                         "master": name}
     # ② 키워드 테마가 같은 종목끼리
     kw_codes: dict = {}
     for it in items:
@@ -411,8 +480,9 @@ def group_items(items: list, by_name: dict, by_code: dict) -> tuple[list, list]:
         if cands:
             name = cands[0]["name"]
             rec = by_name.get(name) or {}
+            mt = cal_master.get(name) if cal_master else None
             assign[c] = {"theme": name, "kind": cands[0]["kind"] or rec.get("kind") or "",
-                         "over": 1, "last": cands[0]["last"]}
+                         "over": 1, "last": cands[0]["last"], "master": mt}
         else:
             # 달력에 없는 종목 — 서로 다른 재료를 한 통에 담지 않는다(종목마다 따로 세운다)
             label = (it.get("theme") or "").strip()
@@ -424,7 +494,8 @@ def group_items(items: list, by_name: dict, by_code: dict) -> tuple[list, list]:
     for it in items:
         a = assign[it["code"]]
         g = groups.setdefault(a["theme"], {"name": a["theme"], "short": _short_theme(a["theme"]),
-                                           "kind": a["kind"], "last": a["last"], "items": []})
+                                           "kind": a["kind"], "last": a["last"], "items": [],
+                                           "master": a.get("master") or ""})
         g["items"].append(it)
     out_groups = []
     for g in groups.values():
@@ -448,6 +519,19 @@ def group_items(items: list, by_name: dict, by_code: dict) -> tuple[list, list]:
                            for it in g["items"] if it.get("issue_summary") or it.get("article_title")), "")
         g["issue_url"] = next((it.get("article_url") or "" for it in g["items"] if it.get("article_url")), "")
         out_groups.append(g)
+    # 달력 테마에 마스터 메타가 없으면 — 묶음 종목들이 속한 마스터 테마(역색인)로 채운다
+    if master_by_code:
+        for g in out_groups:
+            if g.get("master") or g.get("kind") == "개별상한가":
+                continue
+            tally: dict = {}
+            for it in g["items"]:
+                for nm in (master_by_code.get(it["code"]) or []):
+                    tally[nm] = tally.get(nm, 0) + 1
+            if tally:
+                best = max(tally.items(), key=lambda kv: (kv[1], kv[0]))
+                if best[1] >= 2:          # 묶음 종목 두 개 이상이 같은 마스터 테마일 때만
+                    g["master"] = best[0]
     out_groups.sort(key=lambda g: (0 if g["base_first"] else 1,
                                     g["arrival_min"] if g["arrival_min"] is not None else 10 ** 6,
                                     -g["value"]))
@@ -467,8 +551,14 @@ def group_items(items: list, by_name: dict, by_code: dict) -> tuple[list, list]:
     return out_groups, flat
 
 
-def _group_payload(g: dict) -> dict:
+def _group_payload(g: dict, master: dict | None = None) -> dict:
+    """묶음 하나 → 화면 페이로드. master 가 있으면 그 테마의 대장주·부대장주·3등주를 함께 싣는다."""
+    mt = (master or {}).get(g.get("master") or "") or {}
     return {
+        "master": ({"name": mt.get("name") or "",
+                    "stocks": [{"role": x.get("role") or "", "name": x.get("name") or "",
+                                "code": x.get("code") or ""} for x in (mt.get("stocks") or [])]}
+                   if mt else None),
         "name": g["name"],
         "short": g["short"],
         "kind": g["kind"],
@@ -555,7 +645,15 @@ def rank(items: list, base_date: str, cal: dict, issues: list | None = None,
         it["base"] = {"note": "이번 차례에 판정하지 않음"}
         it["base_first"] = 0
 
-    groups, flat = group_items(passed, by_name, by_code)
+    mdoc = load_master()
+    m_themes, m_by_code = master_index(mdoc)
+    cal_master = {}
+    for m in (cal.get("months") or []):
+        for t in (m.get("themes") or []):
+            nm, mt = str(t.get("name") or ""), (t.get("master") or {}).get("name")
+            if nm and mt:
+                cal_master.setdefault(nm, mt)
+    groups, flat = group_items(passed, by_name, by_code, m_themes, m_by_code, cal_master)
 
     # 달력 연결 — 이 종목이 어느 달력 테마에 있었는지(최근 달)
     for it in flat:
@@ -566,7 +664,7 @@ def rank(items: list, base_date: str, cal: dict, issues: list | None = None,
         it["cal_seen"] = len({c["name"] for c in cands}) if cands else 0
         if it["code"] in issue_of:
             it["news"] = issue_of[it["code"]]
-    return flat, [_group_payload(g) for g in groups], excluded, restore_order(items, flat)
+    return flat, [_group_payload(g, m_themes) for g in groups], excluded, restore_order(items, flat)
 
 
 def restore_order(items: list, flat: list) -> list:

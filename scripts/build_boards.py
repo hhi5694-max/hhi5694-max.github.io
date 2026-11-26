@@ -34,6 +34,8 @@ from datetime import datetime, timedelta, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
+sys.path.insert(0, HERE)
+import stage10_local as S10          # 1~10단계 자체 판정(125봉 + 달력) — 2026-11-26
 DATA = os.path.join(ROOT, "data")
 PLAIN_DIR = os.path.join(os.path.dirname(ROOT), "private-plain")
 BOOK = os.path.join(PLAIN_DIR, "picks_results.json")
@@ -122,6 +124,9 @@ def pick_card(p: dict) -> dict:
         "current_price": p.get("current_price"),
         "pct": pct,
         "status": status,
+        # 1~10단계 자체 판정 자리(값은 build() 에서 채운다) — 픽 가격·등락률은 건드리지 않는다
+        "stage10": 0, "stage_txt": "", "stage_why": "",
+        "dd": None, "val20": None, "lu_ago": None, "stage10_late": 0,
     }
 
 
@@ -262,7 +267,10 @@ def build_popup(date: str, pre: list, intra: list, after: list, session: str) ->
             "date": date,
             "label": label, "num": num, "active": True,
             "badges": [], "risk": "", "tag": label,
-            "stage10": 0, "dd": None, "val20": None, "lu_ago": None,
+            "stage10": int(p.get("stage10") or 0), "dd": p.get("dd"),
+            "val20": p.get("val20"), "lu_ago": p.get("lu_ago"),
+            "stage10_late": int(p.get("stage10_late") or 0),
+            "stage_txt": p.get("stage_txt") or "",
         }
 
     return {
@@ -285,6 +293,60 @@ def build_popup(date: str, pre: list, intra: list, after: list, session: str) ->
     }
 
 
+def attach_stage(picks: list, doc: dict | None = None) -> dict:
+    """픽 카드에 1~10단계 판정을 붙인다 — 가격·등락률·사유는 그대로 두고 단계만 더한다."""
+    if not picks:
+        return {}
+    doc = doc if doc is not None else S10.load_day125()
+    seen = {}
+    for p in picks:
+        code = str(p.get("code") or "")
+        try:
+            r = S10.judge_code(doc, code)
+        except Exception:  # noqa: BLE001
+            continue
+        p["stage10"] = int(r.get("stage10") or 0)
+        p["stage_txt"] = r.get("stage_txt") or ""
+        p["stage_why"] = r.get("why") or ""
+        p["dd"] = r.get("dd")
+        p["val20"] = r.get("val20")
+        p["lu_ago"] = r.get("lu_ago")
+        p["stage10_late"] = int(r.get("stage10_late") or 0)
+        seen[code] = r
+    return seen
+
+
+def build_cwait(date: str, limit: int = 12) -> dict:
+    """레이더 '9·10단계 재부각 대기' — 125봉 상한가 이력 종목 중 9·10단계."""
+    try:
+        doc = S10.load_day125()
+        rows = S10.scan(doc, limit=limit, stages=(9, 10))
+    except Exception as e:  # noqa: BLE001
+        print(f"[warn] cwait: {e}", file=sys.stderr)
+        return {"base_date": date, "count": 0, "stocks": []}
+    # 테마 이름 — 이 종목이 마지막으로 상한가를 친 달력 테마
+    cal = read_json(os.path.join(DATA, "calendar.json"), {}) or {}
+    theme_of: dict = {}
+    for m in cal.get("months") or []:
+        for t in m.get("themes") or []:
+            for s in t.get("stocks") or []:
+                c = str(s.get("code") or "")
+                if c and c not in theme_of:
+                    theme_of[c] = str(t.get("name") or "")
+    stocks = []
+    for r in rows:
+        stocks.append({
+            "code": r.get("code"), "name": r.get("name"),
+            "stage": int(r.get("stage10") or 0), "stage_txt": r.get("stage_txt") or "",
+            "state": "대기", "theme": theme_of.get(str(r.get("code") or ""), ""),
+            "dd": r.get("dd"), "val20": r.get("val20"), "lu_ago": r.get("lu_ago"),
+            "anchor_date": r.get("anchor_date") or "", "why": r.get("why") or "",
+            "t": "C",
+        })
+    return {"base_date": date, "count": len(stocks), "stocks": stocks,
+            "note": "125봉 상한가 이력 종목 중 9·10단계 — 하락 멈춤·재출발 대기(매수 아님)"}
+
+
 def build(date: str, book: dict) -> dict:
     rec = today_record(book, date)
     pre = [pick_card(p) for p in (rec.get("premarket") or []) if p.get("code")]
@@ -300,12 +362,17 @@ def build(date: str, book: dict) -> dict:
     for p in after:
         p["_leg"] = "aftermarket"
     session = "장중" if any(p["status"] == "진행" for p in pre + intra + after) else "장마감"
+    # 1~10단계 — 픽 카드마다 판정을 붙이고, 레이더에 9·10단계 대기 목록을 채운다
+    attach_stage(pre + intra + after)
+    radar = build_radar(date, pre, intra, after, session)
+    radar["cwait"] = build_cwait(date)
     return {
         "hotbar": build_hotbar(date, pre, intra, after, session),
         "hotbar_monthly": build_hotbar_monthly(date, pre, intra, after, session),
-        "radar": build_radar(date, pre, intra, after, session),
+        "radar": radar,
         "popup": build_popup(date, pre, intra, after, session),
-        "counts": {"premarket": len(pre), "intraday": len(intra), "aftermarket": len(after)},
+        "counts": {"premarket": len(pre), "intraday": len(intra), "aftermarket": len(after),
+                   "cwait": (radar.get("cwait") or {}).get("count", 0)},
     }
 
 
@@ -348,7 +415,8 @@ def main() -> None:
         raise SystemExit(f"평문 장부가 없습니다: {args.book}")
     docs = build(date, book)
     counts = docs["counts"]
-    print(f"[board] {date} 장전 {counts['premarket']} · 장중 {counts['intraday']}")
+    print(f"[board] {date} 장전 {counts['premarket']} · 장중 {counts['intraday']}"
+          + (f" · 9·10단계 대기 {counts['cwait']}" if counts.get("cwait") is not None else ""))
     for t in docs["radar"]["tiers"]:
         print(f"   테마 {t['theme']:<24} {len(t['stocks'])}종목")
     if args.dry_run:

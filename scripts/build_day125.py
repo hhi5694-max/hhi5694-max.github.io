@@ -218,6 +218,11 @@ def wanted_codes(keep: dict | None = None) -> tuple[list[str], dict[str, str], l
         add(c)
 
     cal = jload_calendar()
+    # 마스터 테마(153개 · 대장주·부대장주·3등주) 종목도 차트가 열리게 — 테마달력·테마 사전에서 누른다
+    #   (2026-11-26 지시: "마스터 테마에 포함된 신규 종목 코드가 day125.json 에 빠져 있으면 채워라")
+    for mt in (jload("master_themes.json").get("themes") or []):
+        for s in (mt.get("stocks") or []):
+            add(s.get("code"), s.get("stock") or s.get("name"))
     # 형광↑ 알림 팝업에 뜬 종목도 차트가 열리게 — 달력 밖(핫바에만 있는) 형광↑ 종목까지 넣는다
     for code, name in pink_codes(cal):
         add(code, name)

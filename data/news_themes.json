@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-26T23:14:22+09:00",
- "generated_at_kst": "2026.11.26 23:14",
- "news_updated_kst": "2026.11.26 23:14",
+ "generated_at": "2026-11-27T00:00:51+09:00",
+ "generated_at_kst": "2026.11.27 00:00",
+ "news_updated_kst": "2026.11.27 00:00",
  "note": "오늘 뉴스 이슈를 테마달력(calendar.json)의 테마·종목에 이어 붙인 목록 — 테마가 나오면 테마와 종목을 여기에 적어 두고, 화면에서는 종목을 눌러 125봉 차트를 연다.",
  "news_links": [
   {
@@ -85,48 +85,6 @@
      "url": "https://n.news.naver.com/article/053/0000063361"
     }
    ],
-   "upper_count": 0
-  },
-  {
-   "theme": "K-뷰티·화장품 (수출 회복·중국 소비)",
-   "short": "K-뷰티·화장품",
-   "kind": "동반테마",
-   "issue": "“폭락장서 나 홀로 27% 급등”…증권가 목표가 줄상향한 ‘이 종목’",
-   "issue_url": "https://n.news.naver.com/article/018/0006416182",
-   "presses": 1,
-   "presses_max": 1,
-   "articles": 1,
-   "kw": [
-    "급등"
-   ],
-   "stocks": [
-    {
-     "name": "코스맥스엔비티",
-     "code": "222040"
-    },
-    {
-     "name": "캡스톤파트너스",
-     "code": "452300"
-    },
-    {
-     "name": "비아이매트릭스",
-     "code": "413640"
-    },
-    {
-     "name": "뷰티스킨",
-     "code": "406820"
-    },
-    {
-     "name": "애드바이오텍",
-     "code": "179530"
-    },
-    {
-     "name": "삐아",
-     "code": "451250"
-    }
-   ],
-   "last_lu": "2026-11-23",
-   "more": [],
    "upper_count": 0
   },
   {

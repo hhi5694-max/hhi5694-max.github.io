@@ -1039,6 +1039,81 @@ def theme_link(text: str, limit: int = 4) -> list:
     return scored[:limit]
 
 
+# 마스터 테마(153개) — data/master_themes.json. 테마마다 대장주·부대장주·3등주가 있고,
+#   종목 → 테마 역색인(code_index)이 함께 들어 있다. 뉴스·오늘 상한가 분류에 이 사전을 더한다.
+MASTER_DOC: dict = {}
+_MASTER_READY = False
+_MASTER_STOCK_NAMES: list = []
+
+
+def load_master() -> dict:
+    """마스터 테마 사전 — 없으면 빈 dict(예전 저장소에서도 그대로 돈다)."""
+    global MASTER_DOC, _MASTER_READY, _MASTER_STOCK_NAMES
+    if _MASTER_READY:
+        return MASTER_DOC
+    _MASTER_READY = True
+    here = os.path.dirname(os.path.abspath(__file__))
+    try:
+        with open(os.path.join(here, "..", "data", "master_themes.json"), encoding="utf-8") as f:
+            d = json.load(f)
+        MASTER_DOC = d if isinstance(d, dict) and d.get("themes") else {}
+    except Exception:  # noqa: BLE001
+        MASTER_DOC = {}
+    names = []
+    for mt in MASTER_DOC.get("themes") or []:
+        for st in mt.get("stocks") or []:
+            nm = str(st.get("stock") or st.get("name") or "").strip()
+            if len(nm) >= 3 and nm not in names:      # 두 글자 이하(디오·삼립)는 다른 낱말에 자주 걸린다
+                names.append(nm)
+    _MASTER_STOCK_NAMES = names
+    if MASTER_DOC:
+        print(f"[info] master themes: {len(MASTER_DOC.get('themes') or [])}테마 / "
+              f"{len(names)}종목", file=sys.stderr)
+    return MASTER_DOC
+
+
+def _master_kw(mt: dict) -> list:
+    """마스터 테마 → [(말, 가중치)] — 테마 이름 조각 + 대장주·부대장주·3등주 이름."""
+    kws = []
+    for kw in (mt.get("keywords") or []):
+        kw = str(kw).strip()
+        if len(kw) >= 2:
+            kws.append((kw, 2.4 if len(kw) >= 4 else 1.6))
+    for st in mt.get("stocks") or []:
+        nm = str(st.get("stock") or st.get("name") or "").strip()
+        if len(nm) >= 3:
+            kws.append((nm, 2.8 if int(st.get("rank") or 9) == 1 else 2.0))
+    out, seen = [], set()
+    for kw, w in kws:
+        if kw in seen:
+            continue
+        seen.add(kw)
+        out.append((kw, w))
+    return out
+
+
+def master_link(text: str, limit: int = 3) -> list:
+    """글 → 마스터 테마 [(점수, 테마명, 맞은 말들)] — 테마 이름·대장주 이름이 글에 나온 만큼."""
+    doc = load_master()
+    text = text or ""
+    if not doc or not text.strip():
+        return []
+    scored = []
+    for mt in doc.get("themes") or []:
+        name = str(mt.get("name") or "")
+        if not name:
+            continue
+        hits, score = [], 0.0
+        for kw, w in _master_kw(mt):
+            if kw in text:
+                score += w * (1.0 if len(kw) >= 4 else 0.75)
+                hits.append(kw)
+        if score >= 2.0:
+            scored.append((round(score, 2), name, hits[:3]))
+    scored.sort(key=lambda x: -x[0])
+    return scored[:limit]
+
+
 # 거시·금리·환율 전망만 다루는 '무거운' 제목 — 테마와 닿지 않으면 아래로 내린다(11-22 지시)
 HEAVY_MACRO = ("전망", "금리", "환율", "연준", "FOMC", "물가", "CPI", "국채", "나스닥", "다우",
                "뉴욕증시", "S&P", "달러", "인플레이션", "경기침체", "성장률", "통화정책")
@@ -1628,7 +1703,9 @@ def leaders_for(text: str, theme_id: str | None = None, limit: int = 4, named_te
     out = []
     title_like = mask_entities(named_text if named_text is not None else text)
     named_src = mask_entities(named_text if named_text is not None else text)
-    for name in sorted(LISTED, key=len, reverse=True):
+    load_master()                      # 마스터 테마 종목 이름까지 후보로 — 기사에 나온 종목을 앞세운다
+    candidates = list(LISTED) + [n for n in _MASTER_STOCK_NAMES if n not in LISTED]
+    for name in sorted(candidates, key=len, reverse=True):
         if name not in named_src:
             continue
         if any(name in o for o in out):
@@ -1818,6 +1895,7 @@ def collect_flash_news(now: datetime, extra: list | None = None, popular: list |
             "age_min": int(max(0, age)),
             "leaders": leaders_for(title + " " + a.get("summary", ""), tid, limit=2,
                                    named_text=title),
+            "master_themes": [m[1] for m in master_link(title + " " + a.get("summary", ""), limit=2)],
         })
 
     rows.sort(key=lambda r: r["time"], reverse=True)
@@ -2098,6 +2176,10 @@ def build_issues(cands: list, now: datetime):
                       "theme": hits[0][1] if hits else "",
                       "kw": hits[0][2] if hits else [],
                       "themes": [h[1] for h in hits[:3]]}
+        # 마스터 테마(153개) — 뉴스 카드에 붙여 화면이 🧩 배지로 보여 준다
+        ml = master_link(text, limit=2)
+        c["master_themes"] = [m[1] for m in ml]
+        c["master_hits"] = [{"name": m[1], "score": m[0], "kw": m[2]} for m in ml]
 
     for c in cards:
         attach_link(c)
@@ -2938,7 +3020,7 @@ def build(out_path: str):
         "issues": [{k: v for k, v in c.items() if not k.startswith("_")} for c in kept],
         "articles": [{k: c.get(k) for k in ("id", "title", "summary", "press", "time", "url",
                                             "theme", "theme_label", "tags", "section", "relevance",
-                                            "source", "leaders", "issue_rank")
+                                            "source", "leaders", "issue_rank", "master_themes")
                       if c.get(k) is not None} for c in kept],
     }
 
