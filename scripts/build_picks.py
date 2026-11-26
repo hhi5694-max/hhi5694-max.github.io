@@ -740,7 +740,7 @@ def build_intra(book: dict, day: dict, cal: dict, news: dict, date: str, phase: 
         th = (by_code.get(code) or [{}])[0].get("name") or ""
         if not th:
             hit = news_hit_for(nidx, r["name"])
-            th = str((hit or {}).get("themes", [""])[0] or "")
+            th = str(((hit or {}).get("themes") or [""])[0] or "")
         r["_theme"] = th
         if th:
             k = norm(short_theme(th))
