@@ -1,21 +1,55 @@
 {
- "generated_at": "2026-11-26T14:57:21+09:00",
- "generated_at_kst": "2026.11.26 14:57",
- "news_updated_kst": "2026.11.26 14:57",
+ "generated_at": "2026-11-26T15:49:23+09:00",
+ "generated_at_kst": "2026.11.26 15:49",
+ "news_updated_kst": "2026.11.26 15:49",
  "note": "오늘 뉴스 이슈를 테마달력(calendar.json)의 테마·종목에 이어 붙인 목록 — 테마가 나오면 테마와 종목을 여기에 적어 두고, 화면에서는 종목을 눌러 125봉 차트를 연다.",
  "news_links": [
+  {
+   "theme": "반도체·HBM 메모리 대표주 (삼전·하이닉스·HBM 장비)",
+   "short": "반도체·HBM 메모리 대표주",
+   "kind": "동반테마",
+   "issue": "[속보] 코스피 '멸망의 날'? 삼성전자·SK하이닉스 장중 동반 마이너스 10%대 터치",
+   "issue_url": "https://n.news.naver.com/article/088/0001042239",
+   "presses": 11,
+   "presses_max": 11,
+   "articles": 33,
+   "kw": [
+    "SK하이닉스",
+    "삼성전자"
+   ],
+   "stocks": [
+    {
+     "name": "멜콘",
+     "code": "179880"
+    },
+    {
+     "name": "한미반도체",
+     "code": "042700"
+    },
+    {
+     "name": "테크윙",
+     "code": "089030"
+    },
+    {
+     "name": "SK하이닉스",
+     "code": "000660"
+    }
+   ],
+   "last_lu": "2026-10-27",
+   "more": [],
+   "upper_count": 0
+  },
   {
    "theme": "AI 시험 부정행위 대응·전파탐지/물리보안",
    "short": "AI 시험 부정행위 대응·전파탐지/물리보안",
    "kind": "동반테마",
-   "issue": "복지부 \"의사·간호사 국시 일부 과목 만점자 증가, 부정행위 아냐\"",
-   "issue_url": "https://www.ytn.co.kr/_ln/0103_20261126145412",
-   "presses": 4,
-   "presses_max": 4,
-   "articles": 8,
+   "issue": "수능 만점 최소 3명이지만 '쉬쉬'… 신원 공개 거부하는 이유",
+   "issue_url": "https://n.news.naver.com/article/656/0000193616",
+   "presses": 3,
+   "presses_max": 3,
+   "articles": 6,
    "kw": [
-    "부정행위",
-    "시험"
+    "수능"
    ],
    "stocks": [
     {
@@ -34,14 +68,14 @@
    "last_lu": "2026-01-27",
    "more": [
     {
-     "title": "수능 만점 최소 3명 나왔는데…“신원 공개 거부” 쉬쉬하는 이유",
-     "presses": 3,
-     "url": "https://n.news.naver.com/article/025/0003568096"
+     "title": "복지부 \"의사·간호사 국시 일부 과목 만점자 증가, 부정행위 아냐\"",
+     "presses": 2,
+     "url": "https://www.ytn.co.kr/_ln/0103_20261126145412"
     },
     {
-     "title": "서울 고교생 전원, 기말고사 다른 교실서 본다...\"부정행위 특단 조치\"",
+     "title": "토익 부정행위 대응 강화...\"안경 전수 검사\"",
      "presses": 1,
-     "url": "https://n.news.naver.com/article/660/0000122236"
+     "url": "https://www.ytn.co.kr/_ln/0103_20261126145935"
     }
    ],
    "upper_count": 0
@@ -50,14 +84,13 @@
    "theme": "스페이스X IPO·우주항공 공급망 (위성·발사체·특수소재)",
    "short": "스페이스X IPO·우주항공 공급망",
    "kind": "동반테마",
-   "issue": "스페이스X, '트럼프 계좌'에 자사 주식 1주씩 기부하기로",
-   "issue_url": "https://n.news.naver.com/mnews/article/014/0005610207",
-   "presses": 3,
-   "presses_max": 3,
+   "issue": "머스크 \"美 모든 어린이에게 스페이스X 주식 2주씩 주겠다\"",
+   "issue_url": "https://n.news.naver.com/mnews/article/421/0009312040",
+   "presses": 2,
+   "presses_max": 2,
    "articles": 3,
    "kw": [
-    "스페이스X",
-    "우주"
+    "스페이스X"
    ],
    "stocks": [
     {
@@ -86,48 +119,47 @@
     }
    ],
    "last_lu": "2026-02-03",
-   "more": [],
+   "more": [
+    {
+     "title": "[특징주] 스페이스X '우주 데이터센터' 위성 승인…관련주 급등(종합)",
+     "presses": 1,
+     "url": "https://n.news.naver.com/mnews/article/001/0016466140"
+    }
+   ],
    "upper_count": 0
   },
   {
-   "theme": "반도체·HBM 메모리 대표주 (삼전·하이닉스·HBM 장비)",
-   "short": "반도체·HBM 메모리 대표주",
+   "theme": "탈모 치료·모발이식 (이재명 대통령 \"탈모는 생존\" 발언)",
+   "short": "탈모 치료·모발이식",
    "kind": "동반테마",
-   "issue": "삼성전자, 메모리 개발체제 일원화…시스템LSI '전략마케팅실' 부활",
-   "issue_url": "https://n.news.naver.com/article/031/0001078657",
+   "issue": "이기인 “李 분당집 판 돈 코스피 넣었다면 7억 손실…국민에 사과해야”",
+   "issue_url": "https://n.news.naver.com/mnews/article/666/0000133915",
    "presses": 2,
    "presses_max": 2,
-   "articles": 3,
+   "articles": 2,
    "kw": [
-    "삼성전자",
-    "메모리"
+    "코스피"
    ],
    "stocks": [
     {
-     "name": "멜콘",
-     "code": "179880"
+     "name": "현대약품",
+     "code": "004310"
     },
     {
-     "name": "한미반도체",
-     "code": "042700"
+     "name": "메타랩스",
+     "code": "090370"
     },
     {
-     "name": "테크윙",
-     "code": "089030"
+     "name": "알리코제약",
+     "code": "260660"
     },
     {
-     "name": "SK하이닉스",
-     "code": "000660"
+     "name": "위더스제약",
+     "code": "330350"
     }
    ],
-   "last_lu": "2026-10-27",
-   "more": [
-    {
-     "title": "코스피, 하루 만에 반등…삼성전자·하이닉스 강세",
-     "presses": 1,
-     "url": "https://n.news.naver.com/article/422/0000930088"
-    }
-   ],
+   "last_lu": "2025-12-17",
+   "more": [],
    "upper_count": 0
   },
   {
@@ -174,85 +206,41 @@
    "upper_count": 0
   },
   {
-   "theme": "로봇·피지컬 AI (엔비디아·현대차그룹)",
-   "short": "로봇·피지컬 AI",
-   "kind": "동반테마",
-   "issue": "\"교수라도 이랬을까?\".. '피지컬AI' 전북대생들 '무급 연구'",
-   "issue_url": "https://n.news.naver.com/article/659/0000049028",
+   "theme": "개별 재료 상한가 (자사주·유상증자·경영권·실적·수주)",
+   "short": "개별 재료 상한가",
+   "kind": "개별상한가",
+   "issue": "현대그린푸드, 1500억원에 메디굿파트너스 인수…의료물류 진출",
+   "issue_url": "https://n.news.naver.com/mnews/article/138/0002250051",
    "presses": 1,
    "presses_max": 1,
    "articles": 1,
    "kw": [
-    "피지컬AI"
+    "의료"
    ],
    "stocks": [
     {
-     "name": "유니켐",
-     "code": "011330"
+     "name": "대동금속",
+     "code": "020400"
     },
     {
-     "name": "로보스타",
-     "code": "090360"
+     "name": "하이퍼코퍼레이션",
+     "code": "065650"
     },
     {
-     "name": "메이슨캐피탈",
-     "code": "021880"
+     "name": "씨싸이트",
+     "code": "109670"
     },
     {
-     "name": "쏘카",
-     "code": "403550"
+     "name": "윙입푸드",
+     "code": "900340"
     },
     {
-     "name": "비투엔",
-     "code": "307870"
+     "name": "엑시온그룹",
+     "code": "069920"
     },
     {
-     "name": "전진건설로봇",
-     "code": "079900"
-    }
-   ],
-   "last_lu": "2026-11-24",
-   "more": [],
-   "upper_count": 0
-  },
-  {
-   "theme": "저PBR 자산주 재평가 (주주환원·자산가치 부각)",
-   "short": "저PBR 자산주 재평가",
-   "kind": "동반테마",
-   "issue": "삼성SDI, 1.4조 규모 자사주 소각…호실적 이어 주주환원 속도전",
-   "issue_url": "https://n.news.naver.com/article/293/0000093856",
-   "presses": 1,
-   "presses_max": 1,
-   "articles": 1,
-   "kw": [
-    "자사주",
-    "실적",
-    "주주"
-   ],
-   "stocks": [
-    {
-     "name": "성창기업지주",
-     "code": "000180"
-    },
-    {
-     "name": "와이즈넛",
-     "code": "096250"
-    },
-    {
-     "name": "코미코",
-     "code": "183300"
-    },
-    {
-     "name": "SG세계물산",
-     "code": "004060"
-    },
-    {
-     "name": "원익큐브",
-     "code": "014190"
-    },
-    {
-     "name": "바이오스마트",
-     "code": "038460"
+     "name": "헝셩그룹",
+     "code": "900270"
     }
    ],
    "last_lu": "2026-11-05",
@@ -260,24 +248,70 @@
    "upper_count": 0
   },
   {
-   "theme": "조선·조선기자재 (한미 핵잠 건조 합의·LNG선 발주)",
-   "short": "조선·조선기자재",
+   "theme": "글로벌 신약 기술수출·임상 (릴리 3.8조·WHO 성분명 등재)",
+   "short": "글로벌 신약 기술수출·임상",
    "kind": "동반테마",
-   "issue": "LNG선까지 정조준한 中에 텃밭 뺏길 위기… K-조선 '초격차 해법' 있나",
-   "issue_url": "https://n.news.naver.com/article/629/0000555709",
+   "issue": "[바이오사 리포트] 에이비엘바이오, 릴리 투자금 86% 집행",
+   "issue_url": "https://n.news.naver.com/article/293/0000093865",
    "presses": 1,
    "presses_max": 1,
    "articles": 1,
    "kw": [
-    "LNG"
+    "바이오"
    ],
    "stocks": [
     {
-     "name": "동일스틸럭스",
-     "code": "023790"
+     "name": "신테카바이오",
+     "code": "226330"
+    },
+    {
+     "name": "그린생명과학",
+     "code": "114450"
+    },
+    {
+     "name": "삼익제약",
+     "code": "014950"
+    },
+    {
+     "name": "바이젠셀",
+     "code": "308080"
+    },
+    {
+     "name": "메드팩토",
+     "code": "235980"
     }
    ],
-   "last_lu": "2026-04-22",
+   "last_lu": "2026-07-28",
+   "more": [],
+   "upper_count": 0
+  },
+  {
+   "theme": "오너 승계·지배구조 개편 (한화에너지 지분 매각·삼화페인트 승계)",
+   "short": "오너 승계·지배구조 개편",
+   "kind": "동반테마",
+   "issue": "[숫자 너머 유화증권] 오너 실형에도 지배력 '철옹성'…배당 135억 중 86억 삼켰다",
+   "issue_url": "https://n.news.naver.com/article/293/0000093858",
+   "presses": 1,
+   "presses_max": 1,
+   "articles": 1,
+   "kw": [
+    "배당"
+   ],
+   "stocks": [
+    {
+     "name": "깨끗한나라",
+     "code": "004540"
+    },
+    {
+     "name": "한화갤러리아",
+     "code": "452260"
+    },
+    {
+     "name": "SP삼화",
+     "code": "000390"
+    }
+   ],
+   "last_lu": "2026-11-05",
    "more": [],
    "upper_count": 0
   }
