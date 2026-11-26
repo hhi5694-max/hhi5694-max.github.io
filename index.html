@@ -1267,7 +1267,7 @@
     </div>
     <div id="hotInner">
     <div class="viewhead"><b>🎯 실전</b>
-      <button class="cf-again" type="button" data-cf-again hidden aria-label="형광↑ 알림 다시 보기"><span class="dot" aria-hidden="true"></span>형광↑ <span class="cf-n">0</span></button></div>
+      <button class="cf-again" type="button" data-cf-again hidden aria-label="오늘 종합 알림 다시 보기"><span class="dot" aria-hidden="true"></span>오늘 알림 <span class="cf-n">0</span></button></div>
     <div class="hb-mission" id="hotMission" aria-live="polite" aria-label="선택한 칸의 사용설명서"></div>
     <div class="hb-seg" id="hotSeg">
       <button type="button" data-sec="day" class="on">장전·장중·장후</button>
@@ -3558,7 +3558,7 @@ function cfOpenAgain(){
     if(!visOn()) return;
     const list = cfList();
     if(!list.length){
-      toast(cfSections() ? '오늘 조건에 맞는 자리가 없습니다' : '오늘 형광↑ 종목이 없습니다');
+      toast(cfSections() ? '오늘 알림에 올릴 픽이 없습니다' : '오늘 형광↑ 종목이 없습니다');
       return;
     }
     cfShow(list);
