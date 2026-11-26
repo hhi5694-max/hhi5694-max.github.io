@@ -2274,7 +2274,7 @@ function renderMasterThemes(){
         <div class="th-ms">
           ${(t.stocks || []).map((st, i) => `<i>${esc(st.role || (i + 1) + '등')}</i>${msStockHtml(st)}`).join('')}
         </div>
-        ${cal.length ? `<p class="th-why">달력 연결 — ${cal.map(c => `<button type="button" class="ms-cal" data-mscal="${esc(String(c.name).replace(/"/g, '&quot;'))}" title="테마달력에서 이 테마 보기">${esc(shortTheme(c.name))}</button>`).join(' ')}</p>`
+        ${cal.length ? `<p class="th-why">달력 연결 — ${cal.map(c => `<button type="button" class="ms-cal" data-mscal="${esc(String(c.name))}" title="테마달력에서 이 테마 보기">${esc(shortTheme(c.name))}</button>`).join(' ')}</p>`
           : '<p class="th-why" style="color:#8b98ad">테마달력에 아직 같은 이름의 상한가 테마가 없습니다 — 상한가가 나오면 이 사전으로 묶입니다</p>'}
         ${months.length ? `<div class="ms-months">${months.map(m => `<button type="button" data-msmonth="${esc(m)}">${esc(String(m).slice(2).replace('-', '.'))}</button>`).join('')}</div>` : ''}
       </div>
