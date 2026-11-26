@@ -1,194 +1,18 @@
 {
- "generated_at": "2026-11-26T18:14:58+09:00",
- "generated_at_kst": "2026.11.26 18:14",
- "news_updated_kst": "2026.11.26 18:14",
+ "generated_at": "2026-11-26T19:14:26+09:00",
+ "generated_at_kst": "2026.11.26 19:14",
+ "news_updated_kst": "2026.11.26 19:14",
  "note": "오늘 뉴스 이슈를 테마달력(calendar.json)의 테마·종목에 이어 붙인 목록 — 테마가 나오면 테마와 종목을 여기에 적어 두고, 화면에서는 종목을 눌러 125봉 차트를 연다.",
  "news_links": [
-  {
-   "theme": "저PBR 자산주 재평가 (주주환원·자산가치 부각)",
-   "short": "저PBR 자산주 재평가",
-   "kind": "동반테마",
-   "issue": "삼성카드, 배당성향 50%로 높인다… 내년 1분기까지 자사주도 소각",
-   "issue_url": "https://n.news.naver.com/mnews/article/366/0001207629",
-   "presses": 4,
-   "presses_max": 4,
-   "articles": 4,
-   "kw": [
-    "자사주",
-    "배당",
-    "주주"
-   ],
-   "stocks": [
-    {
-     "name": "성창기업지주",
-     "code": "000180"
-    },
-    {
-     "name": "와이즈넛",
-     "code": "096250"
-    },
-    {
-     "name": "코미코",
-     "code": "183300"
-    },
-    {
-     "name": "SG세계물산",
-     "code": "004060"
-    },
-    {
-     "name": "원익큐브",
-     "code": "014190"
-    },
-    {
-     "name": "바이오스마트",
-     "code": "038460"
-    }
-   ],
-   "last_lu": "2026-11-05",
-   "more": [],
-   "upper_count": 0
-  },
-  {
-   "theme": "AI 시험 부정행위 대응·전파탐지/물리보안",
-   "short": "AI 시험 부정행위 대응·전파탐지/물리보안",
-   "kind": "동반테마",
-   "issue": "복지부 \"의사·간호사 국시 일부 과목 만점자 증가, 부정행위 아냐\"",
-   "issue_url": "https://www.ytn.co.kr/_ln/0103_20261126170710",
-   "presses": 2,
-   "presses_max": 2,
-   "articles": 2,
-   "kw": [
-    "부정행위"
-   ],
-   "stocks": [
-    {
-     "name": "시선AI",
-     "code": "340810"
-    },
-    {
-     "name": "카티스",
-     "code": "140430"
-    },
-    {
-     "name": "인콘",
-     "code": "083640"
-    }
-   ],
-   "last_lu": "2026-01-27",
-   "more": [],
-   "upper_count": 0
-  },
-  {
-   "theme": "바이오·CDMO 대표주 (기술수출·CDMO)",
-   "short": "바이오·CDMO 대표주",
-   "kind": "동반테마",
-   "issue": "'4조대어' SK팜테코, 소수지분 매각 본격화",
-   "issue_url": "https://n.news.naver.com/mnews/article/009/0005769657",
-   "presses": 2,
-   "presses_max": 2,
-   "articles": 2,
-   "kw": [
-    "CDMO"
-   ],
-   "stocks": [
-    {
-     "name": "시지메드텍",
-     "code": "056090"
-    },
-    {
-     "name": "애드바이오텍",
-     "code": "179530"
-    },
-    {
-     "name": "드림씨아이에스",
-     "code": "223250"
-    },
-    {
-     "name": "싸이토젠",
-     "code": "217330"
-    }
-   ],
-   "last_lu": "2026-06-19",
-   "more": [],
-   "upper_count": 0
-  },
-  {
-   "theme": "반도체·HBM 메모리 대표주 (삼전·하이닉스·HBM 장비)",
-   "short": "반도체·HBM 메모리 대표주",
-   "kind": "동반테마",
-   "issue": "중국 화웨이, 삼성·하이닉스 따라잡을 새 HBM 공개 준비",
-   "issue_url": "https://n.news.naver.com/article/374/0000546090",
-   "presses": 2,
-   "presses_max": 2,
-   "articles": 2,
-   "kw": [
-    "HBM"
-   ],
-   "stocks": [
-    {
-     "name": "멜콘",
-     "code": "179880"
-    },
-    {
-     "name": "한미반도체",
-     "code": "042700"
-    },
-    {
-     "name": "테크윙",
-     "code": "089030"
-    },
-    {
-     "name": "SK하이닉스",
-     "code": "000660"
-    }
-   ],
-   "last_lu": "2026-10-27",
-   "more": [],
-   "upper_count": 0
-  },
-  {
-   "theme": "벤처투자·코스닥 활성화 정책 (11/13 자본시장 정책 간담회)",
-   "short": "벤처투자·코스닥 활성화 정책",
-   "kind": "동반테마",
-   "issue": "[속보] 금융위, 자본시장 개혁기구 구성…위원장에 김용범 메리츠 부회장",
-   "issue_url": "https://n.news.naver.com/article/421/0009312965",
-   "presses": 2,
-   "presses_max": 2,
-   "articles": 2,
-   "kw": [
-    "금융위"
-   ],
-   "stocks": [
-    {
-     "name": "컴퍼니케이",
-     "code": "307930"
-    },
-    {
-     "name": "DSC인베스트먼트",
-     "code": "241520"
-    },
-    {
-     "name": "아주IB투자",
-     "code": "027360"
-    },
-    {
-     "name": "SV인베스트먼트",
-     "code": "289080"
-    }
-   ],
-   "last_lu": "2026-04-01",
-   "more": [],
-   "upper_count": 0
-  },
   {
    "theme": "스페이스X IPO·우주항공 공급망 (위성·발사체·특수소재)",
    "short": "스페이스X IPO·우주항공 공급망",
    "kind": "동반테마",
-   "issue": "\"스페이스X 주식 2주씩\"…머스크, 美 아동 계좌에 24조 쏜다",
-   "issue_url": "https://n.news.naver.com/article/215/0001274092",
-   "presses": 2,
-   "presses_max": 2,
-   "articles": 2,
+   "issue": "머스크 \"미국 아동에게 스페이스X 주식 2주씩\"...24조 원 상당",
+   "issue_url": "https://n.news.naver.com/article/052/0002438540",
+   "presses": 3,
+   "presses_max": 3,
+   "articles": 3,
    "kw": [
     "스페이스X"
    ],
@@ -220,6 +44,51 @@
    ],
    "last_lu": "2026-02-03",
    "more": [],
+   "upper_count": 0
+  },
+  {
+   "theme": "반도체·HBM 메모리 대표주 (삼전·하이닉스·HBM 장비)",
+   "short": "반도체·HBM 메모리 대표주",
+   "kind": "동반테마",
+   "issue": "메모리 없어서 못 파는데 美 '과잉생산' 압박…삼전닉스 어쩌나",
+   "issue_url": "https://n.news.naver.com/article/008/0005447033",
+   "presses": 2,
+   "presses_max": 2,
+   "articles": 6,
+   "kw": [
+    "메모리"
+   ],
+   "stocks": [
+    {
+     "name": "멜콘",
+     "code": "179880"
+    },
+    {
+     "name": "한미반도체",
+     "code": "042700"
+    },
+    {
+     "name": "테크윙",
+     "code": "089030"
+    },
+    {
+     "name": "SK하이닉스",
+     "code": "000660"
+    }
+   ],
+   "last_lu": "2026-10-27",
+   "more": [
+    {
+     "title": "[속보] 한은 총재도 설명 힘든 국내주식 \"반도체 영업이익 700조인데, 시총 2000조라니…\"",
+     "presses": 1,
+     "url": "https://n.news.naver.com/article/002/0002467777"
+    },
+    {
+     "title": "하이닉스 특별배당 14조, 환율 흔들까…2021년 삼성 특별배당 땐 원화 올랐다 [마켓프리즘]",
+     "presses": 1,
+     "url": "https://n.news.naver.com/article/123/0002394917"
+    }
+   ],
    "upper_count": 0
   },
   {
@@ -265,41 +134,182 @@
    "upper_count": 0
   },
   {
-   "theme": "AI 해킹 공포·양자내성암호(PQC) 보안",
-   "short": "AI 해킹 공포·양자내성암호 보안",
+   "theme": "AI 시험 부정행위 대응·전파탐지/물리보안",
+   "short": "AI 시험 부정행위 대응·전파탐지/물리보안",
    "kind": "동반테마",
-   "issue": "[단독]'해킹 여파' 신한·하나은행·미래에셋증권 '보안 망분리' 제동",
-   "issue_url": "https://n.news.naver.com/article/648/0000053019",
+   "issue": "수능 만점 최소 3명이지만 '쉬쉬'… 신원 공개 거부하는 이유",
+   "issue_url": "https://n.news.naver.com/article/656/0000193616",
+   "presses": 1,
+   "presses_max": 1,
+   "articles": 2,
+   "kw": [
+    "수능"
+   ],
+   "stocks": [
+    {
+     "name": "시선AI",
+     "code": "340810"
+    },
+    {
+     "name": "카티스",
+     "code": "140430"
+    },
+    {
+     "name": "인콘",
+     "code": "083640"
+    }
+   ],
+   "last_lu": "2026-01-27",
+   "more": [
+    {
+     "title": "토익도 'AI 커닝' 차단…안경에 스티커·샤프 금지",
+     "presses": 1,
+     "url": "https://www.ytn.co.kr/_ln/0104_20261126114829"
+    }
+   ],
+   "upper_count": 0
+  },
+  {
+   "theme": "HLB 그룹 글로벌 자본 유치 (LMR파트너스 2,069억 투자)",
+   "short": "HLB 그룹 글로벌 자본 유치",
+   "kind": "동반테마",
+   "issue": "[단독] 신세계, HLL중앙 인수전 발 뺐다…중앙일보 730억 투자에 무게",
+   "issue_url": "https://n.news.naver.com/article/293/0000093893",
    "presses": 1,
    "presses_max": 1,
    "articles": 1,
    "kw": [
-    "해킹",
-    "보안"
+    "인수"
    ],
    "stocks": [
     {
-     "name": "엑스게이트",
-     "code": "356680"
+     "name": "HLB글로벌",
+     "code": "003580"
     },
     {
-     "name": "드림시큐리티",
-     "code": "203650"
-    },
-    {
-     "name": "케이씨에스",
-     "code": "115500"
-    },
-    {
-     "name": "한싹",
-     "code": "430690"
-    },
-    {
-     "name": "아톤",
-     "code": "158430"
+     "name": "HLB바이오스텝",
+     "code": "278650"
     }
    ],
-   "last_lu": "2026-04-20",
+   "last_lu": "2026-07-15",
+   "more": [],
+   "upper_count": 0
+  },
+  {
+   "theme": "K-뷰티·화장품 (수출 회복·중국 소비)",
+   "short": "K-뷰티·화장품",
+   "kind": "동반테마",
+   "issue": "“폭락장서 나 홀로 27% 급등”…증권가 목표가 줄상향한 ‘이 종목’",
+   "issue_url": "https://n.news.naver.com/article/018/0006416182",
+   "presses": 1,
+   "presses_max": 1,
+   "articles": 1,
+   "kw": [
+    "급등"
+   ],
+   "stocks": [
+    {
+     "name": "코스맥스엔비티",
+     "code": "222040"
+    },
+    {
+     "name": "캡스톤파트너스",
+     "code": "452300"
+    },
+    {
+     "name": "비아이매트릭스",
+     "code": "413640"
+    },
+    {
+     "name": "뷰티스킨",
+     "code": "406820"
+    },
+    {
+     "name": "애드바이오텍",
+     "code": "179530"
+    },
+    {
+     "name": "삐아",
+     "code": "451250"
+    }
+   ],
+   "last_lu": "2026-11-23",
+   "more": [],
+   "upper_count": 0
+  },
+  {
+   "theme": "로봇·피지컬 AI (엔비디아·현대차그룹)",
+   "short": "로봇·피지컬 AI",
+   "kind": "동반테마",
+   "issue": "\"교수라도 이랬을까?\".. '피지컬AI' 전북대생들 '무급 연구'",
+   "issue_url": "https://n.news.naver.com/article/659/0000049028",
+   "presses": 1,
+   "presses_max": 1,
+   "articles": 1,
+   "kw": [
+    "피지컬AI"
+   ],
+   "stocks": [
+    {
+     "name": "유니켐",
+     "code": "011330"
+    },
+    {
+     "name": "로보스타",
+     "code": "090360"
+    },
+    {
+     "name": "메이슨캐피탈",
+     "code": "021880"
+    },
+    {
+     "name": "쏘카",
+     "code": "403550"
+    },
+    {
+     "name": "비투엔",
+     "code": "307870"
+    },
+    {
+     "name": "전진건설로봇",
+     "code": "079900"
+    }
+   ],
+   "last_lu": "2026-11-24",
+   "more": [],
+   "upper_count": 0
+  },
+  {
+   "theme": "벤처투자·코스닥 활성화 정책 (11/13 자본시장 정책 간담회)",
+   "short": "벤처투자·코스닥 활성화 정책",
+   "kind": "동반테마",
+   "issue": "[속보] 금융위, 자본시장 개혁기구 구성…위원장에 김용범 메리츠 부회장",
+   "issue_url": "https://n.news.naver.com/article/421/0009312965",
+   "presses": 1,
+   "presses_max": 1,
+   "articles": 1,
+   "kw": [
+    "금융위"
+   ],
+   "stocks": [
+    {
+     "name": "컴퍼니케이",
+     "code": "307930"
+    },
+    {
+     "name": "DSC인베스트먼트",
+     "code": "241520"
+    },
+    {
+     "name": "아주IB투자",
+     "code": "027360"
+    },
+    {
+     "name": "SV인베스트먼트",
+     "code": "289080"
+    }
+   ],
+   "last_lu": "2026-04-01",
    "more": [],
    "upper_count": 0
   }
