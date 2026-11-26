@@ -490,6 +490,7 @@ def main() -> None:
     cal["master_applied_at"] = stamp.strftime("%Y.%m.%d %H:%M")
     write_json(CAL_PATH, cal)
     print("[master] %s · %s (달력 테마 %d건에 master 메타)" % (OUT_MASTER, CAL_PATH, touched), file=sys.stderr)
+    NR.seal_all()   # data/*.json 전체를 잠근다(평문은 private-plain/data)
 
 
 if __name__ == "__main__":

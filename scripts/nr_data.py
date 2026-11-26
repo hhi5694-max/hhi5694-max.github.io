@@ -189,7 +189,7 @@ def seal_all(pw: str = "", verbose: bool = True) -> dict:
     if not key:
         raise SystemExit("비밀코드가 없습니다 — NR_CODE · private-plain/.picks_code 중 하나가 필요합니다")
     ensure_plain_dir()
-    stats = {"sealed": [], "kept": [], "mirrored": [], "plain_left": [], "failed": []}
+    stats = {"sealed": [], "kept": [], "mirrored": [], "refreshed": [], "plain_left": [], "failed": []}
     if not os.path.isdir(DATA):
         return stats
     for fn in sorted(os.listdir(DATA)):
@@ -212,12 +212,33 @@ def seal_all(pw: str = "", verbose: bool = True) -> dict:
         write_json(plain_path(fn), d)
         write_json(p, seal(d, key))
         stats["sealed"].append(fn)
+    # ② 평문 사본이 공개본보다 새로우면 다시 잠근다 — 수집기가 private-plain/data 에 새로 쓴 자료가
+    #    data/ 로 올라오는 길이다(공개본이 없거나 사본이 더 최근일 때만).
+    stats["refreshed"] = []
+    pd = plain_dir()
+    if os.path.isdir(pd):
+        for fn in sorted(os.listdir(pd)):
+            if not fn.endswith(".json"):
+                continue
+            src = os.path.join(pd, fn)
+            dst = public_path(fn)
+            try:
+                if os.path.exists(dst) and os.path.getmtime(src) <= os.path.getmtime(dst):
+                    continue
+                doc = read_json(src, None)
+                if doc is None:
+                    continue
+                write_json(dst, seal(doc, key))
+                stats["refreshed"].append(fn)
+            except Exception as e:  # noqa: BLE001
+                print(f"[warn] {fn}: 잠그지 못했습니다({type(e).__name__})", file=sys.stderr)
+                stats["failed"].append(fn)
     for fn in sorted(os.listdir(DATA)):
         if fn.endswith(".json") and not is_sealed(read_json(public_path(fn), None)):
             stats["plain_left"].append(fn)
     if verbose:
         print(f"[seal] 새로 잠금 {len(stats['sealed'])} · 이미 잠금 {len(stats['kept'])}"
-              f" · 평문 사본 보충 {len(stats['mirrored'])}")
+              f" · 평문 사본 보충 {len(stats['mirrored'])} · 사본에서 갱신 {len(stats['refreshed'])}")
         if stats["plain_left"]:
             print(f"[seal] !! 아직 평문이 남은 파일: {', '.join(stats['plain_left'])}", file=sys.stderr)
     return stats
