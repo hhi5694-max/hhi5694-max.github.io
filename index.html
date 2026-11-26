@@ -281,6 +281,35 @@
   .up-more{appearance:none;border:0;background:transparent;color:#7c8ba6;font-family:inherit;
     font-size:10px;font-weight:800;padding:0 0 0 4px;cursor:pointer;white-space:nowrap}
 
+  /* ---------- 2026-11-26 — 상한가 테마 묶음 · 선도주/바닥 첫 상한가 배지 ---------- */
+  .up-grp{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin:10px 0 5px;padding:0 1px}
+  .up-grp:first-child{margin-top:0}
+  .up-grp .gn{font-size:12.5px;font-weight:800;color:#e8eefc;letter-spacing:-.2px}
+  .up-grp .gk{font-size:9.5px;font-weight:800;padding:1px 5px;border-radius:5px;white-space:nowrap;
+    color:#9fc0ff;background:rgba(79,140,255,.12);border:1px solid rgba(79,140,255,.3)}
+  .up-grp .gk.bd{color:#c9a2ff;background:rgba(201,162,255,.13);border-color:rgba(201,162,255,.32)}
+  .up-grp .gk.bg{color:#ffb27a;background:rgba(255,138,76,.13);border-color:rgba(255,138,76,.34)}
+  .up-grp .gc{font-size:10px;font-weight:800;color:var(--dim);margin-left:auto;white-space:nowrap}
+  .up-grp .gi{flex-basis:100%;font-size:11px;color:#c8d2e4;line-height:1.45;margin:2px 0 0;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .up-grp .gl{font-size:10px;font-weight:800;color:#ffd166;text-decoration:none;white-space:nowrap}
+  .up-bdg{font-size:9.5px;font-weight:800;padding:1px 5px;border-radius:5px;white-space:nowrap}
+  .up-bdg.lead{color:#ffd166;background:rgba(255,209,102,.14);border:1px solid rgba(255,209,102,.34)}
+  .up-bdg.base{color:#7ff0c0;background:rgba(56,214,168,.14);border:1px solid rgba(56,214,168,.34)}
+  .up-bdg.tm{color:#9fc0ff;background:rgba(79,140,255,.12);border:1px solid rgba(79,140,255,.3)}
+  .up-bdg.cal{color:#c9a2ff;background:rgba(201,162,255,.13);border:1px solid rgba(201,162,255,.32);cursor:pointer}
+  .cl-th[data-caltheme]{cursor:pointer}
+  .th-hl{outline:2px solid rgba(255,209,102,.55);outline-offset:1px;border-radius:10px}
+  .th-acts{display:flex;gap:6px;flex-wrap:wrap;padding:6px 0 2px}
+  .th-news{appearance:none;font-family:inherit;font-size:10px;font-weight:800;color:#9fc0ff;
+    background:rgba(79,140,255,.1);border:1px solid rgba(79,140,255,.3);border-radius:6px;
+    padding:3px 7px;cursor:pointer;white-space:nowrap}
+  .nf{display:flex;align-items:center;gap:6px;margin:0 0 8px;padding:6px 8px;border-radius:9px;
+    background:rgba(201,162,255,.1);border:1px solid rgba(201,162,255,.28);font-size:11px;color:#e6ddff}
+  .nf b{font-weight:800}
+  .nf button{appearance:none;margin-left:auto;border:0;background:transparent;color:#c9a2ff;
+    font-family:inherit;font-weight:800;font-size:11px;cursor:pointer}
+
   /* ---------- 테마달력 ---------- */
   .mon-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:1px 0 9px}
   .mon{appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--dim);
@@ -1108,6 +1137,8 @@
     </div>
 
     <!-- 2026-11-23 지시(#11664): '실시간 속보' 3건 섹션을 걷어내고, 맨 위부터 바로 주요 뉴스가 온다 -->
+    <!-- 2026-11-26 — 테마달력에서 넘어온 뉴스 묶음 표시(테마 이름 · 건수 · 해제) -->
+    <div id="newsFilter" hidden></div>
     <div class="sechead"><span>🔥 주요 뉴스</span></div>
     <div id="issueList" class="cl">
       <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
@@ -1255,25 +1286,30 @@
       <div class="nt-c"><b>이번 업데이트 (11.22) · 각 매체 시사·정책 메인까지 읽고 레이더와 연결</b>
         <p>뉴스 탭이 네이버 경제면에 더해 <em>정치·사회면</em>과 <em>YTN 메인·속보</em>까지 함께 읽습니다. 가십·사건사고는 그대로 걸러내고 정책·규제·시험/교육·외교·재난·산업 이슈만 남깁니다. 위쪽 <em>실시간 속보</em>는 많이 본·여러 매체가 같이 다룬 <em>3건</em>으로 간결하게 줄였습니다. 같은 테마를 다룬 뉴스는 <em>대표 1건</em>만 순위에 세우고 <em>+ 같은 테마 뉴스 n건</em>으로 접어 두어, 목록이 한 테마로 길게 늘어서지 않습니다. <em>레이더</em> 맨 위에는 <em>📰 오늘 뉴스가 부른 테마</em>가 뉴스 제목·매체 수와 함께 먼저 서고, 거기 있는 종목을 누르면 바로 차트가 열립니다.</p></div>
     </div>
+    <div class="nt-it">
+      <span class="nt-n">5</span>
+      <div class="nt-c"><b>이번 업데이트 (11.26) · 오늘 상한가는 테마로 묶고, 뉴스와 테마달력을 서로 이었습니다</b>
+        <p><em>테마달력 → 오늘 상한가</em>가 이제 <em>같은 이슈·같은 섹터끼리 묶여</em> 나오고, 묶음마다 <em>👑 선도주</em>(오늘 상한가에 가장 먼저 닿은 종목)가 맨 앞에 섭니다. <em>🧱 첫 상한가</em>는 <em>일봉 125봉 바닥 횡보 뒤 처음 상한가</em>로, 그 테마의 <em>1번</em>이 됩니다. <em>🕐 도달 시각</em>은 1분봉으로 잰 상한가 도달 시각입니다. <em>관리종목·우선주·투자주의/경고/위험·거래정지·SPAC·자본잠식</em> 종목은 순위에서 빼고, 뺀 종목은 <em>제외 n</em>으로만 셉니다. 뉴스 카드의 <em>📅 테마</em> 칩을 누르면 그 테마가 있는 달의 테마 카드로, 테마 카드의 <em>📰 이 테마 뉴스 보기</em>를 누르면 그 테마·종목 기사만 뉴스 탭에 모입니다.</p></div>
+    </div>
     <button class="nt-more" id="ntMore" type="button" aria-expanded="false" aria-controls="ntOld"><span class="lbl">지난 공지 4건 더보기</span><span class="ar" aria-hidden="true">▾</span></button>
     <div class="nt-old" id="ntOld" hidden>
     <div class="nt-it">
-      <span class="nt-n">5</span>
+      <span class="nt-n">6</span>
       <div class="nt-c"><b>이번 업데이트 (11.21) · 상한가 봉 표시</b>
         <p>종목을 눌러 여는 <em>일봉 125봉 차트</em>에 <em>노란 화살표 ▼</em> 를 붙였습니다. 전날 종가보다 28% 넘게 오른 <em>상한가 봉의 꼭대기 위</em>에 노란 화살표가 서서, 5·10·20·60일선 사이에서 상한가가 어디서 났는지 한눈에 보입니다.</p></div>
     </div>
     <div class="nt-it">
-      <span class="nt-n">6</span>
+      <span class="nt-n">7</span>
       <div class="nt-c"><b>이번 업데이트 (11.21) · 테마달력에 '동반테마 / 개별상한가' 구분 필터</b>
         <p><em>테마달력</em> 위에 <em>[동반테마] [개별상한가] [전체]</em> 칩을 달았습니다. 처음에는 <em>동반테마</em>가 선택돼 있어 같은 테마 종목들이 <em>함께 오른 진짜 테마</em>부터 보입니다. <em>개별상한가</em>를 누르면 실적·계약·인수·임상·허가·기술수출·경영권·자사주·신작·특허 같은 <em>단독 재료</em>로 한 종목만 오른 경우를 볼 수 있습니다.</p></div>
     </div>
     <div class="nt-it">
-      <span class="nt-n">7</span>
+      <span class="nt-n">8</span>
       <div class="nt-c"><b>종목 차트 보는 법</b>
         <p><em>뉴스(오늘 상한가 포함) · 테마달력 · 레이더 · 실전</em> 어느 화면에서든 종목 이름을 누르면 그 종목의 <em>일봉 125봉 차트</em> 가 열립니다. 봉을 짚으면 그날 종가·등락률·거래량과 5·10·20·60일선 값이 위에 뜨고, <em>전체 125봉 / 최근 60봉</em> 버튼으로 넓혀 보거나 좁혀 볼 수 있습니다.</p></div>
     </div>
     <div class="nt-it">
-      <span class="nt-n">8</span>
+      <span class="nt-n">9</span>
       <div class="nt-c"><b>지정시간 자동 업데이트</b>
         <p>평일 지정시간마다 뉴스와 차트가 자동으로 갱신됩니다. 화면 위 <em>⟳</em> 를 누르면 지금 바로 새로 받아옵니다.</p></div>
     </div>
@@ -1334,7 +1370,7 @@
 </div>
 
 <script>
-const state = { data:null, calendar:null, radar:null, month:null, tab:'news', more:false, open:new Set(), sameOpen:new Set(), hotOpen:new Set(), calKind:'오늘 상한가' };
+const state = { data:null, calendar:null, radar:null, month:null, tab:'news', more:false, open:new Set(), sameOpen:new Set(), hotOpen:new Set(), calKind:'오늘 상한가', newsFilter:null };
 /* 2026-11-24 역할 분담 — 네 칸. 오늘 상한가는 뉴스 칸 안에 있다('upper' 탭은 없어졌다). */
 const TABS = ['news','radar','calendar','hotbar'];
 const TAB_ROLE = {
@@ -1404,7 +1440,15 @@ function flashList(){
 function issueList(){
   /* 2026-11-23 지시(#11664): 뉴스 탭에서 '실시간 속보'를 걷어냈으므로, 속보와 겹친 이슈를 빼던
      거르기도 함께 걷어낸다 — 화면에 없는 기사 때문에 주요 뉴스 순위가 비지 않게. */
-  return issueAll();
+  const all = issueAll();
+  /* 2026-11-26 — 테마달력에서 "이 테마 뉴스"로 들어오면 그 테마·종목이 걸린 기사만 보여 준다. */
+  const f = state.newsFilter;
+  if(!f) return all;
+  return all.filter(a => {
+    if(((a.db_themes) || []).some(n => String(n).trim() === f.theme)) return true;
+    const names = (a.leaders || []).concat(a.tags || []);
+    return names.some(n => f.names.has(String(n || '').trim()));
+  });
 }
 
 /* ---------------- 탭 ---------------- */
@@ -1482,13 +1526,22 @@ function leadBadge(leaders){
   return `<span class="sep">·</span><span class="lead" title="${esc(names.join(' · '))}"><b>🏢</b>${html}</span>`;
 }
 
-/* 관련 테마 — 뉴스가 붙은 테마 이름을 작은 칩으로 (2026-11-20 지시 "관련 테마") */
+/* 관련 테마 — 뉴스가 붙은 테마 이름을 작은 칩으로 (2026-11-20 지시 "관련 테마")
+   2026-11-26 — 뉴스에 달린 테마달력 DB 테마(db_themes)도 하나 더 붙이고, 누르면 그 달 테마 카드로 간다. */
 function themeChip(a){
+  const out = [];
   const t = String((a && a.theme_label) || '').trim();
-  if(!t) return '';
-  const c = String((a && a.theme_color) || (a && a.theme ? themeColor(a.theme) : '') || '').trim();
-  const st = /^#[0-9a-f]{3,8}$/i.test(c) ? ` style="color:${c};border-color:${c}66;background:${c}14"` : '';
-  return `<span class="sep">·</span><span class="cl-th"${st} title="${esc(t)}">${esc(t)}</span>`;
+  if(t){
+    const c = String((a && a.theme_color) || (a && a.theme ? themeColor(a.theme) : '') || '').trim();
+    const st = /^#[0-9a-f]{3,8}$/i.test(c) ? ` style="color:${c};border-color:${c}66;background:${c}14"` : '';
+    out.push(`<span class="cl-th"${st} title="${esc(t)}">${esc(t)}</span>`);
+  }
+  const db = String(((a && a.db_themes) || [])[0] || '').trim();
+  if(db){
+    out.push(`<span class="cl-th" data-caltheme="${esc(db)}" role="button" tabindex="0" title="테마달력에서 「${esc(db)}」 테마 보기">📅 ${esc(shortTheme(db))}</span>`);
+  }
+  if(!out.length) return '';
+  return `<span class="sep">·</span>` + out.join(' ');
 }
 
 /* 속보 한 줄 — 챗방처럼 왼쪽 시간 · 오른쪽 제목/매체/테마/관련 종목 (2026-11-20 개편) */
@@ -1566,11 +1619,21 @@ let lastKey = '';
 let lastIssueHtml = '';
 function renderNews(force){
   if(!state.data) return;
-  const key = [state.data.generated_at, state.more?1:0].join('|');
+  const f = state.newsFilter;
+  const key = [state.data.generated_at, state.more?1:0, f ? f.theme : ''].join('|');
   if(!force && key === lastKey) return;
   lastKey = key;
 
   const iss = issueList();
+  /* 테마달력 → 뉴스 : 지금 어느 테마로 걸러 보는 중인지 한 줄로 보여 준다 */
+  const fb = $('#newsFilter');
+  if(fb){
+    fb.hidden = !f;
+    fb.innerHTML = f
+      ? `<div class="nf"><b>📅 ${esc(shortTheme(f.theme))}</b> 테마 뉴스 ${iss.length}건<button type="button" id="nfClear">해제 ✕</button></div>` : '';
+    const clr = $('#nfClear');
+    if(clr) clr.onclick = () => { state.newsFilter = null; renderNews(true); };
+  }
 
   const groups = groupIssues(iss);
   const shown = state.more ? groups : groups.slice(0, FIRST_ISSUES);
@@ -1579,7 +1642,7 @@ function renderNews(force){
         const open = state.sameOpen && state.sameOpen.has(g.rep.id);
         return issueHtml(g.rep, i) + sameThemeHtml(g, open);
       }).join('')
-    : `<div class="mini-empty">수집된 이슈가 없습니다.</div>`;
+    : `<div class="mini-empty">${f ? '이 테마와 이어진 뉴스가 오늘은 없습니다.' : '수집된 이슈가 없습니다.'}</div>`;
   if(ih !== lastIssueHtml){
     lastIssueHtml = ih;
     $('#issueList').innerHTML = ih;
@@ -1717,6 +1780,7 @@ function upperCardHtml(it, i){
   const more = (showTitle || (it.issue_summary || '').length > 70)
     ? `<button class="up-more" type="button">더 보기 ▾</button>` : '';
   const rate = Number(it.change_rate || 0).toFixed(2);
+  /* 2026-11-26 — 테마 묶음 안 순위 배지: 👑 선도주 · 🧱 125봉 바닥 첫 상한가 · 🕐 도달 시각 · 📅 달력 테마 */
   return `<article class="up-card">
     <div class="up-top">
       <span class="up-no">${i + 1}</span>
@@ -1725,13 +1789,56 @@ function upperCardHtml(it, i){
       <span class="up-price">${esc(it.price_text || '')}원</span>
       <span class="up-rate">+${rate}%</span>
     </div>
-    ${tags}
+    <div class="up-tags">${upBadges(it)}${theme}${tv}</div>
     ${sum}
     <div class="up-src">
       <span class="p">${srcLabel ? esc(srcLabel) : '관련 보도 확인 중'}</span>${more}${link}
     </div>
     ${titleLine}
   </article>`;
+}
+
+/* 테마 이름 → 화면용 짧은 이름(괄호 앞) */
+function shortTheme(name){
+  return String(name || '').replace(/\s*\([^)]*\)\s*/g, ' ').trim();
+}
+
+/* 상한가 카드 배지 — 선도주·바닥 첫 상한가·도달 시각·달력 테마 */
+function upBadges(it){
+  const b = [];
+  if(it.leader) b.push(`<span class="up-bdg lead" title="이 테마에서 오늘 상한가에 가장 먼저 닿은 선도주">👑 선도주</span>`);
+  if(it.base_first){
+    const bs = it.base || {};
+    const why = bs.range_pct != null
+      ? ` — 직전 ${bs.bars || 124}봉 폭 ${bs.range_pct}% · 바닥 ${bs.pos != null ? Math.round(bs.pos * 100) + '%' : '-'}` : '';
+    b.push(`<span class="up-bdg base" title="일봉 125봉 바닥 횡보 뒤 첫 상한가 — 테마 1번${esc(why)}">🧱 첫 상한가</span>`);
+  }
+  if(it.arrival) b.push(`<span class="up-bdg tm" title="오늘 상한가 가격에 처음 닿은 시각(1분봉 종가 기준 · 1분 단위 근사)">🕐 ${esc(it.arrival)}</span>`);
+  if(it.cal_theme) b.push(`<span class="up-bdg cal" data-caltheme="${esc(it.cal_theme)}" role="button" tabindex="0" title="테마달력에서 이 테마·종목 보기">📅 ${esc(shortTheme(it.cal_theme))}</span>`);
+  return b.join('');
+}
+
+/* 오늘 상한가 — 테마 묶음 카드 (같은 이슈·섹터를 한 묶음, 그 안에서 선도주·바닥 첫 상한가 순) */
+function upperGroupsHtml(u, items){
+  const groups = (u && u.themes) || [];
+  if(!groups.length) return items.map(upperCardHtml).join('');
+  const byCode = new Map(items.map(it => [String(it.code), it]));
+  return groups.map(g => {
+    const cards = (g.stocks || []).map(s => byCode.get(String(s.code))).filter(Boolean)
+      .map(it => upperCardHtml(it, Math.max(0, (Number(it.rank) || 1) - 1))).join('');
+    const kind = g.kind === '개별상한가' ? 'bg' : (g.kind === '동반테마' ? 'bd' : '');
+    const kindTxt = g.kind === '개별상한가' ? '개별' : (g.kind === '동반테마' ? '동반' : '새 이슈');
+    const base = g.base_first ? `<span class="up-bdg base" title="이 묶음에 125봉 바닥 횡보 뒤 첫 상한가가 있음">🧱</span>` : '';
+    const link = g.issue_url
+      ? `<a class="gl" href="${esc(g.issue_url)}" target="_blank" rel="noopener noreferrer">이슈 원문 ↗</a>` : '';
+    return `<div class="up-grp">
+      <span class="gn">${g.rank}. ${esc(g.short || shortTheme(g.name))}</span>
+      <span class="gk ${kind}">${kindTxt}</span>${base}
+      <span class="gc">${g.count}종목</span>
+      ${g.issue ? `<span class="gi">${esc(g.issue)}</span>` : ''}
+      ${link}
+    </div>` + cards;
+  }).join('');
 }
 
 function renderUpper(){
@@ -1741,10 +1848,14 @@ function renderUpper(){
   const session = (u && u.session_label) || '';
   const dateText = label + (session ? ' · ' + session : '');
   const dateCls = 'badge-d' + (u && u.is_today ? '' : ' prev');
-  const cntText = items.length ? items.length + '종목' : '0종목';
+  const nTheme = ((u && u.themes) || []).length;
+  const nEx = ((u && u.excluded) || []).length;
+  const cntText = (items.length ? items.length + '종목' : '0종목')
+    + (nTheme > 1 ? ' · 테마 ' + nTheme : '') + (nEx ? ' · 제외 ' + nEx : '');
   const emptyHtml = !u
     ? '오늘 상한가 자료를 불러오지 못했습니다.<br>잠시 후 새로고침(⟳)을 눌러 주세요.'
     : `${esc(u.note || '오늘 상한가 종목이 아직 없습니다.')}<br>장중에 다시 확인해 주세요.`;
+  const body = items.length ? upperGroupsHtml(u, items) : `<div class="empty">${emptyHtml}</div>`;
   /* ① 뉴스 칸의 🚀 오늘 상한가 */
   const box = $('#upperList');
   if(box){
@@ -1752,7 +1863,7 @@ function renderUpper(){
     if(dateEl){ dateEl.textContent = dateText; dateEl.className = dateCls; }
     if($('#upperCnt')) $('#upperCnt').textContent = cntText;
     if($('#upperSub')) $('#upperSub').textContent = '';
-    box.innerHTML = items.length ? items.map(upperCardHtml).join('') : `<div class="empty">${emptyHtml}</div>`;
+    box.innerHTML = body;
   }
   /* ② 테마달력 칸 — '오늘 상한가' 칩을 골랐을 때 같은 카드가 이 칸에 그려진다 */
   const cbox = $('#calUpperList');
@@ -1760,11 +1871,56 @@ function renderUpper(){
     const cdate = $('#calUpperDate');
     if(cdate){ cdate.textContent = dateText; cdate.className = dateCls; }
     if($('#calUpperCnt')) $('#calUpperCnt').textContent = cntText;
-    cbox.innerHTML = items.length ? items.map(upperCardHtml).join('') : `<div class="empty">${emptyHtml}</div>`;
+    cbox.innerHTML = body;
   }
   /* ③ 칩 숫자 — 오늘 상한가 종목 수 */
   const chip = document.querySelector('#calFlt button[data-k="오늘 상한가"] i');
   if(chip) chip.textContent = items.length;
+}
+
+/* ---------------- 뉴스 ↔ 테마달력 (2026-11-26 착수) ----------------
+   뉴스 카드의 📅 테마 칩 → 그 테마가 있는 가장 최근 달의 테마 카드를 펼쳐 보여 준다.
+   테마 카드의 "📰 이 테마 뉴스" → 뉴스 탭을 그 테마·종목 기사만 걸러 보여 준다.
+   기존 틀(탭·카드 모양)은 그대로 두고, 잇는 길만 놓는다. */
+async function openCalTheme(name){
+  name = String(name || '').trim();
+  if(!name) return;
+  const cal = await ensureCalendar();
+  if(!cal){ toast('테마달력 자료를 불러오지 못했습니다'); return; }
+  let found = null, month = null;
+  for(const m of (cal.months || []).slice().reverse()){
+    const t = (m.themes || []).find(x => String(x.name || '').trim() === name);
+    if(t){ found = t; month = m; break; }
+  }
+  if(!found){ toast('테마달력에 「' + shortTheme(name) + '」 테마가 아직 없습니다'); return; }
+  state.month = month.month;
+  state.calKind = found.kind === '개별상한가' ? '개별상한가' : '동반테마';
+  switchTab('calendar');
+  await renderCalendar();
+  requestAnimationFrame(() => {
+    const cards = [...document.querySelectorAll('#calThemes .th-card')];
+    const card = cards.find(c => {
+      const b = c.querySelector('.th-name b');
+      return b && b.textContent.trim() === name;
+    });
+    if(!card) return;
+    card.classList.add('open', 'th-hl');
+    card.scrollIntoView({block: 'center', behavior: 'smooth'});
+    setTimeout(() => card.classList.remove('th-hl'), 2600);
+  });
+}
+
+/* 테마달력 → 뉴스 : 이 테마(와 그 종목 이름)에 걸린 오늘 기사만 */
+async function openNewsTheme(name, stockNames){
+  name = String(name || '').trim();
+  if(!name) return;
+  const names = new Set(String(stockNames || '').split('|').map(s => s.trim()).filter(Boolean));
+  state.newsFilter = { theme: name, names };
+  state.more = true;                       /* 걸러도 접혀 있지 않게 전부 펼친다 */
+  switchTab('news');
+  renderNews(true);
+  const f = $('#newsFilter');
+  if(f) f.scrollIntoView({block: 'start', behavior: 'smooth'});
 }
 
 /* ---------------- 테마달력 ---------------- */
@@ -1962,6 +2118,7 @@ async function renderCalendar(){
         <span class="th-exp">▾</span>
       </button>
       <div class="th-body">
+        <div class="th-acts"><button class="th-news" type="button" data-news-theme="${esc(t.name)}" data-news-names="${esc((t.stocks || []).map(s => s.name).filter(Boolean).join('|'))}">📰 이 테마 뉴스 보기</button></div>
         ${t.why ? `<p class="th-why">${individual ? '개별 근거' : '동반 근거'} — ${esc(t.why)}</p>` : ''}
         ${t.summary ? `<p class="th-sum">${esc(t.summary)}</p>` : ''}
         <div class="stk-grid">${stkGroups(t.stocks)}</div>
@@ -4217,7 +4374,7 @@ async function openDayChart(code, name){
      같은 종목의 비밀 핫바·10단계 차트로 열어 준다 — 잠긴 지인 화면에는 절대 쓰지 않는다. */
   const fb = await hotFallbackItem(code, name);
   if(fb){ openChart(fb); return; }
-  toast('이 종목 일봉 시세가 아직 없습니다');
+  toast('이 종목 일봉 시세가 아직 없습니다 — 다음 자동 갱신 때 채워집니다');
 }
 
 /* 공개 125봉 자료에 없는 종목의 대체 차트 — **잠금이 풀린 본인에게만** 찾는다.
@@ -4281,7 +4438,7 @@ function bindStockChart(sel){
     /* 이름만 있는 자리(관련 종목 칩) — 자료를 아직 안 받았으면 한 번 받아 보고 이름으로 다시 찾는다 */
     ensureDay().then(() => {
       const c = codeOfName(name) || t.dataset.code;
-      if(!c){ toast('이 종목 일봉 시세가 아직 없습니다'); return; }
+      if(!c){ toast('이 종목 일봉 시세가 아직 없습니다 — 다음 자동 갱신 때 채워집니다'); return; }
       openDayChart(c, name);
     });
   });
@@ -4494,6 +4651,26 @@ $('#hotBody').addEventListener('keydown', e => {
 });
 /* 다른 메뉴(뉴스·상한가·테마달력·레이더)의 종목 이름 → 기준선 없는 주봉 차트 */
 ['#calUpperList', '#calThemes', '#radarList', '#issueList', '#newsThemeList'].forEach(bindStockChart);
+
+/* ---------------- 뉴스 ↔ 테마달력 잇는 길 (2026-11-26) ----------------
+   뉴스 카드의 📅 테마 칩 → 테마달력의 그 테마 카드로
+   테마 카드의 "📰 이 테마 뉴스 보기" → 뉴스 탭을 그 테마·종목 기사만
+   둘 다 종목 칩(data-code)과 겹치지 않게 먼저 가로챈다. */
+document.addEventListener('click', e => {
+  const ct = e.target.closest('[data-caltheme]');
+  if(ct){
+    e.preventDefault();
+    e.stopPropagation();
+    openCalTheme(ct.dataset.caltheme);
+    return;
+  }
+  const nt = e.target.closest('[data-news-theme]');
+  if(nt){
+    e.preventDefault();
+    e.stopPropagation();
+    openNewsTheme(nt.dataset.newsTheme, nt.dataset.newsNames);
+  }
+});
 /* 차트 모달 닫기 — ✕ · 바깥 누름 · Esc. 터치·마우스 위치의 봉 숫자 */
 (function(){
   const ov = $('#chartOv');
@@ -4670,7 +4847,7 @@ visPaint();
 })();
 
 /* ---------------- 공지사항 창 (처음 한 번 · [확인] 을 누르면 다시 뜨지 않는다) ---------------- */
-const NOTICE_KEY = 'newsradar_notice_v4_ack';
+const NOTICE_KEY = 'newsradar_notice_v5_ack';   /* 2026-11-26 — 상한가 테마 묶음·뉴스↔달력 안내를 한 번 더 보여 준다 */
 let noticeOv = $('#noticeOv');
 function noticeSeen(){
   try{ return !!localStorage.getItem(NOTICE_KEY); }catch(e){ return false; }
