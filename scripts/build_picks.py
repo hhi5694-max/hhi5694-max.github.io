@@ -676,6 +676,8 @@ def refresh_prices(book: dict, date: str, day: dict, mark_closed: bool) -> int:
             p["status"] = "마감" if mark_closed else "진행"
     for p in rec.get("aftermarket") or []:
         p.setdefault("status", "대기")
+        if p.get("status") == "대기":
+            p["pct"] = None          # 오늘 종가가 기준 — 결과(%)는 다음 거래일에 붙는다
     # 앞선 날의 장후픽 — 다음 거래일(오늘) 현재가로 따라간다
     for d in prior_days(book, date, 3):
         for p in (book["months"][d[:7]].get(d) or {}).get("aftermarket") or []:
@@ -1011,7 +1013,7 @@ def build_after(book: dict, day: dict, cal: dict, news: dict, date: str, force: 
             "ref_price": int(close),
             "ref_kind": "당일 종가",
             "current_price": int(close),
-            "pct": 0.0,
+            "pct": None,                   # 결과는 다음 거래일 현재가로 붙는다
             "status": "대기",                 # 다음 거래일에 '진행' → 마감에 '마감'
             "basis_date": date,
         })
