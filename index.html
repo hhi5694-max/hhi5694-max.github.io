@@ -4701,7 +4701,7 @@ async function renderResults(){
   if(mbar){
     mbar.innerHTML = months.map(m => {
       const ds = Object.keys(picksData.months[m] || {});
-      return `<button class="res-mbtn${m === mon ? ' on' : ''}" type="button" data-rm="${esc(m)}" aria-pressed="${m === mon}">${esc(m.replace('-', '.'))}<span class="n">${ds.length}일</span></button>`;
+      return `<button class="res-mbtn${m === mon ? ' on' : ''}" type="button" data-rm="${esc(m)}" aria-pressed="${m === mon}">${esc(m.replace('-', '.'))}<span class="n">· ${ds.length}일</span></button>`;
     }).join('');
   }
   if(sum){

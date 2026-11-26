@@ -539,6 +539,25 @@ def trading_days_ok(dt: datetime) -> bool:
     return dt.weekday() < 5
 
 
+def market_open_today() -> bool | None:
+    """오늘이 실제 거래일인가 — 네이버 시장상태 API. 모르면 None(평일 규칙으로 진행)."""
+    try:
+        d = http_json("https://stock.naver.com/api/stockSecurity/exchanges/market-status?exchanges=krx",
+                      referer="https://stock.naver.com/")
+        for ex in (d or {}).get("exchanges") or []:
+            if str(ex.get("exchange")).lower() != "krx":
+                continue
+            for st in ex.get("statuses") or []:
+                if st.get("marketType") not in ("KOSPI", "KOSDAQ"):
+                    continue
+                today = st.get("today") or {}
+                if today.get("date") and today.get("date") == now_kst().strftime("%Y-%m-%d"):
+                    return bool(today.get("isTradingDay", True))
+    except Exception:  # noqa: BLE001
+        return None
+    return None
+
+
 def market_phase(dt: datetime) -> str:
     """'pre'(장전) · 'open'(장중) · 'after'(마감 뒤) · 'closed'(휴장)"""
     if not trading_days_ok(dt):
@@ -829,6 +848,9 @@ def main() -> None:
     dt = datetime.strptime(args.date, "%Y-%m-%d").replace(tzinfo=KST) if args.date else now_kst()
     date = dt.strftime("%Y-%m-%d")
     phase = market_phase(dt)
+    if not args.date and phase != "closed" and market_open_today() is False:
+        print(f"[skip] {date} 은 휴장일입니다 — 픽을 만들지 않습니다")
+        return
     day = load_day125()
     cal = read_json(CAL, {}) or {}
     news = read_json(NEWS, {}) or {}
