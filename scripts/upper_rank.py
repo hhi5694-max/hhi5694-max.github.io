@@ -8,11 +8,16 @@ collect_news.py 가 '오늘 상한가'를 만든 뒤 이 모듈을 부른다. �
      공식 필드로 거른다 — 관리종목(manageStatusGb)·거래정지(tradeStopYn·tradableStatus)·
      시장경보(marketAlertType: 투자주의/경고/위험)·DR(type)·우선주(종목코드 끝자리)·SPAC(이름)·
      자본잠식(자산총계-부채총계 ≤ 0).
-     ※ 환기종목·감사의견 거절/한정은 이 API에 필드가 없다(문제점으로 보고).
+     ①-b) 공식 필드에 없는 것(투자주의환기종목·감사의견 거절/한정·상장폐지·횡령·배임·회생절차/파산·
+     자본잠식)은 그 종목 기사로 판정한다(2026-11-26 지시 — news_screen). 종목 이름이 기사에 실제로
+     나온 최근 악재만 세고, '해소·해제·벗어·적정의견' 같은 완화 문맥은 건너뛰며, 뺄 때는
+     「제목·날짜·매체」를 excluded 에 그대로 남긴다.
 
   2) 상한가 도달 순서 (brief 2 — '상한가를 먼저 갔던 종목 필두')
      api.finance.naver.com/siseJson.naver 의 1분봉(그날 하루만)에서 '처음 상한가 가격에 닿은 분'을 찾는다.
      분봉 종가 기준이라 1분 단위 근사치다(문제점으로 보고).
+     2026-11-26 지시 — 장중(평달 09:00~15:30)에는 긁지 않는다. 장 마감 뒤에만 조회해 확정하고,
+     장중 실행에서는 값을 비우거나 그날 마감 뒤 이미 잰 값을 그대로 이어 쓴다(collect_news.arrival_window).
 
   3) 125봉 바닥횡보 첫 상한가 (brief 2 — '무조건 1번')
      일봉 125봉(오늘 빼고 직전 124봉)에서
@@ -171,6 +176,77 @@ def screen(row: dict) -> list:
     if assets is not None and debt is not None and assets - debt <= 0:
         why.append("자본잠식(자본총계 0 이하)")
     return why
+
+
+# ------------------------------------------------------------------ 1-b) 뉴스로 보는 불건전 기업
+#   네이버 랭킹/기본 API 에 항목이 없는 것들(투자주의환기종목·감사의견 거절/한정·상장폐지·횡령·배임·
+#   회생절차·파산·자본잠식)은 그 종목 기사로 판정한다(2026-11-26 지시).
+#   · 종목 이름이 기사 제목·도입부에 실제로 나온 경우만 근거로 쓴다(시장 전체 기사 오탐 방지)
+#   · '해소·해제·벗어·적정의견·무혐의' 같은 해제/완화 문맥이 낱말 옆에 있으면 세지 않는다
+#   · 최근 NEWS_WINDOW_DAYS 일 기사만 본다 — 옛 악재로 지금 종목을 빼지 않는다
+#   · 제외 사유에는 어떤 낱말·제목·날짜로 뺐는지 그대로 남긴다
+NEWS_WINDOW_DAYS = 180
+NEWS_RULES = (
+    ("투자주의환기종목", ("환기종목", "투자주의환기", "환기 지정", "환기지정")),
+    ("감사의견 거절·한정", ("감사의견 거절", "감사의견거절", "감사의견한정", "의견거절",
+                          "감사의견 한정", "한정의견", "감사의견 부적정", "부적정의견")),
+    ("상장폐지", ("상장폐지", "상장 폐지")),
+    ("횡령·배임", ("횡령", "배임")),
+    ("회생절차·파산", ("회생절차", "법정관리", "기업회생", "파산")),
+    ("자본잠식", ("자본잠식",)),
+)
+# 악재 낱말 옆에 있으면 '이미 풀린 일'로 보는 낱말 — 이때는 제외 근거로 쓰지 않는다
+RELIEF_MARKERS = ("해소", "해제", "벗어", "탈피", "졸업", "개선", "회복", "기각", "무혐의",
+                  "불기소", "무죄", "적정의견", "적정 의견", "면제", "종결", "취소", "철회")
+NEWS_CTX = 24            # 낱말 앞뒤로 함께 읽는 글자 수(같은 문장 안의 완화 문맥 판정용)
+
+
+def _flat(s: str) -> str:
+    return re.sub(r"\s+", "", s or "")
+
+
+def news_screen(name: str, articles: list) -> tuple[list, list]:
+    """그 종목 기사 → (제외 사유 목록, 근거 hits). 근거가 없으면 빈 목록."""
+    reasons: list = []
+    hits: list = []
+    nn = _flat(name)
+    if not nn or not articles:
+        return reasons, hits
+    # 우선주(동양2우B 등)는 기사에 보통주 이름(동양)으로만 나오기도 한다 — 그 이름까지 같이 본다
+    names = [nn]
+    m_pref = re.match(r"^(.{2,}?)\d*우(?:B|C)?$", nn)
+    if m_pref:
+        names.append(m_pref.group(1))
+    oldest = datetime.now(KST) - timedelta(days=NEWS_WINDOW_DAYS)
+    seen = set()
+    for a in articles:
+        dt = a.get("dt")
+        if dt is not None and dt < oldest:
+            continue
+        title = str(a.get("title") or "")
+        text = _flat(title + " " + str(a.get("body") or ""))
+        if not title or not any(n in text for n in names):
+            continue
+        for label, kws in NEWS_RULES:
+            for kw in kws:
+                for m in re.finditer(re.escape(_flat(kw)), text):
+                    i = m.start()
+                    ctx = text[max(0, i - NEWS_CTX): i + len(_flat(kw)) + NEWS_CTX]
+                    if any(r in ctx for r in RELIEF_MARKERS):
+                        continue
+                    if (label, title) in seen:
+                        continue
+                    seen.add((label, title))
+                    date = dt.strftime("%Y-%m-%d") if dt is not None else ""
+                    where = ", ".join(x for x in (date, a.get("press") or "") if x)
+                    if len(reasons) < 3:      # 사유는 세 줄까지만 — 나머지는 hits 에 남는다
+                        reasons.append("뉴스: %s — 「%s」%s"
+                                       % (label, title[:78], (" (" + where + ")") if where else ""))
+                    hits.append({"rule": label, "keyword": kw, "title": title,
+                                 "press": a.get("press") or "", "date": date,
+                                 "url": a.get("url") or ""})
+                    break
+    return reasons, hits
 
 
 # ------------------------------------------------------------------ 2) 상한가 도달 시각
@@ -410,20 +486,33 @@ def _group_payload(g: dict) -> dict:
 
 
 def rank(items: list, base_date: str, cal: dict, issues: list | None = None,
-         limit_base: int = 80, workers: int = WORKERS) -> tuple[list, list, list, list]:
+         limit_base: int = 80, workers: int = WORKERS,
+         news_by_code: dict | None = None, arrival_ok: bool = True,
+         keep_arrival: dict | None = None) -> tuple[list, list, list, list]:
     """오늘 상한가 목록 → (통과 종목, 테마 묶음, 제외 종목, 갱신된 종목 목록).
 
     items 는 collect_news 가 만든 상한가 카드(dict). 여기서 상태 검사·도달시각·바닥판정·묶음을 붙인다.
+    news_by_code — 종목코드 → 그 종목 기사 목록(제목·도입부·날짜). 뉴스로 불건전을 판정한다.
+    arrival_ok   — 1분봉으로 도달 시각을 잴 수 있는 때인지(장중에는 긁지 않는다 — 2026-11-26 지시).
+    keep_arrival — 장 마감 후 이미 확정한 도달 시각(코드 → {arrival, arrival_min, arrival_after}).
     """
     by_name, by_code = calendar_index(cal)
+    news_by_code = news_by_code or {}
+    keep_arrival = keep_arrival or {}
     passed, excluded = [], []
     for it in items:
         why = screen(it)
+        hits = []
+        if not why:                       # 공식 필드에서 안 걸린 종목만 뉴스로 한 번 더 본다
+            why, hits = news_screen(it.get("name"), news_by_code.get(it["code"]) or [])
         if why:
-            excluded.append({"name": it.get("name"), "code": it.get("code"),
-                             "market": it.get("market"), "reasons": why,
-                             "change_rate": it.get("change_rate"),
-                             "trading_value_text": it.get("trading_value_text")})
+            row = {"name": it.get("name"), "code": it.get("code"),
+                   "market": it.get("market"), "reasons": why,
+                   "change_rate": it.get("change_rate"),
+                   "trading_value_text": it.get("trading_value_text")}
+            if hits:
+                row["news_hits"] = hits[:5]
+            excluded.append(row)
         else:
             passed.append(it)
 
@@ -445,21 +534,24 @@ def rank(items: list, base_date: str, cal: dict, issues: list | None = None,
     def one(it):
         code = it["code"]
         price = int(_num(it.get("price"), 0) or 0)
-        t = first_touch(code, base_date, price)
+        t = first_touch(code, base_date, price) if arrival_ok else None
         b = base_check(code, base_date)
         return it, t, b
 
     if work:
         with ThreadPoolExecutor(max_workers=workers) as ex:
             for it, t, b in ex.map(one, work):
-                it["arrival"] = (t or {}).get("t", "")
-                it["arrival_min"] = (t or {}).get("min")
-                it["arrival_after"] = 1 if (t or {}).get("after") else 0
+                carry = keep_arrival.get(it["code"]) or {}
+                it["arrival"] = (t or {}).get("t") or str(carry.get("arrival") or "")
+                it["arrival_min"] = ((t or {}).get("min") if t else carry.get("arrival_min"))
+                it["arrival_after"] = 1 if (t or {}).get("after") else int(carry.get("arrival_after") or 0)
                 it["base"] = b
                 it["base_first"] = 1 if b.get("base_first") else 0
     for it in rest:
-        it["arrival"] = ""
-        it["arrival_min"] = None
+        carry = keep_arrival.get(it["code"]) or {}
+        it["arrival"] = str(carry.get("arrival") or "")
+        it["arrival_min"] = carry.get("arrival_min")
+        it["arrival_after"] = int(carry.get("arrival_after") or 0)
         it["base"] = {"note": "이번 차례에 판정하지 않음"}
         it["base_first"] = 0
 

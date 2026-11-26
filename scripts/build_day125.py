@@ -405,7 +405,8 @@ def encode(stock_rows: dict[str, list[list]], names: dict[str, str], days: int,
     for c, rows in stock_rows.items():
         rows = sorted(rows, key=lambda r: r[0])[-days:]
         # 상장 직후(봉이 몇 개 없는) 종목도 차트가 열려야 한다 — 2026-11-26 지시 "day125.json 누락 없이"
-        if len(rows) >= 3:
+        #   신규상장 첫날은 일봉이 1개(1~2개)뿐이다 — 1봉부터 싣고, 그리는 쪽이 125봉 틀에 맞춰 깔끔하게 처리한다
+        if len(rows) >= 1:
             cut[c] = rows
     axis = sorted({r[0] for rows in cut.values() for r in rows})
     at = {d: i for i, d in enumerate(axis)}

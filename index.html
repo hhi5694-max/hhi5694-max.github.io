@@ -297,6 +297,7 @@
   .up-bdg.lead{color:#ffd166;background:rgba(255,209,102,.14);border:1px solid rgba(255,209,102,.34)}
   .up-bdg.base{color:#7ff0c0;background:rgba(56,214,168,.14);border:1px solid rgba(56,214,168,.34)}
   .up-bdg.tm{color:#9fc0ff;background:rgba(79,140,255,.12);border:1px solid rgba(79,140,255,.3)}
+  .up-bdg.tm.wait{color:#8b98ad;background:rgba(139,152,173,.1);border:1px dashed rgba(139,152,173,.34)}
   .up-bdg.cal{color:#c9a2ff;background:rgba(201,162,255,.13);border:1px solid rgba(201,162,255,.32);cursor:pointer}
   .cl-th[data-caltheme]{cursor:pointer}
   .th-hl{outline:2px solid rgba(255,209,102,.55);outline-offset:1px;border-radius:10px}
@@ -1289,8 +1290,8 @@
     </div>
     <div class="nt-it">
       <span class="nt-n">5</span>
-      <div class="nt-c"><b>이번 업데이트 (11.26) · 오늘 상한가는 테마로 묶고, 뉴스와 테마달력을 서로 이었습니다</b>
-        <p><em>테마달력 → 오늘 상한가</em>가 이제 <em>같은 이슈·같은 섹터끼리 묶여</em> 나오고, 묶음마다 <em>👑 선도주</em>(오늘 상한가에 가장 먼저 닿은 종목)가 맨 앞에 섭니다. <em>🧱 첫 상한가</em>는 <em>일봉 125봉 바닥 횡보 뒤 처음 상한가</em>로, 그 테마의 <em>1번</em>이 됩니다. <em>🕐 도달 시각</em>은 1분봉으로 잰 상한가 도달 시각입니다. <em>관리종목·우선주·투자주의/경고/위험·거래정지·SPAC·자본잠식</em> 종목은 순위에서 빼고, 뺀 종목은 <em>제외 n</em>으로만 셉니다. 뉴스 카드의 <em>📅 테마</em> 칩을 누르면 그 테마가 있는 달의 테마 카드로, 테마 카드의 <em>📰 이 테마 뉴스 보기</em>를 누르면 그 테마·종목 기사만 뉴스 탭에 모입니다.</p></div>
+      <div class="nt-c"><b>이번 업데이트 (11.26) · 오늘 상한가는 테마로 묶고, 불건전 종목은 뉴스로도 걸러냅니다</b>
+        <p><em>테마달력 → 오늘 상한가</em>가 <em>같은 이슈·같은 섹터끼리 묶여</em> 나오고, 묶음마다 <em>👑 선도주</em>(오늘 상한가에 가장 먼저 닿은 종목)가 맨 앞에 섭니다. <em>🧱 첫 상한가</em>는 <em>일봉 125봉 바닥 횡보 뒤 처음 상한가</em>로, 그 테마의 <em>1번</em>이 됩니다. <em>🕐 도달 시각</em>은 장 마감(15:30) 뒤 1분봉으로 재어 확정합니다 — 장중에는 <em>장마감 후 확정</em>으로 표시됩니다. <em>관리종목·우선주·투자주의/경고/위험·거래정지·SPAC·자본잠식</em>은 물론, <em>환기종목·감사의견 거절/한정·상장폐지·횡령·배임·회생절차·파산</em>까지 <em>그 종목 기사</em>로 확인해 순위에서 뺍니다(뺐 때는 근거 기사·날짜를 남깁니다). 상장 첫날처럼 <em>일봉이 한 개뿐인 종목</em>도 125봉 차트가 열립니다. 과거 <em>테마달력</em>에서는 관리종목·투자경고·거래정지 등 불건전 종목을 덜어 냈습니다(우선주는 유지).</p></div>
     </div>
     <button class="nt-more" id="ntMore" type="button" aria-expanded="false" aria-controls="ntOld"><span class="lbl">지난 공지 4건 더보기</span><span class="ar" aria-hidden="true">▾</span></button>
     <div class="nt-old" id="ntOld" hidden>
@@ -1815,6 +1816,8 @@ function upBadges(it){
     b.push(`<span class="up-bdg base" title="일봉 125봉 바닥 횡보 뒤 첫 상한가 — 테마 1번${esc(why)}">🧱 첫 상한가</span>`);
   }
   if(it.arrival) b.push(`<span class="up-bdg tm" title="오늘 상한가 가격에 처음 닿은 시각(1분봉 종가 기준 · 1분 단위 근사)">🕐 ${esc(it.arrival)}</span>`);
+  else if(((upperData() || {}).arrival_state || '') === 'pending')
+    b.push(`<span class="up-bdg tm wait" title="장중에는 도달 시각을 재지 않습니다 — 장 마감(15:30) 뒤 1분봉으로 확정됩니다">🕐 장마감 후 확정</span>`);
   if(it.cal_theme) b.push(`<span class="up-bdg cal" data-caltheme="${esc(it.cal_theme)}" role="button" tabindex="0" title="테마달력에서 이 테마·종목 보기">📅 ${esc(shortTheme(it.cal_theme))}</span>`);
   return b.join('');
 }
@@ -3681,7 +3684,10 @@ function chartSvgHtml(s){
   hi += span * 0.07; lo -= span * 0.07;
   if(lo < 0) lo = 0;      /* 가격은 0 아래로 안 내려간다 — 위아래 여백이 넓으면 축에 음수가 찍혔다(11.23) */
   const Y = v => CH_PY1 - (v - lo) / (hi - lo) * (CH_PY1 - CH_PY0);
-  const slot = (CH_X1 - CH_X0) / n;
+  /* 봉 폭·자리 — 신규상장처럼 봉이 1~몇 개뿐인 종목도 125봉 틀을 깨지 않게.
+     봉 하나가 차트 폭을 다 차지하지 않도록 폭을 26px 로 제한하고, 봉은 가운데로 모은다. */
+  const slot = Math.min((CH_X1 - CH_X0) / n, 26);
+  const left = CH_X0 + ((CH_X1 - CH_X0) - slot * n) / 2;
   const bw = Math.max(2.2, slot * 0.62);
   let g = '';
   /* 가로 눈금 3줄 + 오른쪽 가격 */
@@ -3696,7 +3702,7 @@ function chartSvgHtml(s){
   /* 캔들(양봉 빨강 #ff5a6e · 음봉 파랑 #4f8cff) + 거래량 막대 */
   cs.forEach((c, i) => {
     const col = c[4] >= c[1] ? '#ff5a6e' : '#4f8cff';
-    const x = CH_X0 + slot * i + slot / 2;
+    const x = left + slot * i + slot / 2;
     g += `<line x1="${x.toFixed(1)}" x2="${x.toFixed(1)}" y1="${Y(c[2]).toFixed(1)}" y2="${Y(c[3]).toFixed(1)}" stroke="${col}" stroke-width="1"/>`;
     const yt = Y(Math.max(c[1], c[4])), yb = Y(Math.min(c[1], c[4]));
     g += `<rect x="${(x - bw / 2).toFixed(1)}" y="${yt.toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(1, yb - yt).toFixed(1)}" fill="${col}"/>`;
@@ -3710,7 +3716,7 @@ function chartSvgHtml(s){
       for(let i = off; i < all.length; i++){
         const v = maVal[k][i];
         if(!(v > 0)) continue;
-        const x = CH_X0 + slot * (i - off) + slot / 2, y = Y(v);
+        const x = left + slot * (i - off) + slot / 2, y = Y(v);
         d += (d ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
       }
       if(d) g += `<path d="${d.trim()}" fill="none" stroke="${col}" stroke-width="1.1" stroke-linejoin="round" opacity=".9"/>`;
@@ -3724,7 +3730,7 @@ function chartSvgHtml(s){
       if(!(v > 0)){ pen = false; continue; }      /* 봉이 모자란 구간 — 선을 끊는다 */
       const y = Y(v);
       if(y < CH_PY0 - 2 || y > CH_PY1 + 2){ pen = false; continue; }
-      const x = CH_X0 + slot * (i - off) + slot / 2;
+      const x = left + slot * (i - off) + slot / 2;
       d += (pen ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
       pen = true;
     }
@@ -3761,13 +3767,13 @@ function chartSvgHtml(s){
   const arrowOn = !plain || visOn();
   if(arrowOn){
     const arrowDown = i => {
-      const x = CH_X0 + slot * i + slot / 2;
+      const x = left + slot * i + slot / 2;
       const w = Math.min(6, Math.max(4.6, slot * 0.5)), h = w * 1.25;
       const tip = Math.max(Y(cs[i][2]) - 2.4, h + 3);      /* 윗꼬리 끝 바로 붙게 · 화면 위로 잘리지 않게 */
       return `<path d="M${(x - w).toFixed(1)} ${(tip - h).toFixed(1)} L${(x + w).toFixed(1)} ${(tip - h).toFixed(1)} L${x.toFixed(1)} ${tip.toFixed(1)} Z" fill="#fde047" stroke="rgba(11,17,32,.85)" stroke-width=".7" stroke-linejoin="round"/>`;
     };
     const arrowUp = i => {
-      const x = CH_X0 + slot * i + slot / 2;
+      const x = left + slot * i + slot / 2;
       const w = Math.min(6, Math.max(4.6, slot * 0.5)), h = w * 1.25;
       const top = Y(cs[i][3]) + 2.8;                        /* 아랫꼬리 끝 바로 아래에 꼭대기 */
       const baseY = Math.min(top + h, CH_VY0 - 2.4);        /* 거래량 칸으로 넘어가지 않게 */
@@ -3811,11 +3817,17 @@ function chartSvgHtml(s){
       }
     }
   }
-  /* 날짜 눈금 — 처음·가운데·끝 */
+  /* 날짜 눈금 — 봉이 많으면 처음·가운데·끝, 적으면 겹치지 않게(1봉은 가운데 하나만) */
   const ax = d => p === 'month' ? String(d).slice(2,7).replace('-','.') : mmdd(d);
-  g += `<text x="${CH_X0}" y="${CH_VY1 + 12}" font-size="8" fill="#6b778f">${ax(cs[0][0])}</text>`;
-  g += `<text x="${((CH_X0 + CH_X1) / 2).toFixed(1)}" y="${CH_VY1 + 12}" font-size="8" fill="#6b778f" text-anchor="middle">${ax(cs[Math.floor(n / 2)][0])}</text>`;
-  g += `<text x="${CH_X1}" y="${CH_VY1 + 12}" font-size="8" fill="#6b778f" text-anchor="end">${ax(cs[n - 1][0])}</text>`;
+  const tick = (x, txt, anchor) => `<text x="${x.toFixed(1)}" y="${CH_VY1 + 12}" font-size="8" fill="#6b778f"${anchor ? ` text-anchor="${anchor}"` : ''}>${txt}</text>`;
+  if(n <= 1){
+    g += tick(left + slot / 2, ax(cs[0][0]), 'middle');
+  }else{
+    g += tick(left, ax(cs[0][0]), '');
+    const mid = ax(cs[Math.floor(n / 2)][0]);
+    if(n >= 3 && mid !== ax(cs[0][0]) && mid !== ax(cs[n - 1][0])) g += tick(left + slot * n / 2, mid, 'middle');
+    g += tick(left + slot * n, ax(cs[n - 1][0]), 'end');
+  }
   g += `<text x="${CH_X1}" y="11" font-size="8" fill="#6b778f" text-anchor="end">${p === 'day' ? '일봉' : (p === 'week' ? '주봉' : '월봉')} 거래량 최대 ${fmtVolK(vmax)}주</text>`;
   /* 터치 가이드 — 손가락이 짚은 봉에 세로 점선 */
   g += `<line id="cGuide" x1="0" x2="0" y1="${CH_PY0 - 4}" y2="${CH_VY1}" stroke="rgba(255,255,255,.42)" stroke-width="1" stroke-dasharray="2 2" visibility="hidden"/>`;
@@ -4257,12 +4269,14 @@ function chartPoint(e){
   const r = svg.getBoundingClientRect();
   if(!r.width) return;
   const x = (e.clientX - r.left) * (CH_W / r.width);
-  const slot = (CH_X1 - CH_X0) / viewN;
-  const i = Math.max(0, Math.min(viewN - 1, Math.floor((x - CH_X0) / slot)));
+  /* 차트 그리기(chartSvgHtml)와 같은 자리 계산 — 봉이 적으면 폭을 줄이고 가운데로 모은다 */
+  const slot = Math.min((CH_X1 - CH_X0) / viewN, 26);
+  const left = CH_X0 + ((CH_X1 - CH_X0) - slot * viewN) / 2;
+  const i = Math.max(0, Math.min(viewN - 1, Math.floor((x - left) / slot)));
   $('#chartRead').innerHTML = chartReadText(s, off + i);
   const g = document.getElementById('cGuide');
   if(g){
-    const cx = (CH_X0 + slot * i + slot / 2).toFixed(1);
+    const cx = (left + slot * i + slot / 2).toFixed(1);
     g.setAttribute('x1', cx); g.setAttribute('x2', cx);
     g.setAttribute('visibility', 'visible');
   }
@@ -4888,7 +4902,7 @@ visPaint();
 })();
 
 /* ---------------- 공지사항 창 (처음 한 번 · [확인] 을 누르면 다시 뜨지 않는다) ---------------- */
-const NOTICE_KEY = 'newsradar_notice_v5_ack';   /* 2026-11-26 — 상한가 테마 묶음·뉴스↔달력 안내를 한 번 더 보여 준다 */
+const NOTICE_KEY = 'newsradar_notice_v6_ack';   /* 2026-11-26 — 뉴스로 불건전 판정·도달 시각 마감 뒤 확정·1봉 차트 안내 */
 let noticeOv = $('#noticeOv');
 function noticeSeen(){
   try{ return !!localStorage.getItem(NOTICE_KEY); }catch(e){ return false; }

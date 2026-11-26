@@ -2323,6 +2323,28 @@ def upper_market_status(now: datetime) -> dict:
     return info
 
 
+def arrival_window(now: datetime, base_date: str) -> tuple[bool, str]:
+    """상한가 도달 시각을 1분봉으로 잴 수 있는 때인지 (2026-11-26 지시).
+
+    장중(평달 09:00~15:30)에는 긁지 않는다 — 상한가에 닿은 분이 장 끝까지 바뀔 수 있기 때문이다.
+    장 마감 뒤·휴장일·직전 거래일 자료일 때만 조회하고 그 값을 확정으로 본다.
+    """
+    try:
+        bd = datetime.strptime(str(base_date), "%Y-%m-%d").date()
+    except (TypeError, ValueError):
+        return True, "기준일 미상 — 조회"
+    if bd != now.date():
+        return True, "직전 거래일 — 마감 뒤 확정"
+    if now.weekday() >= 5:
+        return True, "휴장일 — 확정"
+    mins = now.hour * 60 + now.minute
+    if mins < 9 * 60:
+        return True, "장 시작 전 — 직전 마감 확정"
+    if mins < 15 * 60 + 30:
+        return False, "장중 — 15:30 마감 후 확정"
+    return True, "장 마감 후 확정"
+
+
 def fetch_upper_stocks() -> list:
     """코스피·코스닥 상승 정렬 상위에서 '현재가 = 상한가'인 종목만 남긴다."""
     rows, seen = [], set()
@@ -2537,7 +2559,7 @@ def _pool_candidates(pool: list) -> list:
     return out
 
 
-def build_upper_limits(now: datetime, pool: list | None = None) -> dict:
+def build_upper_limits(now: datetime, pool: list | None = None, prev_upper: dict | None = None) -> dict:
     """오늘(또는 직전 거래일) 상한가 종목 + 종목별 상한가 이슈 요약."""
     status = upper_market_status(now)
     stocks = fetch_upper_stocks()
@@ -2547,22 +2569,40 @@ def build_upper_limits(now: datetime, pool: list | None = None) -> dict:
         base_dt = now.replace(hour=0, minute=0, second=0, microsecond=0)
 
     pool_c = _pool_candidates(pool or [])
+    arrival_ok, arrival_note = arrival_window(now, status["base_date"])
+    prev_upper = prev_upper or {}
+    keep_arrival = {}
+    if not arrival_ok and prev_upper.get("base_date") == status["base_date"] and prev_upper.get("arrival_final"):
+        # 장 마감 뒤에 이미 재 둔 오늘 도달 시각은 그대로 이어 쓴다
+        for it in (prev_upper.get("items") or []):
+            if it.get("code") and it.get("arrival"):
+                keep_arrival[str(it["code"])] = {"arrival": it.get("arrival"),
+                                                 "arrival_min": it.get("arrival_min"),
+                                                 "arrival_after": it.get("arrival_after") or 0}
 
     def work(stock):
         cands = naver_stock_news(stock["code"]) + google_news_rss(f'"{stock["name"]}" 상한가', "3d")
+        # 불건전 판정용 — 환기종목·감사의견·상폐·횡령·배임·회생·파산·자본잠식 기사를 따로 찾아 둔다
+        screen_news = list(cands) + list(pool_c) + google_news_rss(
+            f'"{stock["name"]}" (환기종목 OR 감사의견 OR 상장폐지 OR 횡령 OR 배임 OR 회생절차 OR 파산 OR 자본잠식)',
+            "1y")
         best = _pick_upper_issue(cands, stock["name"], base_dt)
         if best is None:
             # 상한가 표현이 없는 날에는 종목 이름만으로 한 번 더 찾는다
-            cands += google_news_rss(f'"{stock["name"]}"', "2d")
+            extra = google_news_rss(f'"{stock["name"]}"', "2d")
+            cands += extra
+            screen_news += extra
             best = _pick_upper_issue(cands, stock["name"], base_dt)
         if best is None and pool_c:
             best = _pick_upper_issue(pool_c, stock["name"], base_dt)
-        return best
+        return best, screen_news
 
-    issues = []
+    issues, news_of = [], {}
     if stocks:
         with ThreadPoolExecutor(max_workers=UPPER_WORKERS) as ex:
-            issues = list(ex.map(work, stocks))
+            for stock, (best, screen_news) in zip(stocks, ex.map(work, stocks)):
+                issues.append(best)
+                news_of[str(stock["code"])] = screen_news
 
     items = []
     for stock, best in zip(stocks, issues):
@@ -2596,11 +2636,14 @@ def build_upper_limits(now: datetime, pool: list | None = None) -> dict:
 
     # 2026-11-26 — (1) 불건전 기업 제외 (2) 테마 묶음·선도주 순위 (3) 125봉 바닥 첫 상한가 (4) 달력 연결
     #   네트워크(분봉·일봉)가 막혀도 상한가 목록 자체는 그대로 내보낸다 — 실패한 종목만 판정을 비운다.
+    #   도달 시각은 장중에 긁지 않는다 — 15:30 마감 뒤에만 1분봉으로 확정한다(2026-11-26 지시).
     groups, excluded = [], []
     try:
         cal = upper_rank.load_calendar(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                                     "..", "data", "calendar.json"))
-        flat, groups, excluded, items = upper_rank.rank(items, status["base_date"], cal, pool or [])
+        flat, groups, excluded, items = upper_rank.rank(items, status["base_date"], cal, pool or [],
+                                                        news_by_code=news_of, arrival_ok=arrival_ok,
+                                                        keep_arrival=keep_arrival)
     except Exception as e:  # noqa: BLE001
         print(f"[warn] upper rank: {e}", file=sys.stderr)
         flat = items
@@ -2624,10 +2667,12 @@ def build_upper_limits(now: datetime, pool: list | None = None) -> dict:
         if not items:
             note += " 직전 거래일 상한가 종목은 없었습니다."
     if excluded:
-        note = (note + " " if note else "") + f"불건전 종목 {len(excluded)}개(관리종목·우선주·투자경보 등)는 순위에서 빠졌습니다."
+        note = (note + " " if note else "") + f"불건전 종목 {len(excluded)}개(관리종목·우선주·투자경보·뉴스 악재 등)는 순위에서 빠졌습니다."
+    if items and not arrival_ok:
+        note = (note + " " if note else "") + "상한가 도달 시각은 장 마감(15:30) 뒤 확정됩니다."
 
     print(f"[info] upper limits: {base} {len(items)} stocks"
-          + (f" (제외 {len(excluded)})" if excluded else ""), file=sys.stderr)
+          + (f" (제외 {len(excluded)})" if excluded else "") + f" · 도달시각 {arrival_note}", file=sys.stderr)
     return {
         "base_date": base,
         "base_date_text": base_text,
@@ -2636,7 +2681,10 @@ def build_upper_limits(now: datetime, pool: list | None = None) -> dict:
         "session_label": status.get("session") or "",
         "count": len(items),
         "note": note,
-        "rank_rule": "테마로 묶고 그 안에서 ① 125봉 바닥황보 뒤 첫 상한가 먼저 ② 오늘 상한가에 먼저 닿은 순",
+        "arrival_state": "final" if arrival_ok else "pending",
+        "arrival_note": arrival_note,
+        "arrival_final": bool(arrival_ok),
+        "rank_rule": "테마로 묶고 그 안에서 ① 125봉 바닥횡보 뒤 첫 상한가 먼저 ② 오늘 상한가에 먼저 닿은 순",
         "items": items,
         "themes": groups,
         "excluded": excluded,
@@ -2850,7 +2898,14 @@ def build(out_path: str):
         themes.append({"id": "etc", "label": "기타", "color": "#9aa4b2", "count": etc})
 
     # 오늘 상한가 — 종목별 당일 보도를 오늘 수집한 뉴스 카드에서도 한 번 더 찾는다
-    upper_limits = build_upper_limits(now, kept)
+    #   지난 실행의 상한가(장 마감 뒤 잰 도달 시각)를 이어 쓰려고 먼저 읽어 든다
+    prev_upper = {}
+    try:
+        with open(out_path, encoding="utf-8") as f:
+            prev_upper = (json.load(f) or {}).get("upper_limits") or {}
+    except Exception:  # noqa: BLE001
+        prev_upper = {}
+    upper_limits = build_upper_limits(now, kept, prev_upper)
 
     # 헤더 전광판 — 실제 지수 등락률 (실패해도 news.json 생성은 계속)
     market_mood = build_market_mood(now)

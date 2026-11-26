@@ -5,7 +5,7 @@
    activate 에서 옛 버전 캐시를 전부 지운 뒤 화면을 넘겨받는다(clients.claim).
    그래서 사용자가 캐시를 직접 지우거나 새로고침하지 않아도 접속할 때마다 최신 화면·최신 데이터가 뜬다.
    index.html · data/*.json 은 쿼리스트링까지 포함해 언제나 네트워크를 먼저 탄다(cache:'no-store'). */
-const CACHE = 'newsradar-v111';
+const CACHE = 'newsradar-v112';
 const SHELL = ['./', './index.html', './manifest.json', './icons/icon-192.png', './data/calendar.json', './data/radar.json'];
 const NEWS_KEY = './data/news.json';   // 쿼리스트링이 붙어도 캐시에는 이 한 자리에만 남긴다
 
