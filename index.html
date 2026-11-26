@@ -4399,8 +4399,7 @@ async function openDayChart(code, name){
   let it = dayItem(code, name);
   if(it){
     openChart(it);
-    ensureDay().catch(() => {});      /* 전체 자료는 뒤에서 받아 두고 다음 번에 쓴다 */
-    return;
+    return;            /* 전체 day125.json(8MB)은 이 종목이 작은 판에 없을 때만 받는다 — 모바일 데이터·속도를 아긴다 */
   }
   await ensureDay();
   it = dayItem(code, name);
