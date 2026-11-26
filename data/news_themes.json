@@ -1,62 +1,20 @@
 {
- "generated_at": "2026-11-26T19:14:26+09:00",
- "generated_at_kst": "2026.11.26 19:14",
- "news_updated_kst": "2026.11.26 19:14",
+ "generated_at": "2026-11-26T20:14:14+09:00",
+ "generated_at_kst": "2026.11.26 20:14",
+ "news_updated_kst": "2026.11.26 20:14",
  "note": "오늘 뉴스 이슈를 테마달력(calendar.json)의 테마·종목에 이어 붙인 목록 — 테마가 나오면 테마와 종목을 여기에 적어 두고, 화면에서는 종목을 눌러 125봉 차트를 연다.",
  "news_links": [
-  {
-   "theme": "스페이스X IPO·우주항공 공급망 (위성·발사체·특수소재)",
-   "short": "스페이스X IPO·우주항공 공급망",
-   "kind": "동반테마",
-   "issue": "머스크 \"미국 아동에게 스페이스X 주식 2주씩\"...24조 원 상당",
-   "issue_url": "https://n.news.naver.com/article/052/0002438540",
-   "presses": 3,
-   "presses_max": 3,
-   "articles": 3,
-   "kw": [
-    "스페이스X"
-   ],
-   "stocks": [
-    {
-     "name": "러셀",
-     "code": "217500"
-    },
-    {
-     "name": "미래에셋벤처투자",
-     "code": "100790"
-    },
-    {
-     "name": "이녹스",
-     "code": "088390"
-    },
-    {
-     "name": "하이즈항공",
-     "code": "221840"
-    },
-    {
-     "name": "아주IB투자",
-     "code": "027360"
-    },
-    {
-     "name": "한컴위드",
-     "code": "054920"
-    }
-   ],
-   "last_lu": "2026-02-03",
-   "more": [],
-   "upper_count": 0
-  },
   {
    "theme": "반도체·HBM 메모리 대표주 (삼전·하이닉스·HBM 장비)",
    "short": "반도체·HBM 메모리 대표주",
    "kind": "동반테마",
-   "issue": "메모리 없어서 못 파는데 美 '과잉생산' 압박…삼전닉스 어쩌나",
-   "issue_url": "https://n.news.naver.com/article/008/0005447033",
-   "presses": 2,
-   "presses_max": 2,
-   "articles": 6,
+   "issue": "'이재명' 주어로 \"반도체 기업을 압박\"…\"미국의 내로남불\"",
+   "issue_url": "https://n.news.naver.com/article/437/0000522662",
+   "presses": 4,
+   "presses_max": 4,
+   "articles": 9,
    "kw": [
-    "메모리"
+    "반도체"
    ],
    "stocks": [
     {
@@ -79,14 +37,14 @@
    "last_lu": "2026-10-27",
    "more": [
     {
+     "title": "\"메모리 개발 속도, M&A 힘 싣는다\"…삼성전자, 조직개편 단행(종합)",
+     "presses": 3,
+     "url": "https://n.news.naver.com/article/421/0009313075"
+    },
+    {
      "title": "[속보] 한은 총재도 설명 힘든 국내주식 \"반도체 영업이익 700조인데, 시총 2000조라니…\"",
      "presses": 1,
      "url": "https://n.news.naver.com/article/002/0002467777"
-    },
-    {
-     "title": "하이닉스 특별배당 14조, 환율 흔들까…2021년 삼성 특별배당 땐 원화 올랐다 [마켓프리즘]",
-     "presses": 1,
-     "url": "https://n.news.naver.com/article/123/0002394917"
     }
    ],
    "upper_count": 0
@@ -99,7 +57,7 @@
    "issue_url": "https://n.news.naver.com/article/366/0001207496",
    "presses": 2,
    "presses_max": 2,
-   "articles": 2,
+   "articles": 3,
    "kw": [
     "로봇"
    ],
@@ -130,20 +88,27 @@
     }
    ],
    "last_lu": "2026-09-21",
-   "more": [],
+   "more": [
+    {
+     "title": "\"공매도 금지 나올까\"…코스피 6% 폭락 다음날, 증권가가 꼽은 '단기 처방전'은",
+     "presses": 1,
+     "url": "https://n.news.naver.com/article/014/0005609968"
+    }
+   ],
    "upper_count": 0
   },
   {
    "theme": "AI 시험 부정행위 대응·전파탐지/물리보안",
    "short": "AI 시험 부정행위 대응·전파탐지/물리보안",
    "kind": "동반테마",
-   "issue": "수능 만점 최소 3명이지만 '쉬쉬'… 신원 공개 거부하는 이유",
-   "issue_url": "https://n.news.naver.com/article/656/0000193616",
+   "issue": "[단독] 세무냥이 \"부정행위 했다\"던 회계사시험, 초고득점자 3년 내리 0명이다가 올해 10명으로 '쑥'",
+   "issue_url": "https://n.news.naver.com/article/448/0000653634",
    "presses": 1,
    "presses_max": 1,
-   "articles": 2,
+   "articles": 3,
    "kw": [
-    "수능"
+    "부정행위",
+    "시험"
    ],
    "stocks": [
     {
@@ -164,35 +129,14 @@
     {
      "title": "토익도 'AI 커닝' 차단…안경에 스티커·샤프 금지",
      "presses": 1,
-     "url": "https://www.ytn.co.kr/_ln/0104_20261126114829"
-    }
-   ],
-   "upper_count": 0
-  },
-  {
-   "theme": "HLB 그룹 글로벌 자본 유치 (LMR파트너스 2,069억 투자)",
-   "short": "HLB 그룹 글로벌 자본 유치",
-   "kind": "동반테마",
-   "issue": "[단독] 신세계, HLL중앙 인수전 발 뺐다…중앙일보 730억 투자에 무게",
-   "issue_url": "https://n.news.naver.com/article/293/0000093893",
-   "presses": 1,
-   "presses_max": 1,
-   "articles": 1,
-   "kw": [
-    "인수"
-   ],
-   "stocks": [
-    {
-     "name": "HLB글로벌",
-     "code": "003580"
+     "url": "https://www.ytn.co.kr/_ln/0103_20261126145412"
     },
     {
-     "name": "HLB바이오스텝",
-     "code": "278650"
+     "title": "수능 만점 최소 3명이지만 '쉬쉬'… 신원 공개 거부하는 이유",
+     "presses": 1,
+     "url": "https://n.news.naver.com/article/656/0000193616"
     }
    ],
-   "last_lu": "2026-07-15",
-   "more": [],
    "upper_count": 0
   },
   {
@@ -241,8 +185,8 @@
    "theme": "로봇·피지컬 AI (엔비디아·현대차그룹)",
    "short": "로봇·피지컬 AI",
    "kind": "동반테마",
-   "issue": "\"교수라도 이랬을까?\".. '피지컬AI' 전북대생들 '무급 연구'",
-   "issue_url": "https://n.news.naver.com/article/659/0000049028",
+   "issue": "전북대, 석달째 무급 피지컬AI 전북대생 규모는 못 밝혀",
+   "issue_url": "https://n.news.naver.com/article/659/0000049054",
    "presses": 1,
    "presses_max": 1,
    "articles": 1,
@@ -280,36 +224,89 @@
    "upper_count": 0
   },
   {
-   "theme": "벤처투자·코스닥 활성화 정책 (11/13 자본시장 정책 간담회)",
-   "short": "벤처투자·코스닥 활성화 정책",
+   "theme": "스페이스X IPO·우주항공 공급망 (위성·발사체·특수소재)",
+   "short": "스페이스X IPO·우주항공 공급망",
    "kind": "동반테마",
-   "issue": "[속보] 금융위, 자본시장 개혁기구 구성…위원장에 김용범 메리츠 부회장",
-   "issue_url": "https://n.news.naver.com/article/421/0009312965",
+   "issue": "'산타' 된 머스크, 美 어린이들에 주식 선물",
+   "issue_url": "https://n.news.naver.com/mnews/article/014/0005610494",
    "presses": 1,
    "presses_max": 1,
    "articles": 1,
    "kw": [
-    "금융위"
+    "스페이스X",
+    "우주"
    ],
    "stocks": [
     {
-     "name": "컴퍼니케이",
-     "code": "307930"
+     "name": "러셀",
+     "code": "217500"
     },
     {
-     "name": "DSC인베스트먼트",
-     "code": "241520"
+     "name": "미래에셋벤처투자",
+     "code": "100790"
+    },
+    {
+     "name": "이녹스",
+     "code": "088390"
+    },
+    {
+     "name": "하이즈항공",
+     "code": "221840"
     },
     {
      "name": "아주IB투자",
      "code": "027360"
     },
     {
-     "name": "SV인베스트먼트",
-     "code": "289080"
+     "name": "한컴위드",
+     "code": "054920"
     }
    ],
-   "last_lu": "2026-04-01",
+   "last_lu": "2026-02-03",
+   "more": [],
+   "upper_count": 0
+  },
+  {
+   "theme": "현대차 로보틱스 밸류체인·자동차부품 (美 관세·전장 수주)",
+   "short": "현대차 로보틱스 밸류체인·자동차부품",
+   "kind": "동반테마",
+   "issue": "레인보우로보틱스, 코스닥 ‘시총 2위’ 등극",
+   "issue_url": "https://n.news.naver.com/mnews/article/014/0005610508",
+   "presses": 1,
+   "presses_max": 1,
+   "articles": 1,
+   "kw": [
+    "레인보우로보틱스",
+    "휴머노이드",
+    "로봇"
+   ],
+   "stocks": [
+    {
+     "name": "에스팀",
+     "code": "458350"
+    },
+    {
+     "name": "화신정공",
+     "code": "126640"
+    },
+    {
+     "name": "일지테크",
+     "code": "019540"
+    },
+    {
+     "name": "모베이스전자",
+     "code": "012860"
+    },
+    {
+     "name": "성문전자",
+     "code": "014910"
+    },
+    {
+     "name": "삼성공조",
+     "code": "006660"
+    }
+   ],
+   "last_lu": "2026-10-20",
    "more": [],
    "upper_count": 0
   }
