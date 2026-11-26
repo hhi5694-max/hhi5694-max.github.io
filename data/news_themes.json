@@ -1,18 +1,18 @@
 {
- "generated_at": "2026-11-26T16:16:37+09:00",
- "generated_at_kst": "2026.11.26 16:16",
- "news_updated_kst": "2026.11.26 16:16",
+ "generated_at": "2026-11-26T17:14:34+09:00",
+ "generated_at_kst": "2026.11.26 17:14",
+ "news_updated_kst": "2026.11.26 17:14",
  "note": "오늘 뉴스 이슈를 테마달력(calendar.json)의 테마·종목에 이어 붙인 목록 — 테마가 나오면 테마와 종목을 여기에 적어 두고, 화면에서는 종목을 눌러 125봉 차트를 연다.",
  "news_links": [
   {
    "theme": "AI 시험 부정행위 대응·전파탐지/물리보안",
    "short": "AI 시험 부정행위 대응·전파탐지/물리보안",
    "kind": "동반테마",
-   "issue": "수능 만점 최소 3명이지만 '쉬쉬'… 신원 공개 거부하는 이유",
-   "issue_url": "https://n.news.naver.com/article/656/0000193616",
-   "presses": 3,
-   "presses_max": 3,
-   "articles": 3,
+   "issue": "수능 만점 최소 3명 나왔는데…“신원 공개 거부” 쉬쉬하는 이유",
+   "issue_url": "https://n.news.naver.com/article/025/0003568096",
+   "presses": 2,
+   "presses_max": 2,
+   "articles": 4,
    "kw": [
     "수능"
    ],
@@ -31,149 +31,59 @@
     }
    ],
    "last_lu": "2026-01-27",
-   "more": [],
-   "upper_count": 0
-  },
-  {
-   "theme": "K-온디바이스 AI 반도체 (정부 8,002억 프로젝트)",
-   "short": "K-온디바이스 AI 반도체",
-   "kind": "동반테마",
-   "issue": "[속보] 이 대통령 “7대 시드 프로젝트 속도 내야”…규제 혁신·금융 지원 주문",
-   "issue_url": "https://n.news.naver.com/article/022/0004178328",
-   "presses": 2,
-   "presses_max": 2,
-   "articles": 2,
-   "kw": [
-    "규제",
-    "대통령"
-   ],
-   "stocks": [
+   "more": [
     {
-     "name": "가온칩스",
-     "code": "399720"
+     "title": "토익도 'AI 커닝' 차단...안경에 스티커·샤프 금지",
+     "presses": 1,
+     "url": "https://www.ytn.co.kr/_ln/0103_20261126170710"
     },
     {
-     "name": "DSC인베스트먼트",
-     "code": "241520"
+     "title": "“안경도 단추도 못 믿겠다” AI 커닝 공포에 달라진 토익",
+     "presses": 1,
+     "url": "https://n.news.naver.com/article/005/0001887642"
     }
    ],
-   "last_lu": "2026-07-09",
-   "more": [],
    "upper_count": 0
   },
   {
-   "theme": "디지털자산·스테이블코인 (3차 상법개정·코인 법제화)",
-   "short": "디지털자산·스테이블코인",
+   "theme": "CES 2026 피지컬 AI·휴머노이드 로봇 (엔비디아·현대차 아틀라스)",
+   "short": "CES 2026 피지컬 AI·휴머노이드 로봇",
    "kind": "동반테마",
-   "issue": "세 번 밀린 네이버·두나무 결합…'거래소 대주주 지분 규제' 새 변수",
-   "issue_url": "https://n.news.naver.com/article/293/0000093877",
-   "presses": 2,
-   "presses_max": 2,
-   "articles": 2,
-   "kw": [
-    "지분",
-    "주주"
-   ],
-   "stocks": [
-    {
-     "name": "파라택시스이더리움",
-     "code": "290560"
-    },
-    {
-     "name": "아이티아이즈",
-     "code": "372800"
-    },
-    {
-     "name": "제주은행",
-     "code": "006220"
-    },
-    {
-     "name": "NHN KCP",
-     "code": "060250"
-    },
-    {
-     "name": "다날",
-     "code": "064260"
-    },
-    {
-     "name": "미투온",
-     "code": "201490"
-    }
-   ],
-   "last_lu": "2026-02-26",
-   "more": [],
-   "upper_count": 0
-  },
-  {
-   "theme": "탈모 치료·모발이식 (이재명 대통령 \"탈모는 생존\" 발언)",
-   "short": "탈모 치료·모발이식",
-   "kind": "동반테마",
-   "issue": "이기인 “李 분당집 판 돈 코스피 넣었다면 7억 손실…국민에 사과해야”",
-   "issue_url": "https://n.news.naver.com/article/666/0000133915",
-   "presses": 2,
-   "presses_max": 2,
-   "articles": 2,
-   "kw": [
-    "코스피"
-   ],
-   "stocks": [
-    {
-     "name": "현대약품",
-     "code": "004310"
-    },
-    {
-     "name": "메타랩스",
-     "code": "090370"
-    },
-    {
-     "name": "알리코제약",
-     "code": "260660"
-    },
-    {
-     "name": "위더스제약",
-     "code": "330350"
-    }
-   ],
-   "last_lu": "2025-12-17",
-   "more": [],
-   "upper_count": 0
-  },
-  {
-   "theme": "글로벌 신약 기술수출·임상 (릴리 3.8조·WHO 성분명 등재)",
-   "short": "글로벌 신약 기술수출·임상",
-   "kind": "동반테마",
-   "issue": "유한양행, 외부출신 김열홍 공동부대표로 발령···신약 개발 방점",
-   "issue_url": "https://n.news.naver.com/mnews/article/629/0000555970",
+   "issue": "[르포] 中 로봇에 ‘젠슨 황 복귀’ 묻자 “AI 발전할 것”… 샤오펑 AI데이 가보니",
+   "issue_url": "https://n.news.naver.com/article/366/0001207496",
    "presses": 1,
    "presses_max": 1,
    "articles": 1,
    "kw": [
-    "신약",
-    "기술수출"
+    "로봇"
    ],
    "stocks": [
     {
-     "name": "신테카바이오",
-     "code": "226330"
+     "name": "앤로보틱스",
+     "code": "138360"
     },
     {
-     "name": "그린생명과학",
-     "code": "114450"
+     "name": "유디엠텍",
+     "code": "389680"
     },
     {
-     "name": "삼익제약",
-     "code": "014950"
+     "name": "시선AI",
+     "code": "340810"
     },
     {
-     "name": "바이젠셀",
-     "code": "308080"
+     "name": "리브스메드",
+     "code": "491000"
     },
     {
-     "name": "메드팩토",
-     "code": "235980"
+     "name": "유일로보틱스",
+     "code": "388720"
+    },
+    {
+     "name": "해성에어로보틱스",
+     "code": "059270"
     }
    ],
-   "last_lu": "2026-07-28",
+   "last_lu": "2026-01-27",
    "more": [],
    "upper_count": 0
   },
@@ -220,45 +130,36 @@
    "upper_count": 0
   },
   {
-   "theme": "바이오 임상·JPM 헬스케어 (임상 결과·기술수출 기대)",
-   "short": "바이오 임상·JPM 헬스케어",
+   "theme": "반도체·HBM 메모리 대표주 (삼전·하이닉스·HBM 장비)",
+   "short": "반도체·HBM 메모리 대표주",
    "kind": "동반테마",
-   "issue": "급식 넘어 의료용품까지…현대그린푸드, '헬스케어' 출사표",
-   "issue_url": "https://n.news.naver.com/mnews/article/648/0000053015",
+   "issue": "[속보] 한은 총재도 설명 힘든 국내주식 \"반도체 영업이익 700조인데, 시총 2000조라니…\"",
+   "issue_url": "https://n.news.naver.com/article/002/0002467777",
    "presses": 1,
    "presses_max": 1,
    "articles": 1,
    "kw": [
-    "헬스케어",
-    "의료"
+    "반도체"
    ],
    "stocks": [
     {
-     "name": "비보존 제약",
-     "code": "082800"
+     "name": "멜콘",
+     "code": "179880"
     },
     {
-     "name": "뉴로핏",
-     "code": "380550"
+     "name": "한미반도체",
+     "code": "042700"
     },
     {
-     "name": "한스바이오메드",
-     "code": "042520"
+     "name": "테크윙",
+     "code": "089030"
     },
     {
-     "name": "신라젠",
-     "code": "215600"
-    },
-    {
-     "name": "메디포스트",
-     "code": "078160"
-    },
-    {
-     "name": "현대바이오",
-     "code": "048410"
+     "name": "SK하이닉스",
+     "code": "000660"
     }
    ],
-   "last_lu": "2026-01-30",
+   "last_lu": "2026-10-27",
    "more": [],
    "upper_count": 0
   },
@@ -266,13 +167,15 @@
    "theme": "스페이스X IPO·우주항공 공급망 (위성·발사체·특수소재)",
    "short": "스페이스X IPO·우주항공 공급망",
    "kind": "동반테마",
-   "issue": "머스크, '트럼프계좌'로 美 어린이들에 24조 주식 기부",
-   "issue_url": "https://n.news.naver.com/mnews/article/008/0005446873",
+   "issue": "스페이스X 위성 100만 기 발사 승인…머스크, 복귀한 젠슨 황 찾아",
+   "issue_url": "https://n.news.naver.com/mnews/article/654/0000213666",
    "presses": 1,
    "presses_max": 1,
-   "articles": 1,
+   "articles": 2,
    "kw": [
-    "스페이스X"
+    "위성",
+    "스페이스X",
+    "우주"
    ],
    "stocks": [
     {
@@ -301,6 +204,113 @@
     }
    ],
    "last_lu": "2026-02-03",
+   "more": [
+    {
+     "title": "머스크, 美 모든 어린이에 스페이스X 주식 2주 약속…“1주는 내 돈으로”",
+     "presses": 1,
+     "url": "https://n.news.naver.com/article/666/0000133939"
+    }
+   ],
+   "upper_count": 0
+  },
+  {
+   "theme": "원전·SMR·전력기기 (美 원전 건설 기대·전력기기 쇼티지)",
+   "short": "원전·SMR·전력기기",
+   "kind": "동반테마",
+   "issue": "\"SMR, 대형원전과 경쟁관계 아냐…핵연료 확보·관리할 국가전략 부재\"",
+   "issue_url": "https://n.news.naver.com/article/584/0000040326",
+   "presses": 1,
+   "presses_max": 1,
+   "articles": 1,
+   "kw": [
+    "원전",
+    "SMR"
+   ],
+   "stocks": [
+    {
+     "name": "지투파워",
+     "code": "388050"
+    },
+    {
+     "name": "비에이치아이",
+     "code": "083650"
+    },
+    {
+     "name": "오르비텍",
+     "code": "046120"
+    },
+    {
+     "name": "삼미금속",
+     "code": "012210"
+    },
+    {
+     "name": "한전기술",
+     "code": "052690"
+    },
+    {
+     "name": "DL이앤씨",
+     "code": "375500"
+    }
+   ],
+   "last_lu": "2026-09-09",
+   "more": [],
+   "upper_count": 0
+  },
+  {
+   "theme": "조선·조선기자재 (한미 핵잠 건조 합의·LNG선 발주)",
+   "short": "조선·조선기자재",
+   "kind": "동반테마",
+   "issue": "中에 밀려 주가 60% 폭락했는데…\"내년은 한국 독무대\" [분석+]",
+   "issue_url": "https://n.news.naver.com/article/015/0005358548",
+   "presses": 1,
+   "presses_max": 1,
+   "articles": 1,
+   "kw": [
+    "주가"
+   ],
+   "stocks": [
+    {
+     "name": "동일스틸럭스",
+     "code": "023790"
+    }
+   ],
+   "last_lu": "2026-04-22",
+   "more": [],
+   "upper_count": 0
+  },
+  {
+   "theme": "항공·유가 하락 (미-이란 긴장 완화·항공사 통합)",
+   "short": "항공·유가 하락",
+   "kind": "동반테마",
+   "issue": "김미애, 통합LCC 본사 부산 합의 대환영…\"부산시민이 이뤄낸 결실, 끝까지 챙기겠다\"",
+   "issue_url": "https://n.news.naver.com/mnews/article/119/0003159967",
+   "presses": 1,
+   "presses_max": 1,
+   "articles": 1,
+   "kw": [],
+   "stocks": [
+    {
+     "name": "아시아나IDT",
+     "code": "267850"
+    },
+    {
+     "name": "엠앤씨솔루션",
+     "code": "484870"
+    },
+    {
+     "name": "링네트",
+     "code": "042500"
+    },
+    {
+     "name": "진에어",
+     "code": "272450"
+    },
+    {
+     "name": "한진",
+     "code": "002320"
+    }
+   ],
+   "last_lu": "2026-11-10",
    "more": [],
    "upper_count": 0
   }
