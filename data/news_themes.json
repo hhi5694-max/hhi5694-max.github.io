@@ -1,98 +1,53 @@
 {
- "generated_at": "2026-11-26T20:14:14+09:00",
- "generated_at_kst": "2026.11.26 20:14",
- "news_updated_kst": "2026.11.26 20:14",
+ "generated_at": "2026-11-26T20:33:22+09:00",
+ "generated_at_kst": "2026.11.26 20:33",
+ "news_updated_kst": "2026.11.26 20:33",
  "note": "오늘 뉴스 이슈를 테마달력(calendar.json)의 테마·종목에 이어 붙인 목록 — 테마가 나오면 테마와 종목을 여기에 적어 두고, 화면에서는 종목을 눌러 125봉 차트를 연다.",
  "news_links": [
   {
-   "theme": "반도체·HBM 메모리 대표주 (삼전·하이닉스·HBM 장비)",
-   "short": "반도체·HBM 메모리 대표주",
+   "theme": "스페이스X IPO·우주항공 공급망 (위성·발사체·특수소재)",
+   "short": "스페이스X IPO·우주항공 공급망",
    "kind": "동반테마",
-   "issue": "'이재명' 주어로 \"반도체 기업을 압박\"…\"미국의 내로남불\"",
-   "issue_url": "https://n.news.naver.com/article/437/0000522662",
-   "presses": 4,
-   "presses_max": 4,
-   "articles": 9,
+   "issue": "\"이재용, '반도체 장기구매할게' 머스크에 '그럼 뭘 해줄건데'\"",
+   "issue_url": "https://n.news.naver.com/article/001/0016466655",
+   "presses": 2,
+   "presses_max": 2,
+   "articles": 3,
    "kw": [
     "반도체"
    ],
    "stocks": [
     {
-     "name": "멜콘",
-     "code": "179880"
+     "name": "러셀",
+     "code": "217500"
     },
     {
-     "name": "한미반도체",
-     "code": "042700"
+     "name": "미래에셋벤처투자",
+     "code": "100790"
     },
     {
-     "name": "테크윙",
-     "code": "089030"
+     "name": "이녹스",
+     "code": "088390"
     },
     {
-     "name": "SK하이닉스",
-     "code": "000660"
+     "name": "하이즈항공",
+     "code": "221840"
+    },
+    {
+     "name": "아주IB투자",
+     "code": "027360"
+    },
+    {
+     "name": "한컴위드",
+     "code": "054920"
     }
    ],
-   "last_lu": "2026-10-27",
+   "last_lu": "2026-02-03",
    "more": [
     {
-     "title": "\"메모리 개발 속도, M&A 힘 싣는다\"…삼성전자, 조직개편 단행(종합)",
-     "presses": 3,
-     "url": "https://n.news.naver.com/article/421/0009313075"
-    },
-    {
-     "title": "[속보] 한은 총재도 설명 힘든 국내주식 \"반도체 영업이익 700조인데, 시총 2000조라니…\"",
+     "title": "'산타' 된 머스크, 美 어린이들에 주식 선물",
      "presses": 1,
-     "url": "https://n.news.naver.com/article/002/0002467777"
-    }
-   ],
-   "upper_count": 0
-  },
-  {
-   "theme": "증권·보험 (3차 상법개정·코스피 5,600 돌파)",
-   "short": "증권·보험",
-   "kind": "동반테마",
-   "issue": "[르포] 中 로봇에 ‘젠슨 황 복귀’ 묻자 “AI 발전할 것”… 샤오펑 AI데이 가보니",
-   "issue_url": "https://n.news.naver.com/article/366/0001207496",
-   "presses": 2,
-   "presses_max": 2,
-   "articles": 3,
-   "kw": [
-    "로봇"
-   ],
-   "stocks": [
-    {
-     "name": "토마토시스템",
-     "code": "393210"
-    },
-    {
-     "name": "SK증권",
-     "code": "001510"
-    },
-    {
-     "name": "라메디텍",
-     "code": "462510"
-    },
-    {
-     "name": "에이팩트",
-     "code": "200470"
-    },
-    {
-     "name": "상상인증권",
-     "code": "001290"
-    },
-    {
-     "name": "미래에셋생명",
-     "code": "085620"
-    }
-   ],
-   "last_lu": "2026-09-21",
-   "more": [
-    {
-     "title": "\"공매도 금지 나올까\"…코스피 6% 폭락 다음날, 증권가가 꼽은 '단기 처방전'은",
-     "presses": 1,
-     "url": "https://n.news.naver.com/article/014/0005609968"
+     "url": "https://n.news.naver.com/mnews/article/014/0005610494"
     }
    ],
    "upper_count": 0
@@ -137,6 +92,48 @@
      "url": "https://n.news.naver.com/article/656/0000193616"
     }
    ],
+   "upper_count": 0
+  },
+  {
+   "theme": "CES 2026 피지컬 AI·휴머노이드 로봇 (엔비디아·현대차 아틀라스)",
+   "short": "CES 2026 피지컬 AI·휴머노이드 로봇",
+   "kind": "동반테마",
+   "issue": "[르포] 中 로봇에 ‘젠슨 황 복귀’ 묻자 “AI 발전할 것”… 샤오펑 AI데이 가보니",
+   "issue_url": "https://n.news.naver.com/article/366/0001207496",
+   "presses": 1,
+   "presses_max": 1,
+   "articles": 1,
+   "kw": [
+    "로봇"
+   ],
+   "stocks": [
+    {
+     "name": "앤로보틱스",
+     "code": "138360"
+    },
+    {
+     "name": "유디엠텍",
+     "code": "389680"
+    },
+    {
+     "name": "시선AI",
+     "code": "340810"
+    },
+    {
+     "name": "리브스메드",
+     "code": "491000"
+    },
+    {
+     "name": "유일로보틱스",
+     "code": "388720"
+    },
+    {
+     "name": "해성에어로보틱스",
+     "code": "059270"
+    }
+   ],
+   "last_lu": "2026-01-27",
+   "more": [],
    "upper_count": 0
   },
   {
@@ -224,45 +221,44 @@
    "upper_count": 0
   },
   {
-   "theme": "스페이스X IPO·우주항공 공급망 (위성·발사체·특수소재)",
-   "short": "스페이스X IPO·우주항공 공급망",
+   "theme": "서남권(호남) 제2반도체 클러스터·지역 건설/소재",
+   "short": "서남권 제2반도체 클러스터·지역 건설/소재",
    "kind": "동반테마",
-   "issue": "'산타' 된 머스크, 美 어린이들에 주식 선물",
-   "issue_url": "https://n.news.naver.com/mnews/article/014/0005610494",
+   "issue": "호남 클러스터 등 지적에 반박...정부 \"대응책 마련\"",
+   "issue_url": "https://www.ytn.co.kr/_ln/0102_20261126202635",
    "presses": 1,
    "presses_max": 1,
    "articles": 1,
    "kw": [
-    "스페이스X",
-    "우주"
+    "반도체"
    ],
    "stocks": [
     {
-     "name": "러셀",
-     "code": "217500"
+     "name": "서산",
+     "code": "079650"
     },
     {
-     "name": "미래에셋벤처투자",
-     "code": "100790"
+     "name": "부국철강",
+     "code": "026940"
     },
     {
-     "name": "이녹스",
-     "code": "088390"
+     "name": "파루",
+     "code": "043200"
     },
     {
-     "name": "하이즈항공",
-     "code": "221840"
+     "name": "금호전기",
+     "code": "001210"
     },
     {
-     "name": "아주IB투자",
-     "code": "027360"
+     "name": "에이테크솔루션",
+     "code": "071670"
     },
     {
-     "name": "한컴위드",
-     "code": "054920"
+     "name": "금호타이어",
+     "code": "073240"
     }
    ],
-   "last_lu": "2026-02-03",
+   "last_lu": "2026-07-10",
    "more": [],
    "upper_count": 0
   },
