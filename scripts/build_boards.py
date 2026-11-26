@@ -1,0 +1,356 @@
+#!/usr/bin/env python3
+"""오늘 픽 보드 — 실전(hotbar · hotbar_monthly) · 레이더(radar) · 종합 안내(popup).
+
+2026-11-26 머스크 님 지시: "이전 픽은 삭제하고 오늘 픽 나오는 것 픽으로 교체"
+
+  픽의 원본은 하나다 — 평문 장부 ../private-plain/picks_results.json (build_picks.py 가 쓴다).
+  이 스크립트는 그 장부에서 **그날 픽만** 꺼내 네 파일을 다시 만든다.
+  이전 날(진화론 님 11/18 · 11/24 스냅샷 등) 픽은 이 파일들에 남기지 않는다.
+
+  data/hotbar.json          실전 첫 칸 — 오늘 장전픽 · 장중픽 카드(기준가→현재가 · 등락률 · 근거)
+  data/hotbar_monthly.json  실전 둘째 칸 — 같은 픽을 테마로 묶어서
+  data/radar.json           레이더 — 오늘 픽을 테마별로(테마 · 왜 잡혔나 · 종목)
+  data/popup.json           오늘 종합 안내 팝업 — 장전픽 · 장중픽 한 줄씩
+
+  모두 private-plain/.picks_code 의 비밀코드로 AES-256-GCM 잠가 data/ 에 넣는다
+  (hotbar · radar 와 같은 방식 · PBKDF2-SHA256 10만회).
+
+  python3 scripts/build_boards.py                 # 오늘 기준으로 다시 만든다
+  python3 scripts/build_boards.py --date 2026-11-26
+  python3 scripts/build_boards.py --dry-run       # 저장하지 않고 개수만 본다
+
+build_picks.py 의 --mode pre / intra / update 가 끝나면 이 모듈의 write_all() 을 그대로 부른다.
+"""
+from __future__ import annotations
+
+import argparse
+import base64
+import hashlib
+import json
+import os
+import secrets
+import sys
+from datetime import datetime, timedelta, timezone
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)
+DATA = os.path.join(ROOT, "data")
+PLAIN_DIR = os.path.join(os.path.dirname(ROOT), "private-plain")
+BOOK = os.path.join(PLAIN_DIR, "picks_results.json")
+CODE_FILE = os.path.join(PLAIN_DIR, ".picks_code")
+
+PBKDF2_ITER = 100000          # index.html 의 HOT_ITER 와 같아야 한다
+KST = timezone(timedelta(hours=9))
+WD = "월화수목금토일"
+
+TIER_COLORS = ("#4f8cff", "#ff8b4f", "#39d98a", "#c9a2ff", "#ffd166", "#4fd8ff", "#ff6b9a")
+
+
+# ------------------------------------------------------------------ 작은 유틸
+def read_json(path: str, default=None):
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:  # noqa: BLE001
+        return default
+
+
+def write_json(path: str, doc) -> None:
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    tmp = path + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(doc, f, ensure_ascii=False, indent=1)
+        f.write("\n")
+    os.replace(tmp, path)
+
+
+def seal(payload, pw: str) -> dict:
+    """브라우저 Web Crypto 가 그대로 풀 수 있는 형태(AES-256-GCM · PBKDF2-SHA256 10만회)."""
+    from Crypto.Cipher import AES
+    salt, iv = secrets.token_bytes(16), secrets.token_bytes(12)
+    key = hashlib.pbkdf2_hmac("sha256", pw.encode("utf-8"), salt, PBKDF2_ITER, dklen=32)
+    raw = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    ct, tag = AES.new(key, AES.MODE_GCM, nonce=iv).encrypt_and_digest(raw)
+    b64 = lambda x: base64.b64encode(x).decode("ascii")  # noqa: E731
+    return {"enc": 1, "salt": b64(salt), "iv": b64(iv), "ct": b64(ct + tag)}
+
+
+def now_kst() -> datetime:
+    return datetime.now(KST)
+
+
+def date_text(date: str) -> str:
+    try:
+        dt = datetime.strptime(date, "%Y-%m-%d")
+        return f"{dt:%Y.%m.%d} ({WD[dt.weekday()]})"
+    except ValueError:
+        return date
+
+
+def pct_of(v):
+    try:
+        return round(float(v), 2)
+    except (TypeError, ValueError):
+        return None
+
+
+# ------------------------------------------------------------------ 장부 읽기
+def today_record(book: dict, date: str) -> dict:
+    for month in (book.get("months") or {}).values():
+        rec = month.get(date)
+        if rec:
+            return rec
+    return {}
+
+
+def pick_card(p: dict) -> dict:
+    """resCard() 가 그대로 읽는 모양 — 종목 카드 · 등락률 · 근거 · 기준가→현재가."""
+    status = str(p.get("status") or "진행")
+    pct = pct_of(p.get("pct"))
+    if status == "대기":
+        pct = None                    # 장후픽 — 기준(오늘 종가)만 잡혓고 결과는 다음 거래일에
+    return {
+        "code": str(p.get("code") or ""),
+        "name": str(p.get("name") or ""),
+        "market": str(p.get("market") or ""),
+        "theme": str(p.get("theme") or ""),
+        "reason": str(p.get("reason") or ""),
+        "pick_time": str(p.get("pick_time") or ""),
+        "ref_kind": str(p.get("ref_kind") or "기준가"),
+        "ref_price": p.get("ref_price"),
+        "current_price": p.get("current_price"),
+        "pct": pct,
+        "status": status,
+    }
+
+
+def group_by_theme(picks: list, pre_codes: set) -> list:
+    """처음 나온 순서대로 테마 묶음 — 비어 있으면 '개별'."""
+    order, by = [], {}
+    for p in picks:
+        th = (p.get("theme") or "").strip() or "개별"
+        if th not in by:
+            by[th] = []
+            order.append(th)
+        by[th].append(p)
+    out = []
+    for th in order:
+        rows = by[th]
+        n_pre = sum(1 for p in rows if p["code"] in pre_codes)
+        n_int = sum(1 for p in rows if p.get("_leg") == "intraday")
+        n_aft = sum(1 for p in rows if p.get("_leg") == "aftermarket")
+        bits = []
+        if n_pre:
+            bits.append(f"장전 {n_pre}")
+        if n_int:
+            bits.append(f"장중 {n_int}")
+        if n_aft:
+            bits.append(f"장후 {n_aft}")
+        out.append({"key": th, "title": th, "note": " · ".join(bits), "picks": rows})
+    return out
+
+
+# ------------------------------------------------------------------ 네 벌
+def build_hotbar(date: str, pre: list, intra: list, after: list, session: str) -> dict:
+    stamp = now_kst()
+    n = len(pre) + len(intra) + len(after)
+    return {
+        "v": 3,
+        "kind": "picks",
+        "generated_at": stamp.isoformat(timespec="seconds"),
+        "generated_at_kst": stamp.strftime("%Y.%m.%d %H:%M"),
+        "base_date": date,
+        "base_date_text": f"{date_text(date)} {session} 기준 · 장전 {len(pre)} · 장중 {len(intra)} · 장후 {len(after)}",
+        "session": session,
+        "counts": {"premarket": len(pre), "intraday": len(intra), "aftermarket": len(after), "picks": n},
+        "boards": [
+            {"key": "premarket", "title": "🌅 장전픽", "note": "기준 전일 종가 · 아침에 고른 자리",
+             "empty": "오늘 아침에는 조건에 맞는 자리가 없었습니다.", "picks": pre},
+            {"key": "intraday", "title": "⚡ 장중픽", "note": "기준 포착가 · 장중에 잡은 자리",
+             "empty": "오늘은 장중에 새로 잡힌 자리가 없습니다.", "picks": intra},
+            {"key": "aftermarket", "title": "🌙 장후픽", "note": "기준 오늘 종가 · 내일 볼 자리",
+             "empty": "장 마감(15:30) 뒤 15:45에 자동으로 선정합니다." if not after else "", "picks": after},
+        ],
+    }
+
+
+def build_hotbar_monthly(date: str, pre: list, intra: list, after: list, session: str) -> dict:
+    stamp = now_kst()
+    pre_codes = {p["code"] for p in pre}
+    boards = group_by_theme(pre + intra + after, pre_codes)
+    n = len(pre) + len(intra) + len(after)
+    return {
+        "v": 3,
+        "kind": "picks",
+        "generated_at": stamp.isoformat(timespec="seconds"),
+        "generated_at_kst": stamp.strftime("%Y.%m.%d %H:%M"),
+        "base_date": date,
+        "base_date_text": f"{date_text(date)} {session} 기준 · 테마 {len(boards)}개 · 픽 {n}종목",
+        "session": session,
+        "counts": {"themes": len(boards), "stocks": n,
+                   "premarket": len(pre), "intraday": len(intra), "aftermarket": len(after)},
+        "boards": boards,
+    }
+
+
+def build_radar(date: str, pre: list, intra: list, after: list, session: str) -> dict:
+    stamp = now_kst()
+    pre_codes = {p["code"] for p in pre}
+    groups = group_by_theme(pre + intra + after, pre_codes)
+    tiers = []
+    for i, g in enumerate(groups):
+        rows = g["picks"]
+        why = " / ".join(f"{r['name']} — {r['reason']}" for r in rows if r.get("reason"))
+        kws = [t for t in str(g["key"]).replace("·", " ").replace("/", " ").split() if len(t) > 1]
+        stocks = []
+        for r in rows:
+            px = r.get("current_price")
+            stocks.append({
+                "code": r["code"],
+                "name": r["name"],
+                "price_text": (f"{int(px):,}원" if px else ""),
+                "pct": r.get("pct"),
+                "pct_why": f"{r.get('pick_time', '')} {r.get('ref_kind', '기준가')} 대비".strip(),
+                "tag": "장전" if r["code"] in pre_codes else ("장후" if r.get("_leg") == "aftermarket" else "장중"),
+            })
+        tiers.append({
+            "rank": i + 1,
+            "theme": g["key"],
+            "color": TIER_COLORS[i % len(TIER_COLORS)],
+            "active": True,
+            "keywords": kws,
+            "why": why,
+            "stocks": stocks,
+            "news": None,
+            "watch": "",
+        })
+    n = len(pre) + len(intra) + len(after)
+    return {
+        "generated_at": stamp.isoformat(timespec="seconds"),
+        "generated_at_kst": stamp.strftime("%Y.%m.%d %H:%M"),
+        "base_date": date,
+        "base_date_text": f"{date_text(date)} {session} 기준 · 오늘 픽 {n}종목",
+        "drop_note": "종목 옆 % = 기준가 대비 오늘 등락률 · 종목을 누르면 125봉 일봉 차트",
+        "active": True,
+        "kind": "picks",
+        "session": session,
+        "counts": {"themes": len(tiers), "stocks": n},
+        "tiers": tiers,
+        "news_updated_kst": "",
+        "news_issues": 0,
+        "news_links": [],
+        "news_note": "테마 = 오늘 픽이 잡힌 테마",
+        "cwait": None,
+    }
+
+
+def build_popup(date: str, pre: list, intra: list, after: list, session: str) -> dict:
+    stamp = now_kst()
+
+    def row(p: dict, label: str, num: int) -> dict:
+        return {
+            "code": p["code"], "name": p["name"],
+            "theme": p.get("theme") or "",
+            "reason": p.get("reason") or "",
+            "date": date,
+            "label": label, "num": num, "active": True,
+            "badges": [], "risk": "", "tag": label,
+            "stage10": 0, "dd": None, "val20": None, "lu_ago": None,
+        }
+
+    return {
+        "v": 2,
+        "kind": "picks",
+        "base_date": date,
+        "generated_at": stamp.isoformat(timespec="seconds"),
+        "generated_at_kst": stamp.strftime("%Y.%m.%d %H:%M"),
+        "session": session,
+        "counts": {"buy": len(pre), "buy_all": len(pre),
+                   "radar": len(intra), "radar_all": len(intra),
+                   "after": len(after), "after_all": len(after), "pink": 0},
+        "sections": {
+            "buy": [row(p, "장전픽", 2) for p in pre],
+            "radar": [row(p, "장중픽", 3) for p in intra],
+            "after": [row(p, "장후픽", 4) for p in after],
+            "pink": [],
+        },
+        "items": [],
+    }
+
+
+def build(date: str, book: dict) -> dict:
+    rec = today_record(book, date)
+    pre = [pick_card(p) for p in (rec.get("premarket") or []) if p.get("code")]
+    intra = [pick_card(p) for p in (rec.get("intraday") or []) if p.get("code")]
+    after = [pick_card(p) for p in (rec.get("aftermarket") or []) if p.get("code")]
+    for p in pre:
+        p["_leg"] = "premarket"
+    for p in intra:
+        p["_leg"] = "intraday"
+    for p in after:
+        p["_leg"] = "aftermarket"
+    session = "장중" if any(p["status"] == "진행" for p in pre + intra + after) else "장마감"
+    return {
+        "hotbar": build_hotbar(date, pre, intra, after, session),
+        "hotbar_monthly": build_hotbar_monthly(date, pre, intra, after, session),
+        "radar": build_radar(date, pre, intra, after, session),
+        "popup": build_popup(date, pre, intra, after, session),
+        "counts": {"premarket": len(pre), "intraday": len(intra), "aftermarket": len(after)},
+    }
+
+
+def secret_code(explicit: str = "") -> str:
+    code = (explicit or os.environ.get("PICKS_PW") or "").strip()
+    if code:
+        return code
+    try:
+        with open(CODE_FILE, encoding="utf-8") as f:
+            return f.read().strip()
+    except Exception:  # noqa: BLE001
+        return ""
+
+
+def write_all(book: dict, date: str, code: str = "", data_dir: str = DATA,
+              plain_dir: str = PLAIN_DIR) -> dict:
+    """네 벌을 평문(private-plain)과 잠근 파일(data)로 같이 쓴다. 만든 개수를 돌려준다."""
+    docs = build(date, book)
+    counts = docs.pop("counts")
+    for name in ("hotbar", "hotbar_monthly", "radar", "popup"):
+        write_json(os.path.join(plain_dir, f"{name}.json"), docs[name])
+        if code:
+            write_json(os.path.join(data_dir, f"{name}.json"), seal(docs[name], code))
+    return counts
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(description="오늘 픽 보드(실전·레이더·종합 안내) 다시 만들기")
+    ap.add_argument("--date", default="", help="기준 날짜(YYYY-MM-DD) — 기본은 오늘(KST)")
+    ap.add_argument("--code", default="", help="비밀코드(기본: PICKS_PW 환경변수 · private-plain/.picks_code)")
+    ap.add_argument("--book", default=BOOK, help="평문 장부 경로")
+    ap.add_argument("--data", default=DATA, help="잠근 파일을 쓸 data 디렉터리")
+    ap.add_argument("--plain", default=PLAIN_DIR, help="평문을 쓸 디렉터리")
+    ap.add_argument("--dry-run", action="store_true", help="저장하지 않고 개수만 본다")
+    args = ap.parse_args()
+
+    date = args.date or now_kst().strftime("%Y-%m-%d")
+    book = read_json(args.book, {})
+    if not isinstance(book, dict) or not book.get("months"):
+        raise SystemExit(f"평문 장부가 없습니다: {args.book}")
+    docs = build(date, book)
+    counts = docs["counts"]
+    print(f"[board] {date} 장전 {counts['premarket']} · 장중 {counts['intraday']}")
+    for t in docs["radar"]["tiers"]:
+        print(f"   테마 {t['theme']:<24} {len(t['stocks'])}종목")
+    if args.dry_run:
+        print("[dry-run] 저장하지 않았습니다")
+        return
+    code = secret_code(args.code)
+    if not code:
+        raise SystemExit("비밀코드가 없습니다 — --code · PICKS_PW · private-plain/.picks_code 중 하나가 필요합니다")
+    write_all(book, date, code, data_dir=args.data, plain_dir=args.plain)
+    print(f"[ok] {args.plain}/hotbar.json · hotbar_monthly.json · radar.json · popup.json")
+    print(f"[ok] {args.data}/hotbar.json · hotbar_monthly.json · radar.json · popup.json (잠금 완료)")
+
+
+if __name__ == "__main__":
+    main()

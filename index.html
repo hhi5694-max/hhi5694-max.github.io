@@ -442,6 +442,10 @@
   .rd-stk .drp{margin-left:auto;flex:none;min-width:22px;text-align:center;font-size:11.5px;font-weight:800;
     color:#fff;background:rgba(255,90,110,.2);border:1px solid rgba(255,90,110,.45);
     border-radius:6px;padding:1px 6px;font-variant-numeric:tabular-nums}
+  .rd-stk .drp.dn{color:#cfe0ff;background:rgba(91,157,255,.18);border-color:rgba(91,157,255,.45)}
+  .rd-stk .drp.flat{color:#c3cfe4;background:rgba(255,255,255,.06);border-color:var(--line)}
+  .rd-tag{flex:none;font-size:9px;font-weight:800;color:#9fb4d8;border:1px solid rgba(143,178,255,.3);
+    border-radius:4px;padding:0 4px;line-height:14px}
   .rd-warn{font-size:10.5px;color:#ffb27a;margin:6px 0 0}
   .rd-dot{width:7px;height:7px;border-radius:50%;flex:none}
   .rd-dot.on{background:#ff2d44;box-shadow:0 0 6px rgba(255,45,68,.9);animation:rdpulse 1s ease-out infinite}
@@ -518,10 +522,10 @@
   .res-mbtn.on{color:#fff;border-color:transparent;background:linear-gradient(135deg,#4f8cff,#7c5cff);
     box-shadow:0 3px 12px rgba(79,140,255,.3)}
   .res-mbtn .n{font-size:9.5px;font-weight:700;opacity:.75;margin-left:3px}
-  .res-sum{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:0 1px 10px}
+  .res-sum{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin:0 1px 10px}
   .res-sum .c{border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:10px;
     padding:7px 4px 8px;text-align:center;min-width:0}
-  .res-sum .c b{display:block;font-size:15px;font-weight:900;letter-spacing:-.6px;
+  .res-sum .c b{display:block;font-size:14px;font-weight:900;letter-spacing:-.6px;
     font-variant-numeric:tabular-nums;line-height:1.15}
   .res-sum .c span{display:block;font-size:9.5px;font-weight:700;color:var(--dim2);margin-top:1px;
     letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -549,6 +553,8 @@
   .res-sh::after{content:"";flex:1;height:1px;background:var(--line)}
   .res-sec.pre .res-sh{color:#ffc46b}
   .res-sec.int .res-sh{color:#8fb2ff}
+  .res-sec.aft .res-sh{color:#c9b8ff}
+  .res-sec.theme .res-sh{color:#a9bde0}
   .res-card{display:grid;grid-template-columns:1fr auto;gap:2px 8px;align-items:baseline;
     padding:7px 8px;border-radius:9px;border:1px solid rgba(255,255,255,.06);
     background:rgba(255,255,255,.025);margin-bottom:5px}
@@ -570,6 +576,7 @@
   .res-num .st{font-size:9px;font-weight:800;border-radius:4px;padding:0 4px;line-height:14px;
     border:1px solid rgba(255,255,255,.14);color:var(--dim)}
   .res-num .st.live{color:#ffd166;border-color:rgba(255,209,102,.4);background:rgba(255,209,102,.1)}
+  .res-num .st.wait{color:#c9b8ff;border-color:rgba(180,160,255,.42);background:rgba(180,160,255,.1)}
   .res-empty{padding:22px 8px;text-align:center;font-size:12px;color:var(--dim2);line-height:1.6}
   @media (max-width:410px){
     .res-sum .c b{font-size:14px} .res-nm{font-size:13px} .res-pct{font-size:14px}
@@ -1263,8 +1270,8 @@
       <button class="cf-again" type="button" data-cf-again hidden aria-label="형광↑ 알림 다시 보기"><span class="dot" aria-hidden="true"></span>형광↑ <span class="cf-n">0</span></button></div>
     <div class="hb-mission" id="hotMission" aria-live="polite" aria-label="선택한 칸의 사용설명서"></div>
     <div class="hb-seg" id="hotSeg">
-      <button type="button" data-sec="day" class="on">일봉</button>
-      <button type="button" data-sec="pick">테마 추적</button>
+      <button type="button" data-sec="day" class="on">장전·장중·장후</button>
+      <button type="button" data-sec="pick">테마별</button>
     </div>
     <div id="hotBody">
       <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
@@ -1285,7 +1292,7 @@
       <p class="hl-tip">한 번 열면 레이더 · 실전 · 결과가 함께 열립니다. 상단 <b>LIVE</b> 배지를 1.5초 안에 세 번 눌러도 열 수 있습니다.</p>
     </div>
     <div id="resInner">
-      <div class="viewhead"><b>📈 결과</b><span id="resSub">장전픽 · 장중픽 — 기준가 대비 그날 등락률</span></div>
+      <div class="viewhead"><b>📈 결과</b><span id="resSub">장전픽 · 장중픽 · 장후픽 — 기준가 대비 그날 등락률</span></div>
       <div class="res-mbar" id="resMonths" role="group" aria-label="월 선택"></div>
       <div class="res-sum" id="resSummary"></div>
       <div id="resDays">
@@ -1475,9 +1482,9 @@ const TABS = ['news','radar','calendar','hotbar','results'];
 const TAB_ROLE = {
   news: '<b>📰 뉴스</b> — 오늘 자금 방향 · 주요 뉴스 · 오늘 뉴스가 부른 테마',
   calendar: '<b>📅 테마달력</b> — 오늘 상한가 · 최근 1년 무리 테마 · 동반 묶음 (누구나)',
-  radar: '<b>🔒 📡 레이더</b> — 오늘 뉴스·일정 + 상한가 전 앞쪽 바닥 + 9·10단계 재부각 대기 (본인 전용)',
-  hotbar: '<b>🔒 🎯 실전</b> — 상한가 뒤 <b>1~8단계 A·B 타점</b> 추적 — <b>3·4 매수 · 5·6·7 유지 · 8 매도(분할·올매도)</b> · 9·10단계는 레이더 대기 · 일봉 + 테마 추적 (본인 전용)',
-  results: '<b>🔒 📈 결과</b> — 매일 자동으로 뽑은 <b>장전픽 · 장중픽</b>을 달마다 모아, 그날 픽의 기준가 대비 <b>−% / +%</b>로 추적 (본인 전용)',
+  radar: '<b>🔒 📡 레이더</b> — 오늘 픽(장전·장중·장후)을 <b>테마별</b>로 — 어느 테마에서 무엇이 잡혔나 · 포착 사유 (본인 전용)',
+  hotbar: '<b>🔒 🎯 실전</b> — 오늘 찍은 <b>장전픽 · 장중픽 · 장후픽</b>을 종목·테마·선정 사유·포착 시각·기준가와 함께 — 이전 날 픽은 지운다 (본인 전용)',
+  results: '<b>🔒 📈 결과</b> — 결과물만 — 달마다 <b>장전·장중·장후픽</b>의 기준가 대비 <b>−% / +%</b>와 월 요약(건수·평균·상승 비율) (본인 전용)',
 };
 function paintTabRole(name){
   const el = $('#tabRole');
@@ -2278,7 +2285,9 @@ async function ensureRadar(){
     if(!res.ok) throw new Error('HTTP ' + res.status);
     const j = await res.json();
     const d = (Number(j && j.enc) === 1) ? await hotDecrypt(j, code) : j;   /* 옛 평문 배포도 받아 준다 */
-    if(!d || (!(d.tiers || []).length && !(d.news_links || []).length)) return null;
+    /* 오늘 픽 보드(kind='picks')는 픽이 0종목인 날에도 "오늘 없음"을 그려야 하므로 그대로 받는다 */
+    if(!d) return null;
+    if(d.kind !== 'picks' && !(d.tiers || []).length && !(d.news_links || []).length) return null;
     state.radar = d;
   }catch(err){ return null; }
   return state.radar;
@@ -2286,9 +2295,13 @@ async function ensureRadar(){
 
 function radarStockHtml(s){
   const drop = (s.drop === 0 || s.drop) ? String(s.drop) : '';
+  const pct = (typeof s.pct === 'number')
+    ? `<span class="drp${s.pct > 0 ? '' : (s.pct < 0 ? ' dn' : ' flat')}" title="${esc(s.pct_why || '기준가 대비 오늘 등락률')}">${s.pct > 0 ? '+' : ''}${s.pct.toFixed(2)}%</span>`
+    : '';
   return `<div class="rd-stk"${s.code ? ` data-code="${esc(s.code)}" data-name="${esc(s.name)}" role="button" tabindex="0" title="일봉 125봉 차트 보기"` : ''}><b>${esc(s.name)}</b>` +
-    (s.price_text ? `<span class="px">${esc(s.price_text)}</span>` : '') +
+    (s.tag ? `<span class="rd-tag">${esc(s.tag)}</span>` : '') +
     (drop ? `<span class="drp" title="1년 고점 대비 ${esc(drop)} 내려온 자리">${esc(drop)}</span>` : '') +
+    (s.price_text ? `<span class="px">${esc(s.price_text)}</span>` : '') + pct +
     `</div>`;
 }
 
@@ -2424,14 +2437,16 @@ async function renderRadar(force){
   }
   if($('#radarNote')) $('#radarNote').textContent = (r && r.drop_note) ? r.drop_note : '종목 옆 숫자 = 고점에서 내려온 폭';
   const newsHtml = rows.length
-    ? `<div class="rd-nh"><b>🎯 미리 뽑아 둔 자리</b><span>뉴스가 붙은 순서</span></div>`
+    ? `<div class="rd-nh"><b>🎯 오늘 픽 테마</b><span>뉴스가 붙은 순</span></div>`
     : '';
   /* ⏳ 9·10단계 재발굴 대기 — 유형 C(9단계 하락 멈춤·10단계 재출발). 2026-11-24 지시로
      실전에서 이 대기실로 옮겼다. 레이더 = 상한가 전 바닥 + 9·10단계 재출발 대기. */
   const cw = (r && r.cwait) || null;
   const cwStocks = (cw && cw.stocks) || [];
   if(!rows.length && !cwStocks.length){
-    box.innerHTML = `<div class="empty">레이더 자료를 불러오지 못했습니다.<br>잠시 후 다시 열어 주세요.</div>`;
+    box.innerHTML = (r && r.kind === 'picks')
+      ? `<div class="empty">오늘은 레이더에 올린 픽이 없습니다.<br>픽은 평일 아침 08:35 · 장중 · 마감 뒤 15:45에 채워집니다.</div>`
+      : `<div class="empty">레이더 자료를 불러오지 못했습니다.<br>잠시 후 다시 열어 주세요.</div>`;
     return;
   }
   const cwHtml = cwStocks.length
@@ -2689,14 +2704,14 @@ function scoreHtml(sc){
    2026-11-23 지시 #12042·#12076 — 실전은 '일봉'과 '테마 추적' 두 칸이다. 주봉·월봉은 메뉴에서 빼고
    차트 안 전환 버튼으로 옮겼으며, 주봉 48주·월봉 12개월 기준은 테마 추적 안에 그대로 통합한다. */
 const HOT_MISSION = {
-  day:   {name:'일봉 사용설명서',
-          apply:'상한가 뒤 <b>②눌림 자리(2단계)</b>를 맨 위에 — ①상한가 → ②눌림 → ③반등 순서와 ②·③ 아래 <b>그림 기준선</b>, <b>고점 대비 -% 눌림 깊이</b> 판정. ④(②줄 복귀)는 <b>상한가일부터 10~25일 안</b>이면 1순위, 25일을 넘기면 한 단계 낮춘다',
-          role:'상한가 뒤 <b>핫바 대기(2단계)</b> 종목을 가장 먼저 잡고, 1·3단계는 참고로 아래에 둔다. ④는 <b>고가 위 먼저 갔다 온 B형</b>을 A형보다 위에 두고, <b>1년 고점 -50%·240선 -20% 아래</b>로 깊게 식은 자리를 먼저 본다(+20% 62.5% vs 55.0%, 재상한가 1.6배)',
-          tip:'카드를 누르면 차트가 열리고, 차트 위 <b>일봉 · 주봉 · 월봉</b> 버튼으로 48주·12개월 큰 흐름까지 같은 창에서 본다'},
-  pick:  {name:'테마 추적 사용설명서',
-          apply:'단계는 <b>3·4 = 매수 · 5·6·7 = 유지(보유) · 8 = 매도(분할 또는 올매도)</b>, <b>9·10 = 대기(📡 레이더)</b>로 본다. 그중 <b>4·5단계(기준선 매수·전고 돌파)</b>를 주 추적 대상으로 맨 앞에 두고 2·3·6~8단계는 흐름 참고로 뒤에 둔다. 판정에는 일봉 기준선 + <b>주봉 48주·월봉 12개월 첫 거래량</b> + <b>주봉 240선·월봉 120선 앞/뒤</b> + 테마 크기 + 지수·업종 + 형광↑까지 합친다. <b>④는 빠른 ④(상한가 뒤 25일 안)·고가 위 ④(B형)</b>를 카드 앞에 세운다',
-          role:'<b>3·4단계에 사서 5·6·7단계에 들고 가고 8단계에 파는</b>(분할 또는 올매도) 테마 추적판 — 9·10단계 재출발은 레이더 대기실에서 본다',
-          tip:'차트 위 <b>일봉 · 주봉 · 월봉</b> 전환으로 주봉 48주·월봉 12개월 봉을 그대로 확인한다'},
+  day:   {name:'실전 사용설명서',
+          apply:'<b>오늘 찍은 픽만</b> 남깁니다 — <b>🌅 장전픽 · ⚡ 장중픽 · 🌙 장후픽</b>. 카드마다 <b>테마</b>와 <b>왜 뽑혔는지(선정 사유)</b> · <b>포착 시각</b> · <b>기준가 → 현재가</b> · <b>기준가 대비 등락률</b>을 함께 봅니다. 이전 날 픽은 이 칸에 남기지 않습니다',
+          role:'<b>장전픽</b> = 직전 거래일 상한가 흐름에서 아침에 고른 자리(기준 전일 종가) · <b>장중픽</b> = 오늘 실시간 상한가·급등 테마 선도주(기준 포착가) · <b>장후픽</b> = 오늘 종가로 내일 볼 자리(기준 당일 종가). 매매 판단은 본인 몫입니다',
+          tip:'카드를 누르면 125봉 일봉 차트가 열립니다 — 결과물만 보려면 옆의 <b>📈 결과</b> 탭'},
+  pick:  {name:'테마별 사용설명서',
+          apply:'오늘 픽을 <b>테마로 묶어</b> 봅니다 — 같은 테마에서 어느 종목이 장전·장중·장후에 잡혔는지, 테마마다 몇 종목인지',
+          role:'테마가 살아 있는 동안 같은 테마의 다른 자리를 놓치지 않게 보는 칸입니다. 장전·장중·장후 구분과 선정 사유는 카드마다 그대로 볼 수 있습니다',
+          tip:'카드를 누르면 125봉 일봉 차트 — 테마 흐름은 <b>📅 테마달력</b>과 같이 봅니다'},
 };
 function paintHotMission(key){
   const el = $('#hotMission'); if(!el) return;
@@ -2709,6 +2724,35 @@ function paintHotMission(key){
     + (m.tip ? `<div class="mr"><span class="k t">차트</span><span class="v">${m.tip}</span></div>` : '');
 }
 
+/* ---------------- 실전 보드 (2026-11-26 지시) ----------------
+   "찍은 픽은 실전에 남기고, 결과에는 결과물만"
+   실전은 **오늘 무엇을 왜 찍었나**를 보는 자리다 — 종목 · 테마 · 선정 사유 · 포착 시각 ·
+   기준가 → 현재가 · 기준가 대비 등락률. 누적 성적만 보는 📈 결과 탭과 역할이 다르다.
+   자료 모양: {base_date, base_date_text, boards:[{key,title,note,empty,picks:[resCard 모양]}]} */
+function pickBoardHtml(b, cls){
+  const picks = (b && b.picks) || [];
+  const kind = cls === 'int' ? 'int' : (cls === 'aft' ? 'aft' : (cls === 'theme' ? 'theme' : 'pre'));
+  return `<div class="res-sec ${kind}">
+    <div class="res-sh">${esc(b.title || '')}<span class="n">${picks.length}종목</span>${b.note ? `<span class="n">${esc(b.note)}</span>` : ''}</div>
+    ${picks.length
+      ? picks.map(p => resCard(p, true)).join('')
+      : `<div class="res-empty" style="padding:10px 2px;text-align:left">${esc(b.empty || '오늘은 이 칸에 픽이 없습니다.')}</div>`}
+  </div>`;
+}
+function pickBoardOrder(key){
+  return key === 'premarket' ? 'pre' : (key === 'aftermarket' ? 'aft' : 'int');
+}
+function pickBoardHead(d){
+  const boards = (d && d.boards) || [];
+  const all = [];
+  boards.forEach(b => (b.picks || []).forEach(p => all.push(p)));
+  const vals = all.map(p => p && p.pct).filter(v => typeof v === 'number');
+  const avg = vals.length ? vals.reduce((a, c) => a + c, 0) / vals.length : null;
+  return `<div class="hp-head"><b>${all.length}종목</b><span>${esc((d && d.base_date_text) || '')}`
+    + (avg == null ? '' : ` · 평균 <b>${resPctTxt(avg)}</b>`) + `</span></div>`;
+}
+const PICKLEG_ORDER = ['premarket', 'intraday', 'aftermarket'];
+
 async function renderHotbar(){
   if(!visOn()){                       /* 잠겨 있으면 잠금 화면만 — 안쪽 자료는 그리지 않는다 */
     const box = $('#hotBody');
@@ -2720,6 +2764,13 @@ async function renderHotbar(){
   paintHotMission(hotbarSec);      /* 탭을 고르는 즉시 그 칸의 임무로 바뀐다(자료를 기다리지 않는다) */
   if(hotbarSec === 'pick'){ await renderPick(); cfPaintAgain(); return; }
   const d = await ensureHotbar();
+  if(d && Array.isArray(d.boards)){        /* 오늘 픽 보드 — 장전 · 장중 · 장후 */
+    const bs = d.boards.slice().sort((a, b) => PICKLEG_ORDER.indexOf(a.key) - PICKLEG_ORDER.indexOf(b.key));
+    box.innerHTML = pickBoardHead(d) + bs.map(b => pickBoardHtml(b, pickBoardOrder(b.key))).join('');
+    cfCheck(true);
+    cfPaintAgain();
+    return;
+  }
   if(!d || !(d.sections || []).length){
     box.innerHTML = `<div class="empty">실전 자료를 불러오지 못했습니다.<br>잠시 후 다시 열어 주세요.</div>`;
     return;
@@ -2953,13 +3004,21 @@ function themeLeaders(t){
 async function renderPick(){
   const box = $('#hotBody');  if(!box) return;
   document.querySelectorAll('#hotSeg button').forEach(x => x.classList.toggle('on', x.dataset.sec === 'pick'));
+  paintHotMission('pick');
   if(!hotPick){
-    box.innerHTML = `<div class="hm-load">10단계 자료를 받는 중…<br>잠긴 자료를 이 기기에서 풀고 있습니다.</div>`;
+    box.innerHTML = `<div class="hm-load">오늘 픽 자료를 받는 중…<br>잠긴 자료를 이 기기에서 풀고 있습니다.</div>`;
     const got = await ensurePick();
     if(!got){
-      box.innerHTML = `<div class="empty">10단계 자료를 불러오지 못했습니다.<br>잠시 후 다시 열어 주세요.</div>`;
+      box.innerHTML = `<div class="empty">오늘 픽 자료를 불러오지 못했습니다.<br>잠시 후 다시 열어 주세요.</div>`;
       return;
     }
+  }
+  /* 오늘 픽 보드(테마별) — 장전 · 장중 · 장후를 테마로 묶어 본다 (2026-11-26) */
+  if(Array.isArray(hotPick.boards)){
+    box.innerHTML = pickBoardHead(hotPick)
+      + hotPick.boards.map(b => pickBoardHtml(b, 'theme')).join('');
+    cfCheck(true);
+    return;
   }
   if(!state.calendar){ try{ await ensureCalendar(); }catch(e){} }   /* 대장주(상한가들) 줄에 쓴다 */
   const all = pickAll();
@@ -3147,10 +3206,13 @@ function cfBrief(name, txt){
    배지 여러 개(빠른 ④·고가 위 ④·동반·깊은 바닥·20일 대금)·날짜·이슈 요약은 화면에 쓰지 않는다. */
 const CF_ORD = {star:0, circ:1, diam:2, tri:3, obs:4};
 const CF_OBS_MAX = 10;
+/* 2026-11-26 — 팝업도 오늘 찍은 픽을 세 칸으로 나춰 보여 준다(실전에 남긴 그 픽).
+   사유 긴 문장은 팝업에 쓰지 않고 "[장전픽] 종목명 · 테마" 한 줄로만 적는다. */
 const CF_SEC = [
-  {key:'buy',   ico:'🎯', name:'실전 매수 적중', note:'지금 사는 자리'},
-  {key:'radar', ico:'📡', name:'레이더 길목',   note:'상한가 전 · 9단계 대기'},
-  {key:'pink',  ico:'🟢', name:'형광↑ 정예',    note:''}
+  {key:'buy',   ico:'🌅', name:'장전픽', note:'기준 전일 종가'},
+  {key:'radar', ico:'⚡', name:'장중픽', note:'기준 포착가'},
+  {key:'after', ico:'🌙', name:'장후픽', note:'기준 당일 종가 · 내일 볼 자리'},
+  {key:'pink',  ico:'🟢', name:'형광↑ 정예', note:''}
 ];
 let popupData = null, popupLoading = null;
 /* 팝업 자료 한 벌 — 잠금이 풀린 본인만 풀 수 있다(핫바·10단계와 같은 방식) */
@@ -3237,12 +3299,14 @@ function cfSections(){
     return {
       buy:cfOrderBuy((d.sections.buy || []).filter(x => x && x.code).map(x => norm(x, 'buy'))),
       radar:(d.sections.radar || []).filter(x => x && x.code).map(x => norm(x, 'radar')),
+      after:(d.sections.after || []).filter(x => x && x.code).map(x => norm(x, 'after')),
       pink:cfPinkGradeList(d),
       more:{buy:Math.max(0, Number((d.counts || {}).buy_all || 0) - (d.sections.buy || []).length),
-            radar:Math.max(0, Number((d.counts || {}).radar_all || 0) - (d.sections.radar || []).length)}
+            radar:Math.max(0, Number((d.counts || {}).radar_all || 0) - (d.sections.radar || []).length),
+            after:Math.max(0, Number((d.counts || {}).after_all || 0) - (d.sections.after || []).length)}
     };
   }
-  return {buy:[], radar:[], pink:cfPinkGradeList(d), more:{buy:0, radar:0}};
+  return {buy:[], radar:[], after:[], pink:cfPinkGradeList(d), more:{buy:0, radar:0, after:0}};
 }
 /* 등급 배지 글자 — 조건 설명 없이 짧게 */
 function cfGradeTxt(s){
@@ -3272,8 +3336,12 @@ function cfKBadge(s){
     return {t:'매수', c:'4'};
   }
   if(s.kind === 'radar'){
+    if(s.label) return {t:s.label, c:'3'};
     if(/9단계/.test(String(s.tag || ''))) return {t:'9단계', c:'9'};
     return {t:'레이더', c:'R'};
+  }
+  if(s.kind === 'after'){
+    return {t:s.label || '장후픽', c:'4'};
   }
   const gt = cfGradeTxt(s);
   return gt ? {t:gt, c:s.grade || 'obs'} : {t:'형광↑', c:'obs'};
@@ -3288,14 +3356,15 @@ function cfOrderBuy(rows){
 /* 머리 한 줄 — 칸별 개수만 */
 function cfGradeLine(sec){
   const p = [];
-  if(sec.buy.length) p.push(`🎯 매수 ${sec.buy.length}`);
-  if(sec.radar.length) p.push(`📡 레이더 ${sec.radar.length}`);
+  if(sec.buy.length) p.push(`🌅 장전픽 ${sec.buy.length}`);
+  if(sec.radar.length) p.push(`⚡ 장중픽 ${sec.radar.length}`);
+  if((sec.after || []).length) p.push(`🌙 장후픽 ${sec.after.length}`);
   if(sec.pink.length) p.push(`🟢 형광↑ ${sec.pink.length}`);
   return p.join(' · ');
 }
-/* 3칸을 합친 평면 목록 — 개수 배지·서명·차트 복귀용 */
+/* 칸을 합친 평면 목록 — 개수 배지·서명·차트 복귀용 */
 function cfFlat(sec){
-  return [].concat(sec.buy || [], sec.radar || [], sec.pink || []);
+  return [].concat(sec.buy || [], sec.radar || [], sec.after || [], sec.pink || []);
 }
 /* 오늘 목록(평면) — 3칸 자료가 있으면 그 셋을 합쳐, 없으면 예전처럼 세 곳을 합친다 */
 function cfList(){
@@ -3386,7 +3455,7 @@ function cfShow(list){
       /* 3칸 — 🎯 매수 적중 → 📡 레이더 길목 → 🟢 형광↑ 정예. 빈 칸은 제목만 한 줄로 남긴다 */
       box.innerHTML = CF_SEC.map(c => {
         const rows = sec[c.key] || [];
-        if(c.key === 'pink' && !rows.length) return '';
+        if((c.key === 'pink' || c.key === 'after') && !rows.length) return '';
         if(!rows.length) return `<div class="cf-head"><span class="cf-hi">${c.ico}</span>${c.name}`
           + `<em>${c.note ? c.note + ' · ' : ''}오늘 없음</em></div>`;
         const more = (sec.more && sec.more[c.key]) ? `<em>외 ${sec.more[c.key]}종목</em>` : '';
@@ -4647,27 +4716,34 @@ function resAgg(list){
     avg: vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : null,
   };
 }
-function resCard(p){
+/* 결과 카드 — **결과물만**. 종목명 · 기준가 → 현재가/종가 · 기준가 대비 -%/+%
+   2026-11-26 지시: "찍은 픽은 실전에 남기고 결과에는 결과물만" — 선정 사유 긴 문장은 결과 카드에서 뺐다.
+   showWhy=true 로 부르면(실전 보드) 종목 아래에 근거 한 줄을 함께 그린다. */
+function resCard(p, showWhy){
   const cls = resPctCls(p.pct);
   const code = String(p.code || '');
   const nm = esc(p.name || '');
   const mk = p.market ? `<span class="mk">${esc(p.market)}</span>` : '';
-  const st = p.status === '마감' ? '<span class="st">마감</span>' : '<span class="st live">진행</span>';
-  const refKind = esc(p.ref_kind || '기준가');
+  const st = p.status === '마감' ? '<span class="st">마감</span>'
+           : (p.status === '대기' ? '<span class="st wait">대기</span>' : '<span class="st live">진행</span>');
+  const refKind = esc(String(p.ref_kind || '기준가').split(' · ')[0]);
   const t = esc(p.pick_time || '');
+  const why = (showWhy && p.reason) ? `<div class="res-why">${esc(p.reason)}</div>` : '';
   return `<div class="res-card"${code ? ` data-code="${esc(code)}" data-name="${nm}" role="button" tabindex="0" aria-label="${nm} 일봉 125봉 차트 보기"` : ''}>
     <div class="res-nm">${nm}${mk}</div>
     <div class="res-pct ${cls}">${resPctTxt(p.pct)}</div>
-    ${p.reason ? `<div class="res-why">${esc(p.reason)}</div>` : ''}
-    <div class="res-num"><span>${refKind}</span><b>${resWon(p.ref_price)}</b><span>→ 현재</span><b>${resWon(p.current_price)}</b>${st}${t ? `<span>· ${t}</span>` : ''}</div>
+    ${why}
+    <div class="res-num"><span>${refKind}</span><b>${resWon(p.ref_price)}</b><span>→ ${p.status === '대기' ? '기준' : '현재'}</span><b>${resWon(p.current_price)}</b>${st}${t ? `<span>· ${t}</span>` : ''}</div>
   </div>`;
 }
 function resSection(kind, list){
   const pre = kind === 'premarket';
-  const head = pre ? '🌅 장전픽' : '⚡ 장중픽';
-  return `<div class="res-sec ${pre ? 'pre' : 'int'}">
+  const aft = kind === 'aftermarket';
+  const head = pre ? '🌅 장전픽' : (aft ? '🌙 장후픽' : '⚡ 장중픽');
+  const cls = pre ? 'pre' : (aft ? 'aft' : 'int');
+  return `<div class="res-sec ${cls}">
     <div class="res-sh">${head}<span class="n">${list.length}종목</span></div>
-    ${list.length ? list.map(resCard).join('') : '<div class="res-empty" style="padding:8px 2px;text-align:left">이 날은 픽이 없습니다</div>'}
+    ${list.length ? list.map(p => resCard(p, false)).join('') : '<div class="res-empty" style="padding:8px 2px;text-align:left">이 날은 픽이 없습니다</div>'}
   </div>`;
 }
 async function renderResults(){
@@ -4692,12 +4768,17 @@ async function renderResults(){
   const days = (picksData.months[mon] || {});
   const dates = Object.keys(days).sort().reverse();
   const all = [];
-  dates.forEach(d => { all.push(...(days[d].premarket || [])); all.push(...(days[d].intraday || [])); });
+  dates.forEach(d => {
+    all.push(...(days[d].premarket || []));
+    all.push(...(days[d].intraday || []));
+    all.push(...(days[d].aftermarket || []));
+  });
   const a = resAgg(all);
   const preN = dates.reduce((s, d) => s + (days[d].premarket || []).length, 0);
   const intN = dates.reduce((s, d) => s + (days[d].intraday || []).length, 0);
+  const aftN = dates.reduce((s, d) => s + (days[d].aftermarket || []).length, 0);
   const sub = $('#resSub');
-  if(sub) sub.textContent = `장전픽 · 장중픽 — 기준가 대비 그날 등락률${picksData.updated_kst ? ' · 갱신 ' + picksData.updated_kst : ''}`;
+  if(sub) sub.textContent = `장전픽 · 장중픽 · 장후픽 — 기준가(전일 종가·포착가·당일 종가) 대비 그날 등락률${picksData.updated_kst ? ' · 갱신 ' + picksData.updated_kst : ''}`;
   if(mbar){
     mbar.innerHTML = months.map(m => {
       const ds = Object.keys(picksData.months[m] || {});
@@ -4708,11 +4789,12 @@ async function renderResults(){
     sum.innerHTML = `
       <div class="c"><b>${preN}</b><span>장전픽</span></div>
       <div class="c"><b>${intN}</b><span>장중픽</span></div>
+      <div class="c"><b>${aftN}</b><span>장후픽</span></div>
       <div class="c ${resPctCls(a.avg)}"><b>${resPctTxt(a.avg)}</b><span>평균 등락률</span></div>
       <div class="c"><b>${a.up}/${a.vals || 0}</b><span>상승 비율</span></div>`;
   }
   if(!dates.length){
-    box.innerHTML = `<div class="res-empty">${esc(mon.replace('-', '.'))} 에는 아직 픽 기록이 없습니다.<br>장전픽은 평일 아침 08:35, 장중픽은 장중에 자동으로 쌓입니다.</div>`;
+    box.innerHTML = `<div class="res-empty">${esc(mon.replace('-', '.'))} 에는 아직 픽 기록이 없습니다.<br>장전픽은 평일 08:35, 장중픽은 장중에, 장후픽은 마감 뒤 15:45에 자동으로 쌓입니다.</div>`;
     return;
   }
   const today = new Date();
@@ -4720,15 +4802,15 @@ async function renderResults(){
   if(!state.resOpen.size) state.resOpen.add(dates[0]);   /* 처음 열면 가장 최근 날만 펼쳐 둔다 */
   box.innerHTML = dates.map(d => {
     const rec = days[d] || {};
-    const pre = rec.premarket || [], int = rec.intraday || [];
-    const day = resAgg(pre.concat(int));
+    const pre = rec.premarket || [], int = rec.intraday || [], aft = rec.aftermarket || [];
+    const day = resAgg(pre.concat(int, aft));
     const open = state.resOpen.has(d);
     const dt = new Date(d + 'T00:00:00');
     const wd = isNaN(dt) ? '' : RES_WD[dt.getDay()];
     return `<div class="res-day${open ? ' open' : ''}${d === todayKey ? ' today' : ''}" data-rd="${esc(d)}">
-      <button class="res-dhead" type="button" aria-expanded="${open}" aria-label="${esc(d)} 장전픽 ${pre.length}종목 · 장중픽 ${int.length}종목 펼치기">
+      <button class="res-dhead" type="button" aria-expanded="${open}" aria-label="${esc(d)} 장전픽 ${pre.length}종목 · 장중픽 ${int.length}종목 · 장후픽 ${aft.length}종목 펼치기">
         <span class="d">${esc(d.slice(5).replace('-', '/'))}</span><span class="w">${wd}</span>
-        <span class="chip">장전 ${pre.length} · 장중 ${int.length}</span>
+        <span class="chip">장전 ${pre.length} · 장중 ${int.length}${aft.length ? ` · 장후 ${aft.length}` : ''}</span>
         <span class="davg ${resPctCls(day.avg)}">${resPctTxt(day.avg)}</span>
         <span class="ar" aria-hidden="true">▾</span>
       </button>
@@ -4736,6 +4818,7 @@ async function renderResults(){
         ${rec.note ? `<p class="res-note">${esc(rec.note)}</p>` : ''}
         ${resSection('premarket', pre)}
         ${resSection('intraday', int)}
+        ${aft.length ? resSection('aftermarket', aft) : ''}
       </div>
     </div>`;
   }).join('');
@@ -4965,7 +5048,7 @@ $('#hotBody').addEventListener('keydown', e => {
   if(st) openChart(st);
 });
 /* 다른 메뉴(뉴스·상한가·테마달력·레이더)의 종목 이름 → 기준선 없는 주봉 차트 */
-['#calUpperList', '#calThemes', '#radarList', '#issueList', '#newsThemeList'].forEach(bindStockChart);
+['#calUpperList', '#calThemes', '#radarList', '#issueList', '#newsThemeList', '#hotBody'].forEach(bindStockChart);
 
 /* ---------------- 뉴스 ↔ 테마달력 잇는 길 (2026-11-26) ----------------
    뉴스 카드의 📅 테마 칩 → 테마달력의 그 테마 카드로
