@@ -120,7 +120,7 @@
   /* ---------- 탭 (다섯 칸 고정 — 테마달력·핫바는 잠긴 채로 늘 보이고, 눌러야 잠금 화면이 뜬다) ---------- */
   /* 2026-11-24 지시 — 상단은 네 칸(📰 뉴스 · 📡 레이더 · 📅 테마달력 · 🎯 실전)뿐이다.
      오늘 상한가는 뉴스 칸 안으로 옮겨 탭을 네 개로 줄였다. */
-  .tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;padding:0 0 5px}
+  .tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;padding:0 0 5px}
   /* 탭 바로 아래 한 줄 — 지금 칸이 무엇을 보는 자리인지(역할 분담) */
   .tabrole{padding:0 1px 4px;font-size:10px;font-weight:700;letter-spacing:-.2px;line-height:1.4;
     color:#93a4bf;word-break:keep-all}
@@ -477,14 +477,17 @@
   .tab[hidden]{display:none}
   /* 잠긴 탭(레이더·실전) — 다른 탭과 같은 모양이되 열쇠가 붙고, 선택돼도 파랗게 빛나지 않는다.
      2026-11-24 지시: 테마달력은 공개, 레이더가 비공개로 바뀌었다. */
-  .tab.hot .lk,.tab.radar .lk{font-size:10px;line-height:1;opacity:.9;font-weight:400}
-  .tab.hot[aria-selected="true"],.tab.radar[aria-selected="true"]{background:linear-gradient(135deg,#243049,#332b52);
+  .tab.hot .lk,.tab.radar .lk,.tab.res .lk{font-size:10px;line-height:1;opacity:.9;font-weight:400}
+  .tab.hot[aria-selected="true"],.tab.radar[aria-selected="true"],.tab.res[aria-selected="true"]{background:linear-gradient(135deg,#243049,#332b52);
     box-shadow:none;color:#cfd8ea;border-color:rgba(255,255,255,.14)}
   @media (max-width:410px){ .tabs .tab{font-size:10.4px;letter-spacing:-.4px;padding:6px 1px} }
   @media (max-width:360px){ .tabs .tab{font-size:9.8px;letter-spacing:-.5px} }
+  /* 2026-11-26 — 결과 탭이 다섯째 칸으로 붙어 폰 폭에서도 한 줄에 들어가게 글자를 조금 더 좁힌다 */
+  @media (max-width:410px){ .tabs{gap:2px} .tabs .tab{font-size:9.8px;letter-spacing:-.5px;padding:6px 0} }
+  @media (max-width:360px){ .tabs .tab{font-size:9.2px;letter-spacing:-.6px} }
   /* 잠금 화면 — 핫바 안쪽 자료 자리에 앉는다(자료는 아예 그리지 않는다) */
   .hot-lock{display:none;max-width:340px;margin:34px auto 0;text-align:center;padding:0 6px}
-  #view-hotbar.locked .hot-lock,#view-radar.locked .hot-lock{display:block}
+  #view-hotbar.locked .hot-lock,#view-radar.locked .hot-lock,#view-results.locked .hot-lock{display:block}
   .hot-lock .ico{font-size:30px;line-height:1;margin-bottom:8px;filter:saturate(.9)}
   .hot-lock b{display:block;font-size:14.5px;font-weight:900;letter-spacing:-.4px;color:#e8eefc}
   .hot-lock p{font-size:11.5px;font-weight:600;color:var(--dim2);line-height:1.6;margin:7px 0 0}
@@ -501,6 +504,76 @@
   .hot-lock .hl-tip{margin-top:12px;font-size:10.5px;color:#5f6f8c}
   #view-hotbar.locked #hotInner{display:none}
   #view-radar.locked #radarInner{display:none}
+  #view-results.locked #resInner{display:none}
+
+  /* ---------- 📈 결과 (2026-11-26 신설 — 실전 옆) ----------
+     달마다 자기 자리를 차지한다: 월 버튼 → 월 요약 → 날짜별 장전픽/장중픽.
+     등락률은 그날 픽 기준가 대비 — 오르면 빨강(--up), 내리면 파랑. */
+  .res-mbar{display:flex;gap:4px;overflow-x:auto;padding:2px 1px 8px;scrollbar-width:none}
+  .res-mbar::-webkit-scrollbar{display:none}
+  .res-mbtn{flex:none;appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.03);
+    color:var(--dim);font-family:inherit;font-size:12px;font-weight:800;letter-spacing:-.2px;
+    padding:6px 12px;border-radius:9px;cursor:pointer;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .res-mbtn:active{transform:scale(.97)}
+  .res-mbtn.on{color:#fff;border-color:transparent;background:linear-gradient(135deg,#4f8cff,#7c5cff);
+    box-shadow:0 3px 12px rgba(79,140,255,.3)}
+  .res-mbtn .n{font-size:9.5px;font-weight:700;opacity:.75;margin-left:3px}
+  .res-sum{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:0 1px 10px}
+  .res-sum .c{border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:10px;
+    padding:7px 4px 8px;text-align:center;min-width:0}
+  .res-sum .c b{display:block;font-size:15px;font-weight:900;letter-spacing:-.6px;
+    font-variant-numeric:tabular-nums;line-height:1.15}
+  .res-sum .c span{display:block;font-size:9.5px;font-weight:700;color:var(--dim2);margin-top:1px;
+    letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .res-sum .c.up b{color:var(--up)} .res-sum .c.dn b{color:#5b9dff}
+  .res-day{margin:0 0 9px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.018);
+    overflow:hidden}
+  .res-day.today{border-color:rgba(79,140,255,.42);background:linear-gradient(180deg,rgba(79,140,255,.1),rgba(79,140,255,.02))}
+  .res-dhead{display:flex;align-items:center;gap:6px;width:100%;appearance:none;border:0;background:transparent;
+    color:inherit;font-family:inherit;text-align:left;padding:9px 10px;cursor:pointer}
+  .res-dhead .d{font-size:13px;font-weight:900;letter-spacing:-.3px;font-variant-numeric:tabular-nums;flex:none}
+  .res-dhead .w{font-size:10.5px;font-weight:700;color:var(--dim2);flex:none}
+  .res-dhead .chip{font-size:9.5px;font-weight:800;color:#9fc0ff;border:1px solid rgba(79,140,255,.35);
+    background:rgba(79,140,255,.1);border-radius:5px;padding:0 5px;line-height:15px;white-space:nowrap}
+  .res-dhead .davg{margin-left:auto;font-size:12.5px;font-weight:900;font-variant-numeric:tabular-nums;flex:none}
+  .res-dhead .ar{flex:none;font-size:11px;color:#5f6f8c;transition:transform .15s}
+  .res-day.open .res-dhead .ar{transform:rotate(180deg)}
+  .res-dbody{display:none;padding:0 9px 9px}
+  .res-day.open .res-dbody{display:block}
+  .res-note{font-size:10px;color:var(--dim2);margin:0 0 7px;line-height:1.4}
+  .res-sec{margin-top:7px}
+  .res-sec+.res-sec{margin-top:9px}
+  .res-sh{display:flex;align-items:center;gap:5px;font-size:10.5px;font-weight:900;letter-spacing:-.2px;
+    padding:0 1px 5px}
+  .res-sh .n{font-size:9.5px;font-weight:700;color:var(--dim2)}
+  .res-sh::after{content:"";flex:1;height:1px;background:var(--line)}
+  .res-sec.pre .res-sh{color:#ffc46b}
+  .res-sec.int .res-sh{color:#8fb2ff}
+  .res-card{display:grid;grid-template-columns:1fr auto;gap:2px 8px;align-items:baseline;
+    padding:7px 8px;border-radius:9px;border:1px solid rgba(255,255,255,.06);
+    background:rgba(255,255,255,.025);margin-bottom:5px}
+  .res-card:last-child{margin-bottom:0}
+  .res-card[data-code]{cursor:pointer}
+  .res-card[data-code]:active{opacity:.8;border-color:rgba(79,140,255,.5)}
+  .res-nm{font-size:13.5px;font-weight:900;letter-spacing:-.3px;min-width:0;overflow:hidden;
+    text-overflow:ellipsis;white-space:nowrap;border-bottom:1px dashed rgba(143,178,255,.3);
+    justify-self:start;max-width:100%}
+  .res-nm .mk{font-size:9px;font-weight:700;color:var(--dim2);margin-left:4px;letter-spacing:0}
+  .res-pct{font-size:15px;font-weight:900;letter-spacing:-.6px;font-variant-numeric:tabular-nums;
+    white-space:nowrap;text-align:right}
+  .res-pct.up{color:var(--up)} .res-pct.dn{color:#5b9dff} .res-pct.flat{color:var(--dim)}
+  .res-why{grid-column:1 / -1;font-size:11px;font-weight:600;color:#a7b4c9;line-height:1.42;
+    letter-spacing:-.1px;word-break:keep-all;overflow-wrap:anywhere}
+  .res-num{grid-column:1 / -1;display:flex;align-items:center;gap:5px;font-size:10px;color:var(--dim2);
+    font-variant-numeric:tabular-nums;letter-spacing:-.1px;flex-wrap:wrap}
+  .res-num b{color:#c3cfe4;font-weight:800}
+  .res-num .st{font-size:9px;font-weight:800;border-radius:4px;padding:0 4px;line-height:14px;
+    border:1px solid rgba(255,255,255,.14);color:var(--dim)}
+  .res-num .st.live{color:#ffd166;border-color:rgba(255,209,102,.4);background:rgba(255,209,102,.1)}
+  .res-empty{padding:22px 8px;text-align:center;font-size:12px;color:var(--dim2);line-height:1.6}
+  @media (max-width:410px){
+    .res-sum .c b{font-size:14px} .res-nm{font-size:13px} .res-pct{font-size:14px}
+  }
   /* 실전 두 칸 — 일봉 · 테마 추적 (2026-11-23 지시 #12042 · #12076) */
   .hb-seg{display:grid;grid-template-columns:repeat(2,1fr);gap:5px;margin:2px 0 6px}
   .hb-seg button{appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.03);
@@ -1126,6 +1199,7 @@
       <button class="tab cal" role="tab" data-tab="calendar" aria-selected="false" aria-label="테마달력">📅 테마달력</button>
       <button class="tab radar" role="tab" data-tab="radar" aria-selected="false" aria-label="레이더(비밀번호 필요)"><span class="lk" id="radLk" aria-hidden="true">🔒</span>📡 레이더<span class="rdot" id="radarDot" aria-hidden="true"></span></button>
       <button class="tab hot" role="tab" data-tab="hotbar" aria-selected="false" aria-label="실전(비밀번호 필요)"><span class="lk" id="hotLk" aria-hidden="true">🔒</span>🎯 실전</button>
+      <button class="tab res" role="tab" data-tab="results" aria-selected="false" aria-label="결과(비밀번호 필요)"><span class="lk" id="resLk" aria-hidden="true">🔒</span>📈 결과</button>
     </div>
     <!-- 지금 고른 칸의 역할 한 줄 — 네 칸이 무엇을 맡는지 한눈에 (2026-11-24 역할 분담) -->
     <div class="tabrole" id="tabRole" aria-live="polite"></div>
@@ -1195,6 +1269,28 @@
     <div id="hotBody">
       <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
     </div>
+    </div>
+  </section>
+
+  <section class="view" data-view="results" id="view-results" hidden>
+    <div class="hot-lock" id="resLock">
+      <div class="ico">🔒</div>
+      <b>결과는 본인 전용입니다</b>
+      <p>뉴스 · 테마달력 · 오늘 상한가는 누구나 볼 수 있습니다.<br>레이더 · 실전 · 결과는 비밀코드를 넣어야 열립니다.</p>
+      <div class="hl-row">
+        <input id="resCode" type="password" inputmode="numeric" autocomplete="off" enterkeyhint="go" placeholder="비밀코드" maxlength="12" aria-label="비밀코드">
+        <button id="resGo" type="button">열기</button>
+      </div>
+      <p class="hl-err" id="resErr" hidden>비밀코드가 맞지 않습니다</p>
+      <p class="hl-tip">한 번 열면 레이더 · 실전 · 결과가 함께 열립니다. 상단 <b>LIVE</b> 배지를 1.5초 안에 세 번 눌러도 열 수 있습니다.</p>
+    </div>
+    <div id="resInner">
+      <div class="viewhead"><b>📈 결과</b><span id="resSub">장전픽 · 장중픽 — 기준가 대비 그날 등락률</span></div>
+      <div class="res-mbar" id="resMonths" role="group" aria-label="월 선택"></div>
+      <div class="res-sum" id="resSummary"></div>
+      <div id="resDays">
+        <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+      </div>
     </div>
   </section>
 
@@ -1372,14 +1468,16 @@
 </div>
 
 <script>
-const state = { data:null, calendar:null, radar:null, month:null, tab:'news', more:false, open:new Set(), sameOpen:new Set(), hotOpen:new Set(), calKind:'오늘 상한가', newsFilter:null };
-/* 2026-11-24 역할 분담 — 네 칸. 오늘 상한가는 뉴스 칸 안에 있다('upper' 탭은 없어졌다). */
-const TABS = ['news','radar','calendar','hotbar'];
+const state = { data:null, calendar:null, radar:null, month:null, tab:'news', more:false, open:new Set(), sameOpen:new Set(), hotOpen:new Set(), calKind:'오늘 상한가', newsFilter:null, resMonth:null, resOpen:new Set() };
+/* 2026-11-24 역할 분담 — 다섯 칸. 오늘 상한가는 뉴스 칸 안에 있다('upper' 탭은 없어졌다).
+   2026-11-26 — 실전 옆에 '결과'(장전픽·장중픽 누적)가 붙었다. */
+const TABS = ['news','radar','calendar','hotbar','results'];
 const TAB_ROLE = {
   news: '<b>📰 뉴스</b> — 오늘 자금 방향 · 주요 뉴스 · 오늘 뉴스가 부른 테마',
   calendar: '<b>📅 테마달력</b> — 오늘 상한가 · 최근 1년 무리 테마 · 동반 묶음 (누구나)',
   radar: '<b>🔒 📡 레이더</b> — 오늘 뉴스·일정 + 상한가 전 앞쪽 바닥 + 9·10단계 재부각 대기 (본인 전용)',
   hotbar: '<b>🔒 🎯 실전</b> — 상한가 뒤 <b>1~8단계 A·B 타점</b> 추적 — <b>3·4 매수 · 5·6·7 유지 · 8 매도(분할·올매도)</b> · 9·10단계는 레이더 대기 · 일봉 + 테마 추적 (본인 전용)',
+  results: '<b>🔒 📈 결과</b> — 매일 자동으로 뽑은 <b>장전픽 · 장중픽</b>을 달마다 모아, 그날 픽의 기준가 대비 <b>−% / +%</b>로 추적 (본인 전용)',
 };
 function paintTabRole(name){
   const el = $('#tabRole');
@@ -1467,6 +1565,7 @@ function switchTab(name, keepScroll){
   if(name === 'calendar') renderCalendar();
   if(name === 'radar') renderRadar();
   if(name === 'hotbar') renderHotbar();
+  if(name === 'results') renderResults();
 }
 
 /* ---------------- 폰 뒤로가기(<) 로 열린 창 닫기 ----------------
@@ -4499,6 +4598,149 @@ function bindStockChart(sel){
   });
 }
 
+/* ---------------- 📈 결과 — 장전픽·장중픽 누적 (2026-11-26 신설) ----------------
+   data/picks_results.json 은 hotbar·radar 와 같은 비밀코드로 잠근 AES-256-GCM 파일({enc,salt,iv,ct})이다.
+   잠금이 풀려 있을 때만 풀어 그리고, 푼 자료는 기기에 평문으로 남기지 않는다(잠그면 바로 지운다).
+   구조: months['2026-11']['2026-11-26'] = {premarket:[...], intraday:[...]} */
+let picksData = null, picksSealed = null, picksLoading = null;
+const PICKS_KEY = 'newsradar_picks_sealed';
+
+async function loadPicksSealed(){
+  if(picksSealed) return picksSealed;
+  try{
+    const res = await fetch('data/picks_results.json?_=' + Date.now(), {cache:'no-store'});
+    if(res.ok){
+      picksSealed = await res.json();
+      try{ localStorage.setItem(PICKS_KEY, JSON.stringify(picksSealed)); }catch(e){}
+      return picksSealed;
+    }
+  }catch(e){}
+  try{ picksSealed = JSON.parse(localStorage.getItem(PICKS_KEY) || 'null'); }catch(e){}
+  return picksSealed;
+}
+async function unlockPicks(code){
+  if(picksData) return picksData;
+  if(picksLoading) return picksLoading;
+  picksLoading = (async () => {
+    try{
+      const sealed = await loadPicksSealed();
+      if(!sealed) return null;
+      picksData = (Number(sealed.enc) === 1) ? await hotDecrypt(sealed, code) : sealed;
+      return picksData;
+    }catch(e){ return null; }
+    finally{ picksLoading = null; }
+  })();
+  return picksLoading;
+}
+function picksMonths(){ return Object.keys((picksData && picksData.months) || {}).sort().reverse(); }
+
+const RES_WD = ['일','월','화','수','목','금','토'];
+function resPctCls(v){ return (typeof v !== 'number') ? 'flat' : (v > 0 ? 'up' : (v < 0 ? 'dn' : 'flat')); }
+function resPctTxt(v){ return (typeof v !== 'number') ? '–' : (v > 0 ? '+' : '') + v.toFixed(2) + '%'; }
+function resWon(n){ return (typeof n !== 'number' || !n) ? '–' : n.toLocaleString('ko-KR'); }
+function resAgg(list){
+  const vals = (list || []).map(p => p && p.pct).filter(v => typeof v === 'number');
+  return {
+    n: (list || []).length,
+    vals: vals.length,
+    up: vals.filter(v => v > 0).length,
+    avg: vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : null,
+  };
+}
+function resCard(p){
+  const cls = resPctCls(p.pct);
+  const code = String(p.code || '');
+  const nm = esc(p.name || '');
+  const mk = p.market ? `<span class="mk">${esc(p.market)}</span>` : '';
+  const st = p.status === '마감' ? '<span class="st">마감</span>' : '<span class="st live">진행</span>';
+  const refKind = esc(p.ref_kind || '기준가');
+  const t = esc(p.pick_time || '');
+  return `<div class="res-card"${code ? ` data-code="${esc(code)}" data-name="${nm}" role="button" tabindex="0" aria-label="${nm} 일봉 125봉 차트 보기"` : ''}>
+    <div class="res-nm">${nm}${mk}</div>
+    <div class="res-pct ${cls}">${resPctTxt(p.pct)}</div>
+    ${p.reason ? `<div class="res-why">${esc(p.reason)}</div>` : ''}
+    <div class="res-num"><span>${refKind}</span><b>${resWon(p.ref_price)}</b><span>→ 현재</span><b>${resWon(p.current_price)}</b>${st}${t ? `<span>· ${t}</span>` : ''}</div>
+  </div>`;
+}
+function resSection(kind, list){
+  const pre = kind === 'premarket';
+  const head = pre ? '🌅 장전픽' : '⚡ 장중픽';
+  return `<div class="res-sec ${pre ? 'pre' : 'int'}">
+    <div class="res-sh">${head}<span class="n">${list.length}종목</span></div>
+    ${list.length ? list.map(resCard).join('') : '<div class="res-empty" style="padding:8px 2px;text-align:left">이 날은 픽이 없습니다</div>'}
+  </div>`;
+}
+async function renderResults(){
+  const box = $('#resDays');
+  if(!box) return;
+  if(!visOn()) return;                     /* 잠겼으면 잠금 화면만 — 자료는 풀기 전에는 그리지 않는다 */
+  if(!picksData){
+    box.innerHTML = '<div class="skeleton"></div><div class="skeleton"></div>';
+    await ensureHotbar().catch(() => {});   /* 저장된 코드가 있으면 조용히 풀린다 */
+    await unlockPicks(savedCode());
+  }
+  const mbar = $('#resMonths'), sum = $('#resSummary');
+  const months = picksMonths();
+  if(!picksData || !months.length){
+    if(mbar) mbar.innerHTML = '';
+    if(sum) sum.innerHTML = '';
+    box.innerHTML = '<div class="res-empty">결과 자료를 불러오지 못했습니다.<br>잠시 후 다시 열어 주세요.</div>';
+    return;
+  }
+  if(!state.resMonth || months.indexOf(state.resMonth) < 0) state.resMonth = months[0];
+  const mon = state.resMonth;
+  const days = (picksData.months[mon] || {});
+  const dates = Object.keys(days).sort().reverse();
+  const all = [];
+  dates.forEach(d => { all.push(...(days[d].premarket || [])); all.push(...(days[d].intraday || [])); });
+  const a = resAgg(all);
+  const preN = dates.reduce((s, d) => s + (days[d].premarket || []).length, 0);
+  const intN = dates.reduce((s, d) => s + (days[d].intraday || []).length, 0);
+  const sub = $('#resSub');
+  if(sub) sub.textContent = `장전픽 · 장중픽 — 기준가 대비 그날 등락률${picksData.updated_kst ? ' · 갱신 ' + picksData.updated_kst : ''}`;
+  if(mbar){
+    mbar.innerHTML = months.map(m => {
+      const ds = Object.keys(picksData.months[m] || {});
+      return `<button class="res-mbtn${m === mon ? ' on' : ''}" type="button" data-rm="${esc(m)}" aria-pressed="${m === mon}">${esc(m.replace('-', '.'))}<span class="n">${ds.length}일</span></button>`;
+    }).join('');
+  }
+  if(sum){
+    sum.innerHTML = `
+      <div class="c"><b>${preN}</b><span>장전픽</span></div>
+      <div class="c"><b>${intN}</b><span>장중픽</span></div>
+      <div class="c ${resPctCls(a.avg)}"><b>${resPctTxt(a.avg)}</b><span>평균 등락률</span></div>
+      <div class="c"><b>${a.up}/${a.vals || 0}</b><span>상승 비율</span></div>`;
+  }
+  if(!dates.length){
+    box.innerHTML = `<div class="res-empty">${esc(mon.replace('-', '.'))} 에는 아직 픽 기록이 없습니다.<br>장전픽은 평일 아침 08:35, 장중픽은 장중에 자동으로 쌓입니다.</div>`;
+    return;
+  }
+  const today = new Date();
+  const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+  if(!state.resOpen.size) state.resOpen.add(dates[0]);   /* 처음 열면 가장 최근 날만 펼쳐 둔다 */
+  box.innerHTML = dates.map(d => {
+    const rec = days[d] || {};
+    const pre = rec.premarket || [], int = rec.intraday || [];
+    const day = resAgg(pre.concat(int));
+    const open = state.resOpen.has(d);
+    const dt = new Date(d + 'T00:00:00');
+    const wd = isNaN(dt) ? '' : RES_WD[dt.getDay()];
+    return `<div class="res-day${open ? ' open' : ''}${d === todayKey ? ' today' : ''}" data-rd="${esc(d)}">
+      <button class="res-dhead" type="button" aria-expanded="${open}" aria-label="${esc(d)} 장전픽 ${pre.length}종목 · 장중픽 ${int.length}종목 펼치기">
+        <span class="d">${esc(d.slice(5).replace('-', '/'))}</span><span class="w">${wd}</span>
+        <span class="chip">장전 ${pre.length} · 장중 ${int.length}</span>
+        <span class="davg ${resPctCls(day.avg)}">${resPctTxt(day.avg)}</span>
+        <span class="ar" aria-hidden="true">▾</span>
+      </button>
+      <div class="res-dbody">
+        ${rec.note ? `<p class="res-note">${esc(rec.note)}</p>` : ''}
+        ${resSection('premarket', pre)}
+        ${resSection('intraday', int)}
+      </div>
+    </div>`;
+  }).join('');
+}
+
 /* ---------------- 데이터 ---------------- */
 /* 새로고침 결과를 잠깐 띄우는 토스트 (1.8초 뒤 자동으로 사라진다) */
 let toastTimer = null;
@@ -4652,6 +4894,24 @@ $('#calAll').addEventListener('click', () => {
   $('#calAll').textContent = allOpen ? '모두 펼치기' : '모두 접기';
 });
 document.querySelectorAll('.tab').forEach(b => b.onclick = () => switchTab(b.dataset.tab));
+/* 결과 — 월 선택 · 날짜 접기/펼치기 (종목 카드는 bindStockChart 가 차트로 연다) */
+$('#resMonths').addEventListener('click', e => {
+  const b = e.target.closest('button[data-rm]');
+  if(!b) return;
+  if(state.resMonth !== b.dataset.rm){ state.resMonth = b.dataset.rm; state.resOpen.clear(); }
+  renderResults();
+});
+$('#resDays').addEventListener('click', e => {
+  const h = e.target.closest('.res-dhead');
+  if(!h) return;
+  const day = h.closest('.res-day');
+  if(!day) return;
+  const d = day.dataset.rd;
+  if(state.resOpen.has(d)) state.resOpen.delete(d); else state.resOpen.add(d);
+  day.classList.toggle('open');
+  h.setAttribute('aria-expanded', day.classList.contains('open') ? 'true' : 'false');
+});
+bindStockChart('#resDays');
 /* 핫바: 일봉·주봉·월봉 전환 / 단계별 더 보기 */
 $('#hotSeg').addEventListener('click', e => {
   const b = e.target.closest('button[data-sec]');
@@ -4806,12 +5066,14 @@ function visPaint(){
 /* 테마달력은 공개 · 레이더과 실전은 비밀 인증을 따른다 — 탭은 늘 보이되, 잠겨 있으면 열쇠가 붙고 잠금 화면만 뜬다 */
 function hotPaint(){
   const on = visOn();
-  document.querySelectorAll('.tab.hot, .tab.radar').forEach(tab => tab.classList.toggle('locked', !on));
+  document.querySelectorAll('.tab.hot, .tab.radar, .tab.res').forEach(tab => tab.classList.toggle('locked', !on));
   const lk = $('#hotLk');
   if(lk) lk.textContent = on ? '' : '🔒';
   const rlk = $('#radLk');
   if(rlk) rlk.textContent = on ? '' : '🔒';
-  ['#view-hotbar', '#view-radar'].forEach(sel => {
+  const slk = $('#resLk');
+  if(slk) slk.textContent = on ? '' : '🔒';
+  ['#view-hotbar', '#view-radar', '#view-results'].forEach(sel => {
     const view = $(sel);
     if(view) view.classList.toggle('locked', !on);
   });
@@ -4819,9 +5081,10 @@ function hotPaint(){
      테마달력은 공개라 지우지 않는다(2026-11-24 지시). */
   if(!on){
     hotPick = null; hotPickLoading = null; pickFilter = 'all';
+    picksData = null; picksSealed = null; picksLoading = null; state.resMonth = null; state.resOpen.clear();
     /* 차트 창이 열려 있었다면 아래 '오늘 팝업·근거' 요약도 바로 지운다 — 잠근 뒤 화면에 남지 않게 */
     if(chartCur && $('#chartLg')) $('#chartLg').innerHTML = chartLegendHtml(chartCur);
-    ['#hotBody', '#hotScore'].forEach(sel => { const el = $(sel); if(el) el.innerHTML = ''; });
+    ['#hotBody', '#hotScore', '#resDays', '#resSummary', '#resMonths'].forEach(sel => { const el = $(sel); if(el) el.innerHTML = ''; });
     const ms = $('#hotMission'); if(ms) ms.innerHTML = '';
     state.radar = null;
     radarRendered = '';
@@ -4833,6 +5096,7 @@ function hotPaint(){
   paintTabRole(state.tab);
   if(state.tab === 'hotbar') renderHotbar();
   if(state.tab === 'radar') renderRadar();
+  if(state.tab === 'results') renderResults();
   cfPaintAgain();          /* 잠그면 형광↑ 다시보기 버튼도 바로 사라진다 */
 }
 /* 비밀코드를 묻고, 맞으면 풀어서 연다(틀리면 아무것도 열리지 않는다) */
@@ -4866,6 +5130,7 @@ async function unlockHotbar(code){
     hotbarData = d;
     secretOn = true;
     saveCode(code);
+    unlockPicks(code).catch(() => {});   /* 결과 탭 자료도 같은 코드로 함께 푼다 */
     return true;
   }catch(e){ return false; }
 }
@@ -4886,9 +5151,10 @@ visPaint();
       if(ok){
         inp.value = '';
         visPaint();
-        toast('레이더 · 실전 열림');
+        toast('레이더 · 실전 · 결과 열림');
         if(state.tab === 'radar') renderRadar();
         else if(state.tab === 'hotbar') renderHotbar();
+        else if(state.tab === 'results') renderResults();
       } else {
         if(err) err.hidden = false;
         try{ inp.select(); }catch(e){}
@@ -4899,6 +5165,7 @@ visPaint();
   }
   bind('#hotGo', '#hotCode', '#hotErr');
   bind('#radGo', '#radCode', '#radErr');
+  bind('#resGo', '#resCode', '#resErr');
 })();
 
 /* ---------------- 공지사항 창 (처음 한 번 · [확인] 을 누르면 다시 뜨지 않는다) ---------------- */
