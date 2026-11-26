@@ -2317,7 +2317,7 @@ function radarTierHtml(t, matched, evts, rankNo){
       ${nw ? `<span class="rd-news-b" title="오늘 매체 메인이 부른 테마">📰 뉴스 부각</span>` : ''}
       ${matched
         ? `<span class="rd-hit" title="오늘 모은 뉴스에서 이 테마·종목 키워드가 나온 기사 수">뉴스 ${matched}건</span>`
-        : (nw ? '' : `<span class="rd-wait" title="미리 뽑아 둔 자리 — 뉴스가 나오길 기다리는 중">대기</span>`)}
+        : (nw ? '' : `<span class="rd-wait" title="오늘 뉴스에는 안 걸린 테마">뉴스 없음</span>`)}
       <span class="rd-cnt">${stocks.length}종목</span>
     </div>
     ${nw ? `<p class="rd-newsline">📰 ${esc(nw.issue || '')} <b>${Number(nw.presses_max || 0)}곳 · ${Number(nw.articles || 1)}건</b></p>` : ''}

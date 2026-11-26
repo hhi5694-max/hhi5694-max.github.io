@@ -210,7 +210,7 @@ def build_radar(date: str, pre: list, intra: list, after: list, session: str) ->
                 "name": r["name"],
                 "price_text": (f"{int(px):,}원" if px else ""),
                 "pct": r.get("pct"),
-                "pct_why": f"{r.get('pick_time', '')} {r.get('ref_kind', '기준가')} 대비".strip(),
+                "pct_why": f"{r.get('pick_time', '')} {str(r.get('ref_kind') or '기준가').split(' · ')[0]} 대비".strip(),
                 "tag": "장전" if r["code"] in pre_codes else ("장후" if r.get("_leg") == "aftermarket" else "장중"),
             })
         tiers.append({
