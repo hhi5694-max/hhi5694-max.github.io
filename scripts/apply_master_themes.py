@@ -1,23 +1,5 @@
 #!/usr/bin/env python3
-"""마스터 테마(153개) 반영 — 테마달력 · 종목 역색인 · 테마 사전.
-
-머스크 님 지시(2026-11-26): "153개 테마 + 각 테마별 대장주·부대장주·3등주 목록을 기존 테마와
-비교하고, 테마달력에 적용하며, 뉴스·오늘 상한가 분류에도 반영해 달라."
-
-입력(저장소 밖 평문) ../private-plain/master_themes_input.txt
-  한 줄에 `테마: 대장주, 부대장주, 3등주`
-
-하는 일
-  1) 종목 이름 → 종목코드 해석 (이미 아는 이름표 → 네이버 자동완성 → 손으로 적은 개명표)
-  2) 달력 테마(months[].themes[])와 잇기 — 키워드 + 상한가 종목 겹침으로 점수를 내고
-     `master` 메타(대장주·부대장주·3등주)를 그 테마에 붙인다. 상한가 기록은 건드리지 않는다.
-  3) data/master_themes.json 쓰기 — 테마 사전 · 종목→테마 역색인 · 달력 연결
-  4) data/calendar.json 에 master_themes 요약과 테마별 master 메타 넣기(기존 값은 그대로)
-
-  python3 scripts/apply_master_themes.py              # 쓰기
-  python3 scripts/apply_master_themes.py --dry-run    # 비교 수치만
-  python3 scripts/apply_master_themes.py --no-net     # 코드 해석은 아는 이름표만(네트워크 없이)
-"""
+"""*****"""
 from __future__ import annotations
 
 import argparse
@@ -32,7 +14,10 @@ from datetime import datetime, timedelta, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.dirname(HERE)
-DATA = os.path.join(SITE, "data")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import nr_data as NR  # noqa: E402
+# 평문은 저장소 밖(private-plain/data)에서만 다룬다.
+DATA = NR.ensure_plain_dir()
 PLAIN_DIRS = tuple(d for d in (os.environ.get("NEWSRADAR_PLAIN_DIR", ""),
                                os.path.join(SITE, "private-plain"),
                                os.path.join(os.path.dirname(SITE), "private-plain")) if d)
@@ -223,7 +208,7 @@ EXTRA_KEYWORDS = {
 # 달력 테마 이름에 거의 항상 들어가는 일반어 — 이 말만으로 잇지 않는다
 WEAK = {"반도체", "장비", "소재", "검사", "기판", "환경", "물류", "가스", "철강", "보안", "조선",
         "교육", "결제", "AI", "로봇", "자동차", "항공", "여행", "화장품", "의류", "유가", "수소"}
-# 상한가 기록을 모으는 통로일 뿐인 달력 테마 — 마스터 테마 연결 대상에서 뺀다
+# *****
 CATCH_ALL = re.compile(r"^(개별|재료 미확인|동전주)")
 
 
@@ -474,7 +459,7 @@ def main() -> None:
 
     write_json(OUT_MASTER, doc)
 
-    # 달력: 테마마다 master 메타(대장주·부대장주·3등주) 붙이기 — 상한가 기록은 손대지 않는다
+    # *****
     meta = {mt["name"]: mt for mt in master}
     touched = 0
     for m in cal.get("months") or []:

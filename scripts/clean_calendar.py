@@ -1,24 +1,5 @@
 #!/usr/bin/env python3
-"""테마달력(calendar.json) 정리 — 불건전 종목 빼기, 우선주는 남긴다 (2026-11-26 지시).
-
-과거 달력의 종목은 그때 상한가였던 종목이다. 그중 지금 기준으로 불건전한 종목은 달력에서 뺀다.
-
-  빼는 것  관리종목 · 거래정지 · 투자경고/위험 · SPAC · 완전자본잠식(부채비율 < 0)
-  남기는 것 우선주(종목코드 끝자리 ≠ 0 또는 이름이 ~우/~우B) — 테마의 보통주를 따라 움직이는
-            같은 회사의 종목이라 달력에 남긴다. 단 우선주라도 위 불건전에 걸리면 뺀다.
-  투자주의(시장경보 01)는 빼지 않는다 — 지시가 '투자경고/위험'까지다.
-
-자료는 네이버 증권 공개 API 두 곳에서만 읽는다.
-  m.stock.naver.com/api/stock/{code}/basic        → 관리종목·시장경보·거래상태·거래정지
-  m.stock.naver.com/api/stock/{code}/finance/annual → 부채비율(음수면 자본총계가 0 이하 = 완전자본잠식)
-
-종목을 빼면 테마의 종목 수·대장주·대표 종목과 달의 집계(테마 수·종목 수·형광 수)를 다시 센다.
-종목이 하나도 남지 않은 테마는 지운다.
-
-  python3 scripts/clean_calendar.py            # data/calendar.json 을 고친다
-  python3 scripts/clean_calendar.py --dry-run  # 고치지 않고 뺄 목록만 보여 준다
-  python3 scripts/clean_calendar.py --report out.json   # 뺀 목록·사유를 JSON 으로 남긴다
-"""
+"""*****"""
 from __future__ import annotations
 
 import argparse
@@ -37,7 +18,9 @@ BASIC = "https://m.stock.naver.com/api/stock/{code}/basic"
 FIN = "https://m.stock.naver.com/api/stock/{code}/finance/annual"
 KST = timezone(timedelta(hours=9))
 HERE = os.path.dirname(os.path.abspath(__file__))
-DATA = os.path.join(HERE, "..", "data", "calendar.json")
+sys.path.insert(0, HERE)
+import nr_data as NR  # noqa: E402
+DATA = NR.plain_path("calendar.json")
 WORKERS = 16
 PREF_NAME = re.compile(r"(?:\d)?우(?:B|C)?$")
 CLEAN_RULE = ("과거 달력 정리(2026-11-26) — 관리종목·거래정지·투자경고/위험·SPAC·완전자본잠식 종목을 뺐다. "
@@ -196,7 +179,7 @@ def clean(cal: dict, st: dict, names: dict) -> tuple[dict, list]:
             t = dict(t)
             t["stocks"] = stocks
             t["count"] = len(stocks)
-            # 대장주·대표 종목이 빠졌으면 남은 종목에서 다시 고른다(그 달 상한가 횟수 → 최근 날짜 순)
+            # *****
             lead = t.get("leader") or {}
             lead_code = str(lead.get("code") or "")
             codes_now = [str(s.get("code") or "") for s in stocks]
@@ -292,6 +275,7 @@ def main():
         f.write("\n")
     os.replace(tmp, args.path)
     print("저장 %s" % args.path, file=sys.stderr)
+    NR.seal_all()
 
 
 if __name__ == "__main__":

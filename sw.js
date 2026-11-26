@@ -1,11 +1,11 @@
-/* 뉴스레이더 — 오프라인에서도 마지막으로 본 뉴스를 보여주는 최소 서비스워커
+/* 대시보드 — 오프라인에서도 마지막으로 본 뉴스를 보여주는 최소 서비스워커
    네트워크 우선(network-first): 항상 최신을 먼저 받고, 실패했을 때만 캐시를 쓴다.
    캐시가 먼저 나갔다가 네트워크로 덮어쓰는 방식이 아니므로 화면이 두 번 그려지지 않는다.
    새 판(이 파일이 바뀌면)은 install 에서 곧바로 대기 없이 넘겨받고(skipWaiting),
    activate 에서 옛 버전 캐시를 전부 지운 뒤 화면을 넘겨받는다(clients.claim).
    그래서 사용자가 캐시를 직접 지우거나 새로고침하지 않아도 접속할 때마다 최신 화면·최신 데이터가 뜬다.
    index.html · data/*.json 은 쿼리스트링까지 포함해 언제나 네트워크를 먼저 탄다(cache:'no-store'). */
-const CACHE = 'newsradar-v114';
+const CACHE = 'newsradar-v115';
 const SHELL = ['./', './index.html', './manifest.json', './icons/icon-192.png', './data/calendar.json', './data/radar.json'];
 const NEWS_KEY = './data/news.json';   // 쿼리스트링이 붙어도 캐시에는 이 한 자리에만 남긴다
 

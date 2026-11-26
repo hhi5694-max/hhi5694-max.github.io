@@ -1,56 +1,27 @@
 #!/usr/bin/env python3
-"""오늘 상한가 — 테마 묶음 · 선도주 순위 · 불건전 기업 제외 · 125봉 바닥 첫 상한가 · 뉴스↔테마달력 연결.
-
-collect_news.py 가 '오늘 상한가'를 만든 뒤 이 모듈을 부른다. 하는 일은 넷이다.
-
-  1) 불건전 기업 제외 (brief 3)
-     네이버 증권 랭킹 API(stock.naver.com/api/domestic/market/stock/default)가 종목마다 실어 주는
-     공식 필드로 거른다 — 관리종목(manageStatusGb)·거래정지(tradeStopYn·tradableStatus)·
-     시장경보(marketAlertType: 투자주의/경고/위험)·DR(type)·우선주(종목코드 끝자리)·SPAC(이름)·
-     자본잠식(자산총계-부채총계 ≤ 0).
-     ①-b) 공식 필드에 없는 것(투자주의환기종목·감사의견 거절/한정·상장폐지·횡령·배임·회생절차/파산·
-     자본잠식)은 그 종목 기사로 판정한다(2026-11-26 지시 — news_screen). 종목 이름이 기사에 실제로
-     나온 최근 악재만 세고, '해소·해제·벗어·적정의견' 같은 완화 문맥은 건너뛰며, 뺄 때는
-     「제목·날짜·매체」를 excluded 에 그대로 남긴다.
-
-  2) 상한가 도달 순서 (brief 2 — '상한가를 먼저 갔던 종목 필두')
-     api.finance.naver.com/siseJson.naver 의 1분봉(그날 하루만)에서 '처음 상한가 가격에 닿은 분'을 찾는다.
-     분봉 종가 기준이라 1분 단위 근사치다(문제점으로 보고).
-     2026-11-26 지시 — 장중(평달 09:00~15:30)에는 긁지 않는다. 장 마감 뒤에만 조회해 확정하고,
-     장중 실행에서는 값을 비우거나 그날 마감 뒤 이미 잰 값을 그대로 이어 쓴다(collect_news.arrival_window).
-
-  3) 125봉 바닥횡보 첫 상한가 (brief 2 — '무조건 1번')
-     일봉 125봉(오늘 빼고 직전 124봉)에서
-       ① 상한가 이력이 하나도 없고(고가/전일종가-1 ≥ UPPER_RATE)
-       ② 125봉 최고 대비 전일 종가가 40% 이상 내려와 있고(바닥권)
-       ③ 최근 60봉 최고~최저 폭이 80% 이내(횡보)이면
-     '바닥횡보 첫 상한가'로 보고 그 묶음의 1번으로 올린다.
-     문턱값은 아래 상수 — 실측값(base.dd·pos·rng_box·range_pct)을 자료에 남기므로 나중에 조정할 수 있다.
-
-  4) 테마 묶음 + 뉴스↔테마달력 연결 (brief 1·5)
-     달력(calendar.json)의 테마·종목과 오늘 상한가 종목을 코드로 잇고, 오늘 뉴스(db_themes)를
-     그 테마에 걸어 data/news_themes.json 을 새로 쓴다(지난 배포본은 2026-11-24 에서 멈춰 있었다).
-
-공개 시세·공개 기사만 쓴다. 개인 판단(기준선·단계·점수)은 쓰지 않는다.
-"""
+"""*****"""
 from __future__ import annotations
 
 import json
 import os
 import re
+import sys
 import time
 import urllib.request
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import nr_data as NR  # noqa: E402
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 
 # ------------------------------------------------------------------ 문턱값
 BASE_BARS = 125          # '125봉' — 오늘 봉 포함 125개(직전 124봉 + 오늘)
-UPPER_RATE = 29.0        # 일봉 고가/전일 종가 - 1(%) 이보다 크면 그날 상한가로 본다(상한가는 30% 안팎)
-BOX_BARS = 60            # '횡보 상자'를 재는 봉 수 — 최근 3개월(단기 급등락을 빼고 바닥 다지기를 본다)
+UPPER_RATE = 29.0        # *****
+BOX_BARS = 60            # *****
 BOX_RANGE_MAX = 80.0     # 그 60봉 최고~최저 폭(%) — 이보다 넓으면 횡보로 보지 않는다
 BOTTOM_DD = -40.0        # 125봉 최고가 대비 전일 종가(%) — 이보다 더 내려와 있어야 '바닥권'
 BOX_POS_MAX = 0.35       # 125봉 범위 안에서 전일 종가의 위치(0=최저, 1=최고) — 아래 35% 이내
-MIN_BARS_FOR_BASE = 60   # 이보다 봉이 적으면(신규상장 등) 바닥 판정을 하지 않는다
+MIN_BARS_FOR_BASE = 60   # *****
 WORKERS = 6              # 종목별 분봉·일봉 조회 동시 요청 수
 FETCH_DELAY = 0.05       # 요청 사이 간격(초)
 
@@ -94,9 +65,12 @@ def load_calendar(path: str) -> dict:
     try:
         with open(path, encoding="utf-8") as f:
             d = json.load(f)
-        return d if isinstance(d, dict) else {}
+        if isinstance(d, dict) and not d.get("enc"):
+            return d
     except Exception:  # noqa: BLE001
-        return {}
+        pass
+    d = NR.load("calendar.json", {})
+    return d if isinstance(d, dict) else {}
 
 
 def calendar_index(cal: dict) -> tuple[dict, dict]:
@@ -129,7 +103,7 @@ def calendar_index(cal: dict) -> tuple[dict, dict]:
                 by_code.setdefault(code, []).append({"name": name, "kind": rec["kind"],
                                                      "month": month, "last": last})
     for rec in by_name.values():
-        # 종목 중복 제거(같은 달에 두 번 들어온 경우) + 최근 상한가 순
+        # *****
         seen, uniq = set(), []
         for s in rec["stocks"]:
             if s["code"] in seen:
@@ -146,14 +120,14 @@ def calendar_index(cal: dict) -> tuple[dict, dict]:
 # ------------------------------------------------------------------ 마스터 테마(153) 색인
 def load_master(path: str = "") -> dict:
     """data/master_themes.json — 테마마다 대장주·부대장주·3등주와 종목→테마 역색인."""
-    p = path or os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                             "data", "master_themes.json")
-    try:
-        with open(p, encoding="utf-8") as f:
-            d = json.load(f)
-        return d if isinstance(d, dict) and d.get("themes") else {}
-    except Exception:  # noqa: BLE001
-        return {}
+    d = NR.load("master_themes.json", {}) if not path else None
+    if d is None:
+        try:
+            with open(path, encoding="utf-8") as f:
+                d = json.load(f)
+        except Exception:  # noqa: BLE001
+            d = {}
+    return d if isinstance(d, dict) and d.get("themes") else {}
 
 
 def master_index(doc: dict) -> tuple[dict, dict]:
@@ -223,7 +197,7 @@ def screen(row: dict) -> list:
 
 # ------------------------------------------------------------------ 1-b) 뉴스로 보는 불건전 기업
 #   네이버 랭킹/기본 API 에 항목이 없는 것들(투자주의환기종목·감사의견 거절/한정·상장폐지·횡령·배임·
-#   회생절차·파산·자본잠식)은 그 종목 기사로 판정한다(2026-11-26 지시).
+# *****
 #   · 종목 이름이 기사 제목·도입부에 실제로 나온 경우만 근거로 쓴다(시장 전체 기사 오탐 방지)
 #   · '해소·해제·벗어·적정의견·무혐의' 같은 해제/완화 문맥이 낱말 옆에 있으면 세지 않는다
 #   · 최근 NEWS_WINDOW_DAYS 일 기사만 본다 — 옛 악재로 지금 종목을 빼지 않는다
@@ -241,7 +215,7 @@ NEWS_RULES = (
 # 악재 낱말 옆에 있으면 '이미 풀린 일'로 보는 낱말 — 이때는 제외 근거로 쓰지 않는다
 RELIEF_MARKERS = ("해소", "해제", "벗어", "탈피", "졸업", "개선", "회복", "기각", "무혐의",
                   "불기소", "무죄", "적정의견", "적정 의견", "면제", "종결", "취소", "철회")
-NEWS_CTX = 24            # 낱말 앞뒤로 함께 읽는 글자 수(같은 문장 안의 완화 문맥 판정용)
+NEWS_CTX = 24            # *****
 
 
 def _flat(s: str) -> str:
@@ -292,7 +266,7 @@ def news_screen(name: str, articles: list) -> tuple[list, list]:
     return reasons, hits
 
 
-# ------------------------------------------------------------------ 2) 상한가 도달 시각
+# *****
 def _ymd(s: str) -> str:
     return re.sub(r"[^0-9]", "", s or "")[:8]
 
@@ -327,7 +301,7 @@ def first_touch(code: str, base_date: str, upper_price: int) -> dict | None:
     return {"t": "%02d:%02d" % (hh, mm), "min": minute, "after": minute > 390}
 
 
-# ------------------------------------------------------------------ 3) 125봉 바닥횡보 첫 상한가
+# *****
 def daily_rows(code: str, base_date: str) -> list:
     """일봉 — base_date 까지. 값이 0 인 줄(거래정지 표시 등)은 버린다."""
     d = _ymd(base_date)
@@ -426,7 +400,7 @@ def group_items(items: list, by_name: dict, by_code: dict,
     cal_master = cal_master or {}
     codes = [it["code"] for it in items]
     code_set = set(codes)
-    # ① 달력 테마 겹침 — 오늘 상한가 종목이 2개 이상 함께 있는 테마
+    # *****
     theme_hits: dict = {}
     for code in codes:
         for cand in (by_code.get(code) or [])[:8]:
@@ -617,7 +591,7 @@ def rank(items: list, base_date: str, cal: dict, issues: list | None = None,
                 issue_of[it["code"]] = {"title": a.get("title") or "", "url": a.get("url") or "",
                                         "press": a.get("press") or "", "time": a.get("time") or ""}
 
-    # 도달 시각 + 125봉 바닥 판정 (종목별 네트워크 2회 — 실패해도 나머지는 그대로)
+    # *****
     work = passed[:max(0, limit_base)]
     rest = passed[len(work):]
 

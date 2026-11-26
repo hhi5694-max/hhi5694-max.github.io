@@ -1,26 +1,5 @@
 #!/usr/bin/env python3
-"""오늘 픽 보드 — 실전(hotbar · hotbar_monthly) · 레이더(radar) · 종합 안내(popup).
-
-2026-11-26 머스크 님 지시: "이전 픽은 삭제하고 오늘 픽 나오는 것 픽으로 교체"
-
-  픽의 원본은 하나다 — 평문 장부 ../private-plain/picks_results.json (build_picks.py 가 쓴다).
-  이 스크립트는 그 장부에서 **그날 픽만** 꺼내 네 파일을 다시 만든다.
-  이전 날(진화론 님 11/18 · 11/24 스냅샷 등) 픽은 이 파일들에 남기지 않는다.
-
-  data/hotbar.json          실전 첫 칸 — 오늘 장전픽 · 장중픽 카드(기준가→현재가 · 등락률 · 근거)
-  data/hotbar_monthly.json  실전 둘째 칸 — 같은 픽을 테마로 묶어서
-  data/radar.json           레이더 — 오늘 픽을 테마별로(테마 · 왜 잡혔나 · 종목)
-  data/popup.json           오늘 종합 안내 팝업 — 장전픽 · 장중픽 한 줄씩
-
-  모두 private-plain/.picks_code 의 비밀코드로 AES-256-GCM 잠가 data/ 에 넣는다
-  (hotbar · radar 와 같은 방식 · PBKDF2-SHA256 10만회).
-
-  python3 scripts/build_boards.py                 # 오늘 기준으로 다시 만든다
-  python3 scripts/build_boards.py --date 2026-11-26
-  python3 scripts/build_boards.py --dry-run       # 저장하지 않고 개수만 본다
-
-build_picks.py 의 --mode pre / intra / update 가 끝나면 이 모듈의 write_all() 을 그대로 부른다.
-"""
+"""*****"""
 from __future__ import annotations
 
 import argparse
@@ -35,7 +14,8 @@ from datetime import datetime, timedelta, timezone
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
-import stage10_local as S10          # 1~10단계 자체 판정(125봉 + 달력) — 2026-11-26
+import stage10_local as S10          # *****
+import nr_data as NR  # noqa: E402  (평문 사본·잠금 공용)
 DATA = os.path.join(ROOT, "data")
 PLAIN_DIR = os.path.join(os.path.dirname(ROOT), "private-plain")
 BOOK = os.path.join(PLAIN_DIR, "picks_results.json")
@@ -110,13 +90,13 @@ def pick_card(p: dict) -> dict:
     status = str(p.get("status") or "진행")
     pct = pct_of(p.get("pct"))
     if status == "대기":
-        pct = None                    # 장후픽 — 기준(오늘 종가)만 잡혓고 결과는 다음 거래일에
+        pct = None                    # *****
     return {
         "code": str(p.get("code") or ""),
         "name": str(p.get("name") or ""),
         "market": str(p.get("market") or ""),
         "theme": str(p.get("theme") or ""),
-        "tier": str(p.get("tier") or ""),          # 장중픽 — 'core'(핵심 1~5) · 'extra'(추가 6~10)
+        "tier": str(p.get("tier") or ""),          # *****
         "reason": str(p.get("reason") or ""),
         "pick_time": str(p.get("pick_time") or ""),
         "ref_kind": str(p.get("ref_kind") or "기준가"),
@@ -124,7 +104,7 @@ def pick_card(p: dict) -> dict:
         "current_price": p.get("current_price"),
         "pct": pct,
         "status": status,
-        # 1~10단계 자체 판정 자리(값은 build() 에서 채운다) — 픽 가격·등락률은 건드리지 않는다
+        # *****
         "stage10": 0, "stage_txt": "", "stage_why": "",
         "dd": None, "val20": None, "lu_ago": None, "stage10_late": 0,
     }
@@ -324,8 +304,8 @@ def build_cwait(date: str, limit: int = 12) -> dict:
     except Exception as e:  # noqa: BLE001
         print(f"[warn] cwait: {e}", file=sys.stderr)
         return {"base_date": date, "count": 0, "stocks": []}
-    # 테마 이름 — 이 종목이 마지막으로 상한가를 친 달력 테마
-    cal = read_json(os.path.join(DATA, "calendar.json"), {}) or {}
+    # *****
+    cal = NR.load("calendar.json", {}) or {}
     theme_of: dict = {}
     for m in cal.get("months") or []:
         for t in m.get("themes") or []:
@@ -352,7 +332,7 @@ def build(date: str, book: dict) -> dict:
     pre = [pick_card(p) for p in (rec.get("premarket") or []) if p.get("code")]
     intra = [pick_card(p) for p in (rec.get("intraday") or []) if p.get("code")]
     after = [pick_card(p) for p in (rec.get("aftermarket") or []) if p.get("code")]
-    for i, p in enumerate(intra, 1):        # tier 없는 기록도 장중픽 순서(1~5 핵심 · 6~10 추가)로 채운다
+    for i, p in enumerate(intra, 1):        # *****
         if not p.get("tier"):
             p["tier"] = "core" if i <= 5 else "extra"
     for p in pre:
@@ -362,7 +342,7 @@ def build(date: str, book: dict) -> dict:
     for p in after:
         p["_leg"] = "aftermarket"
     session = "장중" if any(p["status"] == "진행" for p in pre + intra + after) else "장마감"
-    # 1~10단계 — 픽 카드마다 판정을 붙이고, 레이더에 9·10단계 대기 목록을 채운다
+    # *****
     attach_stage(pre + intra + after)
     radar = build_radar(date, pre, intra, after, session)
     radar["cwait"] = build_cwait(date)

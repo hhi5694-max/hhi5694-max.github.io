@@ -1,7 +1,7 @@
 {
-  "name": "뉴스레이더",
-  "short_name": "뉴스레이더",
-  "description": "국내 증시 실시간 뉴스·이슈와 오늘 상한가, 최근 1년 상한가 테마달력을 한 화면에 보여주는 무료 뉴스 대시보드입니다.",
+  "name": "대시보드",
+  "short_name": "대시보드",
+  "description": "*****",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

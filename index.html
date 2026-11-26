@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>뉴스레이더 — 증시 실시간 뉴스 · 테마달력 · 오늘 상한가</title>
-<meta name="description" content="국내 증시 실시간 주요 뉴스·이슈와 오늘 상한가, 최근 1년 상한가 테마달력을 한 화면에 보여주는 무료 뉴스 대시보드">
+<title>대시보드</title>
+<meta name="description" content="*****">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="뉴스레이더">
-<meta property="og:title" content="뉴스레이더 — 증시 실시간 뉴스 · 테마달력 · 오늘 상한가">
-<meta property="og:description" content="국내 증시 실시간 주요 뉴스·이슈와 오늘 상한가, 최근 1년 상한가 테마달력">
+<meta property="og:site_name" content="대시보드">
+<meta property="og:title" content="대시보드">
+<meta property="og:description" content="*****">
 <meta property="og:url" content="https://hhi5694-max.github.io/">
 <meta property="og:image" content="https://hhi5694-max.github.io/icons/icon-512.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="뉴스레이더 — 증시 실시간 뉴스 · 테마달력 · 오늘 상한가">
-<meta name="twitter:description" content="국내 증시 실시간 주요 뉴스·이슈와 오늘 상한가, 최근 1년 상한가 테마달력">
+<meta name="twitter:title" content="대시보드">
+<meta name="twitter:description" content="*****">
 <meta name="theme-color" content="#0b1120">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="뉴스레이더">
+<meta name="apple-mobile-web-app-title" content="대시보드">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -118,8 +118,7 @@
   @media (max-width:360px){ .ib-t{font-size:10px} .ib-btn{font-size:10.2px;letter-spacing:-.5px} }
 
   /* ---------- 탭 (다섯 칸 고정 — 테마달력·핫바는 잠긴 채로 늘 보이고, 눌러야 잠금 화면이 뜬다) ---------- */
-  /* 2026-11-24 지시 — 상단은 네 칸(📰 뉴스 · 📡 레이더 · 📅 테마달력 · 🎯 실전)뿐이다.
-     오늘 상한가는 뉴스 칸 안으로 옮겨 탭을 네 개로 줄였다. */
+  /* ***** */
   .tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;padding:0 0 5px}
   /* 탭 바로 아래 한 줄 — 지금 칸이 무엇을 보는 자리인지(역할 분담) */
   .tabrole{padding:0 1px 4px;font-size:10px;font-weight:700;letter-spacing:-.2px;line-height:1.4;
@@ -155,7 +154,7 @@
   /* ---------- controls ---------- */
   .meta{display:flex;flex-wrap:wrap;row-gap:2px;align-items:center;gap:6px;font-size:11.5px;color:var(--dim2);padding:5px 1px 4px}
   .meta b{color:var(--dim);font-weight:600}
-  /* 호재·혼조·악재 전광판 — 헤더의 '뉴스레이더' 제목 바로 옆에 🇰🇷 · 🇺🇸 두 개 */
+  /* ***** */
   .mood{display:inline-flex;align-items:center;gap:3px;flex:none;white-space:nowrap;
     font-size:10.5px;font-weight:700;letter-spacing:-.2px;
     border:1px solid var(--line);background:rgba(255,255,255,.03);
@@ -182,9 +181,7 @@
   .sechead .livechip .dot{width:4px;height:4px}
   .sechead::after{content:"";flex:1;height:1px;background:var(--line)}
 
-  /* ---------- 뉴스 — 채팅방처럼 한 줄씩 (2026-11-20 개편) ----------
-     박스·왼쪽 색띠·번호 배지·중복 딱지를 걷어내고 왼쪽에 시간(이슈는 순위), 오른쪽에 제목·매체·관련 종목.
-     줄 사이는 얇은 선 하나. 누르면 요약과 다른 매체 기사가 그 자리에서 내려온다(답장처럼). */
+  /* ***** */
   .cl{display:flex;flex-direction:column}
   .cl-it{display:flex;gap:8px;padding:9px 2px;border-bottom:1px solid rgba(255,255,255,.055)}
   .cl-it:last-child{border-bottom:0}
@@ -281,7 +278,7 @@
   .up-more{appearance:none;border:0;background:transparent;color:#7c8ba6;font-family:inherit;
     font-size:10px;font-weight:800;padding:0 0 0 4px;cursor:pointer;white-space:nowrap}
 
-  /* ---------- 2026-11-26 — 상한가 테마 묶음 · 선도주/바닥 첫 상한가 배지 ---------- */
+  /* ***** */
   .up-grp{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin:10px 0 5px;padding:0 1px}
   .up-grp:first-child{margin-top:0}
   .up-grp .gn{font-size:12.5px;font-weight:800;color:#e8eefc;letter-spacing:-.2px}
@@ -344,7 +341,7 @@
   .cal-flt button[aria-pressed="true"]{color:#fff;border-color:transparent;
     background:linear-gradient(135deg,#4f8cff,#7c5cff);box-shadow:0 3px 12px rgba(79,140,255,.28)}
   .cal-flt button[aria-pressed="true"] i{color:rgba(255,255,255,.88)}
-  /* 2026-11-24 지시 — 테마달력 '오늘 상한가' 보기에서는 월 그리드·테마 목록을 접고 상한가 카드만 보인다 */
+  /* ***** */
   #view-calendar.cal-upper #calCal{display:none}
   .cal-note{font-size:10px;color:#7f8ca4;line-height:1.45;margin:-1px 1px 8px;letter-spacing:-.2px}
   .th-badge{flex:none;font-size:9px;font-weight:800;padding:1px 5px;border-radius:5px;letter-spacing:-.2px}
@@ -359,7 +356,7 @@
     display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .th-cnt{flex:none;font-size:9.5px;font-weight:800;color:#9fc0ff;background:rgba(79,140,255,.12);
     border:1px solid rgba(79,140,255,.28);padding:1px 5px;border-radius:5px}
-  /* 2026-11-24 지시(#14138) — 테마명 안에 그 달 대표 상한가 이름·날짜를 함께 */
+  /* ***** */
   .th-rep{display:block;font-size:10.5px;font-weight:800;color:#ffd35c;letter-spacing:-.2px;
     margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .th-rep i{font-style:normal;color:#8b98ae;font-weight:700}
@@ -393,8 +390,7 @@
     border:1px solid var(--line);border-radius:7px;padding:3px 6px}
   .stk b{font-size:11px;font-weight:700;color:#e8eefc}
   .stk i{font-style:normal;font-size:9.5px;color:#ff9aa8;font-weight:700;white-space:nowrap}
-  /* 2026-11-22 지시(#10938) — 종목 칩 색: 최근 상한가일수록 진하다 · 오래전은 차분한 회색
-     t1 = 2주~이번 달(선명한 노랑) / t2 = 1~3개월(주황 중간 톤) / t3 = 3개월 이상(어두운 회색) */
+  /* ***** */
   .stk.t1{background:rgba(255,196,64,.17);border-color:rgba(255,208,90,.62);
     box-shadow:inset 0 0 0 1px rgba(255,208,90,.10)}
   .stk.t1 b{color:#fff6dd}
@@ -405,7 +401,7 @@
   .stk.t3{background:rgba(255,255,255,.022);border-color:rgba(255,255,255,.065)}
   .stk.t3 b{color:#94a1b7}
   .stk.t3 i{color:#79839a}
-  /* 분홍 ↑ — 상한가 뒤 바닥에서 5·20·33일선·전환선·기준선을 한 번에 넘어선 양봉(최근 5거래일) */
+  /* ***** */
   /* 형광 ↑ — 빨강·주황·노랑과 헷갈리지 않게 라임(#39ff14 계열)으로 바꿨다(2026-11-22 지시 #11107) */
   .stk em.pk{font-style:normal;font-size:10.5px;font-weight:900;line-height:1.05;color:#0b1120;
     background:linear-gradient(135deg,#9dff4a,#39ff14);border-radius:4px;padding:1px 3px 0;
@@ -511,9 +507,7 @@
   #view-radar.locked #radarInner{display:none}
   #view-results.locked #resInner{display:none}
 
-  /* ---------- 📈 결과 (2026-11-26 신설 — 실전 옆) ----------
-     달마다 자기 자리를 차지한다: 월 버튼 → 월 요약 → 날짜별 장전픽/장중픽.
-     등락률은 그날 픽 기준가 대비 — 오르면 빨강(--up), 내리면 파랑. */
+  /* ***** */
   .res-mbar{display:flex;gap:4px;overflow-x:auto;padding:2px 1px 8px;scrollbar-width:none}
   .res-mbar::-webkit-scrollbar{display:none}
   .res-mbtn{flex:none;appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.03);
@@ -566,12 +560,12 @@
     text-overflow:ellipsis;white-space:nowrap;border-bottom:1px dashed rgba(143,178,255,.3);
     justify-self:start;max-width:100%}
   .res-nm .mk{font-size:9px;font-weight:700;color:var(--dim2);margin-left:4px;letter-spacing:0}
-  /* 장중픽 구분 배지 — 1~5번째 핵심 · 6~10번째 추가 (2026-11-26 최대 10종목 확장) */
+  /* ***** */
   .res-nm .tier{font-size:8.5px;font-weight:900;letter-spacing:0;border-radius:4px;padding:0 4px;
     line-height:14px;margin-right:4px;vertical-align:1px;border:1px solid rgba(255,255,255,.12)}
   .res-nm .tier.core{color:#9dbcff;border-color:rgba(79,140,255,.45);background:rgba(79,140,255,.14)}
   .res-nm .tier.extra{color:#c9b8ff;border-color:rgba(180,160,255,.42);background:rgba(180,160,255,.12)}
-  /* 1~10단계 자체 판정 배지 (2026-11-26) — 실전 픽 카드·레이더 대기·종합 안내가 같은 배지를 쓴다 */
+  /* ***** */
   .stg{font-size:8.5px;font-weight:900;letter-spacing:0;border-radius:4px;padding:0 4px;line-height:14px;
     margin-right:4px;vertical-align:1px;border:1px solid rgba(255,255,255,.14);color:#c3cfe4;
     background:rgba(255,255,255,.05);white-space:nowrap}
@@ -664,14 +658,13 @@
   .hb-head.pick .hb-desc{color:#d8ccff}
   .hb-cnt{margin-left:auto;font-size:10px;font-weight:700;color:var(--dim2);
     background:rgba(255,255,255,.04);border:1px solid var(--line);padding:1px 6px;border-radius:6px}
-  /* 종목 줄 — 오직 종목명 + 테마(개별) 두 가지만, 여백 있게 (2026-11-19 지시) */
+  /* ***** */
   .hb-row{display:flex;align-items:center;gap:2px 10px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);
     border-radius:10px;padding:9px 12px;margin-bottom:5px;min-width:0}
   .hb-row:active{background:var(--card2)}
   .hb-name{flex:1;min-width:0;font-size:13.5px;font-weight:800;letter-spacing:-.3px;
     white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  /* 일봉 1·2·3번 — 종목명·테마 밑에 그 종목의 실제 재료/이슈 한 줄 (2026-11-20 지시
-     "일봉상한가는 1.2.3진행하는 동안 테마.이슈내용잘보이게") */
+  /* ***** */
   .hb-row.iss{}
   .hb-iss{flex:0 0 100%;margin-top:3px;font-size:11px;font-weight:600;line-height:1.34;
     letter-spacing:-.15px;color:#9fb0c8;word-break:keep-all;overflow-wrap:anywhere;
@@ -701,7 +694,7 @@
   .hb-nw{margin-left:3px;font-size:9px;font-weight:900;vertical-align:1px;padding:0 3px;border-radius:4px;
     color:#fff;background:linear-gradient(135deg,#ff4d63,#ff8a4c);white-space:nowrap}  .hb-cl.wait{color:#ffe066;background:rgba(255,224,102,.1);border-color:rgba(255,224,102,.32)}
   .hb-cl[hidden]{display:none}
-  /* 1단계 첫 단추 — 테마 크기 · 240선 위/아래 · 첫 거래량 */
+  /* ***** */
   .hb-first{flex:0 0 100%;display:flex;flex-wrap:wrap;align-items:center;gap:3px;margin-top:4px}
   .hb-first i{font-style:normal;font-size:9.5px;font-weight:900;letter-spacing:-.2px;padding:1px 5px;
     border-radius:5px;white-space:nowrap;color:#c2cde0;background:rgba(255,255,255,.06);
@@ -713,8 +706,8 @@
   .hb-first i.dn{color:#93c5ff;background:rgba(79,140,255,.14);border-color:rgba(79,140,255,.4)}
   .hb-first i.fire{color:#1a1206;background:linear-gradient(135deg,#ffd76a,#ffb02e);border-color:transparent}
 
-  /* ---------- 핫바 · 10단계 (비밀 · 4→5 황금자리 × 9단계 멈춤 × 유형 A/B/C × 매도까지) ---------- */
-  /* 10단계 — 상단 안내 한 줄 (2026-11-21 지시: 시작 → 분출 → 스윙·폐기) */
+  /* ***** */
+  /* ***** */
   .hp-guide{margin:0 1px 7px;font-size:9.8px;font-weight:800;line-height:1.45;letter-spacing:-.2px;
     color:#a9b8d0;background:rgba(167,139,250,.07);border:1px solid rgba(167,139,250,.24);
     border-radius:8px;padding:5px 8px;word-break:keep-all;overflow-wrap:anywhere}
@@ -724,7 +717,7 @@
   .hp-name{white-space:nowrap}
   .hp-buy{display:inline-block;margin-left:3px;vertical-align:1px;font-size:10px;font-weight:900;color:#1a1206;
     letter-spacing:-.2px;background:linear-gradient(135deg,#ffd76a,#ffb02e);padding:0 4px;border-radius:4px}
-  /* 10단계 — 매매 상태 배지 (매수 · 매수대기 · 보유 · 매도 · 손절) */
+  /* ***** */
   .hp-st{display:inline-block;margin-left:3px;vertical-align:1px;font-size:10px;font-weight:900;
     letter-spacing:-.2px;padding:0 4px;border-radius:4px}
   .hp-st.buy{color:#1a1206;background:linear-gradient(135deg,#ffd76a,#ffb02e)}
@@ -733,8 +726,8 @@
   .hp-st.sell{color:#ffb4bf;background:rgba(255,90,110,.14);border:1px solid rgba(255,90,110,.5)}
   .hp-st.stop{color:#1a0608;background:linear-gradient(135deg,#ff8a9a,#ff5a6e)}
   .hp-st.watch{color:#c2cde0;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.24)}
-  /* 10단계 — 업종지수 배지 (한국식: 호재 빨강 · 바닥 노랑 · 약세 파랑) */
-  /* 10단계 — 3번 첫 거래 판정 배지 (글자만 · 가격·% 없음) */
+  /* ***** */
+  /* ***** */
   .hp-judge{flex:0 0 100%;display:flex;flex-wrap:wrap;align-items:center;gap:3px;margin:4px 0 0}
   .hp-judge i{font-style:normal;font-size:9.5px;font-weight:900;letter-spacing:-.2px;padding:1px 5px;
     border-radius:5px;white-space:nowrap;color:#c2cde0;background:rgba(255,255,255,.06);
@@ -749,7 +742,7 @@
   .hp-judge i.big{color:#1a1206;background:linear-gradient(135deg,#ffd76a,#ffb02e);border-color:transparent}
   .hp-judge i.mid{color:#ffe066;background:rgba(255,224,102,.1);border-color:rgba(255,224,102,.35)}
   .hp-judge i.small{color:#93a4bf}
-  /* ④ 배지 — 빠른 ④(상한가 뒤 25거래일 안) · 고가 위 ④(B형). 2026-11-24 전수조사(18-6) */
+  /* ***** */
   .hp-judge i.f4{color:#1a1206;background:linear-gradient(135deg,#ffe27a,#ffab1a);border-color:transparent}
   .hp-judge i.o4{color:#0b1120;background:linear-gradient(135deg,#a6ecff,#35c8ff);border-color:transparent}
   /* 🔒 레이더 대기(실전 안) — 유형 C는 여기서 이름만 보이고 자세한 것은 레이더 탭 */
@@ -872,10 +865,10 @@
   .hm-st.s5,.hm-st.s6{color:#9fd6ff;background:rgba(79,180,255,.12);border-color:rgba(79,180,255,.4)}
   .hm-st.s9{color:#ffe066;background:rgba(255,224,102,.1);border-color:rgba(255,224,102,.34)}
   .hm-st.s10{color:#ff9aa8;background:rgba(255,90,110,.11);border-color:rgba(255,90,110,.34)}
-  /* 테마 추적 — 4·5·9·10단계(주 추적 대상) 줄·배지를 살짝 띄운다 (2026-11-23 지시 #12076) */
+  /* ***** */
   .hp-row.tk{background:linear-gradient(90deg,rgba(167,139,250,.10),rgba(167,139,250,0) 64%)}
   .hm-st.tk{box-shadow:0 0 0 1px rgba(196,181,253,.45) inset}
-  /* 테마 추적 — 단계 → 테마 → 이슈 요약 (2026-11-23 지시 #12090) */
+  /* ***** */
   .hm-stg{margin:0 0 8px}
   .hm-stgh{display:flex;align-items:center;gap:6px;margin:8px 1px 6px;padding:5px 8px;border-radius:8px;
     background:linear-gradient(90deg,rgba(79,140,255,.15),rgba(79,140,255,.02));
@@ -883,7 +876,7 @@
   .hm-stgh b{font-size:12px;font-weight:900;color:#dbe6ff;letter-spacing:-.3px}
   .hm-stgd{font-size:9.5px;font-weight:800;color:#8fa0ba;letter-spacing:-.1px}
   .hm-stgc{margin-left:auto;font-size:9.5px;font-weight:900;color:#9dbcff;white-space:nowrap}
-  /* 단계 3구분 배지 — 3·4 매수 / 5·6·7 유지(보유) / 8 매도(분할·올매도) / 9·10 대기 (2026-11-24 지시) */
+  /* ***** */
   .hm-stgg{display:inline-block;font-size:9.5px;font-weight:900;letter-spacing:-.2px;padding:1px 5px;
     border-radius:5px;white-space:nowrap}
   .hm-stgg.buy{color:#1a1206;background:linear-gradient(135deg,#ffd76a,#ffb02e)}
@@ -911,7 +904,7 @@
   .hm-note{margin:10px 1px 2px;font-size:9.5px;font-weight:600;line-height:1.5;color:#71809a}
   .hm-note b{color:#a9b8d0}
 
-  /* 다른 메뉴(뉴스·상한가·테마달력·레이더)의 종목 이름 → 기준선 없는 주봉 차트 */
+  /* ***** */
   .up-name[data-code],.stk[data-code],.rd-stk[data-code],.lead-c[data-code]{cursor:pointer}
   .stk[data-code]{border-bottom:1px dashed rgba(143,178,255,.42)}
   .rd-stk[data-code]{border-bottom:1px dashed rgba(143,178,255,.34)}
@@ -988,7 +981,7 @@
   .chart-dd{flex:none;font-size:10.5px;font-weight:900;letter-spacing:-.2px;color:#ff9aa8;
     background:rgba(255,90,110,.12);border:1px solid rgba(255,90,110,.36);
     padding:0 5px;border-radius:6px;font-variant-numeric:tabular-nums;white-space:nowrap}
-  /* 고점 대비 눌림 — 2026-11-22 지시 #11360. 핫바 차트 창에 '고점 대비 -XX%' 배지 + 기준 한 줄 */
+  /* ***** */
   .chart-ddrow{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-top:4px}
   .chart-ddrow .cdf{font-size:9.5px;font-weight:700;color:#8fa0ba;letter-spacing:-.1px;
     line-height:1.35;font-variant-numeric:tabular-nums}
@@ -1150,8 +1143,7 @@
     background:rgba(255,196,84,.06);font-size:10.5px;font-weight:700;line-height:1.5;color:#efd9a6;
     letter-spacing:-.15px;word-break:keep-all}
   .inst-tip b{color:#ffd9a0;font-weight:900}
-  /* ---------- 종합 알림 (비밀 핫바 3칸 — 실전 매수 적중 · 레이더 길목 · 형광↑ 정예) ----------
-     2026-11-24 밤 지시: 종목 한 줄에 [구분] 종목명 · 테마명만. 배지 여러 개·날짜·이슈 요약은 화면에 쓰지 않는다. */
+  /* ***** */
   .cf-box{max-width:400px}
   .cf-it{display:flex;align-items:center;gap:5px;padding:3px 0;min-width:0;overflow:hidden;
     line-height:1.2;border-top:1px solid rgba(255,255,255,.05)}
@@ -1160,13 +1152,13 @@
   .cf-thm{flex:1;min-width:0;font-size:10.5px;font-weight:800;color:#93a4bf;letter-spacing:-.2px;
     white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .cf-thm i{font-style:normal;color:#5f6f8c;margin:0 2px 0 0}
-  /* 구분 배지 하나만 — 3번 / 4번 / 레이더 / 9단계 / ★ 3단계 / ○ 유지 / ◆ 동반 / △ 재출발 / 관찰 */
+  /* ***** */
   .cf-k{flex:none;font-size:9px;font-weight:900;padding:1px 5px;border-radius:5px;letter-spacing:-.1px;
     line-height:1.25;color:#0b1120;background:linear-gradient(135deg,#dfe9ff,#a9c2ec);white-space:nowrap}
   .cf-k.k-3{background:linear-gradient(135deg,#a6ecff,#35c8ff)}
   .cf-k.k-4{background:linear-gradient(135deg,#ffe27a,#ffab1a)}
   .cf-k.k-2{background:rgba(120,170,255,.16);color:#a9c6ff;border:1px solid rgba(120,170,255,.4)}
-  /* 적극매수 — 전수조사 네 축으로 확인된 자리만. 한 줄 구분 칩에 이 한 마디가 붙는다 */
+  /* ***** */
   .cf-k.on{border:1px solid rgba(57,255,20,.85);box-shadow:0 0 8px rgba(57,255,20,.5)}
   .cf-k.k-R{background:rgba(120,170,255,.16);color:#a9c6ff;border:1px solid rgba(120,170,255,.4)}
   .cf-k.k-9{background:rgba(180,160,255,.16);color:#c9b8ff;border:1px solid rgba(180,160,255,.4)}
@@ -1177,7 +1169,7 @@
   .cf-k.k-obs{background:linear-gradient(135deg,#cbd6e8,#93a4bf);color:#10182a}
   .cf-sec{margin:11px 0 1px;padding-top:9px;border-top:1px dashed rgba(255,255,255,.18);
     font-size:10px;font-weight:900;letter-spacing:-.1px;color:#93a4bf}
-  /* 3칸 종합 알림 — 칸 제목(🎯 실전 매수 적중 · 📡 레이더 길목 · 🟢 형광↑ 정예) */
+  /* ***** */
   .cf-head{display:flex;align-items:center;gap:5px;margin:8px 0 0;padding-top:7px;
     border-top:1px dashed rgba(255,255,255,.16);font-size:11px;font-weight:900;
     letter-spacing:-.2px;color:#e6eefc}
@@ -1192,7 +1184,7 @@
   .cf-it.seen{opacity:.6}
   .cf-seen{font-size:9px;font-weight:800;padding:0 4px;border-radius:4px;color:#8ea0bb;
     border:1px solid rgba(142,160,187,.42);letter-spacing:-.1px}
-  /* 형광↑ 다시보기 — 팝업을 닫은 뒤에도 테마달력·핫바 위에서 언제든 다시 연다(2026-11-22 지시 #11160) */
+  /* ***** */
   .cf-again{display:inline-flex;align-items:center;gap:4px;flex:none;margin-left:auto;cursor:pointer;
     font-size:10.5px;font-weight:900;letter-spacing:-.2px;color:#0b1120;
     padding:2px 7px 2px 6px;border-radius:999px;border:1px solid rgba(57,255,20,.9);
@@ -1201,9 +1193,40 @@
   .cf-again .cf-n{font-size:10.5px;font-weight:900;color:inherit}
   .cf-again:active{opacity:.88}
   .cf-again[hidden]{display:none}
+
+  /* ---------- 잠금 화면 — 비밀코드를 넣기 전에는 아무것도 보이지 않는다 ---------- */
+  body.gated{overflow:hidden}
+  body.gated>*{display:none!important}
+  body.gated>#gate{display:grid!important}
+  #gate{position:fixed;inset:0;z-index:99999;place-items:center;padding:22px;
+    background:radial-gradient(1000px 420px at 50% -160px, rgba(79,140,255,.18), transparent 70%),linear-gradient(180deg,#0b1120,#0e1730)}
+  .gate-box{width:100%;max-width:330px;text-align:center;background:#141d33;border:1px solid rgba(255,255,255,.08);
+    border-radius:16px;padding:26px 20px;box-shadow:0 18px 50px rgba(0,0,0,.45)}
+  .gate-ico{font-size:32px;line-height:1;margin-bottom:10px}
+  .gate-box h1{font-size:16px;font-weight:800;margin:0 0 5px;letter-spacing:-.2px}
+  .gate-box p{color:#8f9bb3;font-size:12.5px;margin:0 0 15px}
+  .gate-row{display:flex;gap:8px}
+  .gate-row input{flex:1 1 auto;min-width:0;background:#0e1730;border:1px solid rgba(255,255,255,.14);
+    color:#eef2fa;border-radius:10px;padding:11px 12px;font-size:15px;letter-spacing:.06em}
+  .gate-row input:focus{outline:none;border-color:#4f8cff}
+  .gate-row button{flex:none;background:#4f8cff;border:0;border-radius:10px;color:#fff;font-weight:700;padding:0 16px;font-size:13.5px}
+  .gate-row button:disabled{opacity:.55}
+  .gate-err{color:#ff5a6e!important;margin:11px 0 0!important}
 </style>
 </head>
-<body>
+<body class="gated">
+<div id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+  <div class="gate-box">
+    <div class="gate-ico" aria-hidden="true">🔒</div>
+    <h1 id="gateTitle">*****</h1>
+    <p>*****</p>
+    <div class="gate-row">
+      <input id="gateCode" type="password" inputmode="numeric" autocomplete="off" enterkeyhint="go" maxlength="12" placeholder="*****" aria-label="비밀코드">
+      <button id="gateGo" type="button">열기</button>
+    </div>
+    <p class="gate-err" id="gateErr" hidden>비밀코드가 맞지 않습니다</p>
+  </div>
+</div>
 <header>
   <div class="wrap">
     <!-- 카톡·네이버 앱 안에서 열렸을 때만 뜨는 안내 — 크롬으로 바로 열기 · 주소 복사 -->
@@ -1226,7 +1249,7 @@
     </div>
     <div class="top">
       <div class="logo" aria-hidden="true"><svg viewBox="0 0 64 64" width="19" height="19"><path d="M10 46 L22 33 L31 39 L44 23 L54 14 L54 49 L10 49 Z" fill="rgba(255,255,255,.22)"/><path d="M10 46 L22 33 L31 39 L44 23 L54 14" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="54" cy="14" r="3.6" fill="#fff"/></svg></div>
-      <div class="brand">뉴스레이더<small>주요 뉴스 · 테마달력 · 오늘 상한가</small></div>
+      <div class="brand">대시보드<small>*****</small></div>
       <span class="mood" id="moodKr" hidden></span>
       <span class="mood" id="moodUs" hidden></span>
       <div class="spacer"></div>
@@ -1347,7 +1370,7 @@
       <button type="button" data-k="마스터 테마" aria-pressed="false">🧩 마스터 <i>0</i></button>
     </div>
     <div id="calCal">
-    <p class="cal-note">동반테마 = 같은 테마 종목이 상한가일 ±3거래일 안에 함께 15% 이상 오른 테마 · 개별상한가 = 실적·계약·인수·임상·허가·기술수출·경영권·자사주·신작·특허 등 단독 재료로 한 종목만 오른 경우</p>
+    <p class="cal-note" id="calNote">*****</p>
     <div class="mon-grid" id="monGrid"></div>
     <div class="cal-leg" id="calLeg" aria-label="종목 칩 색 범례">
       <span>최근 상한가</span><span class="arr">→</span>
@@ -1402,65 +1425,15 @@
   <div class="nt-box nt-main" role="dialog" aria-modal="true" aria-labelledby="ntTitle">
     <div class="nt-top">
       <span class="ico" aria-hidden="true">📢</span>
-      <h2 id="ntTitle">뉴스레이더 안내</h2>
+      <h2 id="ntTitle">안내</h2>
       <button class="nt-x" id="ntX" type="button" aria-label="공지 닫기">✕</button>
     </div>
     <p class="nt-sub">처음 한 번만 뜨는 안내입니다 · <b>[확인]</b> 을 누르면 다시 뜨지 않습니다</p>
     <div class="nt-head"><p class="nt-legal">⚠️ 본 사이트는 투자 목적이 아닌 뉴스 정보 제공용이며, <em>투자 권유가 아닙니다</em>. 모든 투자 판단과 책임은 본인에게 있습니다.</p></div>
-    <div class="nt-body">
-    <div class="nt-it">
-      <span class="nt-n">1</span>
-      <div class="nt-c"><b>이번 업데이트 (11.26) · 🧩 마스터 테마 153개와 1~10단계 배지</b>
-        <p><em>테마달력</em> 위에 <em>[🧩 마스터]</em> 칸을 새로 달았습니다. <em>대장주·부대장주·3등주</em>를 붙여 둔 <em>마스터 테마 153개</em>를 검색해 보고(테마·종목 이름으로), 각 테마가 어느 달에 상한가를 냈는지 바로 건너갈 수 있습니다. 기존 테마 카드에는 🧩 줄로 그 테마의 <em>1등 대장주 · 2등 부대장주 · 3등주</em>가 함께 뜹니다. <em>실전</em> 픽 카드에는 <em>1~10단계</em> 배지가 붙고(1·2 초기 분출 / 3·4 매수 / 5~7 보유 / 8 매도 / 9·10 대기), <em>레이더</em>에는 <em>9·10단계 재부각 대기</em>가 125봉 상한가 이력 종목으로 채워집니다.</p></div>
-    </div>
-    <div class="nt-it">
-      <span class="nt-n">2</span>
-      <div class="nt-c"><b>이번 업데이트 (11.24) · 테마달력 맨 앞에 [오늘 상한가] 칸</b>
-        <p><em>테마달력</em> 위 칩을 <em>[오늘 상한가] [동반테마] [개별상한가]</em> 세 개로 바꿨습니다. 맨 앞 <em>오늘 상한가</em>를 누르면 월별 달력 대신 <em>오늘 상한가로 간 종목</em>이 <em>뉴스</em> 칸과 같은 카드(테마·거래대금·이슈 한 줄·원문 링크)로 바로 펼쳐집니다. 칩에 붙은 숫자는 각각 <em>오늘 상한가 종목 수</em> · <em>이 달 동반테마 수</em> · <em>이 달 개별상한가 수</em>입니다. <em>동반테마나 개별상한가</em>를 누르면 월별 달력과 테마 목록으로 돌아갑니다.</p></div>
-    </div>
-    <div class="nt-it">
-      <span class="nt-n">3</span>
-      <div class="nt-c"><b>이번 업데이트 (11.24) · 화면을 네 칸으로 나누고, 공개·비공개를 갈랐습니다</b>
-        <p>위쪽 탭이 <em>📰 뉴스 · 📅 테마달력 · 🔒 📡 레이더 · 🔒 🎯 실전</em> 네 칸으로 정리됐습니다. <em>뉴스</em>(오늘 자금 방향 · 주요 뉴스 · 오늘 상한가)와 <em>테마달력</em>은 누구나 봅니다. <em>레이더</em>(오늘 뉴스·일정 + 상한가 전 바닥 + 9·10단계 재부각 대기 — 유형 C 대기실)와 <em>실전</em>(상한가 뒤 1~8단계 A·B 타점 추적)은 본인 비밀코드로만 열립니다. 탭 바로 아래 한 줄에 지금 칸이 무엇을 보는 자리인지 적어 두었습니다.</p></div>
-    </div>
-    <div class="nt-it">
-      <span class="nt-n">4</span>
-      <div class="nt-c"><b>이번 업데이트 (11.23) · 차트에 하늘색 장기선 (일봉 240일 · 주봉 240주 · 월봉 120월)</b>
-        <p>종목을 눌러 여는 차트에 <em>하늘색 장기선</em>을 그렸습니다. 일봉에는 <em>240일선</em>, 주봉에는 <em>240주선</em>, 월봉에는 <em>120개월선</em>이 깔리고, 차트 위 <em>일봉·주봉·월봉</em> 버튼으로 바꿔 봐도 그 주기의 선이 따라갑니다. 차트 아래 범례에는 그 선의 지금 값이 숫자로 함께 나옵니다. 상장한 지 얼마 안 되어 봉이 모자란 구간은 선을 긋지 않습니다.</p></div>
-    </div>
-    <div class="nt-it">
-      <span class="nt-n">5</span>
-      <div class="nt-c"><b>이번 업데이트 (11.22) · 각 매체 시사·정책 메인까지 읽고 레이더와 연결</b>
-        <p>뉴스 탭이 네이버 경제면에 더해 <em>정치·사회면</em>과 <em>YTN 메인·속보</em>까지 함께 읽습니다. 가십·사건사고는 그대로 걸러내고 정책·규제·시험/교육·외교·재난·산업 이슈만 남깁니다. 위쪽 <em>실시간 속보</em>는 많이 본·여러 매체가 같이 다룬 <em>3건</em>으로 간결하게 줄였습니다. 같은 테마를 다룬 뉴스는 <em>대표 1건</em>만 순위에 세우고 <em>+ 같은 테마 뉴스 n건</em>으로 접어 두어, 목록이 한 테마로 길게 늘어서지 않습니다. <em>레이더</em> 맨 위에는 <em>📰 오늘 뉴스가 부른 테마</em>가 뉴스 제목·매체 수와 함께 먼저 서고, 거기 있는 종목을 누르면 바로 차트가 열립니다.</p></div>
-    </div>
-    <div class="nt-it">
-      <span class="nt-n">6</span>
-      <div class="nt-c"><b>이번 업데이트 (11.26) · 오늘 상한가는 테마로 묶고, 불건전 종목은 뉴스로도 걸러냅니다</b>
-        <p><em>테마달력 → 오늘 상한가</em>가 <em>같은 이슈·같은 섹터끼리 묶여</em> 나오고, 묶음마다 <em>👑 선도주</em>(오늘 상한가에 가장 먼저 닿은 종목)가 맨 앞에 섭니다. <em>🧱 첫 상한가</em>는 <em>일봉 125봉 바닥 횡보 뒤 처음 상한가</em>로, 그 테마의 <em>1번</em>이 됩니다. <em>🕐 도달 시각</em>은 장 마감(15:30) 뒤 1분봉으로 재어 확정합니다 — 장중에는 <em>장마감 후 확정</em>으로 표시됩니다. <em>관리종목·우선주·투자주의/경고/위험·거래정지·SPAC·자본잠식</em>은 물론, <em>환기종목·감사의견 거절/한정·상장폐지·횡령·배임·회생절차·파산</em>까지 <em>그 종목 기사</em>로 확인해 순위에서 뺍니다(뺐 때는 근거 기사·날짜를 남깁니다). 상장 첫날처럼 <em>일봉이 한 개뿐인 종목</em>도 125봉 차트가 열립니다. 과거 <em>테마달력</em>에서는 관리종목·투자경고·거래정지 등 불건전 종목을 덜어 냈습니다(우선주는 유지).</p></div>
-    </div>
-    <button class="nt-more" id="ntMore" type="button" aria-expanded="false" aria-controls="ntOld"><span class="lbl">지난 공지 4건 더보기</span><span class="ar" aria-hidden="true">▾</span></button>
-    <div class="nt-old" id="ntOld" hidden>
-    <div class="nt-it">
-      <span class="nt-n">7</span>
-      <div class="nt-c"><b>이번 업데이트 (11.21) · 상한가 봉 표시</b>
-        <p>종목을 눌러 여는 <em>일봉 125봉 차트</em>에 <em>노란 화살표 ▼</em> 를 붙였습니다. 전날 종가보다 28% 넘게 오른 <em>상한가 봉의 꼭대기 위</em>에 노란 화살표가 서서, 5·10·20·60일선 사이에서 상한가가 어디서 났는지 한눈에 보입니다.</p></div>
-    </div>
-    <div class="nt-it">
-      <span class="nt-n">8</span>
-      <div class="nt-c"><b>이번 업데이트 (11.21) · 테마달력에 '동반테마 / 개별상한가' 구분 필터</b>
-        <p><em>테마달력</em> 위에 <em>[동반테마] [개별상한가] [전체]</em> 칩을 달았습니다. 처음에는 <em>동반테마</em>가 선택돼 있어 같은 테마 종목들이 <em>함께 오른 진짜 테마</em>부터 보입니다. <em>개별상한가</em>를 누르면 실적·계약·인수·임상·허가·기술수출·경영권·자사주·신작·특허 같은 <em>단독 재료</em>로 한 종목만 오른 경우를 볼 수 있습니다.</p></div>
-    </div>
-    <div class="nt-it">
-      <span class="nt-n">9</span>
-      <div class="nt-c"><b>종목 차트 보는 법</b>
-        <p><em>뉴스(오늘 상한가 포함) · 테마달력 · 레이더 · 실전</em> 어느 화면에서든 종목 이름을 누르면 그 종목의 <em>일봉 125봉 차트</em> 가 열립니다. 봉을 짚으면 그날 종가·등락률·거래량과 5·10·20·60일선 값이 위에 뜨고, <em>전체 125봉 / 최근 60봉</em> 버튼으로 넓혀 보거나 좁혀 볼 수 있습니다.</p></div>
-    </div>
-    <div class="nt-it">
-      <span class="nt-n">10</span>
-      <div class="nt-c"><b>지정시간 자동 업데이트</b>
-        <p>평일 지정시간마다 뉴스와 차트가 자동으로 갱신됩니다. 화면 위 <em>⟳</em> 를 누르면 지금 바로 새로 받아옵니다.</p></div>
-    </div>
-    </div>
+    <div class="nt-body" id="ntBody">
+      <div class="nt-it"><span class="nt-n">·</span>
+        <div class="nt-c"><b>*****</b><p>*****</p></div>
+      </div>
     </div>
     <button class="nt-ok" id="ntOk" type="button">확인 (다시 보지 않기)</button>
     <p class="nt-foot">다시 보려면 화면 위 📢 를 누르세요</p>
@@ -1496,13 +1469,7 @@
   </div>
 </div>
 
-<!-- 종합 알림 — 2026-11-24 지시로 3칸(🎯 실전 매수 적중 · 📡 레이더 길목 · 🟢 형광↑ 정예)으로 개편.
-     · 잠금이 풀린 본인에게만 뜬다. 형광↑ 하루 화살만 받던 것을 테마 DB·10단계·핫바 적중 종목까지 입구로 넓혔다.
-     · 종목 칸은 한 줄 — 구분 배지(3번 / 4번 / 레이더 / 9단계 / ★ 3단계 / 관찰) + 종목명 + 테마명만.
-       배지 여러 개·날짜·이슈 요약은 쓰지 않는다(2026-11-24 밤 "너무 많이 적어서 단순하게" 지시).
-     · [닫기]를 눌러도 오늘 숨기지 않는다 — 앱을 열거나 새로고침·자동 갱신으로 새 자료가 들어올 때마다
-       다시 뜨고, 닫아도 실전·테마달력 위 [형광↑ N] 버튼으로 언제든 다시 연다.
-     · 종목을 누르면 그 종목 일봉 차트가 열린다(폰 뒤로가기로 차트 → 알림 → 화면 순서로 닫힌다). -->
+<!-- ***** -->
 <div class="nt-ov" id="cfOv" hidden>
   <div class="nt-box cf-box" role="dialog" aria-modal="true" aria-labelledby="cfTitle">
     <div class="nt-top">
@@ -1518,16 +1485,17 @@
 
 <script>
 const state = { data:null, calendar:null, radar:null, month:null, tab:'news', more:false, open:new Set(), sameOpen:new Set(), hotOpen:new Set(), calKind:'오늘 상한가', newsFilter:null, resMonth:null, resOpen:new Set(), msQ:'' };
-/* 2026-11-24 역할 분담 — 다섯 칸. 오늘 상한가는 뉴스 칸 안에 있다('upper' 탭은 없어졌다).
-   2026-11-26 — 실전 옆에 '결과'(장전픽·장중픽 누적)가 붙었다. */
+/* ***** */
 const TABS = ['news','radar','calendar','hotbar','results'];
-const TAB_ROLE = {
-  news: '<b>📰 뉴스</b> — 오늘 자금 방향 · 주요 뉴스 · 오늘 뉴스가 부른 테마',
-  calendar: '<b>📅 테마달력</b> — 오늘 상한가 · 최근 1년 무리 테마 · 동반 묶음 (누구나)',
-  radar: '<b>🔒 📡 레이더</b> — 오늘 픽(장전·장중·장후)을 <b>테마별</b>로 — 어느 테마에서 무엇이 잡혔나 · 포착 사유 (본인 전용)',
-  hotbar: '<b>🔒 🎯 실전</b> — 오늘 찍은 <b>장전픽 · 장중픽 · 장후픽</b>을 종목·테마·선정 사유·포착 시각·기준가와 함께 — 이전 날 픽은 지운다 (본인 전용)',
-  results: '<b>🔒 📈 결과</b> — 결과물만 — 달마다 <b>장전·장중·장후픽</b>의 기준가 대비 <b>−% / +%</b>와 월 요약(건수·평균·상승 비율) (본인 전용)',
+const TAB_ROLE_MASKED = {
+  news: '<b>📰 뉴스</b> — *****',
+  calendar: '<b>📅 달력</b> — *****',
+  radar: '<b>🔒 📡 보드</b> — *****',
+  hotbar: '<b>🔒 🎯 보드</b> — *****',
+  results: '<b>🔒 📈 기록</b> — *****',
 };
+/* 잠금을 풀면 data/manual.json(잠금본)에서 원래 문구를 받아 덮어쓴다. */
+const TAB_ROLE = Object.assign({}, TAB_ROLE_MASKED);
 function paintTabRole(name){
   const el = $('#tabRole');
   if(!el) return;
@@ -1540,6 +1508,81 @@ const FIRST_ISSUES = 14;   // 주요 뉴스 첫 화면 14건
 
 const $ = s => document.querySelector(s);
 const esc = s => (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ---------------- 잠금 — 비밀코드 하나로 모든 자료를 푼다 ----------------
+   data/*.json 은 전부 {enc:1, salt, iv, ct} 잠금본이다(AES-256-GCM · PBKDF2-SHA256 10만회).
+   코드를 넣기 전에는 자료를 받지도, 화면에 그리지도 않는다. 코드는 이 파일에 적지 않는다. */
+let SITE_CODE = '';          /* 이번 접속에서 푼 비밀코드(기억에만 둔다) */
+let siteReady = false;       /* 잠금이 풀려 화면을 그리기 시작했나 */
+let MANUAL = null;           /* 잠금을 풀면 받는 사용설명서(data/manual.json 잠금본) */
+function M(key){ return (MANUAL && MANUAL[key]) || '*****'; }
+
+/* 잠근 자료 하나 받아 풀기 — 평문 배포본이 남아 있으면 그대로 쓴다 */
+async function encGet(path){
+  if(!SITE_CODE) throw new Error('locked');
+  const res = await fetch(path + '?_=' + Date.now(), {cache:'no-store'});
+  if(!res.ok) throw new Error('HTTP ' + res.status);
+  const j = await res.json();
+  if(Number(j && j.enc) === 1) return await hotDecrypt(j, SITE_CODE);
+  return j;
+}
+
+/* 비밀코드 확인 — 작은 자료 하나를 실제로 풀어 본다(틀리면 아무것도 열리지 않는다) */
+async function codeWorks(code){
+  code = String(code || '').trim();
+  if(!code) return false;
+  try{
+    const res = await fetch('data/news_themes.json?_=' + Date.now(), {cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    const j = await res.json();
+    const d = (Number(j && j.enc) === 1) ? await hotDecrypt(j, code) : j;
+    return !!d && typeof d === 'object';
+  }catch(e){ return false; }
+}
+
+/* 잠금을 풀면 받는 사용설명서 — 공개 소스에는 ***** 로만 남는다 */
+async function loadManual(){
+  try{
+    const m = await encGet('data/manual.json');
+    if(!m) return;
+    MANUAL = m;
+    if(m.tabRole && typeof m.tabRole === 'object') Object.assign(TAB_ROLE, m.tabRole);
+    if(m.hotMission && typeof m.hotMission === 'object')
+      Object.keys(m.hotMission).forEach(k => { HOT_MISSION[k] = m.hotMission[k]; });
+    const cn = $('#calNote');
+    if(cn && m.calNote) cn.innerHTML = m.calNote;
+    const nb = $('#ntBody');
+    if(nb && m.notice) nb.innerHTML = m.notice;
+    if(m.hotMission){ const ms = $('#hotMission'); if(ms) paintHotMission(hotbarSec); }
+    paintTabRole(state.tab);
+  }catch(e){}
+}
+
+/* 잠금이 풀린 뒤 첫 화면 */
+async function startApp(){
+  if(siteReady) return;
+  siteReady = true;
+  document.body.classList.remove('gated');
+  const g = $('#gate'); if(g){ g.hidden = true; g.style.display = 'none'; }
+  try{ await unlockHotbar(SITE_CODE); }catch(e){}
+  try{ visPaint(); }catch(e){}
+  await loadManual();
+  switchTab(TABS.includes(startTab) ? startTab : 'news', true);
+  load(false);
+  ensureRadar().then(() => updateRadarDot());
+}
+
+async function gateSubmit(code){
+  code = String(code || '').trim();
+  if(!code) return false;
+  const ok = await codeWorks(code);
+  if(!ok) return false;
+  SITE_CODE = code;
+  try{ saveCode(code); }catch(e){}
+  try{ localStorage.setItem('nr_gate', '1'); }catch(e){}
+  startApp();
+  return true;
+}
 
 function relTime(iso){
   if(!iso) return '';
@@ -1590,7 +1633,7 @@ function issueList(){
   /* 2026-11-23 지시(#11664): 뉴스 탭에서 '실시간 속보'를 걷어냈으므로, 속보와 겹친 이슈를 빼던
      거르기도 함께 걷어낸다 — 화면에 없는 기사 때문에 주요 뉴스 순위가 비지 않게. */
   const all = issueAll();
-  /* 2026-11-26 — 테마달력에서 "이 테마 뉴스"로 들어오면 그 테마·종목이 걸린 기사만 보여 준다. */
+  /* ***** */
   const f = state.newsFilter;
   if(!f) return all;
   return all.filter(a => {
@@ -1709,7 +1752,7 @@ async function openMasterTheme(name){
   await renderCalendar();
 }
 
-/* 속보 한 줄 — 챗방처럼 왼쪽 시간 · 오른쪽 제목/매체/테마/관련 종목 (2026-11-20 개편) */
+/* ***** */
 function flashHtml(a){
   const cls = `cl-it${a.breaking ? ' brk' : ''}`;
   return `<a class="${cls}" href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">
@@ -1817,11 +1860,7 @@ function renderNews(force){
   more.textContent = state.more ? '이슈 접기' : '이슈 더 보기';
 }
 
-/* ---------------- 호재·혼조·악재 전광판 (🇰🇷 · 🇺🇸) -------------
-   판정의 첫 기준은 실제 지수 등락률이다 — news.json 의 market_mood 에 수집기가
-   코스피·코스닥 / 나스닥·S&P500·다우 등락률을 직접 조회해 실어 준다.
-   그 값이 없거나(수집 실패) 장 시작 전이라 오늘 등락이 아직 0일 때만
-   예전처럼 기사 제목·요약 단어 점수로 대신 판정한다. */
+/* ***** */
 const MOOD_GOOD = ['급등','상승','반등','호실적','사상최대','수주','타결','강세','돌파','상한가','최고치','흑자','회복','기대감','신기록'];
 const MOOD_BAD = ['급락','하락','폭락','약세','충격','악재','금리인상','전쟁','우려','반토막','하한가','적자','유출','속락','불안','경고'];
 const MOOD_MID = ['혼조','눈치보기','보합','엇갈','관망','혼재'];
@@ -1857,8 +1896,7 @@ async function renderNewsThemes(force){
   if(!box) return;
   try{
     if(force || !newsThemesData){
-      const res = await fetch('data/news_themes.json?_=' + Date.now(), {cache:'no-store'});
-      if(res.ok) newsThemesData = await res.json();
+      newsThemesData = await encGet('data/news_themes.json');
     }
   }catch(e){}
   const links = (newsThemesData && newsThemesData.news_links) || [];
@@ -1945,7 +1983,7 @@ function upperCardHtml(it, i){
   const more = (showTitle || (it.issue_summary || '').length > 70)
     ? `<button class="up-more" type="button">더 보기 ▾</button>` : '';
   const rate = Number(it.change_rate || 0).toFixed(2);
-  /* 2026-11-26 — 테마 묶음 안 순위 배지: 👑 선도주 · 🧱 125봉 바닥 첫 상한가 · 🕐 도달 시각 · 📅 달력 테마 */
+  /* ***** */
   return `<article class="up-card">
     <div class="up-top">
       <span class="up-no">${i + 1}</span>
@@ -1968,24 +2006,24 @@ function shortTheme(name){
   return String(name || '').replace(/\s*\([^)]*\)\s*/g, ' ').trim();
 }
 
-/* 상한가 카드 배지 — 선도주·바닥 첫 상한가·도달 시각·달력 테마 */
+/* ***** */
 function upBadges(it){
   const b = [];
-  if(it.leader) b.push(`<span class="up-bdg lead" title="이 테마에서 오늘 상한가에 가장 먼저 닿은 선도주">👑 선도주</span>`);
+  if(it.leader) b.push(`<span class="up-bdg lead" title="*****">👑 선도주</span>`);
   if(it.base_first){
     const bs = it.base || {};
     const why = bs.range_pct != null
       ? ` — 직전 ${bs.bars || 124}봉 폭 ${bs.range_pct}% · 바닥 ${bs.pos != null ? Math.round(bs.pos * 100) + '%' : '-'}` : '';
-    b.push(`<span class="up-bdg base" title="일봉 125봉 바닥 횡보 뒤 첫 상한가 — 테마 1번${esc(why)}">🧱 첫 상한가</span>`);
+    b.push(`<span class="up-bdg base" title="*****">🧱 첫 상한가</span>`);
   }
-  if(it.arrival) b.push(`<span class="up-bdg tm" title="오늘 상한가 가격에 처음 닿은 시각(1분봉 종가 기준 · 1분 단위 근사)">🕐 ${esc(it.arrival)}</span>`);
+  if(it.arrival) b.push(`<span class="up-bdg tm" title="*****">🕐 ${esc(it.arrival)}</span>`);
   else if(((upperData() || {}).arrival_state || '') === 'pending')
     b.push(`<span class="up-bdg tm wait" title="장중에는 도달 시각을 재지 않습니다 — 장 마감(15:30) 뒤 1분봉으로 확정됩니다">🕐 장마감 후 확정</span>`);
   if(it.cal_theme) b.push(`<span class="up-bdg cal" data-caltheme="${esc(it.cal_theme)}" role="button" tabindex="0" title="테마달력에서 이 테마·종목 보기">📅 ${esc(shortTheme(it.cal_theme))}</span>`);
   return b.join('');
 }
 
-/* 오늘 상한가 — 테마 묶음 카드 (같은 이슈·섹터를 한 묶음, 그 안에서 선도주·바닥 첫 상한가 순) */
+/* ***** */
 function upperGroupsHtml(u, items){
   const groups = (u && u.themes) || [];
   if(!groups.length) return items.map(upperCardHtml).join('');
@@ -1995,7 +2033,7 @@ function upperGroupsHtml(u, items){
       .map(it => upperCardHtml(it, Math.max(0, (Number(it.rank) || 1) - 1))).join('');
     const kind = g.kind === '개별상한가' ? 'bg' : (g.kind === '동반테마' ? 'bd' : '');
     const kindTxt = g.kind === '개별상한가' ? '개별' : (g.kind === '동반테마' ? '동반' : '새 이슈');
-    const base = g.base_first ? `<span class="up-bdg base" title="이 묶음에 125봉 바닥 횡보 뒤 첫 상한가가 있음">🧱</span>` : '';
+    const base = g.base_first ? `<span class="up-bdg base" title="*****">🧱</span>` : '';
     const link = g.issue_url
       ? `<a class="gl" href="${esc(g.issue_url)}" target="_blank" rel="noopener noreferrer">이슈 원문 ↗</a>` : '';
     return `<div class="up-grp">
@@ -2033,7 +2071,7 @@ function renderUpper(){
     if($('#upperSub')) $('#upperSub').textContent = '';
     box.innerHTML = body;
   }
-  /* ② 테마달력 칸 — '오늘 상한가' 칩을 골랐을 때 같은 카드가 이 칸에 그려진다 */
+  /* ***** */
   const cbox = $('#calUpperList');
   if(cbox){
     const cdate = $('#calUpperDate');
@@ -2046,10 +2084,7 @@ function renderUpper(){
   if(chip) chip.textContent = items.length;
 }
 
-/* ---------------- 뉴스 ↔ 테마달력 (2026-11-26 착수) ----------------
-   뉴스 카드의 📅 테마 칩 → 그 테마가 있는 가장 최근 달의 테마 카드를 펼쳐 보여 준다.
-   테마 카드의 "📰 이 테마 뉴스" → 뉴스 탭을 그 테마·종목 기사만 걸러 보여 준다.
-   기존 틀(탭·카드 모양)은 그대로 두고, 잇는 길만 놓는다. */
+/* ***** */
 async function openCalTheme(name){
   name = String(name || '').trim();
   if(!name) return;
@@ -2078,7 +2113,7 @@ async function openCalTheme(name){
   });
 }
 
-/* 테마달력 → 뉴스 : 이 테마(와 그 종목 이름)에 걸린 오늘 기사만 */
+/* ***** */
 async function openNewsTheme(name, stockNames){
   name = String(name || '').trim();
   if(!name) return;
@@ -2092,8 +2127,7 @@ async function openNewsTheme(name, stockNames){
 }
 
 /* ---------------- 테마달력 ---------------- */
-/* 테마 이름 → 구분(동반테마 / 개별상한가). 달력 자료를 받을 때 함께 채운다.
-   비밀 핫바 10단계 확정 알림의 '테마 동반' 판정에서, 자료에 theme_kind가 없을 때 대신 쓴다. */
+/* ***** */
 const CAL_KIND = Object.create(null);
 /* 테마달력(2026-11-24 지시 — 공개) — data/calendar.json 은 이제 평문이다. 비로그인 지인도 그대로 본다.
    (핫바·레이더 자료는 그대로 비밀코드 AES-GCM 잠금.) */
@@ -2104,19 +2138,12 @@ let CAL_MASTER_TOTAL = 0;          /* 달력 자료에 적힌 마스터 테마 �
 async function loadCalendar(){
   if(calData) return calData;
   try{
-    const res = await fetch('data/calendar.json?_=' + Date.now(), {cache:'no-store'});
-    if(res.ok){
-      const d = await res.json();
-      /* 지난 배포의 잠금본({enc:1})이 남아 있으면 읽지 않는다 — 새 평문 자료를 기다린다. */
-      if(Number(d && d.enc) === 1) return null;
+    const d = await encGet('data/calendar.json');
+    if(d && typeof d === 'object'){
       calData = d;
       CAL_MASTER_TOTAL = Number(d.master_theme_total || 0) || CAL_MASTER_TOTAL;
-      try{ localStorage.setItem(CAL_CACHE_KEY, JSON.stringify(calData)); }catch(e){}
-      return calData;
     }
   }catch(err){}
-  try{ calData = JSON.parse(localStorage.getItem(CAL_CACHE_KEY) || 'null'); }catch(err){}
-  if(calData && Number(calData.enc) === 1) calData = null;
   return calData;
 }
 
@@ -2136,10 +2163,7 @@ async function ensureCalendar(){
   return state.calendar;
 }
 
-/* 종목 칩 — 2026-11-22 지시(#10938): 가장 최근 상한가 날짜 내림차순으로 세우고,
-   최근일수록 눈에 띄는 색. 분홍 ↑ 는 지시(#10977)대로 기준일(오늘) 날짜 것만 이름 옆에 표시한다.
-   2026-11-23 지시: 칩에는 가장 최근 상한가 날짜 1개만 — '·' 연결과 '+N' 은 쓰지 않는다
-   (지난 날짜는 칩을 눌러 여는 차트 모달 안에서 전부 본다). */
+/* ***** */
 function stkLast(s){
   const ds = ((s && s.dates) || []).slice().sort();
   return ds.length ? ds[ds.length - 1] : '';
@@ -2160,15 +2184,14 @@ function stkHtml(s){
   const last = stkLast(s);
   const lastTxt = last.length >= 10 ? `최근 상한가 ${(+String(last).slice(5, 7))}/${(+String(last).slice(8, 10))}` : '';
   const pk = s.pinkArrow
-    ? `<em class="pk" title="형광↑(분홍↑) — 기준일(오늘) 당일, 상한가 뒤 바닥(240·448선 아래)에서 5·20·33일선과 전환선(9)·기준선(26)을 한 번에 넘어선 양봉${s.pinkDate ? ' (' + String(s.pinkDate).slice(5).replace('-', '/') + ')' : ''}${s.luAgo != null ? ' · 상한가 뒤 ' + s.luAgo + '거래일' : ''}">↑</em>`
+    ? `<em class="pk" title="*****">↑</em>`
     : '';
   /* 2026-11-24 지시(#14138) — 대장주는 👑 로 표시하고 칩 색도 한 단계 진하게 */
-  const crown = s.leader ? '<em class="crown" title="대장주 — 이 테마에서 가장 먼저 상한가를 친 종목">👑</em>' : '';
+  const crown = s.leader ? '<em class="crown" title="*****">👑</em>' : '';
   const cls = 'stk ' + tier + (s.leader ? ' lead' : '');
   return `<span class="${cls}"${s.code ? ` data-code="${esc(s.code)}" data-name="${esc(s.name)}" role="button" tabindex="0" title="${esc((s.leader ? '대장주 · ' : '') + (lastTxt ? lastTxt + ' · ' : '') + s.name + ' 일봉 125봉 차트 보기')}"` : ''}>${crown}<b>${esc(s.name)}</b>${pk}</span>`;
 }
-/* 2026-11-23 지시(#11988): 가장 최근 상한가 날짜가 같은 종목(동반 종목)은 날짜 한 줄에 묶어
-   한 묶음 상자로 보여 준다 — 날짜는 묶음 앞에 한 번만, 종목 이름은 각각 눌러 차트를 연다. */
+/* ***** */
 function stkGroups(list){
   const groups = new Map();
   for(const s of sortStocks(list)){
@@ -2188,8 +2211,7 @@ function stkGroups(list){
   }).join('');
 }
 
-/* 최근 상한가가 최신인 종목부터 — 같은 날이면 상한가 횟수 많은 순, 그다음 이름 순.
-   대장주(2026-11-24 지시 #14138)는 날짜와 상관없이 맨 앞에 둔다. */
+/* ***** */
 function sortStocks(list){
   return (list || []).slice().sort((a, b) =>
     ((b.leader ? 1 : 0) - (a.leader ? 1 : 0)) ||
@@ -2198,7 +2220,7 @@ function sortStocks(list){
     String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
 }
 
-/* 테마달력 위 칩 숫자 — 오늘 상한가 · 동반테마 · 개별상한가 · 마스터 테마 */
+/* ***** */
 function refreshCalChips(nD, nG){
   const flt = $('#calFlt');
   if(!flt) return;
@@ -2238,8 +2260,7 @@ async function ensureMaster(){
   if(masterLoading) return masterLoading;
   masterLoading = (async () => {
     try{
-      const res = await fetch('data/master_themes.json?_=' + Date.now(), {cache:'no-store'});
-      if(res.ok) masterData = await res.json();
+      masterData = await encGet('data/master_themes.json');
     }catch(e){}
     masterLoading = null;
     return masterData;
@@ -2285,8 +2306,7 @@ function renderMasterThemes(){
 async function renderCalendar(){
   const box = $('#calThemes');
   if(!box) return;
-  /* 2026-11-24 지시 — '전체' 칩 자리에 '오늘 상한가'를 맨 앞에 두었다.
-     이 칩을 고르면 월 그리드·테마 목록 대신 오늘 상한가 카드가 이 칸에 그려진다. */
+  /* ***** */
   const upperMode = state.calKind === '오늘 상한가';
   const masterMode = state.calKind === '마스터 테마';
   if($('#view-calendar')) $('#view-calendar').classList.toggle('cal-upper', upperMode);
@@ -2336,7 +2356,7 @@ async function renderCalendar(){
   const kc = mm.kind_count || {};
   const nD = kc['동반테마'] || 0, nG = kc['개별상한가'] || 0;
   refreshCalChips(nD, nG);
-  if(upperMode) return;          /* 오늘 상한가 보기 — 아래 월별 달력·테마 목록은 그리지 않는다 */
+  if(upperMode) return;          /* ***** */
   const all = mm.themes || [];
   const list = all.filter(t => ((t.kind || '동반테마') === state.calKind));
   const kindLabel = state.calKind;
@@ -2353,16 +2373,14 @@ async function renderCalendar(){
   }
   box.innerHTML = list.map(t => {
     const individual = t.kind === '개별상한가';
-    /* 2026-11-24 지시(#14138) — 테마명 안에 그 달 대표 상한가 이름·날짜, 대장주는 따로 배지로 */
+    /* ***** */
     const rep = t.rep || {};
     const repTxt = rep.name
       ? `${esc(rep.name)}<i>(${String(rep.date || '').slice(5).replace('-', '/')})</i>` : '';
     const lead = t.leader || {};
     const leadTxt = lead.name && lead.code
-      ? `<span class="th-lead" title="대장주 — ${esc(lead.why || '이 테마에서 가장 먼저 상한가를 친 종목')}">👑 ${esc(lead.name)}</span>` : '';
-    const tip = individual
-      ? '개별상한가 — 실적·계약·인수·임상·허가·기술수출·경영권·자사주·신작·특허 등 단독 재료로 한 종목만 상한가(같은 테마 ±3거래일 동반 상승 없음)'
-      : '동반테마 — 같은 테마 종목이 상한가일 ±3거래일 안에 함께 15% 이상 올랐습니다';
+      ? `<span class="th-lead" title="*****">👑 ${esc(lead.name)}</span>` : '';
+    const tip = '*****';
     return `<article class="th-card">
       <button class="th-head" type="button">
         <span class="th-badge ${individual ? 'bg' : 'bd'}" title="${esc(tip)}">${individual ? '개별' : '동반'}</span>
@@ -2383,18 +2401,14 @@ async function renderCalendar(){
 }
 
 
-/* ---------------- 다가오는 일정 (data/schedule.json) ----------------
-   날짜가 지난 일정은 화면에서 자동으로 빠지고, 테마·종목 이름에 걸리는 일정만 배지로 붙는다. */
+/* ***** */
 let schedData = null;
 async function ensureSched(){
   if(schedData) return schedData;
   try{
-    const res = await fetch('data/schedule.json?_=' + Date.now(), {cache:'no-store'});
-    if(!res.ok) throw new Error('HTTP ' + res.status);
-    schedData = await res.json();
-    try{ localStorage.setItem('newsradar_sched', JSON.stringify(schedData)); }catch(e){}
+    schedData = await encGet('data/schedule.json');
   }catch(err){
-    try{ schedData = JSON.parse(localStorage.getItem('newsradar_sched') || 'null'); }catch(e){}
+    schedData = null;
   }
   return schedData;
 }
@@ -2408,7 +2422,7 @@ function schedUpcoming(s){
   return (((s || schedData) || {}).events || []).filter(e => (e.date || '') >= t)
     .sort((a, b) => (a.date || '').localeCompare(b.date || ''));
 }
-/* 이벤트 key가 넘긴 글자들(테마명·키워드·종목 테마)에 걸리는지 */
+/* ***** */
 function schedHit(e, texts){
   const keys = (e.keys || []).map(k => String(k).toLowerCase());
   return keys.some(k => (texts || []).some(x => String(x || '').toLowerCase().includes(k)));
@@ -2417,9 +2431,7 @@ function schedFor(texts, limit){
   return schedUpcoming().filter(e => schedHit(e, texts)).slice(0, limit || 2);
 }
 
-/* ---------------- 레이더 (순차별 테마·종목) ----------------
-   2026-11-24 지시 — 레이더는 비공개다. data/radar.json 은 핫바와 같은 비밀코드로 잠근
-   AES-256-GCM 파일({enc,salt,iv,ct})이다. 잠금이 풀려 있을 때만 풀어서 그리고, 기기에 평문으로는 남기지 않는다. */
+/* ***** */
 async function ensureRadar(){
   if(state.radar) return state.radar;
   if(!visOn()) return null;
@@ -2430,7 +2442,7 @@ async function ensureRadar(){
     if(!res.ok) throw new Error('HTTP ' + res.status);
     const j = await res.json();
     const d = (Number(j && j.enc) === 1) ? await hotDecrypt(j, code) : j;   /* 옛 평문 배포도 받아 준다 */
-    /* 오늘 픽 보드(kind='picks')는 픽이 0종목인 날에도 "오늘 없음"을 그려야 하므로 그대로 받는다 */
+    /* ***** */
     if(!d) return null;
     if(d.kind !== 'picks' && !(d.tiers || []).length && !(d.news_links || []).length) return null;
     state.radar = d;
@@ -2473,7 +2485,7 @@ function radarTierHtml(t, matched, evts, rankNo){
   </article>`;
 }
 
-/* 오늘 뉴스가 부른 테마 — 뉴스 → 테마 DB → 레이더 → 종목까지 한 줄로 (2026-11-22) */
+/* ***** */
 function radarLinkHtml(x){
   const stocks = (x.stocks || []).map(s =>
     `<div class="rd-stk" data-code="${esc(s.code)}" data-name="${esc(s.name)}" role="button" tabindex="0" title="일봉 125봉 차트 보기"><b>${esc(s.name)}</b></div>`).join('');
@@ -2584,8 +2596,7 @@ async function renderRadar(force){
   const newsHtml = rows.length
     ? `<div class="rd-nh"><b>🎯 오늘 픽 테마</b><span>뉴스가 붙은 순</span></div>`
     : '';
-  /* ⏳ 9·10단계 재발굴 대기 — 유형 C(9단계 하락 멈춤·10단계 재출발). 2026-11-24 지시로
-     실전에서 이 대기실로 옮겼다. 레이더 = 상한가 전 바닥 + 9·10단계 재출발 대기. */
+  /* ***** */
   const cw = (r && r.cwait) || null;
   const cwStocks = (cw && cw.stocks) || [];
   if(!rows.length && !cwStocks.length){
@@ -2596,7 +2607,7 @@ async function renderRadar(force){
   }
   const cwHtml = cwStocks.length
     ? `<div class="rd-nh" style="margin-top:10px"><b>⏳ 9·10단계 재부각 대기</b>`
-      + `<span>${esc(cw.base_date || '')} · 유형 C ${cwStocks.length}종목 — 하락 멈춤·재출발</span></div>`
+      + `<span>${esc(cw.base_date || '')} · 유형 C ${cwStocks.length}종목 — *****</span></div>`
       + `<div class="rd-cw">` + cwStocks.map(s => `<div class="rd-cwi">`
         + `<b>${esc(s.name)}</b><span class="st">${esc(s.stage_txt || '')}</span>`
         + (s.theme ? `<i>${esc(String(s.theme).split(' — ')[0].split(' (')[0])}</i>` : '')
@@ -2657,11 +2668,7 @@ async function ensureHotbar(){
   return hotbarData;
 }
 
-/* ---------------- 핫바 목록 — 종목명 + 테마만 (2026-11-19 지시) ----------------
-   각 번호 칸(1·2·3·4·5…)에는 지금 그 단계에 있는 종목만 한 번씩 들어간다.
-   줄에는 종목명과 테마(테마·재료가 확인되지 않으면 '개별')만 남기고,
-   첫/재·얇음·바닥·앞중뒤·진행·기사 문장·가격·등락률 같은 딱지는 걷어낸다.
-   그 정보는 줄을 눌러 여는 차트 팝업에서만 본다. */
+/* ***** */
 
 /* 테마 이름 — ' — ' 뒤 부연과 괄호 설명을 떼어 짧게. 테마·재료가 확인되지 않으면 ''(개별) */
 function hotThemeName(s){
@@ -2670,26 +2677,19 @@ function hotThemeName(s){
   return t.split(' — ')[0].split(' (')[0].trim();
 }
 
-/* 카드 오른쪽 글자 — 서버가 만든 짧은 이름(테마명 또는 '개별 · 수주')을 그대로 쓴다.
-   상한가 테마에 없어도 개별 재료(수주·실적·공시·섹터)가 확인된 종목은 '개별 · 키워드'로 보인다. */
+/* ***** */
 function hotThemeLabel(s){
   const l = String(s.theme_label || '').trim();
   if(l) return l;
   return hotThemeName(s) || '개별';
 }
 
-/* 순서는 비공개 자료 생성기가 정해서 내려 준다 — 2026-11-20 지시
-   "대장이 위에 배치 첫상한가 첫거래량 테마 재료 우선":
-   ① 테마·재료 확실 ② 앞쪽(첫 상한가·첫 거래량) ③ 테마 묶음 안에서 대장주 맨 위.
-   예전엔 화면이 다시 테마 가나다순으로 섞었는데, 그러면 서버가 잡은 대장·테마 순서가 깨져
-   서버 순서를 그대로 쓴다. */
+/* ***** */
 function hotSortStocks(arr){
   return arr.slice();
 }
 
-/* 일봉 1·2·3번 카드에 붙는 이슈 한 줄 — 그 상한가가 왜 나왔는지(reason)를 종목명 밑에 보여 준다.
-   주봉·월봉과 4번 이후는 기존대로 종목명+테마만 남긴다. 테마 이름이 앞에 또 나오면 떼고
-   이슈 본문만 남긴다(예: '현대차 로보틱스 밸류체인·자동차부품 · 현대차그룹의 …' → '현대차그룹의 …'). */
+/* ***** */
 function hotIssueText(s){
   if(periodOf(s) !== 'day') return '';
   if(![1, 2, 3].includes(Number(s.stage))) return '';
@@ -2707,8 +2707,7 @@ function hotIssueText(s){
   return r;
 }
 
-/* 오늘 뉴스가 부른 테마 — news.json 이슈의 db_themes(105테마 DB 이름)와 이 종목 테마가 같으면
-   핫바 줄에도 📰 를 붙인다 (2026-11-22 · 뉴스 → 테마 → 레이더 → 핫바 한 줄). */
+/* ***** */
 function newsThemeMap(){
   const m = new Map();
   const norm = v => String(v || '').split(' — ')[0].split(' (')[0].trim();
@@ -2745,25 +2744,23 @@ function hotRowHtml(s){
     ? `<span class="hb-aplus" title="${esc('직접 검수한 A++' + (why ? ' — ' + why : ''))}">A++</span>` : '';
   const th = hotThemeLabel(s);
   const grp = hotThemeName(s);
-  const pos = s.pos2 === '앞쪽' ? '<span class="hb-pos f" title="바닥 6개월 조용한 뒤 시작 거래량 · 20일선≥60일선">앞</span>'
+  const pos = s.pos2 === '앞쪽' ? '<span class="hb-pos f" title="*****">앞</span>'
             : (s.pos2 === '뒤쪽' ? `<span class="hb-pos b" title="${esc('뒤쪽 — ' + ((s.pos2_why || []).join(' · ') || '장기선 위'))}">뒤</span>` : '');
   /* 주봉 240주 선뭉침 — 선은 뭉쳤는데 거래량이 아직이면 '불씨전'(노랑).
      480봉 0~100 눈금은 2026-11-24 지시로 뺐다 — 깊이(고점 -%·240선 -%)와 형광으로 본다. */
-  const cl = s.cl ? `<span class="hb-cl" title="${esc(`주봉 240주 하단 선뭉침 — 선 간격 ${s.cl_sp}% · 하단 ${s.cl_pos}% · 거래량 240주 최대의 ${s.cl_vol}배 (${s.cl_at})`)}">선뭉침</span>`
-           : (s.cl_wait ? `<span class="hb-cl wait" title="${esc(`선은 뭉쳤는데 거래량이 240주 최대의 ${s.cl_vol}배 — 아직 불씨 전 (선 간격 ${s.cl_sp}% · 하단 ${s.cl_pos}%)`)}">선뭉침·불씨전</span>` : '');
-  /* 1단계 첫 단추 — 테마 크기 · 일봉 240선 위/아래 · 첫 거래량 (2026-11-21 지시)
-     2026-11-23: ma240 칸은 이제 차트용 배열이므로, 위/아래 글자는 ma240_side 로 읽는다
-     (예전 자료에 글자가 든 ma240 이 있으면 그것도 함께 읽는다). */
+  const cl = s.cl ? `<span class="hb-cl" title="*****">선뭉침</span>`
+           : (s.cl_wait ? `<span class="hb-cl wait" title="*****">선뭉침·불씨전</span>` : '');
+  /* ***** */
   const firstC = [];
   const maSide = (typeof s.ma240_side === 'string' ? s.ma240_side : '') || (typeof s.ma240 === 'string' ? s.ma240 : '');
   if(periodOf(s) === 'day' && Number(s.stage) === 1 && (s.t_n != null || maSide || s.fvol)){
     if(s.t_n != null){
       const cls = s.t_n >= 4 ? 'big' : (s.t_n >= 2 ? 'mid' : 'small');
-      firstC.push(`<i class="${cls}" title="테마 크기 — 같은 테마에서 최근 1주 안에 상한가 낸 종목 수(나 포함)">테마 ${s.t_n}종목</i>`);
+      firstC.push(`<i class="${cls}" title="*****">테마 ${s.t_n}종목</i>`);
     }
-    if(maSide) firstC.push(`<i class="${maSide === '위' ? 'up' : 'dn'}" title="일봉 240선 ${esc(maSide)} — 상한가 전날 종가로 잰다">240 ${esc(maSide)}</i>`);
+    if(maSide) firstC.push(`<i class="${maSide === '위' ? 'up' : 'dn'}" title="*****">240 ${esc(maSide)}</i>`);
     if(s.fvol) firstC.push(s.fvol === '첫'
-      ? `<i class="fire" title="첫 거래량 — 상한가 봉 거래량이 앞 125봉 최대의 ${s.v1x}배">첫 거래량 ${s.v1x}배</i>`
+      ? `<i class="fire" title="*****">첫 거래량 ${s.v1x}배</i>`
       : `<i class="small" title="첫 거래량 아직 — 상한가 봉 거래량이 앞 125봉 최대의 ${s.v1x >= 0.1 ? s.v1x + '배' : '1할 미만'}">거래량 아직</i>`);
   }
   const first = firstC.length ? `<div class="hb-first">${firstC.join('')}</div>` : '';
@@ -2801,9 +2798,7 @@ function hotStageHtml(st){
   </div>`;
 }
 
-/* ---------------- 진화 점수판 (비밀 핫바 맨 위) ----------------
-   잠긴 hotbar.json 안의 score 를 그대로 그린다 — 누적 적중률(10/14 = 71.4%), 목표 99%,
-   보합 빼고 센 숫자·패스 판정, 최근 채점, 공식 예상 P1~P8. 밖으로 나가는 곳은 없다. */
+/* ***** */
 function scoreHtml(sc){
   if(!sc || !sc.total) return '';
   const rate = Math.max(0, Math.min(100, Number(sc.rate) || 0));
@@ -2827,7 +2822,7 @@ function scoreHtml(sc){
     + `<span class="f">${esc(p.f)}</span></div>`).join('');
   return `<div class="sc">
     <div class="sc-top">
-      <div class="sc-h"><div class="sc-t">진화 점수판 · 채점 끝난 공식 픽</div>
+      <div class="sc-h"><div class="sc-t">진화 점수판 · *****</div>
         <div class="sc-v"><b>${esc(String(sc.hit))}/${esc(String(sc.total))}</b><span>${rate.toFixed(1)}%</span></div></div>
       <div class="sc-goal">${target}%<i>목표</i></div>
     </div>
@@ -2842,22 +2837,13 @@ function scoreHtml(sc){
   </div>`;
 }
 
-/* ---------------- 탭별 사용설명서 (2026-11-22 지시 #11301·#11316 → #11330)
-   상단 '실전' 아래(#hotMission)에 지금 고른 칸이 무엇을 보고(적용) 무엇을 위해 쓰는지(역할)를
-   사용설명서처럼 적는다. 기준일·종목수 같은 기준 문구는 넣지 않는다. #hotInner 안이라 잠금을
-   풀어야만 보인다.
-   2026-11-23 지시 #12042·#12076 — 실전은 '일봉'과 '테마 추적' 두 칸이다. 주봉·월봉은 메뉴에서 빼고
-   차트 안 전환 버튼으로 옮겼으며, 주봉 48주·월봉 12개월 기준은 테마 추적 안에 그대로 통합한다. */
-const HOT_MISSION = {
-  day:   {name:'실전 사용설명서',
-          apply:'<b>오늘 찍은 픽만</b> 남깁니다 — <b>🌅 장전픽 · ⚡ 장중픽 · 🌙 장후픽</b>. 카드마다 <b>테마</b>와 <b>왜 뽑혔는지(선정 사유)</b> · <b>포착 시각</b> · <b>기준가 → 현재가</b> · <b>기준가 대비 등락률</b>을 함께 봅니다. 이전 날 픽은 이 칸에 남기지 않습니다',
-          role:'<b>장전픽</b> = 직전 거래일 상한가 흐름에서 아침에 고른 자리(기준 전일 종가) · <b>장중픽</b> = 오늘 실시간 상한가·급등 테마 선도주(기준 포착가) — 1~5번째 <b>핵심</b> · 6~10번째 <b>추가</b> 후보(최대 10종목) · <b>장후픽</b> = 오늘 종가로 내일 볼 자리(기준 당일 종가). 매매 판단은 본인 몫입니다',
-          tip:'카드를 누르면 125봉 일봉 차트가 열립니다 — 결과물만 보려면 옆의 <b>📈 결과</b> 탭'},
-  pick:  {name:'테마별 사용설명서',
-          apply:'오늘 픽을 <b>테마로 묶어</b> 봅니다 — 같은 테마에서 어느 종목이 장전·장중·장후에 잡혔는지, 테마마다 몇 종목인지',
-          role:'테마가 살아 있는 동안 같은 테마의 다른 자리를 놓치지 않게 보는 칸입니다. 장전·장중·장후 구분과 선정 사유는 카드마다 그대로 볼 수 있습니다',
-          tip:'카드를 누르면 125봉 일봉 차트 — 테마 흐름은 <b>📅 테마달력</b>과 같이 봅니다'},
+/* ***** */
+const HOT_MISSION_MASKED = {
+  day:   {name:'*****', apply:'*****', role:'*****', tip:'*****'},
+  pick:  {name:'*****', apply:'*****', role:'*****', tip:'*****'},
 };
+/* 잠금을 풀면 data/manual.json(잠금본)의 문구로 채운다. */
+const HOT_MISSION = JSON.parse(JSON.stringify(HOT_MISSION_MASKED));
 function paintHotMission(key){
   const el = $('#hotMission'); if(!el) return;
   const m = HOT_MISSION[key] || HOT_MISSION.day;
@@ -2869,11 +2855,7 @@ function paintHotMission(key){
     + (m.tip ? `<div class="mr"><span class="k t">차트</span><span class="v">${m.tip}</span></div>` : '');
 }
 
-/* ---------------- 실전 보드 (2026-11-26 지시) ----------------
-   "찍은 픽은 실전에 남기고, 결과에는 결과물만"
-   실전은 **오늘 무엇을 왜 찍었나**를 보는 자리다 — 종목 · 테마 · 선정 사유 · 포착 시각 ·
-   기준가 → 현재가 · 기준가 대비 등락률. 누적 성적만 보는 📈 결과 탭과 역할이 다르다.
-   자료 모양: {base_date, base_date_text, boards:[{key,title,note,empty,picks:[resCard 모양]}]} */
+/* ***** */
 function pickBoardHtml(b, cls){
   const picks = (b && b.picks) || [];
   const kind = cls === 'int' ? 'int' : (cls === 'aft' ? 'aft' : (cls === 'theme' ? 'theme' : 'pre'));
@@ -2924,8 +2906,7 @@ async function renderHotbar(){
   hotbarSec = sec.key;
   paintHotMission(sec.key);
   document.querySelectorAll('#hotSeg button').forEach(b => b.classList.toggle('on', b.dataset.sec === sec.key));
-  /* 2026-11-23 지시 #12042 — 실전은 이제 '일봉'과 '테마 추적' 두 칸이다.
-     일봉은 2단계(상한가 뒤 눌림·핫바 대기)가 핵심이라 2번 무리를 맨 위에 두고 1·3단계는 참고로 아래에 둔다. */
+  /* ***** */
   const rank = n => { const k = Number(n); return (k === 2) ? 0 : k; };
   const stages = (sec.stages || []).slice().sort((a, b) => rank(a.stage) - rank(b.stage));
   box.innerHTML = stages.map(hotStageHtml).join('');
@@ -2933,29 +2914,19 @@ async function renderHotbar(){
   cfPaintAgain();                 /* 형광↑ 다시보기 버튼의 종목 수 */
 }
 
-/* ---------------- 10단계 (2026-11-20 · 네 번째 칸) ----------------
-   10년 전수조사(stage10_core) 기준 그대로 — 오늘 자리가 선 종목만, 매도까지 따라간다.
-     유형 A = 앞 125봉 무상한가 첫 상한가 / B = 그 뒤 2·3차 상한가 / C = 9단계 하락 멈춤
-     4→5 황금자리 = 2번 기준선 사수 + 상자 안 2회 이상 왕복 + 거래량 0.7배 이하로 마른 음봉(4단계)
-                    또는 그 음봉 바로 뒤 윗선을 넘은 5단계 돌파 당일
-     9단계 멈춤  = 분출 뒤 -28% 이상 + 15봉 폭 18% 안 + 거래량 0.5배 이하
-   오늘 올라온 종목은 장부(brain/cache/stage10_watchlist.json)로 (매수) → (돌파·보유) →
-   (분출·보유) → (매도)[8단계 정리 · 목표 +20~30% 뒤 윗꼬리/음봉] 또는 (손절·매도)까지 따라간다.
-   자료는 data/hotbar_monthly.json 한 벌(비밀코드로 잠금 — 코드는 소스에 적지 않는다). */
+/* ***** */
 let hotPick = null, hotPickLoading = null, pickFilter = 'all';
-const PICK_TYPE = {A:'유형 A · 앞 125봉 무상한가 첫 상한가',
-                   B:'유형 B · 앞 125봉 안 2·3차 상한가',
-                   C:'유형 C · 9단계 하락 멈춤(재출발 자리)'};
+const PICK_TYPE = {A:'유형 A · *****', B:'유형 B · *****', C:'유형 C · *****'};
 const PICK_STATE = {
-  /* 2026-11-24 지시 — 3·4 매수 / 5·6·7 유지(보유) / 8 매도(분할·올매도) / 9·10 대기 */
-  '매수':      {cls:'buy',  txt:'매수',      note:'3·4단계 — 지금 사는 자리'},
-  '9단계 매수': {cls:'buy', txt:'9단계 매수', note:'9단계 멈춤 — 대기(📡 레이더) 자리'},
-  '매수대기':  {cls:'buy',  txt:'9단계 매수', note:'9단계 멈춤 — 대기(📡 레이더) 자리'},  /* 예전 자료 호환 */
-  '돌파·보유': {cls:'hold', txt:'돌파·보유', note:'5단계 — 유지(보유)'},
-  '분출·보유': {cls:'hold', txt:'분출·보유', note:'6·7단계 — 유지(보유)'},
-  '매도':      {cls:'sell', txt:'매도',      note:'8단계 — 분할 매도 또는 올매도'},
-  '관망':      {cls:'watch', txt:'관망',     note:'지수 약세로 걸러진 자리'},
-  '손절·매도': {cls:'stop', txt:'손절·매도', note:'기준선 이탈 — 올매도'},  /* 예전 자료 호환 */
+  /* ***** */
+  '매수':      {cls:'buy',  txt:'매수',      note:'*****'},
+  '9단계 매수': {cls:'buy', txt:'9단계 매수', note:'*****'},
+  '매수대기':  {cls:'buy',  txt:'9단계 매수', note:'*****'},  /* 예전 자료 호환 */
+  '돌파·보유': {cls:'hold', txt:'돌파·보유', note:'*****'},
+  '분출·보유': {cls:'hold', txt:'분출·보유', note:'*****'},
+  '매도':      {cls:'sell', txt:'매도',      note:'*****'},
+  '관망':      {cls:'watch', txt:'관망',     note:'*****'},
+  '손절·매도': {cls:'stop', txt:'손절·매도', note:'*****'},  /* 예전 자료 호환 */
 };
 
 function ymd6(n){
@@ -2976,23 +2947,21 @@ async function ensurePick(){
       hotPick = (Number(sealed.enc) === 1) ? await hotDecrypt(sealed, code) : sealed;
     }catch(e){ hotPick = null; }
     hotPickLoading = null;
-    /* 테마 구분(동반 / 개별)이 자료에 없을 때 달력 자료로 보충한다 — 확정 알림 ④ 판정용 */
+    /* ***** */
     if(hotPick) ensureCalendar();
     return hotPick;
   })();
   return hotPickLoading;
 }
 
-/* 종목 한 칸의 모든 줄을 한 번에 — 테마 묶음과 무관하게 필터에 쓴다 */
+/* ***** */
 function pickAll(){
   const out = [];
   ((hotPick || {}).themes || []).forEach(t => (t.stocks || []).forEach(s => out.push(s)));
   return out;
 }
 
-/* 주 추적 대상 — 2026-11-23 지시 #12076. 테마 추적은 10단계 흐름 그대로 보되
-   4·5단계(기준선 매수·전고 돌파)와 9·10단계(바닥 멈춤·재점화)를 맨 앞에 세운다.
-   2·3·6~8단계는 빼지 않고 흐름 참고로 뒤에 둔다. */
+/* ***** */
 const TK = {4:0, 5:1, 9:2, 10:3};
 function isTrack(st){ return TK[Number(st && st.stage)] != null; }
 function trackRank(st){
@@ -3008,7 +2977,7 @@ function pickPass(st, f){
   return st.t === f;
 }
 
-/* 10단계 종목 → 차트 모달(일봉 170봉 · 최근 38봉 확대 + 5·10·20·60일선 + 기준선 + 단계 번호) */
+/* ***** */
 function pickChartItem(st){
   const ch = hotPick && (hotPick.charts || {})[String(st.code)];
   if(!ch || !(ch.b || []).length) return null;
@@ -3057,38 +3026,34 @@ function pickRowHtml(st){
   const gain = (st.days > 0 && st.entry_price)
     ? `진입 ${fmtWon(st.entry_price)}원 ${st.gain > 0 ? '+' : ''}${Number(st.gain).toFixed(1)}% (D+${st.days})` : '';
   const sub = [d0, val, gain].filter(Boolean).join(' · ');
-  /* 첫 단추(1단계 그대로) — 테마 크기 · 240선 위/아래 · 첫 거래량 → 3번 판정 A/B/C (2026-11-21 지시)
-     '3번 대기' 같은 꼬리말은 두지 않는다. D는 사지 않는 자리라 목록에서 이미 빠져 있다. */
+  /* ***** */
   const chips = [];
-  /* ④ 자리 — 빠른 ④(상한가 뒤 25거래일 안) · 고가 위 ④(B형, 상한가 고가 위를 먼저 찍고 내려온 자리)
-     2026-11-24 전수조사(18-6): 빠른 ④ 78.2%·73.1% vs 50일+ 58.7%, 고가 위 ④ 62.5% vs 바로 온 ④ 55.0%.
-     카드 맨 앞에 세워 둔다 — "얼마나 빨리 왔고 · 고가 위를 먼저 찍었나"를 먼저 본다. */
+  /* ***** */
   const d4 = st.d4 || null;
   if(d4 && d4.days != null){
-    if(st.fast4) chips.push(`<i class="f4" title="빠른 ④ — 상한가 뒤 ${d4.days}거래일(25일 안). 10~25일 +20% 73~78%">빠른 ④ D+${d4.days}</i>`);
-    else chips.push(`<i class="small" title="늦은 ④ — 상한가 뒤 ${d4.days}거래일. 25일을 넘기면 한 단계 낮춰 본다(+20% 58.7%)">④ D+${d4.days}</i>`);
+    if(st.fast4) chips.push(`<i class="f4" title="*****">빠른 ④ D+${d4.days}</i>`);
+    else chips.push(`<i class="small" title="*****">④ D+${d4.days}</i>`);
   }
-  if(st.over4) chips.push(`<i class="o4" title="고가 위 ④ — 상한가 봉 고가를 먼저 찍고 ②줄로 내려온 자리(+20% 62.5% · 바로 온 ④ 55.0%)">고가 위 ④</i>`);
-  if(st.t_n) chips.push(`<i class="${st.t_n >= 4 ? 'big' : (st.t_n >= 2 ? 'mid' : 'small')}" title="테마 크기 — 같은 테마에서 최근 1주 안에 상한가 낸 종목 수(나 포함)">테마 ${st.t_n}종목</i>`);
-  if(j.ma240) chips.push(`<i class="${j.ma240 === '위' ? 'up' : 'dn'}" title="일봉 240선 ${j.ma240} — 상한가 전날 종가로 잰다">240 ${esc(j.ma240)}</i>`);
+  if(st.over4) chips.push(`<i class="o4" title="*****">고가 위 ④</i>`);
+  if(st.t_n) chips.push(`<i class="${st.t_n >= 4 ? 'big' : (st.t_n >= 2 ? 'mid' : 'small')}" title="*****">테마 ${st.t_n}종목</i>`);
+  if(j.ma240) chips.push(`<i class="${j.ma240 === '위' ? 'up' : 'dn'}" title="*****">240 ${esc(j.ma240)}</i>`);
   if(j.v1 != null) chips.push(j.v1 >= 1
-    ? `<i class="fire" title="첫 거래량 — 상한가 봉 거래량이 앞 125봉 최대의 ${j.v1}배">첫 거래량 ${j.v1}배</i>`
+    ? `<i class="fire" title="*****">첫 거래량 ${j.v1}배</i>`
     : `<i class="small" title="첫 거래량 아직 — 상한가 봉 거래량이 앞 125봉 최대의 ${j.v1 >= 0.1 ? j.v1 + '배' : '1할 미만'}">거래량 아직</i>`);
   if(j.grade && ['A', 'B', 'C'].includes(String(j.grade))){
     const g = String(j.grade);
-    chips.push(`<i class="g${g}" title="3번 첫 거래 판정 — A 월봉 터짐·3번 큼·지수 안 꺾임 / B 월봉 터짐·3번 큼 / C 3번 큼·월봉 아직">3번 ${g}</i>`);
+    chips.push(`<i class="g${g}" title="*****">3번 ${g}</i>`);
   }
   /* 주봉 48주·월봉 12개월 첫 거래량 — 예전 주봉·월봉 칸의 핵심을 카드 한 줄로 옮겼다(2026-11-23 지시 #12042) */
   if(j.vw) chips.push(j.vw === '터짐'
-    ? `<i class="fire" title="주봉 첫 거래량 — 3번 봉이 든 주의 누적 거래량이 앞 48주 최대를 뚫었다">주봉 터짐</i>`
-    : `<i class="small" title="주봉 첫 거래량 아직 — 3번 봉이 든 주 거래량이 앞 48주 최대에 못 미친다">주봉 아직</i>`);
+    ? `<i class="fire" title="*****">주봉 터짐</i>`
+    : `<i class="small" title="*****">주봉 아직</i>`);
   if(j.wvol) chips.push(j.wvol === '터짐'
-    ? `<i class="fire" title="월봉 첫 거래량 — 3번 봉이 든 달의 누적 거래량이 앞 6개월 최대를 뚫었다">월봉 터짐</i>`
-    : `<i class="small" title="월봉 첫 거래량 아직 — 3번 봉이 든 달 거래량이 앞 6개월 최대에 못 미친다">월봉 아직</i>`);
-  /* 분홍 ↑ — 240·448선 아래 바닥에서 5·20·33·전환·기준선을 한꺼번에 넘어선 양봉이 최근 5거래일
-     안에 떴을 때만 보이는 보조 배지(2026-11-21 지시). 기존 A/B/C 결정문은 그대로 둔다. */
-  if(st.pink_arrow_date) chips.push(`<i class="pk" title="형광↑(분홍↑) — 240·448선 아래 바닥에서 5·20·33일선과 전환선(9)·기준선(26)을 한꺼번에 넘어선 양봉">형광↑ ${mmdd(st.pink_arrow_date)}</i>`);
-  /* 📰 뉴스 부각 — 이 종목이 속한 테마가 오늘 각 매체 메인 뉴스에 불린 테마 (2026-11-22) */
+    ? `<i class="fire" title="*****">월봉 터짐</i>`
+    : `<i class="small" title="*****">월봉 아직</i>`);
+  /* ***** */
+  if(st.pink_arrow_date) chips.push(`<i class="pk" title="*****">형광↑ ${mmdd(st.pink_arrow_date)}</i>`);
+  /* ***** */
   const nw = st.news || null;
   if(nw && nw.issue) chips.push(`<i class="nw" title="${esc(nw.issue)} — ${Number(nw.presses || 1)}곳 · ${Number(nw.articles || 1)}건">📰 뉴스 부각</i>`);
   const jl = chips.length ? `<div class="hp-judge">${chips.join('')}</div>` : '';
@@ -3117,8 +3082,7 @@ function newsStrip(){
     + `</div>`;
 }
 
-/* 테마의 대장주(상한가들) — 테마달력(12개월)에서 같은 테마의 상한가 종목을 최근 순으로 4개까지.
-   달력이 아직 안 풀렸으면 오늘 목록의 상한가 날짜(d0)로 대신한다. */
+/* ***** */
 function themeLeaders(t){
   const nm = String((t && t.name) || '').trim();
   const got = [];
@@ -3158,7 +3122,7 @@ async function renderPick(){
       return;
     }
   }
-  /* 오늘 픽 보드(테마별) — 장전 · 장중 · 장후를 테마로 묶어 본다 (2026-11-26) */
+  /* ***** */
   if(Array.isArray(hotPick.boards)){
     box.innerHTML = pickBoardHead(hotPick)
       + hotPick.boards.map(b => pickBoardHtml(b, 'theme')).join('');
@@ -3170,13 +3134,12 @@ async function renderPick(){
   const themes = hotPick.themes || [];
   const cnt = hotPick.counts || {};
   const mkt = hotPick.market || {};
-  /* 유형 C(9단계 하락 멈춤·10단계 재출발 대기)는 2026-11-24 지시로 실전 주 추적에서 떼어
-     🔒 레이더 '9·10단계 재부각 대기'로 넘겼다 — 실전은 1~8단계 A·B 타점만 본다. */
+  /* ***** */
   const cwaitAll = all.filter(s => s.t === 'C');
   const core = all.filter(s => s.state !== '관망' && s.t !== 'C');
   const watch = all.filter(s => s.state === '관망' && s.t !== 'C');
   const cntOf = f => (f === 'watch' ? watch : core).filter(s => pickPass(s, f)).length;
-  /* 테마 추적 — 4·5단계(기준선 매수·전고 돌파)가 주 추적 대상. 2·3·6~8단계도 빼지 않고 뒤에 둔다. */
+  /* ***** */
   const trackN = core.filter(isTrack).length;
   const FLT = [['all', '전체'], ['track', '주 추적 4·5'], ['g45', '4→5'],
                ['A', '유형 A'], ['B', '유형 B']];
@@ -3200,16 +3163,13 @@ async function renderPick(){
                   : `<span>→ 업종 흐름 배지로 판단</span>`)
       + `</div>`;
   }
-  /* 단계 → 테마 → 줄 (2026-11-23 지시 #12090)
-     4단계 · 5단계 · 9단계 · 10단계 … 순서로 묶고, 그 안에 테마명 + 대장주(상한가들) + 이슈 요약을 함께 세운다. */
-  const STAGE_DESC = {1:'상한가', 2:'눌림 · 핫바 대기', 3:'반등', 4:'사는 자리',
-                      5:'전고 돌파', 6:'분출', 7:'분출 · 보유', 8:'물량 정리',
-                      9:'바닥 멈춤', 10:'재점화'};
-  /* 단계 3구분 — 2026-11-24 지시. 3·4 = 매수 / 5·6·7 = 유지(보유) /
-     8 = 마지막 분출 자리라 매도(분할 또는 올매도) / 9·10 = 대기(📡 레이더). */
+  /* ***** */
+  const STAGE_DESC = {1:'*****', 2:'*****', 3:'*****', 4:'*****', 5:'*****',
+                      6:'*****', 7:'*****', 8:'*****', 9:'*****', 10:'*****'};
+  /* ***** */
   const STG_GROUP = {3:{t:'매수', c:'buy'}, 4:{t:'매수', c:'buy'},
                      5:{t:'유지', c:'hold'}, 6:{t:'유지', c:'hold'}, 7:{t:'유지', c:'hold'},
-                     8:{t:'매도(분할·올매도)', c:'sell'},
+                     8:{t:'매도', c:'sell'},
                      9:{t:'대기', c:'wait'}, 10:{t:'대기', c:'wait'}};
   const themeOf = {};
   themes.forEach(t => (t.stocks || []).forEach(s => { themeOf[String(s.code)] = t; }));
@@ -3266,28 +3226,19 @@ async function renderPick(){
   /* 🔒 레이더 대기 — 유형 C는 여기서 끌어내리고 이름만 보여 준다(레이더 탭에서 자세히) */
   const cwBlock = cwaitAll.length
     ? `<div class="hp-cw"><div class="hp-cwh"><b>⏳ 레이더 대기 · 유형 C ${cwaitAll.length}종목</b>`
-      + `<span>9단계 하락 멈춤·10단계 재출발은 <b>📡 레이더</b>에서 봅니다 — 실전은 1~8단계 A·B 타점만</span>`
+      + `<span>*****</span>`
       + `<button type="button" id="hpCwGo">레이더로 바로가기 ▸</button></div>`
       + `<div class="hp-cwl">${cwaitAll.map(s => `<span class="cwi">${esc(s.name)}<i>${esc(s.stage_txt || '')}</i></span>`).join('')}</div>`
       + `</div>`
     : '';
   box.innerHTML = `<div class="hm-flt" id="hpFlt">${flt}</div>
     ${newsStrip()}
-    <div class="hp-guide">테마 추적 — <b>3·4단계 매수</b> · <b>5·6·7단계 유지(보유)</b> · <b>8단계 매도(분할·올매도)</b> · <b>9·10단계 대기(📡 레이더)</b> — 그중 <b>4·5단계</b>(기준선 매수·전고 돌파)를 주 추적 대상으로 맨 앞에 · <b>④ 배지</b> = 빠른 ④(상한가 뒤 25일 안) / 고가 위 ④</div>
+    <div class="hp-guide" id="hpGuide">${M('hotGuide')}</div>
     ${mktLine}
     ${head}
     ${body}
     ${cwBlock}
-    <p class="hm-note"><b>단계</b> = <b>3·4단계 매수</b> → <b>5·6·7단계 유지(보유)</b> → <b>8단계 매도(분할 또는 올매도)</b> · <b>9·10단계는 대기(📡 레이더)</b><br>
-    <b>기준선</b> = ① 상한가 → ② 하락 음봉 → ③ 윗꼬리 긴 반등 양봉이 나온 뒤 ② 저점에 긋는 그림 줄. 더 높은 자리에서 다시 ②③이 나오면 <b>그 ②③ 아래로 갱신</b>(한싹 11-17→11-18) · 아직 없으면 선을 긋지 않는다 · 줄까지 다시 내려오면 4번 추가매수<br>
-    <b>3번 첫 거래 판정</b> = A 월봉 터짐·3번 큼·지수 안 꺾임 / B 월봉 터짐·3번 큼 / C 3번 큼·월봉 아직 — D(3번 작음)는 사지 않는 자리라 <b>목록에서 빼요</b><br>
-    <b>주봉·월봉 첫 거래량</b> = 3번 봉이 든 <b>주가 앞 48주 최대</b>·<b>달이 앞 6개월 최대</b>를 뚫었는지 — 예전 주봉·월봉 칸의 기준을 테마 추적 카드에 그대로 옮겼다<br>
-    <b>첫 단추</b> = 테마 크기(같은 테마에서 최근 1주 안에 상한가 낸 종목 수·나 포함) · 240선 위/아래(상한가 전날 종가) · 첫 거래량(상한가 봉 거래량 ÷ 앞 125봉 최대)<br>
-    <b>4→5 황금자리</b> = 2번 줄 사수 + 상자 2회 이상 왕복 + 거래량 ${r.vol4 || 0.7}배 이하 마른 음봉(4단계), 또는 그 음봉 바로 뒤 윗선 돌파 당일<br>
-    <b>240선 흐름</b> = 240선 위에서 테마가 서면 한두 달 바짝 하고 빠지는 자리 — 끝자리 추격 대신, 240선 아래로 다시 흘러 바닥에서 멈추면 9단계(바닥 멈춤 = 9단계 매수)로 본다 — <b>9·10단계는 유형 C라 📡 레이더 대기실로 넘겼다</b><br>
-    <b>9단계 멈춤</b> = 분출 뒤 ${Math.round(Math.abs(r.c_dd || 0.28) * 100)}% 이상 빠진 자리에서 15봉 폭 ${Math.round((r.c_rng || 0.18) * 100)}% 안 + 거래량 ${r.c_vol || 0.5}배 이하<br>
-    <b>관망</b> = 지수가 약세(당일 ${flt2.weak_day || -2}% 이하 또는 5일선&lt;20일선)인 날, 지수와 같이 꺾여 밀린 종목 — 지수보다 ${flt2.elite_gap || 2.5}%p 이상 덜 빠지고 앞쪽·2번 줄 +${flt2.base_margin || 5}% 위이거나 업종이 호재/바닥으로 버텨야 (매수)<br>
-    <b>업종</b> = 네이버 업종지수 흐름 호재(빨강)·바닥(노랑)·약세(파랑) · <b>테마</b> = theme_db 테마에 있는 종목만 · <b>앞/뒤</b> = 주봉 240선·월봉 120선 기준 · 종목을 누르면 차트(일봉 170봉) — 차트 위 <b>일봉·주봉·월봉</b> 버튼으로 주기를 바꿔 본다</p>`;
+    <p class="hm-note" id="hmNote">${M('hotNote')}</p>`;
   const wb = $('#hpWbtn'), wp = $('#hpWatch');
   const cwGo = $('#hpCwGo');
   if(cwGo) cwGo.onclick = () => switchTab('radar');
@@ -3299,17 +3250,7 @@ async function renderPick(){
   cfCheck(true);
 }
 
-/* ---------------- 형광↑ 알림 — 오늘 형광↑(분홍↑) 화살이 뜬 종목 ----------------
-   2026-11-23 지시(#12104 · #12128 · #12146 · #12173)로 다시 만들었다.
-    ① 본인만 — 잠금이 풀린(visOn()) 상태에서만 뜬다. 공개·잠금 화면에는 절대 못 뜬다.
-    ② 오늘 화살 — ㉮ 실전 일봉·테마 추적 차트에 ▲가 뜬 종목 ㉯ 테마달력 칩에 ↑가 붙은 종목
-       ㉰ 10단계 카드에 형광↑ 날짜가 붙은 종목을 한 목록으로 합친다(같은 종목은 하나로).
-       그래서 **차트에 화살이 뜬 종목은 팝업에도 반드시 있다** (같은 기준: 240·448선 아래
-       + 상한가 뒤 15거래일 이상 식은 자리 — brain/tools/pink_arrow.py dates_cooled).
-    ③ 계속 보게 — [닫기]를 눌러도 오늘 숨기지 않는다. 앱을 열거나 새로고침할 때마다,
-       ⟳ 새로고침·5분 자동 갱신으로 새 자료가 들어올 때마다 다시 뜬다(같은 목록은 한 번만).
-       닫아도 상단 [형광↑ N] 버튼으로 언제든 다시 연다.
-    ④ 종목 칸은 간결하게 — 날짜 · 종목명 · 테마명 · 이슈요약만 적는다(조건·설명은 쓰지 않는다). */
+/* ***** */
 let cfLast = null;               /* 마지막으로 그린 알림 목록 — 차트를 닫을 때 이 목록으로 돌아간다 */
 let cfSig = '';                  /* 마지막으로 자동으로 띄운 목록의 서명(기준일+종목) — 같은 목록은 다시 안 띄운다 */
 let reopenCfAfterChart = false;  /* 지금 열린 차트가 팝업에서 연 것인가 */
@@ -3324,8 +3265,7 @@ function cfToday(){
 function cfThemeShort(nm){
   return String(nm || '').split(' — ')[0].split(' (')[0].trim();
 }
-/* 이슈요약을 한 줄로 — 앞머리 테마·종목명을 떼고 첫 문장만, 길면 90자에서 자른다.
-   (2026-11-23 지시 #12173 — 종목 칸은 날짜·테마명·종목명·이슈요약만, 간결하게) */
+/* ***** */
 function cfBrief(name, txt){
   let t = String(txt || '').replace(/\s+/g, ' ').trim();
   if(!t) return '';
@@ -3338,21 +3278,10 @@ function cfBrief(name, txt){
   if(t.length > 90) t = t.slice(0, 88).replace(/[\s,·]+$/, '') + '…';
   return t;
 }
-/* ---------------- 종합 알림 팝업(3칸) — 2026-11-24 지시
-   형광↑(오늘 화살)만 입구로 받으면 테마 DB·10단계·핫바 적중 종목이 빠진다.
-   세 칸으로 나눠 세운다(자료는 비공개 생성기 → data/popup.json 잠금):
-     🎯 실전 매수 적중 — 일봉 핫바 3·4번 / 10단계 3·4단계 매수 중 테마 무리(동반)·빠른 ④(25일 안)·
-                          고가 위 ④·깊이 -50%↓·4단계 형광↑ 하나 이상 + 20일 평균 10억↑
-     📡 레이더 길목   — 상한가 전 앞쪽 깊은 바닥(-50%↓ · 10억↑, 테마 DB·오늘 뉴스) + 유형 C 9단계 대기
-     🟢 형광↑ 정예    — ★ 3단계 / ○ 유지 5~7(-50%↓ · 10억↑) / ◆ 동반 20일(10억↑)
-                          / △ 10단계 이후(10억↑) / 관찰 B(-50%↓ · 10억↑, 최대 10개)
-   8단계는 매도(분할·올매도), 2·9단계는 기다림 자리라 매수 칸에 세우지 않는다.
-   표시는 2026-11-24 밤 지시로 한 줄만 — 구분 배지(3번 / 4번 / 레이더 / 9단계 / ★ 3단계 / 관찰) · 종목명 · 테마명.
-   배지 여러 개(빠른 ④·고가 위 ④·동반·깊은 바닥·20일 대금)·날짜·이슈 요약은 화면에 쓰지 않는다. */
+/* ***** */
 const CF_ORD = {star:0, circ:1, diam:2, tri:3, obs:4};
 const CF_OBS_MAX = 10;
-/* 2026-11-26 — 팝업도 오늘 찍은 픽을 세 칸으로 나춰 보여 준다(실전에 남긴 그 픽).
-   사유 긴 문장은 팝업에 쓰지 않고 "[장전픽] 종목명 · 테마" 한 줄로만 적는다. */
+/* ***** */
 const CF_SEC = [
   {key:'buy',   ico:'🌅', name:'장전픽', note:'기준 전일 종가'},
   {key:'radar', ico:'⚡', name:'장중픽', note:'기준 포착가'},
@@ -3378,7 +3307,7 @@ async function ensurePopup(){
   })();
   return popupLoading;
 }
-/* 한 종목의 형광↑ 등급 — 위 조건 그대로. 등급이 없으면 null(팝업에 안 세운다) */
+/* ***** */
 function cfGradeOf(s){
   const ago = (s.lu_ago == null) ? null : Number(s.lu_ago);
   const dd = (s.dd == null) ? null : Number(s.dd);
@@ -3462,9 +3391,7 @@ function cfGradeTxt(s){
   if(s.grade === 'obs') return '관찰';
   return '';
 }
-/* 화면 구분 배지 하나 — 2026-11-24 밤 "너무 많이 적어서 단순하게" 지시로 종목마다 이 하나만 붙인다.
-   3번·4번 = 일봉 핫바 매수 자리(10단계 3·4단계도 같은 자리라 3번·4번으로 묶는다 — 루닛·피앤에스로보틱스도 4번).
-   레이더 칸은 9단계 대기 → `9단계`, 상한가 전 앞쪽 바닥 → `레이더`. 형광↑ 칸은 등급 글자 그대로. */
+/* ***** */
 function cfKBadge(s){
   if(s.kind === 'buy' && s.label){
     /* 2026-11-24 보완 1번 — 재무·공시 위험(18-7)이 걸린 자리를 한눈에:
@@ -3571,7 +3498,7 @@ function cfSignature(list){
   const today = cfToday();
   return today + '|' + (list || []).map(s => s.code || s.name).sort().join(',');
 }
-/* 종목 한 줄 — [구분] 종목명 · 테마명. 배지 여러 개·날짜·이슈 요약은 쓰지 않는다(탭하면 일봉 차트). */
+/* ***** */
 function cfItemHtml(s){
   const seen = cfSeen.has(String(s.code || ''));
   const attr = s.code
@@ -3597,7 +3524,7 @@ function cfShow(list){
   }
   if(box){
     if(sec){
-      /* 3칸 — 🎯 매수 적중 → 📡 레이더 길목 → 🟢 형광↑ 정예. 빈 칸은 제목만 한 줄로 남긴다 */
+      /* ***** */
       box.innerHTML = CF_SEC.map(c => {
         const rows = sec[c.key] || [];
         if((c.key === 'pink' || c.key === 'after') && !rows.length) return '';
@@ -3681,7 +3608,7 @@ async function cfReload(deep){
   cfCheck(!deep);                 /* 수동 ⟳ 이면 같은 목록이라도 다시 띄운다 */
   cfPaintAgain();
 }
-/* 형광↑ 다시보기 — 팝업을 닫은 뒤에도 실전·테마달력 위 버튼으로 언제든 다시 연다 */
+/* ***** */
 function cfCount(){
   const n = cfList().length;
   if(n) return n;
@@ -3726,7 +3653,7 @@ function cfReopen(){
   if(ok) ok.addEventListener('click', cfHide);   /* [닫기] — 오늘 숨기지 않는다. 다음에 열 때 또 뜬다 */
   if(x) x.addEventListener('click', cfHide);
   ov.addEventListener('click', e => { if(e.target === ov) cfHide(); });
-  /* 다시보기 버튼(실전·테마달력 위 형광↑ N) — 닫은 뒤에도 언제든 다시 */
+  /* ***** */
   document.querySelectorAll('[data-cf-again]').forEach(b => b.addEventListener('click', cfOpenAgain));
   /* 종목을 누르면 차트가 열리고, 차트를 닫으면 이 목록이 그대로 다시 뜬다(2026-11-22 지시 #11160) */
   if(box){
@@ -3753,21 +3680,11 @@ function cfReopen(){
   }
 })();
 
-/* ---------------- 핫바 카드 → 차트 모달 (일봉 · 주봉 · 월봉) ----------------
-   hotbar.json 의 candles 로 그린다 — 일봉 1·2·3·4는 45봉 안팎, 주봉 1·2·3은 52주봉,
-   월봉 1·2·3은 30개월봉. 이평선은 그리지 않고(2026-11-18 지시), 1번 봉 시가를 '기준선' 선명한 실선으로,
-   주봉·월봉은 돌파를 재는 기준 거래량(48주·12개월 최대)을 거래량 칸에 점선으로 같이 보여 준다.
-   터치하면 그 봉의 시·고·저·종·등락률·거래량이 나온다. */
+/* ***** */
 const PERIOD = {day:{t:'일봉', n:'일'}, week:{t:'주봉', n:'주'}, month:{t:'월봉', n:'월'}};
 function periodOf(s){ return (s && PERIOD[s.period]) ? s.period : 'day'; }
 
-/* ---------------- 차트 안 주기 전환 (일봉 · 주봉 · 월봉) ----------------
-   2026-11-23 지시 #12008 — 실전 일봉 카드·테마 추적 차트에서 주봉·월봉까지 같은 창에서 본다.
-   봉을 고르는 순서
-     ① 카드·차트 자료에 실린 실봉(s.w_candles · s.m_candles — 주봉 52주·월봉 30개월)
-     ② 비밀 실전 자료의 주봉·월봉 카드에 같은 종목이 있으면 그 봉
-     ③ 없으면 일봉 캔들에서 주(월~금 ISO 주)·월(YYYY-MM) 단위로 시/고/저/종·거래량을 합쳐 만든다
-   기준선·상한가 ▼·형광 ▲·단계 날짜는 일봉 날짜라 그 주·달 봉으로 옮겨 찍는다. */
+/* ***** */
 let chartSet = null, chartBase = null;
 const CH_W = 360, CH_H = 292, CH_X0 = 6, CH_X1 = 326;
 const CH_PY0 = 26, CH_PY1 = 196, CH_VY0 = 216, CH_VY1 = 252;
@@ -3997,8 +3914,7 @@ function chartSvgHtml(s){
   hi += span * 0.07; lo -= span * 0.07;
   if(lo < 0) lo = 0;      /* 가격은 0 아래로 안 내려간다 — 위아래 여백이 넓으면 축에 음수가 찍혔다(11.23) */
   const Y = v => CH_PY1 - (v - lo) / (hi - lo) * (CH_PY1 - CH_PY0);
-  /* 봉 폭·자리 — 신규상장처럼 봉이 1~몇 개뿐인 종목도 125봉 틀을 깨지 않게.
-     봉 하나가 차트 폭을 다 차지하지 않도록 폭을 26px 로 제한하고, 봉은 가운데로 모은다. */
+  /* ***** */
   const slot = Math.min((CH_X1 - CH_X0) / n, 26);
   const left = CH_X0 + ((CH_X1 - CH_X0) - slot * n) / 2;
   const bw = Math.max(2.2, slot * 0.62);
@@ -4022,7 +3938,7 @@ function chartSvgHtml(s){
     const h = Math.max(1, c[5] / vmax * vh);
     g += `<rect x="${(x - bw / 2).toFixed(1)}" y="${(CH_VY1 - h).toFixed(1)}" width="${bw.toFixed(1)}" height="${h.toFixed(1)}" fill="${col}" opacity=".5"/>`;
   });
-  /* 이동평균선 5·10·20·60 — 얇은 색선. 봉 뒤에 깔아 선이 차례로 선 자리와 눌림이 한눈에 보이게 */
+  /* ***** */
   if(MAS.length){
     MAS.forEach(([k, col]) => {
       let d = '';
@@ -4070,13 +3986,9 @@ function chartSvgHtml(s){
     g += `<rect x="${CH_X1 - tw2 - 1}" y="${(yv - 10.5).toFixed(1)}" width="${tw2.toFixed(1)}" height="9.5" rx="2" fill="rgba(11,17,32,.85)"/>`;
     g += `<text x="${CH_X1 - 2}" y="${(yv - 3).toFixed(1)}" font-size="7.6" font-weight="700" fill="#9fc0ff" text-anchor="end">${tv}</text>`;
   }
-  /* 2026-11-22 지시 #11175 — 캔들 위 ①·②·③·④ 동그라미 번호는 더 그리지 않는다.
-     차트에는 기준선 한 줄 · 노란 상한가 ▼(위) · 형광 ▲(아래)만 남긴다. */
+  /* ***** */
 
-  /* 상한가 봉 위 노란 화살표 ▼ (2026-11-21 지시) · 형광 ▲ (후보 G — 240·448선 아래 바닥에서
-     이평선을 한꺼번에 넘어선 양봉). 2026-11-23: 주봉·월봉으로 바꿔 봐도 그 주·달 안에 상한가(1번)와
-     형광 날이 있으면 같은 자리에 찍는다. 비밀 실전 차트 전부 + 잠금이 풀린 본인이 여는 차트
-     (테마달력·형광↑ 팝업에서 연 공개 일봉 125봉 포함)에 그린다 — 잠긴 지인 화면에는 그리지 않는다. */
+  /* ***** */
   const arrowOn = !plain || visOn();
   if(arrowOn){
     const arrowDown = i => {
@@ -4224,19 +4136,14 @@ function skyLegendHtml(s){
   return `<span><i class="cm sky">${m.label}</i>${fmtWon(m.v)}</span>`;
 }
 
-/* ---------------- 차트 아래 '오늘 팝업·근거' 요약 (2026-11-24 v110 지시) ----------------
-   그 자리는 예전에 위 '봉 읽기' 줄과 똑같은 5·10·20·60일선 값과, 차트에 그리지도 않는
-   '5>10>20>60 선이 차례로 선 자리' 문구가 차지하고 있었다. 그 자리를
-   '이 종목이 오늘 왜 떴나'로 바꾼다 — 차트 보다 말고 팝업으로 돌아갈 일이 없게.
-   ⚠ popup·hotbar·10단계는 모두 비밀 자료다. 잠금이 풀린 본인 차트에서만 만들고,
-     잠긴 지인 화면(공개 뉴스·테마달력에서 연 차트)에는 한 글자도 내보내지 않는다. */
+/* ***** */
 function evMd(d){ return d ? mmdd(d) : ''; }
 function evCut(t, n){
   t = String(t || '').replace(/\s+/g, ' ').trim();
   n = n || 64;
   return t.length > n ? t.slice(0, n - 1).replace(/[\s,·]+$/, '') + '…' : t;
 }
-/* 10단계 자료(hotbar_monthly.json)에서 이 종목 한 칸 — 기준일이 다르면 쓰지 않는다 */
+/* ***** */
 function tenOf(code, today){
   const d = hotPick;
   if(!d || !code) return null;
@@ -4256,7 +4163,7 @@ function chartTodayHtml(s){
   let theme = '', lu = '', base = 0, basePct = null, baseSrc = '';
   let riskLv = '', riskFlags = [], riskTxt = '', riskSeen = false, popRisk = null;
 
-  /* ① 오늘 팝업(3칸) — 매수 / 레이더 / 형광↑ 중 하나에 오늘 올랐으면 그 구분·등급·근거 */
+  /* ***** */
   const P = popupData;
   if(P && P.sections && (!today || !P.base_date || String(P.base_date) === today)){
     const buy = (P.sections.buy || []).find(x => String(x.code) === code);
@@ -4284,7 +4191,7 @@ function chartTodayHtml(s){
     }
   }
 
-  /* ② 10단계 — 오늘 자리(단계·상태). 10단계 차트로 열었으면 머리에 단계·유형이 이미 있어 사유만 */
+  /* ***** */
   if(ten){
     const stTxt = `${ten.stage_txt || ((ten.stage || '') + '단계')}${ten.state ? ' · ' + ten.state : ''}`;
     const why = (ten.state === '관망') ? evCut(ten.filter_note || ten.why || '') : '';
@@ -4304,7 +4211,7 @@ function chartTodayHtml(s){
     }
   }
 
-  /* ③ 테마·기준선·최근 상한가 — 같은 주기 핫바 카드 → 일봉 카드 → 지금 차트 순서 */
+  /* ***** */
   const p = periodOf(s);
   const hbSame = hotbarStock(code, p);
   const hbAny = hbSame || hotbarStock(code, 'day');
@@ -4348,9 +4255,7 @@ function chartLegendHtml(s){
   const p = periodOf(s), pd = PERIOD[p];
   const ev = chartTodayHtml(s);        /* 오늘 팝업·근거 요약 — 잠금이 풀린 본인만. 있으면 기준선은 그쪽에 적힌다 */
   if(s.plain){
-    /* 공개 일봉 125봉 — 시세·거래량과 범례. 5·10·20·60일선 값은 위 '봉 읽기' 줄에 이미 있고
-       (2026-11-24 v110 지시로 중복 삭제), 차트에 그리지 않는 '5>10>20>60' 문구도 뺐다.
-       기준선·단계 번호 같은 개인 자는 하나도 그리지 않는다. */
+    /* ***** */
     const cs = s.candles || [];
     const parts = [`<span>${pd.t} ${cs.length}봉 · 종가와 거래량</span>`];
     if(p === 'day') parts.push('<span style="color:#fde047">▼ 상한가</span>');
@@ -4382,8 +4287,7 @@ function chartLegendHtml(s){
     parts.push(`<span><i class="${cls} lbl">${esc(extra || '이후')}</i>${barName(s, sd[k])}${p === 'week' ? ' 주' : ''}</span>`);
   });
   if(s.mas){
-    /* 매수선별 일봉 — 5·10·20·60일선 값은 위 '봉 읽기' 줄에 이미 있어 여기서 뺐다(2026-11-24 v110).
-       기준선 값도 아래 '오늘 팝업·근거' 요약이 잰 위치(%까지)와 함께 적는다. */
+    /* ***** */
     const skMas = skyLegendHtml(s);           /* 하늘색 240일선 지금 값 (2026-11-23) */
     if(skMas) parts.push(skMas);
     if(!ev) parts.push(`<span><i class="cb">기준선</i>${fmtWon(s.base_open || 0)}원</span>`);
@@ -4392,14 +4296,14 @@ function chartLegendHtml(s){
     parts.push(chartDayNote(s));
     return ev + parts.join('');
   }
-  /* 그림 기준선(② 눌림 저점) — ③ 반등 양봉이 나온 뒤에만 긋는다(2026-11-21 지시) */
+  /* ***** */
   const skLine = skyLegendHtml(s);
   if(skLine) parts.push(skLine);
   if(ev){
     /* 기준선 값은 아래 요약 줄에 위치(% 포함)와 함께 적힌다 */
   }else if(s.line) parts.push(`<span><i class="cb">기준선</i>${fmtWon(s.line)}원</span>`);
   else if(s.base_open) parts.push(`<span><i class="cb">기준선</i>${fmtWon(s.base_open)}원</span>`);
-  else parts.push(`<span style="color:#7e8aa0">기준선은 반등 양봉이 나온 뒤에 긋는다</span>`);
+  else parts.push(`<span style="color:#7e8aa0">*****</span>`);
   if(s.ref_vol){
     const rvU = p === 'week' ? '주' : '개월';
     const rvWin = s.ref_bars || (p === 'week' ? 48 : (p === 'month' ? 12 : 6));
@@ -4426,14 +4330,11 @@ function chartPosHtml(s){
   const cl = s.cl ? '<span class="cl">선뭉침</span>'
            : '<span class="cl wait">선뭉침·불씨전</span>';
   const nums = (s.cl_sp == null) ? '주봉 240주 자료 없음'
-    : `선 간격 ${s.cl_sp}% · 하단 ${s.cl_pos}% · 거래량 240주 최대의 ${s.cl_vol}배`;
+    : `*****`;
   return `<div class="hd"><b>주봉 240주</b>${cl}<span class="cp-n">${esc(nums)}</span></div>`;
 }
 
-/* 고점 대비 눌림 — 2026-11-22 지시 #11360
-   자료에 이미 잰 값(peak_dd = 상한가(1번) 뒤 최고 고가 대비 마지막 종가)이 있으면 그대로 쓰고,
-   없으면 차트 봉의 고가 중 상한가 날짜(s.lu_date/d0) 이후 최고가와 마지막 종가로 잰다.
-   둘 다 없으면 1년 고점 대비(dd)로 버틴다. */
+/* ***** */
 function dropFromPeak(s){
   if(!s) return null;
   const cs = s.candles || [];
@@ -4595,12 +4496,7 @@ function chartPoint(e){
   }
 }
 
-/* ---------------- 다른 메뉴의 종목 → 공개 일봉 125봉 차트 ----------------
-   뉴스·상한가·테마달력·레이더는 누구나 보는 공개 화면이다. 여기서 종목을 누르면
-   공개 시세만 담은 data/day125.json(종목별 일봉 125봉)으로 일봉 차트를 그리고,
-   그 위에 5·10·20·60일 이동평균선을 깐다(2026-11-21 지시: 주봉 52주 → 일봉 125봉 통일).
-   기준선·1~10단계·앞쪽/뒷쪽·유형·점수 같은 개인 자는 하나도 그리지 않는다.
-   비밀 핫바가 잠겨 있어도, 열려 있어도 이 차트는 같은 공개 자료만 본다. */
+/* ***** */
 let dayDoc = null, dayLoading = null;
 /* 2026-11-26 — 먼저 받는 작은 판(data/day125_hot.json, 화면에 뜨는 종목만).
    전체 day125.json 은 8MB라 종목을 누를 때마다 전부 기다리면 느리고 느린 회선에서는 실패한다.
@@ -4613,11 +4509,8 @@ async function ensureDayHot(){
   if(dayHotLoading) return dayHotLoading;
   dayHotLoading = (async () => {
     try{
-      const res = await fetch('data/day125_hot.json?_=' + Date.now(), {cache:'no-store'});
-      if(res.ok){
-        const d = await res.json();
-        if(d && d.stocks && Object.keys(d.stocks).length) dayHot = d;
-      }
+      const d = await encGet('data/day125_hot.json');
+      if(d && d.stocks && Object.keys(d.stocks).length) dayHot = d;
     }catch(e){}
     dayHotLoading = null;
     return dayHot;
@@ -4631,36 +4524,15 @@ async function ensureDay(){
   dayLoading = (async () => {
     await ensureDayHot();               /* ① 화면에 뜨는 종목만 담은 작은 판부터 */
     try{
-      const res = await fetch('data/day125.json?_=' + Date.now(), {cache:'no-store'});
-      if(res.ok){
-        dayDoc = await res.json();
-        try{
-          /* 저장본은 125봉 시세만 — 240선·주봉·월봉 배열은 파일만 키우므로 뺀다(오프라인 대체용) */
-          const lean = {dates: dayDoc.dates, days: dayDoc.days, names: dayDoc.names, stocks: {}};
-          Object.keys(dayDoc.stocks || {}).forEach(c => {
-            const st = dayDoc.stocks[c];
-            lean.stocks[c] = {n: st.n, b: st.b, o0: st.o0, x: st.x};
-          });
-          localStorage.setItem(DAY_CODE_KEY, JSON.stringify(lean));
-        }catch(e){}
-      }
+      dayDoc = await encGet('data/day125.json');
     }catch(e){ dayDoc = null; }
-    if(!dayDoc){
-      try{ dayDoc = JSON.parse(localStorage.getItem(DAY_CODE_KEY) || 'null'); }catch(e){}
-    }
     dayLoading = null;
     return dayDoc;
   })();
   return dayLoading;
 }
 
-/* 한 종목의 형광↑ 날짜 모으기 — 테마달력·형광↑ 팝업에서 연 공개 일봉 125봉 차트에도
-   차트 안 형광 ▲ 를 찍으려면 그 종목의 형광 날짜가 필요하다(2026-11-23 지시 "차트는 형광화살이 없는데").
-   공개 day125.json 에는 없으므로 비밀 실전 자료에서 모은다.
-     ① 핫바 일봉 카드의 pink(형광 날짜) — 있으면 그대로
-     ② 10단계(매수선별) 카드의 pink
-     ③ 테마달력 종목 칩의 pinkDate(기준일 당일 것)
-   **잠금이 풀려 있을 때만** 돌려준다 — 잠긴 지인 화면에는 형광↑ 날짜를 절대 넘기지 않는다. */
+/* ***** */
 function pinkDatesOf(code){
   code = String(code || '');
   if(!code || !visOn()) return [];
@@ -4683,8 +4555,7 @@ function pinkDatesOf(code){
   return [...set].sort();
 }
 
-/* 종목 하나의 봉 — 날짜는 한 벌(dates)에 있고, 종목은 그 안의 자리(o0 / x)만 갖는다.
-   작은 판(dayHot)에 있는 종목이 먼저 열린다 — 전체 자료가 없어도 차트가 바로 뜨다. */
+/* ***** */
 function dayItem(code, name){
   const c = String(code);
   for(const doc of [dayDoc, dayHot]){
@@ -4731,18 +4602,13 @@ async function openDayChart(code, name){
   await ensureDay();
   it = dayItem(code, name);
   if(it){ openChart(it); return; }
-  /* 안전망 — 공개 125봉 자료에 아직 없는 종목도 잠금이 풀린 본인 화면이면 차트를 연다.
-     형광↑ 알림 팝업에는 비밀 핫바에만 형광↑가 뜬 종목이 오는데, 그 종목이 테마달력·상한가에 없으면
-     공개 자료에 봉이 없어 "이 종목 일봉 시세가 아직 없습니다"로 막혔다(2026-11-23 피앤에스로보틱스).
-     같은 종목의 비밀 핫바·10단계 차트로 열어 준다 — 잠긴 지인 화면에는 절대 쓰지 않는다. */
+  /* ***** */
   const fb = await hotFallbackItem(code, name);
   if(fb){ openChart(fb); return; }
   toast('이 종목 일봉 시세가 아직 없습니다 — 다음 자동 갱신 때 채워집니다');
 }
 
-/* 공개 125봉 자료에 없는 종목의 대체 차트 — **잠금이 풀린 본인에게만** 찾는다.
-   ① 10단계(매수선별) 카드의 차트(일봉 170봉 + 주봉·월봉 실봉)
-   ② 비밀 핫바의 같은 종목 카드(일봉 → 주봉 → 월봉 순서, 그 주기 봉이 있을 때) */
+/* ***** */
 async function hotFallbackItem(code, name){
   if(!visOn()) return null;
   code = String(code || '');
@@ -4764,7 +4630,7 @@ async function hotFallbackItem(code, name){
   return null;
 }
 
-/* 이름만 있는 자리(뉴스의 관련 종목)에서 코드를 찾는다 — 공개 화면에 이미 있는 목록만 본다 */
+/* ***** */
 function codeOfName(nm){
   nm = String(nm || '').trim();
   if(!nm) return '';
@@ -4787,7 +4653,7 @@ function codeOfName(nm){
   return '';
 }
 
-/* 다른 메뉴의 종목 이름·칩을 누르면 그 자리에서 일봉 125봉 차트가 열린다 */
+/* ***** */
 function bindStockChart(sel){
   const el = $(sel);
   if(!el) return;
@@ -4799,7 +4665,7 @@ function bindStockChart(sel){
     e.preventDefault();                 /* 안쪽 링크(기사)로 넘어가지 않게 먼저 막는다 */
     e.stopPropagation();
     if(code){ openDayChart(code, name); return; }
-    /* 이름만 있는 자리(관련 종목 칩) — 자료를 아직 안 받았으면 한 번 받아 보고 이름으로 다시 찾는다 */
+    /* ***** */
     ensureDayHot().then(() => {
       let c = codeOfName(name) || t.dataset.code;
       if(c){ openDayChart(c, name); return; }
@@ -4861,22 +4727,20 @@ function resAgg(list){
     avg: vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : null,
   };
 }
-/* 결과 카드 — **결과물만**. 종목명 · 기준가 → 현재가/종가 · 기준가 대비 -%/+%
-   2026-11-26 지시: "찍은 픽은 실전에 남기고 결과에는 결과물만" — 선정 사유 긴 문장은 결과 카드에서 뺐다.
-   showWhy=true 로 부르면(실전 보드) 종목 아래에 근거 한 줄을 함께 그린다. */
+/* ***** */
 function resCard(p, showWhy){
   const cls = resPctCls(p.pct);
   const code = String(p.code || '');
   const nm = esc(p.name || '');
   const mk = p.market ? `<span class="mk">${esc(p.market)}</span>` : '';
-  /* 장중픽 구분 — 1~5번째 핵심(core) · 6~10번째 추가(extra). 다른 갈래 픽에는 붙지 않는다 */
+  /* ***** */
   const tier = p.tier === 'core' ? '<span class="tier core">핵심</span>'
              : (p.tier === 'extra' ? '<span class="tier extra">추가</span>' : '');
   const st = p.status === '마감' ? '<span class="st">마감</span>'
            : (p.status === '대기' ? '<span class="st wait">대기</span>' : '<span class="st live">진행</span>');
   const stgN = Number(p.stage10 || 0);
   const stg = stgN >= 1 && stgN <= 10
-    ? `<span class="stg s${stgN}" title="${esc(p.stage_txt || (stgN + '단계'))}${p.stage_why ? ' — ' + esc(p.stage_why) : ''}">${stgN}단계</span>` : '';
+    ? `<span class="stg s${stgN}" title="*****">${stgN}단계</span>` : '';
   const refKind = esc(String(p.ref_kind || '기준가').split(' · ')[0]);
   const t = esc(p.pick_time || '');
   const why = (showWhy && p.reason) ? `<div class="res-why">${esc(p.reason)}</div>` : '';
@@ -5010,12 +4874,9 @@ async function load(manual){
   }
   const prevGen = state.data && state.data.generated_at;
   try{
-    const res = await fetch('data/news.json?_=' + Date.now(), {cache:'no-store'});
-    if(!res.ok) throw new Error('HTTP ' + res.status);
-    if(res.headers.get('x-news-cache') === '1') throw new Error('offline: saved copy');
-    const data = await res.json();
+    const data = await encGet('data/news.json');
+    if(!data) throw new Error('empty news');
     state.data = data;
-    try{ localStorage.setItem('newsradar_last', JSON.stringify(data)); }catch(e){}
     applyData(data);
     $('#liveTxt').textContent = 'LIVE';
     /* 형광↑ 알림 — 새 자료가 들어왔으니 오늘 목록이 바뀌었는지 보고 다시 띄운다(2026-11-23 지시 #12146) */
@@ -5030,10 +4891,7 @@ async function load(manual){
         : `ℹ️ 현재 최신 상태${t ? ' (' + t + ' 기준)' : ''}`);
     }
   }catch(err){
-    let cached = null;
-    try{ cached = JSON.parse(localStorage.getItem('newsradar_last')||'null'); }catch(e){}
-    if(cached && !state.data){ state.data = cached; applyData(cached); $('#liveTxt').textContent = '저장본'; }
-    else if(!state.data){
+    if(!state.data){
       $('#issueList').innerHTML = `<div class="empty">뉴스를 불러오지 못했습니다.<br>잠시 후 새로고침(⟳)을 눌러 주세요.</div>`;
     }
     if(manual) toast('⚠️ 새로고침 실패 — 잠시 후 다시 시도');
@@ -5090,7 +4948,7 @@ $('#issueList').addEventListener('click', e => {
   if(ex) ex.textContent = open ? '▴' : '▾';
 });
 $('#btnRefresh').addEventListener('click', () => load(true));
-/* 상한가 카드: 요약 전문 + 기사 제목 펼치기 (뉴스 칸 · 테마달력 '오늘 상한가' 칸 공통) */
+/* ***** */
 ['#upperList', '#calUpperList'].forEach(sel => {
   const box = $(sel);
   if(!box) return;
@@ -5144,7 +5002,8 @@ $('#calMaster').addEventListener('click', async e => {
     state.month = mon.dataset.msmonth;
     state.calKind = '동반테마';
     await renderCalendar();
-    $('#calMonthTitle')?.scrollIntoView({block:'center'});
+    const cmt = $('#calMonthTitle');
+    if(cmt) cmt.scrollIntoView({block:'center'});
     return;
   }
   const h = e.target.closest('.th-head');
@@ -5228,13 +5087,10 @@ $('#hotBody').addEventListener('keydown', e => {
   const st = hotbarStock(row.dataset.code, hotbarSec);
   if(st) openChart(st);
 });
-/* 다른 메뉴(뉴스·상한가·테마달력·레이더)의 종목 이름 → 기준선 없는 주봉 차트 */
+/* ***** */
 ['#calUpperList', '#calThemes', '#calMaster', '#radarList', '#issueList', '#newsThemeList', '#hotBody'].forEach(bindStockChart);
 
-/* ---------------- 뉴스 ↔ 테마달력 잇는 길 (2026-11-26) ----------------
-   뉴스 카드의 📅 테마 칩 → 테마달력의 그 테마 카드로
-   테마 카드의 "📰 이 테마 뉴스 보기" → 뉴스 탭을 그 테마·종목 기사만
-   둘 다 종목 칩(data-code)과 겹치지 않게 먼저 가로챈다. */
+/* ***** */
 document.addEventListener('click', e => {
   const ct = e.target.closest('[data-caltheme]');
   if(ct){
@@ -5304,11 +5160,7 @@ const topBtn = $('#top');
 addEventListener('scroll', () => topBtn.classList.toggle('show', scrollY > 600), {passive:true});
 topBtn.onclick = () => scrollTo({top:0, behavior:'smooth'});
 
-/* ---------------- 비밀 모드 (핫바 + 방문자 수, 관리자 전용) ----------------
-   2026-11-19: data/hotbar.json 을 AES-256-GCM(PBKDF2-SHA256)으로 잠갔다 — 공개 저장소를 열어도
-   종목·숫자가 보이지 않는다. 비밀코드는 이 파일(index.html)에 적지 않는다.
-   열기: 주소 끝에 ?me=비밀코드  또는  상단 LIVE 배지를 1.5초 안에 3번 연속 탭하면 코드를 묻는다.
-   한 번 열면 코드를 localStorage(nr_hot_code)에 남겨 다음부터 바로 열린다. 잠그려면 다시 3번 탭. */
+/* ***** */
 const VIS_KEY = 'nr_show_visitors', HOT_CODE_KEY = 'nr_hot_code', HOT_CACHE_KEY = 'newsradar_hotbar_sealed';
 const HOT_ITER = 100000;                 /* 잠글 때 쓴 PBKDF2 반복 횟수와 같아야 한다 */
 const visBadge = $('#visitors');
@@ -5348,8 +5200,7 @@ function hotPaint(){
     const view = $(sel);
     if(view) view.classList.toggle('locked', !on);
   });
-  /* 잠그면 매수선별·레이더 자료도 기억에서 지우고, 화면에 남은 자료도 바로 지운다.
-     테마달력은 공개라 지우지 않는다(2026-11-24 지시). */
+  /* ***** */
   if(!on){
     hotPick = null; hotPickLoading = null; pickFilter = 'all';
     picksData = null; picksSealed = null; picksLoading = null; state.resMonth = null; state.resOpen.clear();
@@ -5682,7 +5533,7 @@ function instHelp(){
     }else{
       h = '<ol class="inst-st">'
         + '<li>크롬·엣지 주소창 오른쪽의 <b>설치</b> 아이콘을 누릅니다</li>'
-        + '<li><b>설치</b>를 고르면 바탕화면·앱 목록에 뉴스레이더가 생깁니다</li></ol>'
+        + '<li><b>설치</b>를 고르면 바탕화면·앱 목록에 바로가기가 생깁니다</li></ol>'
         + '<p class="inst-tip">휴대폰에서는 크롬으로 열면 <b>📲 앱 설치</b> 줄이 화면 위에 바로 뜹니다.</p>';
     }
     body.innerHTML = h;
@@ -5732,7 +5583,7 @@ function instHelp(){
     deferredInstall = null;
     hideInstallBar(true);
     const inb = $('#inappBar'); if(inb) inb.hidden = true;
-    toast('설치 완료 · 홈 화면에서 뉴스레이더를 열어 보세요');
+    toast('설치 완료 · 홈 화면에서 열어 보세요');
   });
 
   if(isStandalone()){ hideInappBar(false); hideInstallBar(false); return; }   /* 이미 앱으로 열렸다 */
@@ -5764,11 +5615,32 @@ if('serviceWorker' in navigator){
 }
 
 /* 시작 탭 (주소 끝에 #radar 처럼 붙이면 그 탭으로 열린다) */
-let startTab = (location.hash||'').replace('#','');
-switchTab(TABS.includes(startTab) ? startTab : 'news', true);
-load(false);
-/* 레이더 등은 뉴스와 별개로 먼저 받아 두고, 뉴스가 갱신될 때마다 다시 켜짐을 살펴본다 */
-ensureRadar().then(() => updateRadarDot());
+const startTab = (location.hash||'').replace('#','');
+/* 기기에 남은 평문 저장본은 지운다 — 자료는 늘 잠금본으로만 오간다 */
+try{ ['newsradar_last','newsradar_cal','newsradar_day125','newsradar_sched'].forEach(k => localStorage.removeItem(k)); }catch(e){}
+
+/* 잠금 화면 — 코드를 넣어야만 시작한다. 한 번 넣은 코드는 이 기기에 남겨 다음부터 바로 연다. */
+(function(){
+  const inp = $('#gateCode'), go = $('#gateGo'), err = $('#gateErr');
+  let busy = false;
+  async function tryOpen(){
+    if(busy) return;
+    const code = String((inp && inp.value) || '').trim();
+    if(!code){ try{ inp.focus(); }catch(e){} return; }
+    busy = true; if(err) err.hidden = true; if(go) go.disabled = true;
+    const ok = await gateSubmit(code);
+    busy = false; if(go) go.disabled = false;
+    if(ok){ if(inp) inp.value = ''; }
+    else { if(err) err.hidden = false; try{ inp.select(); }catch(e){} }
+  }
+  if(go) go.addEventListener('click', tryOpen);
+  if(inp) inp.addEventListener('keydown', e => { if(e.key === 'Enter'){ e.preventDefault(); tryOpen(); } });
+  /* 먼저 넣어 둔 코드가 있으면 조용히 열어 본다(틀렸으면 잠금 화면 그대로) */
+  const had = (() => { try{ return localStorage.getItem('nr_gate') === '1'; }catch(e){ return false; } })();
+  const saved = (() => { try{ return savedCode(); }catch(e){ return ''; } })();
+  if(had && saved) gateSubmit(saved).then(ok => { if(!ok && inp){ try{ inp.focus(); }catch(e){} } });
+  else if(inp){ try{ inp.focus(); }catch(e){} }
+})();
 </script>
 </body>
 </html>

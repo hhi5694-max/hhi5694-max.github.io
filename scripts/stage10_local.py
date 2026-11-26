@@ -1,50 +1,24 @@
 #!/usr/bin/env python3
-"""1~10단계 자체 판정 — 우리 자료(data/day125.json + data/calendar.json)만으로 계산한다.
-
-머스크 님 지시(2026-11-26): "1~10단계 자체 판정 구현을 마무리하라."
-진화론 님 패키지의 stage10_core(10년 전수조사 엔진)는 우리에게 없으므로, 같은 뜻을
-우리 125봉 일봉으로 다시 적었다. 단계의 뜻은 핫바 10단계와 같다.
-
-  1~2단계  상한가(닻)가 방금 났다 — 초기 분출 (1=오늘, 2=1~2봉 전)      → 사고 보는 자리
-  3단계    닻 뒤 상자(눌림 없이 버팀)                                   → 매수 준비
-  4단계    닻 뒤 -8~-40% 눌림 뒤 20일선 회복 — 기준선 매수 자리          → 매수
-  5단계    닻 고점 돌파 직후                                            → 보유
-  6단계    돌파 뒤 분출(닻 대비 +20% 이상)                              → 보유
-  7단계    전고 부근에서 숨 고르기(20일선 위)                           → 보유
-  8단계    단기 과열 — 분할 매도 자리(닻 대비 +45% 또는 20일선 +25% 이탈) → 매도
-  9단계    오래된 닻 뒤 큰 하락, 아직 20일선 아래 — 하락 멈춤 대기        → 대기
-  10단계   큰 하락 뒤 바닥 다지고 20일선 회복 — 재출발 대기              → 대기(레이더)
-
-쓰는 값 — 모두 125봉(오늘 포함) 안에서 잰다
-  닻(anchor)     최근 125봉 중 마지막 상한가 봉(고가/전일종가-1 ≥ 29%)
-  ago           닻이 몇 봉 전인지(오늘 = 0)
-  dd            오늘 종가 / 125봉 최고가 - 1  (화면에는 %로 보여 준다)
-  pos           125봉 범위 안에서 오늘 종가의 자리(0=최저, 1=최고)
-  val20         20봉 평균 거래대금(억원) — 형광↑ 조건과 같은 단위
-  ma20·ma60     20·60봉 종가 이동평균
-
-  python3 scripts/stage10_local.py --codes 005930,000660       # 몇 종목만 표로
-  python3 scripts/stage10_local.py --scan --limit 20           # 9·10단계 대기 목록
-  python3 scripts/stage10_local.py --codes 005930 --json out.json
-
-공개 시세(125봉)만 쓴다. 개인 매매 장부·기준선은 읽지 않는다.
-"""
+"""*****"""
 from __future__ import annotations
 
 import argparse
 import json
 import os
+import sys
 from datetime import datetime, timedelta, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-DATA = os.path.join(os.path.dirname(HERE), "data")
+sys.path.insert(0, HERE)
+import nr_data as NR  # noqa: E402
+DATA = NR.plain_dir()
 KST = timezone(timedelta(hours=9))
 
-UPPER_RATE = 0.29        # 고가/전일 종가-1 이보다 크면 그날 상한가(상한가는 30% 안팎)
-PULL_MIN = -0.40         # 닻 고점 대비 이보다 더 빠지면 '눌림'이 아니라 '무너짐'
-PULL_MAX = -0.08         # 이보다 덜 빠지면 눌림이 아니라 '버팀'
-HOT_GAIN = 0.45          # 닻 종가 대비 이만큼 오르면 과열(8단계)
-HOT_MA = 0.25            # 20일선에서 이만큼 떨어져 있으면 과열(8단계)
+UPPER_RATE = 0.29        # *****
+PULL_MIN = -0.40         # *****
+PULL_MAX = -0.08         # *****
+HOT_GAIN = 0.45          # *****
+HOT_MA = 0.25            # *****
 DEEP_DD = -0.40          # 125봉 최고 대비 이만큼 빠졌으면 '바닥권'
 STAGE_LABEL = {
     1: "1단계 · 상한가 당일", 2: "2단계 · 초기 분출", 3: "3단계 · 상자 버팀",
@@ -111,7 +85,7 @@ def judge(bars: list[list]) -> dict:
     pos = ((close - lo125) / (hi125 - lo125)) if hi125 > lo125 else 0.5
     val20 = sum(c * v for c, v in zip(closes[-20:], vols[-20:])) / min(20, n) / 1e8
 
-    # 닻 — 마지막 상한가 봉
+    # *****
     anchor = None
     for i in range(1, n):
         prev = closes[i - 1]

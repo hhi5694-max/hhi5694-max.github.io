@@ -1,41 +1,5 @@
 #!/usr/bin/env python3
-"""장전픽 · 장중픽 자동 추출 — 진화론 님 스냅샷이 아니라 **우리 자료**로 매일 뽑아 누적한다.
-
-쓰는 자료(모두 공개 시세·공개 기사)
-  data/day125.json     종목별 125봉 일봉(바닥·횡보·눌림목·상한가 이력 계산)
-  data/calendar.json   최근 1년 테마달력(테마 보유 여부·최근 상한가)
-  data/news.json       오늘 뉴스·테마 순위·오늘 상한가(이슈 한 줄·매체 수)
-  네이버 증권 공개 API  현재가·시장경보·관리종목/거래정지, 오늘 상승률 순위, 1분봉(포착 시각)
-
-모드
-  --mode pre     평일 08:30~08:55. 직전 거래일 기준 장전픽 3~5종목. 이미 확정된 당일 장전픽은 덮어쓰지 않고
-                 가격·등락률만 갱신한다(픽은 그날 아침의 판단을 그대로 둔다).
-  --mode intra   평일 09:05~15:25. 오늘 실시간 상한가·급등 테마 선도주 중 아직 없는 종목을 장중픽으로 추가
-                 (하루 최대 10개 — 1~5번째 tier='core'(핵심), 6~10번째 tier='extra'(추가 후보))하고,
-                 기존 픽의 현재가·등락률을 갱신한다.
-  --mode after   장 마감 뒤(15:30 이후). 오늘 종가·상한가·테마·마감 뒤 뉴스로 **내일 볼 장후픽 3~5종목**을
-                 뽑는다(기준가 = 오늘 종가). 이미 뽑혀 있으면 덮어쓰지 않고 가격만 갱신한다.
-                 --mode update 도 15:30 이후에는 장후픽을 함께 만든다.
-  --mode update  장 마감 뒤(15:45) 또는 매시간. 오늘 픽 전부의 현재가(마감 뒤엔 종가)와 등락률을 확정하고,
-                 마감 뒤면 장후픽까지 채운다.
-
-불건전 제외
-  upper_rank.screen(관리종목·거래정지·투자경고/위험·우선주·SPAC·DR·자본잠식)과
-  upper_rank.news_screen(환기종목·감사의견·상폐·횡령/배임·회생/파산·자본잠식 기사)을 그대로 통과한 종목만 쓴다.
-
-저장
-  평문 장부(재빌드·누적용)  ../private-plain/picks_results.json   (저장소 밖 — 절대 커밋하지 않는다)
-  공개 파일(잠금)          data/picks_results.json  {enc,salt,iv,ct} — hotbar/radar 와 같은 AES-256-GCM
-  실전·레이더·종합 안내    data/hotbar.json · hotbar_monthly.json · radar.json · popup.json
-                           (build_boards.py 가 같은 장부에서 오늘 픽만 골라 다시 만든다 — 이전 날 픽은 남기지 않는다)
-
-  python3 scripts/build_picks.py --mode pre
-  python3 scripts/build_picks.py --mode intra
-  python3 scripts/build_picks.py --mode after
-  python3 scripts/build_picks.py --mode update
-  python3 scripts/build_picks.py --mode pre --dry-run       # 저장하지 않고 고른 종목만 보여 준다
-비밀코드는 --code · 환경변수 PICKS_PW · 파일 ../private-plain/.picks_code 순서로 읽는다(저장소에 적지 않는다).
-"""
+"""*****"""
 from __future__ import annotations
 
 import argparse
@@ -61,9 +25,11 @@ import upper_rank as UR  # noqa: E402  (불건전 필터·1분봉·일봉 파서
 
 KST = timezone(timedelta(hours=9))
 DATA = os.path.join(ROOT, "data")
-DAY125 = os.path.join(DATA, "day125.json")
-CAL = os.path.join(DATA, "calendar.json")
-NEWS = os.path.join(DATA, "news.json")
+sys.path.insert(0, HERE)
+import nr_data as NR  # noqa: E402
+DAY125 = NR.plain_path("day125.json")
+CAL = NR.plain_path("calendar.json")
+NEWS = NR.plain_path("news.json")
 OUT = os.path.join(DATA, "picks_results.json")
 PLAIN = os.path.join(os.path.dirname(ROOT), "private-plain", "picks_results.json")
 CODE_FILE = os.path.join(os.path.dirname(ROOT), "private-plain", ".picks_code")
@@ -78,21 +44,21 @@ RANK_REFERER = "https://stock.naver.com/market/stock/kr/stocklist/upper"
 STOCK_NEWS_API = "https://m.stock.naver.com/api/news/stock/{code}?pageSize=20&page=1"
 MARKETS = (("KOSPI", "코스피"), ("KOSDAQ", "코스닥"))
 
-# ---- 픽 규칙 문턱값 (upper_rank 의 바닥·횡보 기준과 같은 값을 쓴다)
-UPPER_RATE = UR.UPPER_RATE        # 29.0 — 그날 상한가로 볼 고가/전일종가 상승률
+# *****
+UPPER_RATE = UR.UPPER_RATE        # *****
 BOX_BARS = UR.BOX_BARS            # 60
 BOX_RANGE_MAX = UR.BOX_RANGE_MAX  # 80%
 BOTTOM_DD = UR.BOTTOM_DD          # -40%
 BOX_POS_MAX = UR.BOX_POS_MAX      # 0.35
-PRE_MIN, PRE_MAX = 3, 5           # 장전픽 3~5종목
-INTRA_MAX = 10                    # 장중픽 하루 최대 10종목
-INTRA_CORE = 5                    # 그중 1~5번째는 핵심 픽 · 6~10번째는 추가 후보
-AFTER_MIN, AFTER_MAX = 3, 5       # 장후픽 3~5종목 (내일 볼 자리)
-INTRA_SURGE = 8.0                 # 장중 '급등'으로 볼 등락률(%)
+PRE_MIN, PRE_MAX = 3, 5           # *****
+INTRA_MAX = 10                    # *****
+INTRA_CORE = 5                    # *****
+AFTER_MIN, AFTER_MAX = 3, 5       # *****
+INTRA_SURGE = 8.0                 # *****
 CAPTURE_SURGE = 5.0               # 1분봉에서 '포착'으로 보는 등락률(%) — 포착가를 잡는 기준
-PULLBACK_MAX_BARS = 60            # 최근 상한가 뒤 눌림목 — 상한가가 이 봉 수 안에 있어야 한다
-PULLBACK_DD = (-32.0, -3.0)       # 상한가 고점 대비 지금 위치(%)
-PULLBACK_VOL = 0.65               # 눌림 구간 거래량이 상한가 봉의 65% 이하
+PULLBACK_MAX_BARS = 60            # *****
+PULLBACK_DD = (-32.0, -3.0)       # *****
+PULLBACK_VOL = 0.65               # *****
 
 
 # ------------------------------------------------------------------ 작은 유틸
@@ -316,7 +282,7 @@ def rank_rows(size: int = 200) -> list:
 def load_day125() -> dict:
     d = read_json(DAY125, {}) or {}
     if not d.get("stocks"):
-        raise SystemExit("data/day125.json 이 없습니다 — 먼저 scripts/build_day125.py 를 실행하세요")
+        raise SystemExit("125봉 평문 사본이 없습니다 — 먼저 scripts/build_day125.py 를 실행하세요")
     return d
 
 
@@ -388,12 +354,12 @@ def base_metrics(bars: list, idx: int) -> dict:
     m["pct"] = round((close / prev_close - 1) * 100, 2) if prev_close else 0.0
     m["upper_ok"] = is_up(idx)
     m["value"] = int(bars[idx][3] * bars[idx][4])
-    # 바닥횡보 첫 상한가 조건
+    # *****
     m["bottom_first"] = bool(
         m["first_upper"] and m["bars"] >= UR.MIN_BARS_FOR_BASE
         and m["dd"] <= BOTTOM_DD and (m.get("box_range") or 999) <= BOX_RANGE_MAX
         and m["pos"] <= BOX_POS_MAX)
-    # 최근 상한가 뒤 건전 눌림목 — 상한가 고점 대비 -3~-32%, 거래량 마름, 20일선 위
+    # *****
     pull = None
     look_from = max(1, idx - PULLBACK_MAX_BARS)
     for i in range(idx, look_from - 1, -1):
@@ -560,7 +526,7 @@ def _leg_agg(rows: list) -> dict:
     down = sum(1 for v in vals if v < 0)
     return {
         "count": len(rows),
-        "priced": len(vals),                 # 결과(%)가 나온 건수 — 대기 중인 장후픽은 빠진다
+        "priced": len(vals),                 # *****
         "up": up, "down": down, "flat": len(vals) - up - down,
         "win_rate": round(up / len(vals) * 100, 1) if vals else None,
         "avg_pct": round(sum(vals) / len(vals), 2) if vals else None,
@@ -680,7 +646,7 @@ def refresh_prices(book: dict, date: str, day: dict, mark_closed: bool) -> int:
         p.setdefault("status", "대기")
         if p.get("status") == "대기":
             p["pct"] = None          # 오늘 종가가 기준 — 결과(%)는 다음 거래일에 붙는다
-    # 앞선 날의 장후픽 — 다음 거래일(오늘) 현재가로 따라간다
+    # *****
     for d in prior_days(book, date, 3):
         for p in (book["months"][d[:7]].get(d) or {}).get("aftermarket") or []:
             if p.get("status") == "마감":
@@ -694,7 +660,7 @@ def refresh_prices(book: dict, date: str, day: dict, mark_closed: bool) -> int:
     return n
 
 
-# ------------------------------------------------------------------ 장전픽
+# *****
 def tier_of(pos: int) -> str:
     """장중픽 몇 번째(1부터)인가 — 1~5 핵심('core') · 6~10 추가('extra')."""
     return "core" if pos <= INTRA_CORE else "extra"
@@ -827,17 +793,17 @@ def build_pre(book: dict, day: dict, cal: dict, news: dict, date: str, force: bo
     return picked
 
 
-# ------------------------------------------------------------------ 장중픽
+# *****
 def build_intra(book: dict, day: dict, cal: dict, news: dict, date: str, phase: str) -> list:
     rec = day_rec(book, date)
-    with_tiers(rec["intraday"])          # 오늘 먼저 잡힌 픽이 있으면 그 순서대로 tier 를 채워 둔다
+    with_tiers(rec["intraday"])          # *****
     by_name, by_code = calendar_index(cal or {})
     nidx = news_index(news or {})
     rows = rank_rows(200)
     have = {str(p.get("code")) for k in ("premarket", "intraday") for p in rec[k]}
     print(f"[info] 상승률 순위 {len(rows)}종목 · 이미 픽 {len(have)}종목")
 
-    # 테마별로 몇 종목이 함께 오르는지 — 오늘 급등 테마의 세기
+    # *****
     theme_count: dict = {}
     for r in rows:
         if (r.get("pct") or 0) < 5:
@@ -902,7 +868,7 @@ def build_intra(book: dict, day: dict, cal: dict, news: dict, date: str, phase: 
         if n_hit and n_hit.get("title"):
             why.append(f"뉴스 「{n_hit['title'][:30]}」 {n_hit.get('presses', 1)}곳")
         rec["intraday"].append({
-            "tier": tier_of(len(rec["intraday"]) + 1),     # 1~5 핵심 · 6~10 추가
+            "tier": tier_of(len(rec["intraday"]) + 1),     # *****
             "code": r["code"], "name": r["name"], "market": r.get("market") or "",
             "theme": short_theme(th) or "개별",
             "reason": " · ".join(why)[:160],
@@ -920,7 +886,7 @@ def build_intra(book: dict, day: dict, cal: dict, news: dict, date: str, phase: 
     return rec["intraday"]
 
 
-# ------------------------------------------------------------------ 장후픽
+# *****
 def after_reason(name: str, theme: str, m: dict, row: dict, theme_n: int,
                  news_hit: dict | None) -> str:
     """장후픽 근거 한 줄 — 오늘 실제로 잰 값만 적는다(내일 볼 자리)."""
@@ -980,14 +946,14 @@ def build_after(book: dict, day: dict, cal: dict, news: dict, date: str, force: 
         bars, ds = bars_until(day, r["code"], date)
         if len(bars) < 21:
             continue
-        # 오늘 봉이 아직 차트에 없으면(장 마감 직후 갱신 전) 상한가·눌림목 판정은 쓰지 않고
-        # 어제까지의 고점 거리만 근거로 삼는다 — 어제 상한가를 오늘로 잘못 적지 않게.
+        # *****
+        # *****
         today_bar = bool(ds) and ds[-1] == date
         m = base_metrics(bars, len(bars) - 1) if today_bar else {}
         if not today_bar:
             m = {"dd": base_metrics(bars, len(bars) - 1).get("dd")}
         th = r.get("_theme") or ""
-        if th.startswith("재료 미확인"):          # '재료 미확인·수급 단독 상한가'는 테마가 아니다
+        if th.startswith("재료 미확인"):          # *****
             th = ""
         if not th:
             hit = news_hit_for(nidx, r["name"])
@@ -1101,10 +1067,10 @@ def main() -> None:
         refresh_prices(book, date, day, mark_closed=False)
     else:
         refresh_prices(book, date, day, mark_closed=(phase in ("after", "closed")))
-        if phase == "after":                 # 15:30 이후 update 회차는 장후픽까지 만든다
+        if phase == "after":                 # *****
             build_after(book, day, cal, news, date, False)
 
-    # 상태 확정 — 지난 날짜 중 아직 '진행'인 픽은 마감으로 정리하고 종가를 넣는다
+    # *****
     for month, days in book["months"].items():
         for d, rec in days.items():
             if d >= date:
@@ -1147,8 +1113,8 @@ def main() -> None:
         raise SystemExit("비밀코드가 없습니다 — --code · PICKS_PW · private-plain/.picks_code 중 하나가 필요합니다")
     write_json(args.out, seal(book, code))
     print(f"[ok] {args.plain} · {args.out} (잠금 완료)")
-    # 실전(실전 첫 칸·테마 칸) · 레이더 · 오늘 종합 안내도 같은 장부의 오늘 픽으로 다시 만든다
-    # — 이전 날 픽이 그 화면에 남지 않게 매 회차 같이 갈아 끼운다.
+    # *****
+    # *****
     try:
         import build_boards
         counts = build_boards.write_all(book, date, code)
@@ -1157,6 +1123,7 @@ def main() -> None:
     except Exception as e:  # noqa: BLE001
         print(f"[warn] 보드(hotbar·radar·popup) 갱신 실패: {e}", file=sys.stderr)
     ensure_day125(day, date)
+    NR.seal_all()
 
 
 if __name__ == "__main__":

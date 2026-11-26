@@ -1,22 +1,5 @@
 #!/usr/bin/env python3
-"""국내 증시 뉴스 수집기 — 네이버 뉴스 경제 섹션(증권/산업/금융/글로벌경제/경제일반)과
-네이버 뉴스 메인(언론사별 많이 본 뉴스 1~5위)에서 기사를 모아, 같은 이슈를 여러 매체가
-다룬 정도로 묶어 '오늘의 이슈 순위'를 만든다.
-
-함께 만드는 것:
-  · flash       — 네이버 금융 실시간 속보·증시 뉴스(최근 1시간, 최대 6건). 5분마다 갱신되는 속보 흐름으로,
-    화면 뉴스 탭의 30%를 차지한다. 각 속보에는 증시 영향 여부 판별과 대장주 배지가 붙는다.
-  · issues      — 같은 사건을 다룬 기사를 하나로 묶은 이슈 카드(대표 기사 + 관련 매체 링크).
-    매체 수가 많을수록 상위 순위, [속보]·긴급 기사는 최근 3시간 안일 때만 최상단
-    (아침 속보가 저녁까지 위에 붙박이로 남지 않게 시각을 함께 본다). 연예·가십·개인사 기사는 제외.
-  · leaders     — 기사에 직접 언급된 상장사 + 공개 테마별 상한가 주도 대장주 배지
-  · themes_rank — 테마별 이슈 수·최근 6시간 비중·대표 키워드·대장주와,
-    공개 뉴스 패턴만으로 계산한 '단기 불씨 / 중기 흐름' 힌트와 그 근거 수치
-  · upper_limits — 오늘(장 시작 전이면 직전 거래일) 상한가 종목과, 종목별로 '왜 상한가였는지'를
-    당일 보도에서 찾은 이슈 요약·대표 기사·테마 키워드
-
-외부 API 키 없이 표준 라이브러리만 사용한다 (GitHub Actions 러너에서 바로 실행 가능).
-"""
+"""*****"""
 
 from __future__ import annotations
 
@@ -36,9 +19,10 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 
-# 같은 폴더의 상한가 순위 모듈 — 불건전 기업 제외 · 테마 묶음 · 125봉 바닥 첫 상한가 · 뉴스↔달력 연결
+# *****
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import upper_rank  # noqa: E402
+import nr_data as NR  # noqa: E402  (평문 사본·잠금 공용)
 
 KST = timezone(timedelta(hours=9))
 
@@ -600,7 +584,7 @@ MARKET_TERMS = ("주가", "증시", "코스피", "코스닥", "종목", "상한�
                 "외국인", "기관", "공시", "실적", "영업이익", "수주", "공급계약", "목표주가",
                 "특징주", "테마주", "상장", "IPO", "인수", "지분", "배당", "공모주", "주주")
 
-# 증시 기사 판별용 강한 신호 (제목에 있으면 무조건 채택)
+# *****
 STRONG_MARKET = MARKET_TERMS + (
     "주식", "매수", "매도", "거래량", "시가총액", "공매도", "ETF", "선물", "옵션",
     "증권사", "리포트", "컨센서스", "어닝", "분기 실적", "3분기", "4분기", "영업익",
@@ -609,7 +593,7 @@ STRONG_MARKET = MARKET_TERMS + (
     "강세", "폭락", "폭등", "상승 마감", "하락 마감",
 )
 
-# 상장사·핵심 기업 이름 (이 이름 + 사업 동작이 함께 나오면 증시 기사로 본다)
+# *****
 COMPANIES = (
     "삼성전자", "SK하이닉스", "삼전닉스", "현대차", "기아", "LG에너지솔루션", "삼성SDI",
     "삼성바이오로직스", "셀트리온", "한화에어로스페이스", "현대로템", "두산에너빌리티",
@@ -696,7 +680,7 @@ def is_market_relevant(a: dict) -> bool:
 # 메인 랭킹에는 연예·건강·지역 행사·사건사고가 섞여 들어온다.
 # 증시·산업·기업·거시·금리·환율·정책/규제·지정학·수주·공급망에 닿는 기사만 남긴다.
 MAIN_STRONG = (
-    # 증시·수급
+    # *****
     "주가", "주식", "증시", "코스피", "코스닥", "지수", "상한가", "급등", "급락", "폭락",
     "폭등", "매수", "매도", "거래량", "외국인", "공매도", "시가총액", "ETF", "공모주", "IPO",
     "상장", "공시", "유상증자", "무상증자", "자사주", "배당", "목표가", "투자의견", "실적",
@@ -765,13 +749,13 @@ MAIN_DROP = (
     "징계", "탈당", "제명", "공천", "국정조사", "특검", "후보 추천", "입국 거부", "당내",
 )
 
-# 개인 사건·수사성 표현 (정책·산업 신호가 없으면 버린다)
+# *****
 CASE_WORDS = (
     "리트", "만점자", "수석", "수험생", "헌재", "헌법소원", "효력정지", "경찰", "검찰",
     "조사", "입건", "고소", "소송", "의혹", "예고글", "밈", "스토킹", "폭로", "자백",
     "사과", "재판", "구속", "합격", "강사", "일타",
 )
-# 정책·제도·산업 신호 (사건성 기사라도 이것이 있으면 산업·정책 뉴스로 본다)
+# *****
 POLICY_INDUSTRY = (
     "정부", "교육부", "대책", "규제", "법안", "국회", "장관", "총리", "대통령", "시행",
     "탐지", "보안", "기술", "산업", "통신", "전수검사", "앱", "개발", "제도", "당국",
@@ -865,10 +849,10 @@ POLICY_WEAK = (
     "공장", "증설", "교육", "학생", "대학", "고용", "창업", "벤처", "세제", "물가",
 )
 POLICY_SIGNAL = POLICY_STRONG + POLICY_WEAK
-# 개인사·인물 기사 표지 — 정책 신호가 없으면 시사 이슈로 넣지 않는다
+# *****
 CIVIC_DROP = ("이탈주민", "친생자", "병원비", "호소", "회고록", "근황", "투병", "별세", "부고",
               "유족", "빈소", "간병", "모금", "사연", "미담", "일화")
-# 정당·선거 내부 싸움만 다루는 말 — 정책 신호가 함께 없으면 뺀다
+# *****
 PARTY_ONLY = ("징계", "탈당", "제명", "공천", "국정조사", "특검", "당내", "계파", "지지율",
               "당대표", "원내대표", "윤리심판원", "의총", "비대위")
 
@@ -906,7 +890,7 @@ def is_issue_relevant(a: dict) -> bool:
 
 # --------------------------------------------------------------------------- 테마 DB 어휘
 # 공개 달력(data/calendar.json)의 테마명·종목명으로 '오늘 뉴스가 어느 테마에 바로 닿는지'를 센다.
-# (개인 룰·기준선·매수가는 쓰지 않는다 — 지인 공개 자료와 공개 기사만)
+# *****
 # 2026-11-22 달력을 잠그면서, 테마 이름만 담은 data/news_vocab.json 을 읽는다(load_theme_vocab).
 THEME_VOCAB: list = []
 _THEME_VOCAB_READY = False
@@ -956,6 +940,16 @@ def _vocab_from_rows(rows):
     return vocab
 
 
+def seal_public() -> None:
+    """수집이 끝나면 data/*.json 전체를 잠근다 — 평문은 private-plain/data 에만 남는다."""
+    try:
+        NR.seal_all()
+    except SystemExit:
+        raise
+    except Exception as e:  # noqa: BLE001
+        print(f"[warn] seal_all: {e}", file=sys.stderr)
+
+
 def load_theme_vocab():
     """테마 이름 어휘 → [(테마명, [(말, 가중치), ...])]. 없으면 빈 목록.
 
@@ -970,7 +964,7 @@ def load_theme_vocab():
     here = os.path.dirname(os.path.abspath(__file__))
     rows = []
     try:
-        v = json.load(open(os.path.join(here, "..", "data", "news_vocab.json"), encoding="utf-8"))
+        v = NR.load("news_vocab.json", {}) or {}
         for name in v.get("themes") or []:
             name = str(name or "").strip()
             if not name:
@@ -981,7 +975,7 @@ def load_theme_vocab():
         rows = []
     if not rows:
         try:
-            cal = json.load(open(os.path.join(here, "..", "data", "calendar.json"), encoding="utf-8"))
+            cal = NR.load("calendar.json", {}) or {}
         except Exception:  # noqa: BLE001
             return THEME_VOCAB
         if cal.get("enc"):          # 잠근 파일 — 암호문이라 읽을 수 없다(위 어휘 파일이 있어야 한다)
@@ -1040,7 +1034,7 @@ def theme_link(text: str, limit: int = 4) -> list:
 
 
 # 마스터 테마(153개) — data/master_themes.json. 테마마다 대장주·부대장주·3등주가 있고,
-#   종목 → 테마 역색인(code_index)이 함께 들어 있다. 뉴스·오늘 상한가 분류에 이 사전을 더한다.
+# *****
 MASTER_DOC: dict = {}
 _MASTER_READY = False
 _MASTER_STOCK_NAMES: list = []
@@ -1054,8 +1048,7 @@ def load_master() -> dict:
     _MASTER_READY = True
     here = os.path.dirname(os.path.abspath(__file__))
     try:
-        with open(os.path.join(here, "..", "data", "master_themes.json"), encoding="utf-8") as f:
-            d = json.load(f)
+        d = NR.load("master_themes.json", {}) or {}
         MASTER_DOC = d if isinstance(d, dict) and d.get("themes") else {}
     except Exception:  # noqa: BLE001
         MASTER_DOC = {}
@@ -1164,7 +1157,7 @@ def is_near_duplicate(t: str, seen: list, seen_tokens: list) -> bool:
     return False
 
 
-# --- 같은 사건을 다룬 속보 묶기 — 제목이 달라도 핵심 말이 같으면 한 사건이다(2026-11-22 지시 #11029).
+# *****
 #   '증안펀드' ↔ '증시안정펀드'처럼 줄인 말은 원말로 펴서 비교한다. 그래서 세 칸이 모두 같은 사건의
 #   다른 매체 기사로 채워지던 문제를 없앤다.
 FLASH_GENERIC = {
@@ -1441,7 +1434,7 @@ def update_history(old: dict, kept: list, now: datetime):
                      1 if any(w in full for w in STRUCT_WORDS) else 0,
                      1 if any(w in a.get("title", "") for w in BURST_WORDS) else 0])
 
-    # 너무 커지지 않게 오래된 기록부터 덜어낸다
+    # *****
     total = sum(len(v) for v in out.values())
     if total > HISTORY_MAX_ROWS:
         flat = [(r[1], tid, r) for tid, rows in out.items() for r in rows]
@@ -1479,7 +1472,7 @@ def build_themes_rank(kept: list, now: datetime, history: dict | None = None):
         hint_pool = pool if len(pool) >= len(arts) else flow_pool_from_articles(arts)
         day_n = len(hint_pool)
         day_presses = len({p[1] for p in hint_pool if p[1]})
-        # 표시 수치와 힌트 판정이 같은 24시간 기록을 쓰도록 맞춘다
+        # *****
         pool_times = [p[0] for p in hint_pool]
         n6 = sum(1 for t in pool_times if t >= now - 6 * HOUR)
         hot = sum(p[2] for p in hint_pool)
@@ -1507,8 +1500,8 @@ def build_themes_rank(kept: list, now: datetime, history: dict | None = None):
     return rows
 
 
-# --------------------------------------------------------------------------- 대장주 배지
-# 공개 시장에서 통상 쓰이는 테마별 '상한가 주도 대장주' 이름만 담는다(개인 DB·룰·매매 기준은 쓰지 않는다).
+# *****
+# *****
 # 종목명은 모두 국내 증시 상장사이며, 기사에 직접 언급된 회사를 먼저 보여준다.
 # 피해 기관 이름 안에 들어 있는 테마 키워드 — 이 글자로 전력·통신 테마 종목을 부르지 않게 먼저 가린다.
 #   예) '한국전력공사'의 '전력'이 전력설비 대장주(HD현대일렉트릭·LS일렉트릭)를 불렀다(2026-11-22 지시 #11051).
@@ -1903,7 +1896,7 @@ def collect_flash_news(now: datetime, extra: list | None = None, popular: list |
     grace = [r for r in rows if FLASH_FRESH_MIN < r["age_min"] <= FLASH_GRACE_MIN]
     older = [r for r in rows if r["age_min"] > FLASH_GRACE_MIN]
 
-    # 인기·확산 점수 — 많이 본 뉴스에 오른 기사, 여러 매체가 같이 쓴 사건이 위로
+    # *****
     pop_ids = {a.get("id"): (a.get("main_rank") or 9) for a in (popular or [])}
     pop_tokens = [title_tokens(a.get("title", "")) for a in (popular or [])]
     pool = fresh + grace + older
@@ -1945,7 +1938,7 @@ def collect_flash_news(now: datetime, extra: list | None = None, popular: list |
         near_top = [r for r in window if r["hot"] >= top - 1.5]
         return max(near_top, key=lambda r: r["time"])
 
-    for g in groups:  # 묶음 점수 = 대표의 인기·확산 점수 + 같은 사건을 다룬 매체가 늘어난 만큼
+    for g in groups:  # *****
         g.sort(key=lambda r: (-r["hot"], r["time"]))
         g[0]["_issue_hot"] = g[0]["hot"] + min(3.0, 0.7 * (len(g) - 1))
     groups.sort(key=lambda g: (-g[0]["_issue_hot"], -len(g), g[0]["time"]))
@@ -1986,7 +1979,7 @@ ISSUE_STOP = {
 MAX_ISSUES = 30          # 대시보드에 남길 이슈 카드 수(화면에는 앞 14건을 3:7 비율로 먼저 보여준다)
 MAX_PER_THEME = 3        # 한 테마가 목록을 독점하지 않도록 하는 상한
 MAX_RELATED = 3          # 카드에 접어 넣을 다른 매체 기사 수
-BREAKING_HOURS = 3       # 이 시간 안에 나온 [속보]만 최상단·속보 배지 (아침 속보가 저녁까지 붙박이되는 것을 막는다)
+BREAKING_HOURS = 3       # *****
 GOSSIP_SECTIONS = (106, 107)   # 네이버 기사 분류: 연예·스포츠
 
 # 이슈 묶음에서 너무 흔해 서로 다른 사건을 붙이는 말 ("AI" 하나로 연예 가십과 수능 기사가 붙었다)
@@ -2176,7 +2169,7 @@ def build_issues(cands: list, now: datetime):
                       "theme": hits[0][1] if hits else "",
                       "kw": hits[0][2] if hits else [],
                       "themes": [h[1] for h in hits[:3]]}
-        # 마스터 테마(153개) — 뉴스 카드에 붙여 화면이 🧩 배지로 보여 준다
+        # *****
         ml = master_link(text, limit=2)
         c["master_themes"] = [m[1] for m in ml]
         c["master_hits"] = [{"name": m[1], "score": m[0], "kw": m[2]} for m in ml]
@@ -2270,7 +2263,7 @@ def build_issues(cands: list, now: datetime):
 
     enrich_selected(pick_limited(cards))
 
-    # 연예·가십·개인사 카드는 이슈 순위에서 빼고(요약까지 본 뒤), 속보 배지를 정확한 시각으로 다시 판단
+    # *****
     kept_cards, gossip_dropped = [], []
     for c in cards:
         if is_gossip_card(c):
@@ -2310,9 +2303,9 @@ def build_issues(cands: list, now: datetime):
     return cards
 
 
-# --------------------------------------------------------------------------- 오늘 상한가
-# 네이버 증권 '실시간 랭킹(상승 정렬)' API에서 현재가가 상한가 가격에 있는 종목만 골라 오늘의 상한가 목록을 만든다.
-# 종목마다 네이버 종목 뉴스와 구글 뉴스 검색에서 당일 보도를 찾아 '왜 상한가였는지' 이슈 요약·대표 기사·테마 키워드를 붙인다.
+# *****
+# *****
+# *****
 # 공개 시장 데이터와 공개 기사만 쓰고, 개인 DB·매매 룰은 쓰지 않는다.
 UPPER_RANK_API = ("https://stock.naver.com/api/domestic/market/stock/default"
                   "?tradeType=KRX&marketType={market}&orderType=up&startIdx=0&pageSize=100")
@@ -2323,9 +2316,9 @@ STOCK_NEWS_API = "https://m.stock.naver.com/api/news/stock/{code}?pageSize=30&pa
 STOCK_NEWS_REFERER = "https://m.stock.naver.com/"
 GOOGLE_RSS_API = "https://news.google.com/rss/search?q={q}&hl=ko&gl=KR&ceid=KR:ko"
 UPPER_WORKERS = 6           # 종목별 뉴스 조회 동시 요청 수
-UPPER_MIN_RATE = 15.0       # 상한가는 가격대에 따라 29% 안팎 — 이보다 낮으면 상한가로 보지 않는다
+UPPER_MIN_RATE = 15.0       # *****
 
-# 상한가 종목의 이슈를 한 단어 테마로 붙이기 위한 공개 키워드 사전.
+# *****
 # 기사 제목·도입부에 실제로 나온 단어만 근거로 쓰고, 없으면 테마를 비워 둔다(추정 금지).
 UPPER_THEME_HINTS = (
     ("엔터·K콘텐츠", ("한한령", "엔터", "K팝", "케이팝", "드라마", "콘텐츠", "방송", "연예", "아이돌")),
@@ -2576,7 +2569,7 @@ def _pick_upper_issue(cands: list, name: str, base_dt: datetime):
         if in_body:
             score += 1
         if "상한가" in title:
-            score += 8   # 이 화면의 목적은 '왜 상한가인지' — 제목에 상한가가 있는 기사를 먼저 본다
+            score += 8   # *****
         if any(k in title for k in ("급등", "폭등", "가격제한폭", "上")):
             score += 2
         if "특징주" in title:
@@ -2664,13 +2657,13 @@ def build_upper_limits(now: datetime, pool: list | None = None, prev_upper: dict
 
     def work(stock):
         cands = naver_stock_news(stock["code"]) + google_news_rss(f'"{stock["name"]}" 상한가', "3d")
-        # 불건전 판정용 — 환기종목·감사의견·상폐·횡령·배임·회생·파산·자본잠식 기사를 따로 찾아 둔다
+        # *****
         screen_news = list(cands) + list(pool_c) + google_news_rss(
             f'"{stock["name"]}" (환기종목 OR 감사의견 OR 상장폐지 OR 횡령 OR 배임 OR 회생절차 OR 파산 OR 자본잠식)',
             "1y")
         best = _pick_upper_issue(cands, stock["name"], base_dt)
         if best is None:
-            # 상한가 표현이 없는 날에는 종목 이름만으로 한 번 더 찾는다
+            # *****
             extra = google_news_rss(f'"{stock["name"]}"', "2d")
             cands += extra
             screen_news += extra
@@ -2716,8 +2709,8 @@ def build_upper_limits(now: datetime, pool: list | None = None, prev_upper: dict
             "article_time": atime,
         })
 
-    # 2026-11-26 — (1) 불건전 기업 제외 (2) 테마 묶음·선도주 순위 (3) 125봉 바닥 첫 상한가 (4) 달력 연결
-    #   네트워크(분봉·일봉)가 막혀도 상한가 목록 자체는 그대로 내보낸다 — 실패한 종목만 판정을 비운다.
+    # *****
+    # *****
     #   도달 시각은 장중에 긁지 않는다 — 15:30 마감 뒤에만 1분봉으로 확정한다(2026-11-26 지시).
     groups, excluded = [], []
     try:
@@ -2774,7 +2767,7 @@ def build_upper_limits(now: datetime, pool: list | None = None, prev_upper: dict
 
 
 # --------------------------------------------------------------------------- 전광판(시장 분위기)
-# 헤더의 🇰🇷·🇺🇸 호재/혼조/악재는 기사 제목 단어가 아니라 **실제 지수 등락률**로 판정한다.
+# *****
 #   한국(kr): 코스피·코스닥 둘 다 하락이면 악재, 둘 다 상승이면 호재,
 #             방향이 엇갈리면 평균 -0.6% 이하 악재 / +0.6% 이상 호재 / 그 사이 혼조.
 #             (지수가 마이너스인데 뉴스 때문에 호재로 뒤집히지 않는다)
@@ -2979,8 +2972,8 @@ def build(out_path: str):
     if etc:
         themes.append({"id": "etc", "label": "기타", "color": "#9aa4b2", "count": etc})
 
-    # 오늘 상한가 — 종목별 당일 보도를 오늘 수집한 뉴스 카드에서도 한 번 더 찾는다
-    #   지난 실행의 상한가(장 마감 뒤 잰 도달 시각)를 이어 쓰려고 먼저 읽어 든다
+    # *****
+    # *****
     prev_upper = {}
     try:
         with open(out_path, encoding="utf-8") as f:
@@ -3052,11 +3045,12 @@ def build(out_path: str):
         print(f"[warn] news_themes: {e}", file=sys.stderr)
     print(f"[done] flash {len(flash)} / {len(kept)} issues / {payload['article_count']} articles -> {out_path}",
           file=sys.stderr)
+    seal_public()
     return payload
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default="data/news.json")
+    ap.add_argument("--out", default=NR.plain_path("news.json"))
     args = ap.parse_args()
     build(args.out)

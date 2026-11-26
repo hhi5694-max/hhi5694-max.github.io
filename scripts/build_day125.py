@@ -1,42 +1,5 @@
 #!/usr/bin/env python3
-"""공개 일봉 125봉 차트 자료 — 뉴스 · 상한가 · 테마달력 · 레이더에서 종목을 눌렀을 때 여는 차트.
-
-결과: data/day125.json  (평문 — 공개해도 되는 시세만)
-      종목코드 → 최근 125거래일 일봉(시·고·저·종·거래량) + 일봉 240선
-                + 최근 52주봉·30월봉과 그 장기선(주봉 240주선·월봉 120개월선)
-
-이 파일에는 개인 판단(기준선·1~10단계·유형·앞쪽/뒷쪽·핫바·점수)이 **하나도** 없다.
-비밀 핫바 잠금(비밀번호는 소스에 적지 않는다)과 무관하게, 공개 메뉴에서 누구나 볼 수 있는 시세만 담는다.
-
-2026-11-23 지시 "일봉 240선 주봉240선 월봉120선 넣어줘 하늘색":
-  차트에 봉과 나란히 장기선을 그으려면 125봉만으로는 모자란다 —
-    · 일봉 240선    = 240거래일 평균 → 일봉 420봉을 받는다(125봉 + 앞 240봉 + 여유)
-    · 주봉 240주선  = 240주 평균 → 네이버 주봉 300주를 받아 최근 52주분 값을 쓴다
-    · 월봉 120개월선 = 120개월(10년) 평균 → 네이버는 월봉을 120개월까지만 주므로
-      siseJson(2014~)으로 155개월쯤 받아 최근 30개월분 값을 쓴다(120개월 미만이면 None → 선 없음)
-  값은 봉과 한 칸씩 맞춘 정수 배열이다. 봉이 모자란 앞 구간은 null 이라 선을 안 긋는다.
-
-대상 종목 = 화면에서 눌러 차트를 여는 종목 전부
-  · data/calendar.json (테마달력 12개월)의 상한가 종목
-  · data/news.json upper_limits (오늘 상한가)
-  · data/radar.json (레이더) · data/popup.json (오늘 종합 알림) · data/hotbar.json · data/hotbar_monthly.json
-    — 이 넷은 잠금본({enc:1})이라 저장소 밖 평문 사본(아래 PLAIN_DIRS)이 있을 때만 종목을 읽는다.
-    종목코드만 싣고 이름·단계·판단은 싣지 않는다(비공개 자료는 잠긴 채로 둔다).
-  · 형광↑(분홍↑) 알림에 뜬 종목 — 달력 평문의 pink_stocks·pinkArrow + 핫바·10단계가 적어 둔
-    pink_today_*.json (2026-11-23 — 460940 피앤에스로보틱스가 팝업에서 '일봉 시세 없음'으로 막혔다)
-  · news.json 기사 leaders(관련 종목 이름) → 네이버 종목 자동완성(ac.stock.naver.com)으로 코드를 찾아 포함
-    (기사 관련 종목 칩을 눌러도 차트가 열리게)
-  · 이미 day125.json 에 들어 있는 종목은 계속 갱신한다(비공개 평문 없이 다시 만들어도 차트가 비지 않게)
-
-날짜는 한 벌(dates)만 담고 종목마다 그 안의 자리(o0 / x)만 적어 파일을 가볍게 유지한다.
-받지 못한 종목은 이미 있는 day125.json 의 봉을 그대로 둔다(차트가 비지 않게).
-
-사용
-  python3 scripts/build_day125.py                 # 받아서 갱신
-  python3 scripts/build_day125.py --days 125 --workers 16
-  python3 scripts/build_day125.py --min-age-min 180   # 180분 안에 만든 자료면 건너뛴다
-  python3 scripts/build_day125.py --max-codes 20      # 시험용
-"""
+"""*****"""
 from __future__ import annotations
 
 import argparse
@@ -53,7 +16,10 @@ from datetime import datetime, timedelta, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.dirname(HERE)
-DATA = os.path.join(SITE, "data")
+sys.path.insert(0, HERE)
+import nr_data as NR  # noqa: E402
+# 평문은 저장소 밖(private-plain/data)에서만 다루고, data/ 에는 잠근 본만 둔다.
+DATA = NR.ensure_plain_dir()
 OUT = os.path.join(DATA, "day125.json")
 # 저장소 밖 비공개 평문 폴더 — 잠근 자료(hotbar·hotbar_monthly·popup·radar)의 평문 사본을 두는 곳.
 #   이 폴더와 그 자료는 저장소에 절대 올리지 않는다. 비밀코드도 여기에 적지 않는다.
@@ -61,8 +27,8 @@ PLAIN_DIRS = tuple(d for d in (
     os.environ.get("NEWSRADAR_PLAIN_DIR", ""),
     os.path.join(os.path.dirname(SITE), "private-plain"),
 ) if d)
-# 오늘 형광↑(분홍↑) 종목의 평문 명단(저장소 밖) — 핫바·10단계를 만드는 쪽이 적어 둔다.
-#   형광↑ 판단 자체는 비밀 자료라 공개 저장소에 올리지 않고, 여기서는 '봉을 받을 코드'로만 쓴다.
+# *****
+# *****
 PINK_LISTS = ("pink_today_hotbar.json", "pink_today_pick.json", "pink_today_popup.json")
 KST = timezone(timedelta(hours=9))
 UA = {"User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15"}
@@ -223,7 +189,7 @@ def wanted_codes(keep: dict | None = None) -> tuple[list[str], dict[str, str], l
     for mt in (jload("master_themes.json").get("themes") or []):
         for s in (mt.get("stocks") or []):
             add(s.get("code"), s.get("stock") or s.get("name"))
-    # 형광↑ 알림 팝업에 뜬 종목도 차트가 열리게 — 달력 밖(핫바에만 있는) 형광↑ 종목까지 넣는다
+    # *****
     for code, name in pink_codes(cal):
         add(code, name)
     for m in cal.get("months") or []:
@@ -644,7 +610,7 @@ def main():
     os.replace(tmp, out_path)
 
     # 화면에 먼저 뜨는 종목만 담은 작은 판(day125_hot.json) — 종목을 누를 때 8MB 전부를 기다리지 않게.
-    #   오늘 상한가 · 오늘 뉴스 테마 종목 · 최근 60일에 상한가가 있던 달력 종목까지. 일봉+240선만 담는다.
+    # *****
     hot = public_hot_codes(as_of or today)
     hot_doc = {
         "generated_at": doc["generated_at"],
@@ -672,6 +638,7 @@ def main():
     print("  240일선 %d종목 · 주봉 %d종목 · 월봉 %d종목" % (ma_n, w_n, m_n), flush=True)
     print("  먼저 뜨는 종목 %d개 -> %s (%.0fKB)"
           % (len(hot_doc["stocks"]), hot_path, os.path.getsize(hot_path) / 1024), flush=True)
+    NR.seal_all()   # data/*.json 전체를 잠근다(평문은 private-plain/data)
 
 
 if __name__ == "__main__":
