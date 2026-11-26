@@ -1,44 +1,9 @@
 {
- "generated_at": "2026-11-26T15:49:23+09:00",
- "generated_at_kst": "2026.11.26 15:49",
- "news_updated_kst": "2026.11.26 15:49",
+ "generated_at": "2026-11-26T16:16:37+09:00",
+ "generated_at_kst": "2026.11.26 16:16",
+ "news_updated_kst": "2026.11.26 16:16",
  "note": "오늘 뉴스 이슈를 테마달력(calendar.json)의 테마·종목에 이어 붙인 목록 — 테마가 나오면 테마와 종목을 여기에 적어 두고, 화면에서는 종목을 눌러 125봉 차트를 연다.",
  "news_links": [
-  {
-   "theme": "반도체·HBM 메모리 대표주 (삼전·하이닉스·HBM 장비)",
-   "short": "반도체·HBM 메모리 대표주",
-   "kind": "동반테마",
-   "issue": "[속보] 코스피 '멸망의 날'? 삼성전자·SK하이닉스 장중 동반 마이너스 10%대 터치",
-   "issue_url": "https://n.news.naver.com/article/088/0001042239",
-   "presses": 11,
-   "presses_max": 11,
-   "articles": 33,
-   "kw": [
-    "SK하이닉스",
-    "삼성전자"
-   ],
-   "stocks": [
-    {
-     "name": "멜콘",
-     "code": "179880"
-    },
-    {
-     "name": "한미반도체",
-     "code": "042700"
-    },
-    {
-     "name": "테크윙",
-     "code": "089030"
-    },
-    {
-     "name": "SK하이닉스",
-     "code": "000660"
-    }
-   ],
-   "last_lu": "2026-10-27",
-   "more": [],
-   "upper_count": 0
-  },
   {
    "theme": "AI 시험 부정행위 대응·전파탐지/물리보안",
    "short": "AI 시험 부정행위 대응·전파탐지/물리보안",
@@ -47,7 +12,7 @@
    "issue_url": "https://n.news.naver.com/article/656/0000193616",
    "presses": 3,
    "presses_max": 3,
-   "articles": 6,
+   "articles": 3,
    "kw": [
     "수능"
    ],
@@ -66,29 +31,246 @@
     }
    ],
    "last_lu": "2026-01-27",
-   "more": [
+   "more": [],
+   "upper_count": 0
+  },
+  {
+   "theme": "K-온디바이스 AI 반도체 (정부 8,002억 프로젝트)",
+   "short": "K-온디바이스 AI 반도체",
+   "kind": "동반테마",
+   "issue": "[속보] 이 대통령 “7대 시드 프로젝트 속도 내야”…규제 혁신·금융 지원 주문",
+   "issue_url": "https://n.news.naver.com/article/022/0004178328",
+   "presses": 2,
+   "presses_max": 2,
+   "articles": 2,
+   "kw": [
+    "규제",
+    "대통령"
+   ],
+   "stocks": [
     {
-     "title": "복지부 \"의사·간호사 국시 일부 과목 만점자 증가, 부정행위 아냐\"",
-     "presses": 2,
-     "url": "https://www.ytn.co.kr/_ln/0103_20261126145412"
+     "name": "가온칩스",
+     "code": "399720"
     },
     {
-     "title": "토익 부정행위 대응 강화...\"안경 전수 검사\"",
-     "presses": 1,
-     "url": "https://www.ytn.co.kr/_ln/0103_20261126145935"
+     "name": "DSC인베스트먼트",
+     "code": "241520"
     }
    ],
+   "last_lu": "2026-07-09",
+   "more": [],
+   "upper_count": 0
+  },
+  {
+   "theme": "디지털자산·스테이블코인 (3차 상법개정·코인 법제화)",
+   "short": "디지털자산·스테이블코인",
+   "kind": "동반테마",
+   "issue": "세 번 밀린 네이버·두나무 결합…'거래소 대주주 지분 규제' 새 변수",
+   "issue_url": "https://n.news.naver.com/article/293/0000093877",
+   "presses": 2,
+   "presses_max": 2,
+   "articles": 2,
+   "kw": [
+    "지분",
+    "주주"
+   ],
+   "stocks": [
+    {
+     "name": "파라택시스이더리움",
+     "code": "290560"
+    },
+    {
+     "name": "아이티아이즈",
+     "code": "372800"
+    },
+    {
+     "name": "제주은행",
+     "code": "006220"
+    },
+    {
+     "name": "NHN KCP",
+     "code": "060250"
+    },
+    {
+     "name": "다날",
+     "code": "064260"
+    },
+    {
+     "name": "미투온",
+     "code": "201490"
+    }
+   ],
+   "last_lu": "2026-02-26",
+   "more": [],
+   "upper_count": 0
+  },
+  {
+   "theme": "탈모 치료·모발이식 (이재명 대통령 \"탈모는 생존\" 발언)",
+   "short": "탈모 치료·모발이식",
+   "kind": "동반테마",
+   "issue": "이기인 “李 분당집 판 돈 코스피 넣었다면 7억 손실…국민에 사과해야”",
+   "issue_url": "https://n.news.naver.com/article/666/0000133915",
+   "presses": 2,
+   "presses_max": 2,
+   "articles": 2,
+   "kw": [
+    "코스피"
+   ],
+   "stocks": [
+    {
+     "name": "현대약품",
+     "code": "004310"
+    },
+    {
+     "name": "메타랩스",
+     "code": "090370"
+    },
+    {
+     "name": "알리코제약",
+     "code": "260660"
+    },
+    {
+     "name": "위더스제약",
+     "code": "330350"
+    }
+   ],
+   "last_lu": "2025-12-17",
+   "more": [],
+   "upper_count": 0
+  },
+  {
+   "theme": "글로벌 신약 기술수출·임상 (릴리 3.8조·WHO 성분명 등재)",
+   "short": "글로벌 신약 기술수출·임상",
+   "kind": "동반테마",
+   "issue": "유한양행, 외부출신 김열홍 공동부대표로 발령···신약 개발 방점",
+   "issue_url": "https://n.news.naver.com/mnews/article/629/0000555970",
+   "presses": 1,
+   "presses_max": 1,
+   "articles": 1,
+   "kw": [
+    "신약",
+    "기술수출"
+   ],
+   "stocks": [
+    {
+     "name": "신테카바이오",
+     "code": "226330"
+    },
+    {
+     "name": "그린생명과학",
+     "code": "114450"
+    },
+    {
+     "name": "삼익제약",
+     "code": "014950"
+    },
+    {
+     "name": "바이젠셀",
+     "code": "308080"
+    },
+    {
+     "name": "메드팩토",
+     "code": "235980"
+    }
+   ],
+   "last_lu": "2026-07-28",
+   "more": [],
+   "upper_count": 0
+  },
+  {
+   "theme": "로봇·피지컬 AI (엔비디아·현대차그룹)",
+   "short": "로봇·피지컬 AI",
+   "kind": "동반테마",
+   "issue": "\"교수라도 이랬을까?\".. '피지컬AI' 전북대생들 '무급 연구'",
+   "issue_url": "https://n.news.naver.com/article/659/0000049028",
+   "presses": 1,
+   "presses_max": 1,
+   "articles": 1,
+   "kw": [
+    "피지컬AI"
+   ],
+   "stocks": [
+    {
+     "name": "유니켐",
+     "code": "011330"
+    },
+    {
+     "name": "로보스타",
+     "code": "090360"
+    },
+    {
+     "name": "메이슨캐피탈",
+     "code": "021880"
+    },
+    {
+     "name": "쏘카",
+     "code": "403550"
+    },
+    {
+     "name": "비투엔",
+     "code": "307870"
+    },
+    {
+     "name": "전진건설로봇",
+     "code": "079900"
+    }
+   ],
+   "last_lu": "2026-11-24",
+   "more": [],
+   "upper_count": 0
+  },
+  {
+   "theme": "바이오 임상·JPM 헬스케어 (임상 결과·기술수출 기대)",
+   "short": "바이오 임상·JPM 헬스케어",
+   "kind": "동반테마",
+   "issue": "급식 넘어 의료용품까지…현대그린푸드, '헬스케어' 출사표",
+   "issue_url": "https://n.news.naver.com/mnews/article/648/0000053015",
+   "presses": 1,
+   "presses_max": 1,
+   "articles": 1,
+   "kw": [
+    "헬스케어",
+    "의료"
+   ],
+   "stocks": [
+    {
+     "name": "비보존 제약",
+     "code": "082800"
+    },
+    {
+     "name": "뉴로핏",
+     "code": "380550"
+    },
+    {
+     "name": "한스바이오메드",
+     "code": "042520"
+    },
+    {
+     "name": "신라젠",
+     "code": "215600"
+    },
+    {
+     "name": "메디포스트",
+     "code": "078160"
+    },
+    {
+     "name": "현대바이오",
+     "code": "048410"
+    }
+   ],
+   "last_lu": "2026-01-30",
+   "more": [],
    "upper_count": 0
   },
   {
    "theme": "스페이스X IPO·우주항공 공급망 (위성·발사체·특수소재)",
    "short": "스페이스X IPO·우주항공 공급망",
    "kind": "동반테마",
-   "issue": "머스크 \"美 모든 어린이에게 스페이스X 주식 2주씩 주겠다\"",
-   "issue_url": "https://n.news.naver.com/mnews/article/421/0009312040",
-   "presses": 2,
-   "presses_max": 2,
-   "articles": 3,
+   "issue": "머스크, '트럼프계좌'로 美 어린이들에 24조 주식 기부",
+   "issue_url": "https://n.news.naver.com/mnews/article/008/0005446873",
+   "presses": 1,
+   "presses_max": 1,
+   "articles": 1,
    "kw": [
     "스페이스X"
    ],
@@ -119,199 +301,6 @@
     }
    ],
    "last_lu": "2026-02-03",
-   "more": [
-    {
-     "title": "[특징주] 스페이스X '우주 데이터센터' 위성 승인…관련주 급등(종합)",
-     "presses": 1,
-     "url": "https://n.news.naver.com/mnews/article/001/0016466140"
-    }
-   ],
-   "upper_count": 0
-  },
-  {
-   "theme": "탈모 치료·모발이식 (이재명 대통령 \"탈모는 생존\" 발언)",
-   "short": "탈모 치료·모발이식",
-   "kind": "동반테마",
-   "issue": "이기인 “李 분당집 판 돈 코스피 넣었다면 7억 손실…국민에 사과해야”",
-   "issue_url": "https://n.news.naver.com/mnews/article/666/0000133915",
-   "presses": 2,
-   "presses_max": 2,
-   "articles": 2,
-   "kw": [
-    "코스피"
-   ],
-   "stocks": [
-    {
-     "name": "현대약품",
-     "code": "004310"
-    },
-    {
-     "name": "메타랩스",
-     "code": "090370"
-    },
-    {
-     "name": "알리코제약",
-     "code": "260660"
-    },
-    {
-     "name": "위더스제약",
-     "code": "330350"
-    }
-   ],
-   "last_lu": "2025-12-17",
-   "more": [],
-   "upper_count": 0
-  },
-  {
-   "theme": "HLB 담관암 신약 리픽투 FDA 승인",
-   "short": "HLB 담관암 신약 리픽투 FDA 승인",
-   "kind": "동반테마",
-   "issue": "머스크의 ‘뇌 이식칩’ FDA 임상 승인…상용화 성큼",
-   "issue_url": "https://n.news.naver.com/article/005/0001887595",
-   "presses": 1,
-   "presses_max": 1,
-   "articles": 1,
-   "kw": [
-    "임상",
-    "FDA"
-   ],
-   "stocks": [
-    {
-     "name": "HLB",
-     "code": "028300"
-    },
-    {
-     "name": "HLB글로벌",
-     "code": "003580"
-    },
-    {
-     "name": "HLB바이오스텝",
-     "code": "278650"
-    },
-    {
-     "name": "HLB생명과학",
-     "code": "067630"
-    },
-    {
-     "name": "HLB이노베이션",
-     "code": "024850"
-    },
-    {
-     "name": "HLB제넥스",
-     "code": "187420"
-    }
-   ],
-   "last_lu": "2026-07-15",
-   "more": [],
-   "upper_count": 0
-  },
-  {
-   "theme": "개별 재료 상한가 (자사주·유상증자·경영권·실적·수주)",
-   "short": "개별 재료 상한가",
-   "kind": "개별상한가",
-   "issue": "현대그린푸드, 1500억원에 메디굿파트너스 인수…의료물류 진출",
-   "issue_url": "https://n.news.naver.com/mnews/article/138/0002250051",
-   "presses": 1,
-   "presses_max": 1,
-   "articles": 1,
-   "kw": [
-    "의료"
-   ],
-   "stocks": [
-    {
-     "name": "대동금속",
-     "code": "020400"
-    },
-    {
-     "name": "하이퍼코퍼레이션",
-     "code": "065650"
-    },
-    {
-     "name": "씨싸이트",
-     "code": "109670"
-    },
-    {
-     "name": "윙입푸드",
-     "code": "900340"
-    },
-    {
-     "name": "엑시온그룹",
-     "code": "069920"
-    },
-    {
-     "name": "헝셩그룹",
-     "code": "900270"
-    }
-   ],
-   "last_lu": "2026-11-05",
-   "more": [],
-   "upper_count": 0
-  },
-  {
-   "theme": "글로벌 신약 기술수출·임상 (릴리 3.8조·WHO 성분명 등재)",
-   "short": "글로벌 신약 기술수출·임상",
-   "kind": "동반테마",
-   "issue": "[바이오사 리포트] 에이비엘바이오, 릴리 투자금 86% 집행",
-   "issue_url": "https://n.news.naver.com/article/293/0000093865",
-   "presses": 1,
-   "presses_max": 1,
-   "articles": 1,
-   "kw": [
-    "바이오"
-   ],
-   "stocks": [
-    {
-     "name": "신테카바이오",
-     "code": "226330"
-    },
-    {
-     "name": "그린생명과학",
-     "code": "114450"
-    },
-    {
-     "name": "삼익제약",
-     "code": "014950"
-    },
-    {
-     "name": "바이젠셀",
-     "code": "308080"
-    },
-    {
-     "name": "메드팩토",
-     "code": "235980"
-    }
-   ],
-   "last_lu": "2026-07-28",
-   "more": [],
-   "upper_count": 0
-  },
-  {
-   "theme": "오너 승계·지배구조 개편 (한화에너지 지분 매각·삼화페인트 승계)",
-   "short": "오너 승계·지배구조 개편",
-   "kind": "동반테마",
-   "issue": "[숫자 너머 유화증권] 오너 실형에도 지배력 '철옹성'…배당 135억 중 86억 삼켰다",
-   "issue_url": "https://n.news.naver.com/article/293/0000093858",
-   "presses": 1,
-   "presses_max": 1,
-   "articles": 1,
-   "kw": [
-    "배당"
-   ],
-   "stocks": [
-    {
-     "name": "깨끗한나라",
-     "code": "004540"
-    },
-    {
-     "name": "한화갤러리아",
-     "code": "452260"
-    },
-    {
-     "name": "SP삼화",
-     "code": "000390"
-    }
-   ],
-   "last_lu": "2026-11-05",
    "more": [],
    "upper_count": 0
   }
