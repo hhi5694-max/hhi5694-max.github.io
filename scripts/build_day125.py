@@ -404,7 +404,8 @@ def encode(stock_rows: dict[str, list[list]], names: dict[str, str], days: int,
     cut: dict[str, list[list]] = {}
     for c, rows in stock_rows.items():
         rows = sorted(rows, key=lambda r: r[0])[-days:]
-        if len(rows) >= 20:
+        # 상장 직후(봉이 몇 개 없는) 종목도 차트가 열려야 한다 — 2026-11-26 지시 "day125.json 누락 없이"
+        if len(rows) >= 3:
             cut[c] = rows
     axis = sorted({r[0] for rows in cut.values() for r in rows})
     at = {d: i for i, d in enumerate(axis)}
@@ -432,6 +433,40 @@ def encode(stock_rows: dict[str, list[list]], names: dict[str, str], days: int,
     return {"dates": [int(d[2:4] + d[5:7] + d[8:10]) for d in axis], "stocks": stocks, "days": days}
 
 
+def _last_date(old: dict, code: str) -> str:
+    """자료 속 그 종목의 마지막 봉 날짜(YYYY-MM-DD) — 증분 갱신에서 '오늘 봉이 왔는지' 판단용."""
+    st = (old.get("stocks") or {}).get(code)
+    dates = old.get("dates") or []
+    if not st or not st.get("b"):
+        return ""
+    xs = st.get("x") or [((st.get("o0") or 0) + i) for i in range(len(st["b"]))]
+    n = dates[xs[-1]] if xs[-1] < len(dates) else 0
+    return "20%02d-%02d-%02d" % (n // 10000, (n // 100) % 100, n % 100) if n else ""
+
+
+def hot_codes(old: dict, today: str) -> list[str]:
+    """오늘 화면에 먼저 뜨는 종목 — 상한가·뉴스 테마 종목부터 봉을 새로 받는다(증분 갱신 순서)."""
+    hot: list[str] = []
+    news = jload("news.json")
+    for it in ((news.get("upper_limits") or {}).get("items") or []):
+        c = str(it.get("code") or "")
+        if c:
+            hot.append(c)
+    for ln in (jload("news_themes.json").get("news_links") or []):
+        for s in ln.get("stocks") or []:
+            c = str((s or {}).get("code") or "")
+            if c:
+                hot.append(c)
+    out, seen = [], set()
+    for c in hot:
+        if c in seen:
+            continue
+        seen.add(c)
+        if _last_date(old, c) < today:
+            out.append(c)
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--days", type=int, default=125)
@@ -439,6 +474,10 @@ def main():
     ap.add_argument("--count", type=int, default=0, help="받아올 일봉 수(기본 days+240, 최소 420)")
     ap.add_argument("--min-age-min", type=int, default=0)
     ap.add_argument("--max-codes", type=int, default=0)
+    ap.add_argument("--fill-missing", action="store_true",
+                    help="이미 자료에 있는 종목은 다시 받지 않고, 새로 생긴 종목만 받는다(매시 갱신용)")
+    ap.add_argument("--hot-refresh", type=int, default=0,
+                    help="오늘 상한가·뉴스 테마 종목 중 오늘 봉이 아직 없는 종목을 이 수만큼 새로 받는다")
     ap.add_argument("--out", default="", help="다른 파일로 저장(시험용) — 기본은 data/day125.json")
     args = ap.parse_args()
     count = args.count or max(args.days + 240, 420)
@@ -472,17 +511,33 @@ def main():
                 codes.append(c)
     if args.max_codes:
         codes = codes[:args.max_codes]
+    # 같은 코드가 여러 자료(달력·뉴스·핫바)에서 이름 없이 반복해 들어올 수 있다 — 한 번씩만 받는다
+    codes = list(dict.fromkeys(codes))
     if not codes:
         print("공개 화면에 종목이 없습니다 — data/*.json 을 확인하세요", file=sys.stderr)
         return
 
     t0 = time.time()
+    old_stocks = old.get("stocks") or {}
+    today = datetime.now(KST).strftime("%Y-%m-%d")
+    if args.fill_missing:
+        need = [c for c in codes if c not in old_stocks]
+        hot = hot_codes(old, today) if args.hot_refresh else []
+        fetch = need + [c for c in hot if c not in need][:args.hot_refresh]
+        print("증분 갱신 — 새 종목 %d · 오늘 봉 없는 종목 %d · 건너뛰는 종목 %d"
+              % (len(need), len(fetch) - len(need), len(codes) - len(fetch)), flush=True)
+    else:
+        fetch = codes
+    if args.fill_missing and not fetch:
+        print("새로 채울 종목이 없습니다 — 일봉 자료를 그대로 둡니다(%s)" % today, flush=True)
+        return
+
     got: dict[str, list[list]] = {}
     got_w: dict[str, list[list]] = {}
     got_m: dict[str, list[list]] = {}
     miss: list[str] = []
     with ThreadPoolExecutor(max_workers=args.workers) as ex:
-        for c, day, week, month in ex.map(lambda x: fetch_one(x, count), codes):
+        for c, day, week, month in ex.map(lambda x: fetch_one(x, count), fetch):
             if day:
                 got[c] = day
             else:
@@ -526,6 +581,10 @@ def main():
         for k in ("w", "m"):
             if k not in rec and o.get(k):
                 rec[k] = o[k]
+        # 증분 갱신에서 안 받은 종목은 지난 240일선을 그대로 둔다
+        #   (오늘 받은 125봉만으로 240일선을 다시 재면 전부 null 이 되어 선이 사라진다)
+        if c not in got and o.get("ma240") and len(o["ma240"]) == len(rec["b"]):
+            rec["ma240"] = o["ma240"]
 
     as_of = ""
     for c, rows in merged.items():

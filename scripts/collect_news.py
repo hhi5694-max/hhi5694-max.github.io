@@ -36,6 +36,10 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 
+# 같은 폴더의 상한가 순위 모듈 — 불건전 기업 제외 · 테마 묶음 · 125봉 바닥 첫 상한가 · 뉴스↔달력 연결
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import upper_rank  # noqa: E402
+
 KST = timezone(timedelta(hours=9))
 
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -2359,6 +2363,23 @@ def fetch_upper_stocks() -> list:
                 "trading_value": value,
                 "volume": volume,
                 "session": str(x.get("tradingSessionType") or ""),
+                # 불건전 기업 판별용 — 네이버 랭킹 API 가 종목마다 실어 주는 공식 필드
+                # (upper_rank.screen 이 관리종목·거래정지·시장경보·DR·우선주·SPAC·자본잠식 검사)
+                "type": str(x.get("type") or "ST"),
+                "assets": x.get("propertyTotal"),
+                "debt": x.get("debtTotal"),
+                "market_sum": x.get("marketSum"),
+                "continual_upper": x.get("continualUpperLimit"),
+                "accum_upper": x.get("accumUpper"),
+                "listed_date": x.get("listedDate"),
+                "status": {
+                    "manageStatusGb": str(x.get("manageStatusGb") or "0"),
+                    "managementReasonCode": x.get("managementReasonCode"),
+                    "tradeStopYn": str(x.get("tradeStopYn") or "N"),
+                    "tradableStatus": str(x.get("tradableStatus") or ""),
+                    "marketAlertType": str(x.get("marketAlertType") or "00"),
+                    "tradingHaltReasonCode": x.get("tradingHaltReasonCode"),
+                },
             })
     rows.sort(key=lambda r: -r["trading_value"])
     return [r for r in rows if r["name"]]
@@ -2573,6 +2594,17 @@ def build_upper_limits(now: datetime, pool: list | None = None) -> dict:
             "article_time": atime,
         })
 
+    # 2026-11-26 — (1) 불건전 기업 제외 (2) 테마 묶음·선도주 순위 (3) 125봉 바닥 첫 상한가 (4) 달력 연결
+    #   네트워크(분봉·일봉)가 막혀도 상한가 목록 자체는 그대로 내보낸다 — 실패한 종목만 판정을 비운다.
+    groups, excluded = [], []
+    try:
+        cal = upper_rank.load_calendar(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                                    "..", "data", "calendar.json"))
+        flat, groups, excluded, items = upper_rank.rank(items, status["base_date"], cal, pool or [])
+    except Exception as e:  # noqa: BLE001
+        print(f"[warn] upper rank: {e}", file=sys.stderr)
+        flat = items
+
     base = status["base_date"]
     try:
         bdt = datetime.strptime(base, "%Y-%m-%d")
@@ -2591,8 +2623,11 @@ def build_upper_limits(now: datetime, pool: list | None = None) -> dict:
         note = f"{why}이라 직전 거래일 기준입니다."
         if not items:
             note += " 직전 거래일 상한가 종목은 없었습니다."
+    if excluded:
+        note = (note + " " if note else "") + f"불건전 종목 {len(excluded)}개(관리종목·우선주·투자경보 등)는 순위에서 빠졌습니다."
 
-    print(f"[info] upper limits: {base} {len(items)} stocks", file=sys.stderr)
+    print(f"[info] upper limits: {base} {len(items)} stocks"
+          + (f" (제외 {len(excluded)})" if excluded else ""), file=sys.stderr)
     return {
         "base_date": base,
         "base_date_text": base_text,
@@ -2601,7 +2636,10 @@ def build_upper_limits(now: datetime, pool: list | None = None) -> dict:
         "session_label": status.get("session") or "",
         "count": len(items),
         "note": note,
+        "rank_rule": "테마로 묶고 그 안에서 ① 125봉 바닥황보 뒤 첫 상한가 먼저 ② 오늘 상한가에 먼저 닿은 순",
         "items": items,
+        "themes": groups,
+        "excluded": excluded,
     }
 
 
@@ -2853,6 +2891,28 @@ def build(out_path: str):
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=1)
         f.write("\n")
+
+    # 뉴스 ↔ 테마달력 — 오늘 이슈를 달력의 테마·종목에 이어 붙여 data/news_themes.json 을 새로 쓴다.
+    #   (지난 배포본은 진화론 님 패키지에 들어 있던 2026-11-24 자료라 자동으로 갱신되지 않았다)
+    try:
+        data_dir = os.path.dirname(os.path.abspath(out_path))
+        cal = upper_rank.load_calendar(os.path.join(data_dir, "calendar.json"))
+        nt = upper_rank.build_news_themes(kept, upper_limits, cal)
+        nt_path = os.path.join(data_dir, "news_themes.json")
+        old_nt = {}
+        try:
+            with open(nt_path, encoding="utf-8") as f:
+                old_nt = json.load(f)
+        except Exception:  # noqa: BLE001
+            old_nt = {}
+        # 이슈가 하나도 안 걸렸으면(휴장·수집 실패) 지난 목록을 지우지 않는다
+        if nt["news_links"] or not (old_nt.get("news_links")):
+            upper_rank.write_json(nt_path, nt)
+        else:
+            nt = old_nt
+        print(f"[done] news↔달력 테마 {len(nt.get('news_links') or [])}건 -> {nt_path}", file=sys.stderr)
+    except Exception as e:  # noqa: BLE001
+        print(f"[warn] news_themes: {e}", file=sys.stderr)
     print(f"[done] flash {len(flash)} / {len(kept)} issues / {payload['article_count']} articles -> {out_path}",
           file=sys.stderr)
     return payload

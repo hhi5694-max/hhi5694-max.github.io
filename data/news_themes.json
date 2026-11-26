@@ -1,1 +1,314 @@
-{"generated_at":"2026-11-24T20:57:34+09:00","generated_at_kst":"2026.11.24 20:57","news_updated_kst":"2026.11.24 20:47","news_links":[{"theme":"반도체·HBM 메모리 대표주 (삼전·하이닉스·HBM 장비)","short":"반도체·HBM 메모리 대표주","kind":"동반테마","issue":"삼성 준감위 \"삼성전자 주주환원 결정, 준법 위반·이해상충 아냐\"","issue_url":"https://n.news.naver.com/mnews/article/277/0005847266","presses":9,"presses_max":8,"articles":2,"kw":["SK하이닉스","메모리","삼성전자","하이닉스"],"stocks":[{"name":"SK하이닉스","code":"000660"},{"name":"삼성전자","code":"005930"},{"name":"테크윙","code":"089030"},{"name":"한미반도체","code":"042700"},{"name":"멜콘","code":"179880"}],"last_lu":"2026-10-27","more":[{"title":"못믿을 증권사들…\"하이닉스 350만 간다더니 200만원으로 뚝\" [분석+]","presses":1,"url":"https://n.news.naver.com/article/015/0005357781"}]},{"theme":"AI 시험 부정행위 대응·전파탐지/물리보안","short":"AI 시험 부정행위 대응·전파탐지/물리보안","kind":"동반테마","issue":"''IQ 146·서울대 출신' 서경석, AI 부정행위 불똥 \"한국사 시험 만점도 의심하더라\"","issue_url":"https://n.news.naver.com/article/014/0005608921","presses":6,"presses_max":4,"articles":3,"kw":["AI","부정행위","시험"],"stocks":[{"name":"카티스","code":"140430"},{"name":"인콘","code":"083640"},{"name":"시선AI","code":"340810"},{"name":"지슨","code":"446840"}],"last_lu":"2026-11-19","more":[{"title":"[단독] 폐기된 수능 시험지 14만여 부…인천 등 2만천여 부 추가 확인","presses":1,"url":"https://n.news.naver.com/article/056/0012300140"},{"title":"경찰, '리트 만점자' 출연 유튜브 영상 확보","presses":1,"url":"https://www.ytn.co.kr/_ln/0103_20261124182324"}]},{"theme":"로봇·피지컬 AI (엔비디아·현대차그룹)","short":"로봇·피지컬 AI","kind":"동반테마","issue":"'피지컬 AI 동맹' 현대차그룹주 불기둥","issue_url":"https://n.news.naver.com/mnews/article/014/0005609175","presses":1,"presses_max":1,"articles":1,"kw":["AI","로봇","피지컬"],"stocks":[{"name":"노타","code":"486990"},{"name":"삼현","code":"437730"},{"name":"아이로보틱스","code":"066430"},{"name":"벡트로보틱스","code":"457600"},{"name":"서진오토모티브","code":"122690"}],"last_lu":"2026-11-24","more":[]},{"theme":"CES 2026 피지컬 AI·휴머노이드 로봇 (엔비디아·현대차 아틀라스)","short":"CES 2026 피지컬 AI·휴머노이드 로봇","kind":"동반테마","issue":"휴림로봇 주가 ‘불기둥’...한화로보틱스와 로봇 공급 계약 [오늘, 이 종목]","issue_url":"https://n.news.naver.com/article/024/0000109840","presses":2,"presses_max":1,"articles":2,"kw":["AI","로봇","피지컬","휴림로봇"],"stocks":[{"name":"휴림로봇","code":"090710"},{"name":"유디엠텍","code":"389680"},{"name":"앤로보틱스","code":"138360"},{"name":"나무가","code":"190510"},{"name":"뉴로메카","code":"348340"}],"last_lu":"2026-11-24","more":[{"title":"'피지컬 AI 동맹' 현대차그룹주 불기둥","presses":1,"url":"https://n.news.naver.com/mnews/article/014/0005609175"}]},{"theme":"현대차 로보틱스 밸류체인·자동차부품 (美 관세·전장 수주)","short":"현대차 로보틱스 밸류체인·자동차부품","kind":"동반테마","issue":"휴림로봇 주가 ‘불기둥’...한화로보틱스와 로봇 공급 계약 [오늘, 이 종목]","issue_url":"https://n.news.naver.com/article/024/0000109840","presses":2,"presses_max":1,"articles":2,"kw":["로보틱스","현대차"],"stocks":[{"name":"현대차","code":"005380"},{"name":"성문전자","code":"014910"},{"name":"율촌","code":"146060"},{"name":"경창산업","code":"024910"},{"name":"DH오토웨어","code":"025440"}],"last_lu":"2026-11-24","more":[{"title":"'피지컬 AI 동맹' 현대차그룹주 불기둥","presses":1,"url":"https://n.news.naver.com/mnews/article/014/0005609175"}]}]}
+{
+ "generated_at": "2026-11-26T10:33:07+09:00",
+ "generated_at_kst": "2026.11.26 10:33",
+ "news_updated_kst": "2026.11.26 10:33",
+ "note": "오늘 뉴스 이슈를 테마달력(calendar.json)의 테마·종목에 이어 붙인 목록 — 테마가 나오면 테마와 종목을 여기에 적어 두고, 화면에서는 종목을 눌러 125봉 차트를 연다.",
+ "news_links": [
+  {
+   "theme": "AI 시험 부정행위 대응·전파탐지/물리보안",
+   "short": "AI 시험 부정행위 대응·전파탐지/물리보안",
+   "kind": "동반테마",
+   "issue": "\"만점 받아도 공개 안 해\"…AI 부정행위 논란이 바꾼 수능 풍경",
+   "issue_url": "https://n.news.naver.com/article/123/0002394844",
+   "presses": 3,
+   "presses_max": 3,
+   "articles": 5,
+   "kw": [
+    "부정행위",
+    "수능"
+   ],
+   "stocks": [
+    {
+     "name": "지슨",
+     "code": "446840"
+    },
+    {
+     "name": "시선AI",
+     "code": "340810"
+    },
+    {
+     "name": "카티스",
+     "code": "140430"
+    },
+    {
+     "name": "인콘",
+     "code": "083640"
+    }
+   ],
+   "last_lu": "2026-11-19",
+   "more": [
+    {
+     "title": "경찰, '리트 만점자' 이진우 자취방 찾아 탐문 수사",
+     "presses": 1,
+     "url": "https://www.ytn.co.kr/_ln/0103_20261126092832"
+    },
+    {
+     "title": "고교 기말고사 앞두고 금속탐지기 1만2천개 추가 구매",
+     "presses": 1,
+     "url": "https://n.news.naver.com/mnews/article/001/0016464546"
+    }
+   ],
+   "upper_count": 0
+  },
+  {
+   "theme": "반도체·HBM 메모리 대표주 (삼전·하이닉스·HBM 장비)",
+   "short": "반도체·HBM 메모리 대표주",
+   "kind": "동반테마",
+   "issue": "[속보] 코스피 '멸망의 날'? 삼성전자·SK하이닉스 장중 동반 마이너스 10%대 터치",
+   "issue_url": "https://n.news.naver.com/article/088/0001042239",
+   "presses": 3,
+   "presses_max": 3,
+   "articles": 4,
+   "kw": [
+    "SK하이닉스",
+    "삼성전자"
+   ],
+   "stocks": [
+    {
+     "name": "멜콘",
+     "code": "179880"
+    },
+    {
+     "name": "한미반도체",
+     "code": "042700"
+    },
+    {
+     "name": "테크윙",
+     "code": "089030"
+    },
+    {
+     "name": "SK하이닉스",
+     "code": "000660"
+    }
+   ],
+   "last_lu": "2026-10-27",
+   "more": [
+    {
+     "title": "하루 만에 11% 폭락한 SK하이닉스…“200만원 vs 105만원” 증권가 전망도 극과 극",
+     "presses": 1,
+     "url": "https://n.news.naver.com/article/016/0002728561"
+    }
+   ],
+   "upper_count": 0
+  },
+  {
+   "theme": "관세·트럼프 통상",
+   "short": "관세·트럼프 통상",
+   "kind": "동반테마",
+   "issue": "증시 떨어지자 민주당 탓한 트럼프…“내가 출마했다면 달랐다”",
+   "issue_url": "https://n.news.naver.com/article/029/0003061233",
+   "presses": 2,
+   "presses_max": 2,
+   "articles": 3,
+   "kw": [
+    "증시"
+   ],
+   "stocks": [
+    {
+     "name": "더코디",
+     "code": "224060"
+    },
+    {
+     "name": "코퍼스코리아",
+     "code": "322780"
+    }
+   ],
+   "last_lu": "2026-01-08",
+   "more": [
+    {
+     "title": "산업부 \"15% 관세합의 존중 의사 확인...긴밀히 협의할 것\"",
+     "presses": 1,
+     "url": "https://www.ytn.co.kr/_ln/0102_20261126094643"
+    }
+   ],
+   "upper_count": 0
+  },
+  {
+   "theme": "증권·보험 (3차 상법개정·코스피 5,600 돌파)",
+   "short": "증권·보험",
+   "kind": "동반테마",
+   "issue": "'증시패닉'에 10조 증안펀드 판 키우나…산은, 금융사에 추가 출자 타진",
+   "issue_url": "https://n.news.naver.com/article/374/0000545962",
+   "presses": 2,
+   "presses_max": 2,
+   "articles": 2,
+   "kw": [
+    "증시"
+   ],
+   "stocks": [
+    {
+     "name": "토마토시스템",
+     "code": "393210"
+    },
+    {
+     "name": "SK증권",
+     "code": "001510"
+    },
+    {
+     "name": "에이엔피",
+     "code": "015260"
+    },
+    {
+     "name": "CS",
+     "code": "065770"
+    },
+    {
+     "name": "라메디텍",
+     "code": "462510"
+    },
+    {
+     "name": "에이팩트",
+     "code": "200470"
+    }
+   ],
+   "last_lu": "2026-09-21",
+   "more": [],
+   "upper_count": 0
+  },
+  {
+   "theme": "GLP-1 비만약 원료·펩타이드 (글로벌 생산거점 구축)",
+   "short": "GLP-1 비만약 원료·펩타이드",
+   "kind": "개별상한가",
+   "issue": "[삼성바이오 인사]③ 부사장 2인 승진 키워드…'건설·생산·품질' 역량",
+   "issue_url": "https://n.news.naver.com/article/293/0000093841",
+   "presses": 1,
+   "presses_max": 1,
+   "articles": 1,
+   "kw": [
+    "바이오"
+   ],
+   "stocks": [
+    {
+     "name": "아미노로직스",
+     "code": "074430"
+    }
+   ],
+   "last_lu": "2025-12-30",
+   "more": [],
+   "upper_count": 0
+  },
+  {
+   "theme": "글로벌 신약 기술수출·임상 (릴리 3.8조·WHO 성분명 등재)",
+   "short": "글로벌 신약 기술수출·임상",
+   "kind": "동반테마",
+   "issue": "[삼성바이오 인사]④ 에피스, 임상·허가 라인 부상…개발비 관리 관건",
+   "issue_url": "https://n.news.naver.com/article/293/0000093842",
+   "presses": 1,
+   "presses_max": 1,
+   "articles": 1,
+   "kw": [
+    "임상",
+    "바이오"
+   ],
+   "stocks": [
+    {
+     "name": "신테카바이오",
+     "code": "226330"
+    },
+    {
+     "name": "그린생명과학",
+     "code": "114450"
+    },
+    {
+     "name": "삼익제약",
+     "code": "014950"
+    },
+    {
+     "name": "바이젠셀",
+     "code": "308080"
+    },
+    {
+     "name": "메드팩토",
+     "code": "235980"
+    }
+   ],
+   "last_lu": "2026-07-28",
+   "more": [],
+   "upper_count": 0
+  },
+  {
+   "theme": "디지털자산·스테이블코인 (3차 상법개정·코인 법제화)",
+   "short": "디지털자산·스테이블코인",
+   "kind": "동반테마",
+   "issue": "디지털자산법, 벌써부터 입법지연 우려…거래소 지분제한 발목",
+   "issue_url": "https://n.news.naver.com/article/648/0000052992",
+   "presses": 1,
+   "presses_max": 1,
+   "articles": 1,
+   "kw": [
+    "지분"
+   ],
+   "stocks": [
+    {
+     "name": "파라택시스이더리움",
+     "code": "290560"
+    },
+    {
+     "name": "아이티아이즈",
+     "code": "372800"
+    },
+    {
+     "name": "파라택시스코리아",
+     "code": "288330"
+    },
+    {
+     "name": "제주은행",
+     "code": "006220"
+    },
+    {
+     "name": "NHN KCP",
+     "code": "060250"
+    },
+    {
+     "name": "다날",
+     "code": "064260"
+    }
+   ],
+   "last_lu": "2026-02-26",
+   "more": [],
+   "upper_count": 0
+  },
+  {
+   "theme": "로봇·피지컬 AI (엔비디아·현대차그룹)",
+   "short": "로봇·피지컬 AI",
+   "kind": "동반테마",
+   "issue": "\"교수라도 이랬을까?\".. '피지컬AI' 전북대생들 '무급 연구'",
+   "issue_url": "https://n.news.naver.com/article/659/0000049028",
+   "presses": 1,
+   "presses_max": 1,
+   "articles": 1,
+   "kw": [
+    "피지컬AI"
+   ],
+   "stocks": [
+    {
+     "name": "유니켐",
+     "code": "011330"
+    },
+    {
+     "name": "로보스타",
+     "code": "090360"
+    },
+    {
+     "name": "피델릭스",
+     "code": "032580"
+    },
+    {
+     "name": "파이온엑스",
+     "code": "900100"
+    },
+    {
+     "name": "비투엔",
+     "code": "307870"
+    },
+    {
+     "name": "전진건설로봇",
+     "code": "079900"
+    }
+   ],
+   "last_lu": "2026-11-24",
+   "more": [],
+   "upper_count": 0
+  }
+ ]
+}
