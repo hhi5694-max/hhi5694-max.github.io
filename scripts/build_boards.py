@@ -333,8 +333,7 @@ def build(date: str, book: dict) -> dict:
     intra = [pick_card(p) for p in (rec.get("intraday") or []) if p.get("code")]
     after = [pick_card(p) for p in (rec.get("aftermarket") or []) if p.get("code")]
     for i, p in enumerate(intra, 1):        # *****
-        if not p.get("tier"):
-            p["tier"] = "core" if i <= 5 else "extra"
+        p["tier"] = "core" if i <= 10 else "extra"
     for p in pre:
         p["_leg"] = "premarket"
     for p in intra:

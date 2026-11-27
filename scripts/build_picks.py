@@ -51,8 +51,8 @@ BOX_RANGE_MAX = UR.BOX_RANGE_MAX  # 80%
 BOTTOM_DD = UR.BOTTOM_DD          # -40%
 BOX_POS_MAX = UR.BOX_POS_MAX      # 0.35
 PRE_MIN, PRE_MAX = 3, 5           # *****
-INTRA_MAX = 10                    # *****
-INTRA_CORE = 5                    # *****
+INTRA_MAX = 500                   # 안전 상한(폭주 방지용) — 실질 제한 없음
+INTRA_CORE = 10                   # 1~10번째 = 핵심(core), 11번째부터 추가(extra)
 AFTER_MIN, AFTER_MAX = 3, 5       # *****
 INTRA_SURGE = 8.0                 # *****
 CAPTURE_SURGE = 5.0               # 1분봉에서 '포착'으로 보는 등락률(%) — 포착가를 잡는 기준
@@ -662,14 +662,14 @@ def refresh_prices(book: dict, date: str, day: dict, mark_closed: bool) -> int:
 
 # *****
 def tier_of(pos: int) -> str:
-    """장중픽 몇 번째(1부터)인가 — 1~5 핵심('core') · 6~10 추가('extra')."""
+    """장중픽 몇 번째(1부터)인가 — 1~10 핵심('core') · 11번째부터 추가('extra')."""
     return "core" if pos <= INTRA_CORE else "extra"
 
 
 def with_tiers(rows: list) -> list:
-    """장중픽에 순서대로 tier 를 붙인다 — tier 가 없는 예전 기록도 순서(1~5/6~10)만으로 채운다."""
+    """장중픽에 순서대로 tier 를 다시 붙인다 — 앞 10종목 core, 11번째부터 extra."""
     for i, p in enumerate(rows or [], 1):
-        if isinstance(p, dict) and not p.get("tier"):
+        if isinstance(p, dict):
             p["tier"] = tier_of(i)
     return rows
 
